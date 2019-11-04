@@ -1,7 +1,7 @@
 Copyright License Agreement
 This Copyright License Agreement (this “Agreement”) is made effective as of 04/11/2019 between TACTFactory, of 13 rue Union, LE MANS, 72000.
 This Agreement shall be governed by the laws of France. This Agreement will commence on the 04/11/2019 and continue until the end of time or until either party provides written notice of termination to the other party with a 30 days notice.
-In this Agreement, the party granting the right to use the licensed property, [OWNER], will be referred to as the “Owner” and the party who is receiving the right to use the licensed property, [USER], will be referred to as the “User.”
+In this Agreement, the party granting the right to use the licensed property, TACTFactory, will be referred to as the “Owner” and the party who is receiving the right to use the licensed property, [USER], will be referred to as the “User.”
 1.         Owner owns all proprietary rights in and to the copyrightable and/or copyrighted works described in this Agreement.  The copyrighted works will collectively be referred to as “Work.”
 2.         Owner owns all rights in and to the Work and retains all rights to the Work, which are not transferred herein, and retains all common law copyrights and all federal copyrights which have been, or which may be, granted by the Library of Congress.
 3.         Owner desires to obtain, and Licensor has agreed to grant, a license authorizing the use of the Work by Licensee in accordance with the terms and conditions of this Agreement.
