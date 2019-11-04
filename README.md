@@ -1,15 +1,15 @@
 # Projet ON VA GEEKER
-## Made by Cedrick Pennec, Cheikh E. and Renaud Barrios
+### Made by Cedrick P., Cheikh E. and Renaud B.
 ### Project status : Work in progress
 This project is aiming to regroup players to events IRL.
-## languages used ?
+## technology used ?
 * Angular
 * SpringBoot
 * HTML5,CSS3
 * PHP,MySQL
 ## Responsive ?
-Yes, he's gonna be
-## When the logo is comming ?
+Yes, he's gonna be.
+## When the logo is coming ?
 When the client accept our proposition.
 
 
