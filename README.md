@@ -1,5 +1,5 @@
 # Projet ON VA GEEKER
-## Made by Cedrick Pennec, Cheikh Ejeyed and Renaud Barrios
+## Made by Cedrick Pennec, Cheikh E. and Renaud Barrios
 ### Project status : Work in progress
 This project is aiming to regroup players to events IRL.
 ## languages used ?
