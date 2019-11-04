@@ -9,5 +9,7 @@ This project is aiming to regroup players to events IRL.
 * PHP,MySQL
 ## Responsive ?
 Yes, he's gonna be
+## When the logo is comming ?
+When the client accept our proposition.
 
 
