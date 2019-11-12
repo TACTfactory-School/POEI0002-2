@@ -14,8 +14,6 @@ public class EntityBase {
 
 //    private LocalDateTime createdAt = LocalDateTime.now();
 
-    private boolean enabled = false;
-
     protected EntityBase() {
         super();
     }
@@ -25,33 +23,5 @@ public class EntityBase {
      */
     public Long getId() {
         return id;
-    }
-
-//    /**
-//     * @return the createdAt
-//     */
-//    public LocalDateTime getCreatedAt() {
-//        return createdAt;
-//    }
-//
-//    /**
-//     * @param createdAt the createdAt to set
-//     */
-//    public void setCreatedAt(LocalDateTime createdAt) {
-//        this.createdAt = createdAt;
-//    }
-
-    /**
-     * @return the enabled
-     */
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    /**
-     * @param enabled the enabled to set
-     */
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 }
