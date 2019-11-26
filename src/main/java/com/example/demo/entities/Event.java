@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -43,7 +42,6 @@ public class Event extends EntityBase {
     @NotBlank
     private String city;
 
-    @ManyToMany(mappedBy = "id_tag")
     @Column(nullable = true)
     private List<Tag> tags;
 

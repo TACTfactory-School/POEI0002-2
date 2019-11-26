@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -56,27 +54,21 @@ public class User extends EntityBase {
     @Column(nullable = true)
     private String profession;
 
-    @ManyToMany(mappedBy = "id_events")
     @Column(nullable = true)
     private List<User> friends;
 
-    @ManyToMany(mappedBy = "id_events")
     @Column(nullable = true)
     private List<Event> events;
 
-    @OneToMany(mappedBy = "id_eventsAsCrea")
     @Column(nullable = true)
     private List<Event> eventsAsCreator;
 
-    @ManyToMany(mappedBy = "id_eventsAsOrg")
     @Column(nullable = true)
     private List<Event> eventsAsOrganisator;
 
-    @ManyToMany(mappedBy = "id_hobbie")
     @Column(nullable = true)
     private List<Hobbie> hobbies;
 
-    @ManyToMany(mappedBy = "id_language")
     @Column(nullable = true)
     private List<Language> languages;
 
