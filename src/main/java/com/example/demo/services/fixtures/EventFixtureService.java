@@ -1,11 +1,10 @@
 package com.example.demo.services.fixtures;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.entities.Event;
-import com.example.demo.repository.EventRepository;;
+import com.example.demo.repository.EventRepository;
 
 @Component
 public class EventFixtureService implements Fixture {

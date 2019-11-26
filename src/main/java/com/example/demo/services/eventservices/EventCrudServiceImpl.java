@@ -35,8 +35,12 @@ public class EventCrudServiceImpl implements EventCrudService {
 
     @Transactional()
     @Override
-    public Event create(final Event employee) {
-        return this.createService.create(employee);
+    public Event create(final Event event) {
+        return this.createService.create(event);
+    }
+
+    public Event update(final Event event) {
+        return this.repository.save(event);
     }
 
     @Override

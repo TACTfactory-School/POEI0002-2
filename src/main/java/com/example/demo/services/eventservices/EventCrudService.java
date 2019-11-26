@@ -11,7 +11,9 @@ public interface EventCrudService {
 
     Event getOne(long id) throws NotFoundException;
 
-    Event create(Event employee);
+    Event create(Event event);
+
+    Event update(Event event);
 
     void delete(long id);
 }
