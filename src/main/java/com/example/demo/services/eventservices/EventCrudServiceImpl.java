@@ -44,7 +44,7 @@ public class EventCrudServiceImpl implements EventCrudService {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(final long id) {
         this.repository.deleteById(id);
     }
 }
