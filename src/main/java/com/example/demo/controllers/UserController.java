@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entities.Event;
 import com.example.demo.entities.User;
 import com.example.demo.exeptions.BadRequestException;
 import com.example.demo.exeptions.NotFoundException;
@@ -39,23 +38,24 @@ public class UserController {
     }
 
     @PostMapping
-    public User create(@Valid @RequestBody User event) throws BadRequestException {
+    public User create(@Valid @RequestBody final User event) throws BadRequestException {
         return this.service.create(event);
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable final Long id) {
         this.service.delete(id);
     }
 
     @GetMapping("{id}")
-    public User getOne(@PathVariable Long id) throws NotFoundException {
+    public User getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
     }
 
     @PutMapping("{id}")
-    public User update(@PathVariable Long id, @Valid @RequestBody User user) throws NotFoundException {
+    public User update(@PathVariable final Long id, @Valid @RequestBody final User user)
+            throws NotFoundException {
         final User entity = this.service.getOne(id);
 
         this.mapper.map(user, entity);

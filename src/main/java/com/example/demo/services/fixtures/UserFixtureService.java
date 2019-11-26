@@ -7,7 +7,7 @@ import com.example.demo.entities.User;
 import com.example.demo.repository.UserRepository;
 
 @Component
-public class UserFixtureService implements Fixture{
+public class UserFixtureService implements Fixture {
 
     @Autowired
     private UserRepository repository;

@@ -16,7 +16,9 @@ public class Event extends EntityBase {
     @Column(nullable = false)
     private User author;
 
-    @Column(length = 255, nullable = false)
+    static final int LENGTH = 255;
+
+    @Column(length = LENGTH, nullable = false)
     @NotBlank
     private String title;
 
@@ -50,7 +52,7 @@ public class Event extends EntityBase {
     public User getAuthor() {
         return author;
     }
-
+  
     public void setAuthor(User author) {
         this.author = author;
     }
@@ -75,7 +77,7 @@ public class Event extends EntityBase {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -86,9 +88,12 @@ public class Event extends EntityBase {
     public void setDueAt(LocalDateTime dueAt) {
         this.dueAt = dueAt;
     }
-
+  
     public Integer getNbPlace() {
         return nbPlace;
+    }
+    public void setLabel(final String label) {
+        this.label = label;
     }
 
     public void setNbPlace(Integer nbPlace) {
