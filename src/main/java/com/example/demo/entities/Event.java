@@ -5,18 +5,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "ovg_events")
+@Table(name = "ovg_event")
 public class Event extends EntityBase {
 
-    @ManyToOne
-    @JoinColumn(name="id_author", nullable=false)
     @Column(nullable = false)
     private User author;
 

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "ovg_users")
+@Table(name = "ovg_user")
 public class User extends EntityBase {
 
     @Column(length = 255, nullable = false)
