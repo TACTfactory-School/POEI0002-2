@@ -14,15 +14,14 @@ import com.example.demo.repository.EventRepository;
 @Transactional
 public class EventCreateService {
 
-    private static final Logger log = LoggerFactory.getLogger(EventCreateService.class);
+    private static final Logger logger = LoggerFactory.getLogger(EventCreateService.class);
 
     @Autowired
     private EventRepository event;
 
     Event create(final Event event) {
-        log.debug("Create employee");
-        // Upload avatar.
-        // Create avatar entry.
+        logger.debug("Create employee");
+
         return this.event.save(event);
     }
 }
