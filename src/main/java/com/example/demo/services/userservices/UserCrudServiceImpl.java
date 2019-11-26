@@ -40,4 +40,9 @@ public class UserCrudServiceImpl implements UserCrudService{
         this.repository.deleteById(id);
     }
 
+    @Override
+    public User update(User user) {
+        return this.repository.save(user);
+    }
+
 }

@@ -19,10 +19,10 @@ public class EventCreateService {
     @Autowired
     private EventRepository event;
 
-    Event create(final Event employee) {
+    Event create(final Event event) {
         log.debug("Create employee");
         // Upload avatar.
         // Create avatar entry.
-        return this.event.save(employee);
+        return this.event.save(event);
     }
 }

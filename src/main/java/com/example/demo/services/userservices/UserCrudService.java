@@ -11,8 +11,10 @@ public interface UserCrudService {
 
     User getOne(long id) throws NotFoundException;
 
-    User create(User employee);
+    User create(User user);
 
     void delete(long id);
+
+    User update(User user);
 
 }

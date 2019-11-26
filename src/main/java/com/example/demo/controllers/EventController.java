@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,6 +29,9 @@ public class EventController {
     @Autowired
     private EventCrudService service;
 
+    @Autowired
+    private ModelMapper mapper;
+
     @GetMapping
     public List<Event> getAll() {
         return this.service.getAll();
@@ -38,22 +42,17 @@ public class EventController {
         return this.service.create(event);
     }
 
-    /*@PutMapping("{id}")
+    @PutMapping("{id}")
     public Event update(@PathVariable Long id, @Valid @RequestBody Event event)
             throws BadRequestException, NotFoundException {
 
-        final Event entity = this.service.findById(id)
-                .orElseThrow(() -> new NotFoundException());
+        final Event entity = this.service.getOne(id);
 
-        // TODO: Use mapper.
-        // ObjectMapper mapper = new ObjectMapper();
-        // ---------
-        entity.setAuthor(event.getAuthor());
-        entity.setDescription(event.getDescription());
-        entity.setLabel(event.getLabel());
+        this.mapper.map(event, entity);
+        this.service.update(entity);
 
-        return this.service.save(entity);
-    }*/
+        return entity;
+    }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
