@@ -15,13 +15,14 @@ import com.example.demo.services.eventservices.EventCreateService;
 @Transactional
 public class UserCreateService {
 
-    private static final Logger log = LoggerFactory.getLogger(EventCreateService.class);
+    private static final Logger logger = LoggerFactory.getLogger(EventCreateService.class);
 
     @Autowired
     private UserRepository user;
 
     User create(final User user) {
-        log.debug("Creation utilisateur");
+        logger.debug("Creation utilisateur");
+
         return this.user.save(user);
     }
 

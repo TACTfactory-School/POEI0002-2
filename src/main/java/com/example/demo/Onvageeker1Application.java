@@ -13,13 +13,15 @@ import com.example.demo.services.fixtures.FixtureService;
 
 
 @SpringBootApplication
-public class Onvageeker1Application implements CommandLineRunner{
+public class Onvageeker1Application implements CommandLineRunner {
 
-    private static final Logger log = LoggerFactory.getLogger(Onvageeker1Application.class);
+    private static final Logger logger = LoggerFactory
+            .getLogger(Onvageeker1Application.class);
+
     @Autowired(required = false)
     private FixtureService fixtures;
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         SpringApplication.run(Onvageeker1Application.class, args);
     }
 
@@ -29,13 +31,13 @@ public class Onvageeker1Application implements CommandLineRunner{
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(final String... args) throws Exception {
         if (this.fixtures != null) {
-            log.debug("Fixtures loading...");
+            logger.debug("Fixtures loading...");
 
             this.fixtures.load();
 
-            log.debug("Fixtures loaded");
+            logger.debug("Fixtures loaded");
         }
     }
 }
