@@ -10,7 +10,7 @@ import com.example.demo.exeptions.NotFoundException;
 import com.example.demo.repository.UserRepository;
 
 @Service
-public class UserCrudServiceImpl implements UserCrudService{
+public class UserCrudServiceImpl implements UserCrudService {
 
     @Autowired
     private UserRepository repository;
@@ -24,24 +24,24 @@ public class UserCrudServiceImpl implements UserCrudService{
     }
 
     @Override
-    public User getOne(long id) throws NotFoundException {
+    public User getOne(final long id) throws NotFoundException {
         return this.repository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException());
     }
 
     @Override
-    public User create(User user) {
+    public User create(final User user) {
         return this.createService.create(user);
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(final long id) {
         this.repository.deleteById(id);
     }
 
     @Override
-    public User update(User user) {
+    public User update(final User user) {
         return this.repository.save(user);
     }
 

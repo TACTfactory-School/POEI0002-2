@@ -12,15 +12,17 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "ovg_user")
 public class User extends EntityBase {
 
-    @Column(length = 255, nullable = false)
+    private static final int LENGTH = 255;
+
+    @Column(length = LENGTH, nullable = false)
     @NotBlank
     private String username;
 
-    @Column(length = 255, nullable = false)
+    @Column(length = LENGTH, nullable = false)
     @NotBlank
     private String password;
 
-    @Column(length = 255, nullable = false)
+    @Column(length = LENGTH, nullable = false)
     @NotBlank
     private String city;
 
@@ -204,7 +206,7 @@ public class User extends EntityBase {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
@@ -212,7 +214,7 @@ public class User extends EntityBase {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -220,7 +222,7 @@ public class User extends EntityBase {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(final String city) {
         this.city = city;
     }
 
