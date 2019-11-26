@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import com.example.demo.services.fixtures.FixtureService;
 
 
@@ -31,5 +30,4 @@ public class Onvageeker1Application implements CommandLineRunner{
             log.debug("Fixtures loaded");
         }
     }
-
 }
