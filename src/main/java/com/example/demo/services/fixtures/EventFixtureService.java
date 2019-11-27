@@ -15,10 +15,10 @@ public class EventFixtureService implements Fixture {
     @Override
     public void load() {
         Event event = new Event();
-
-        event.setLabel("bar");
-        event.setAuthor("John");
-        event.setDescription("bar du 15eme");
+//
+//        event.setLabel("bar");
+//        event.setAuthor("John");
+//        event.setDescription("bar du 15eme");
 
 
         this.repository.save(event);
