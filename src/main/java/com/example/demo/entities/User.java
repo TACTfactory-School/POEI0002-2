@@ -1,7 +1,6 @@
 package com.example.demo.entities;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,72 +54,6 @@ public class User extends EntityBase {
 
     @Column(nullable = true)
     private String profession;
-
-    @Column(nullable = true)
-    private List<User> friends;
-
-    @Column(nullable = true)
-    private List<Event> events;
-
-    @Column(nullable = true)
-    private List<Event> eventsAsCreator;
-
-    @Column(nullable = true)
-    private List<Event> eventsAsOrganisator;
-
-    @Column(nullable = true)
-    private List<Hobbie> hobbies;
-
-    @Column(nullable = true)
-    private List<Language> languages;
-
-    public List<User> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(List<User> friends) {
-        this.friends = friends;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
-    public List<Event> getEventsAsCreator() {
-        return eventsAsCreator;
-    }
-
-    public void setEventsAsCreator(List<Event> eventsAsCreator) {
-        this.eventsAsCreator = eventsAsCreator;
-    }
-
-    public List<Event> getEventsAsOrganisator() {
-        return eventsAsOrganisator;
-    }
-
-    public void setEventsAsOrganisator(List<Event> eventsAsOrganisator) {
-        this.eventsAsOrganisator = eventsAsOrganisator;
-    }
-
-    public List<Hobbie> getHobbies() {
-        return hobbies;
-    }
-
-    public void setHobbies(List<Hobbie> hobbies) {
-        this.hobbies = hobbies;
-    }
-
-    public List<Language> getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(List<Language> languages) {
-        this.languages = languages;
-    }
 
     public String getName() {
         return name;
