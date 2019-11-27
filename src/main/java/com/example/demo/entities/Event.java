@@ -87,7 +87,7 @@ public class Event extends EntityBase {
         this.dueAt = dueAt;
     }
 
-  
+
     public Integer getNbPlace() {
         return nbPlace;
     }
