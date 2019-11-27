@@ -1,7 +1,6 @@
 package com.example.demo.entities;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,9 +10,6 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "ovg_event")
 public class Event extends EntityBase {
-
-    @Column(nullable = false)
-    private User author;
 
     static final int LENGTH = 255;
 
@@ -43,25 +39,6 @@ public class Event extends EntityBase {
     @Column(length = 255, nullable = false)
     @NotBlank
     private String city;
-
-    @Column(nullable = true)
-    private List<Tag> tags;
-
-    public User getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(User author) {
-        this.author = author;
-    }
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
 
     public String getTitle() {
         return title;
