@@ -1,7 +1,6 @@
 package com.example.demo.entities;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -93,7 +92,7 @@ public class Event extends EntityBase {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
-
+  
     public String getTitle() {
         return title;
     }
