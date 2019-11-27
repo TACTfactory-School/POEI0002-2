@@ -20,7 +20,7 @@ public class EventFixtureService implements Fixture {
 //        event.setAuthor("John");
 //        event.setDescription("bar du 15eme");
 
-
-        this.repository.save(event);
+//
+//        this.repository.save(event);
     }
 }

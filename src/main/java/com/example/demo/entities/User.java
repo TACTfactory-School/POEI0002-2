@@ -3,8 +3,13 @@ package com.example.demo.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -56,22 +61,32 @@ public class User extends EntityBase {
     @Column(nullable = true)
     private String profession;
 
-    @Column(nullable = true)
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(name = "asc_friendship_table", joinColumns = { @JoinColumn(name = "friend1_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "friend2_id") })
     private List<User> friends;
 
-    @Column(nullable = true)
+    @OneToMany(cascade = { CascadeType.ALL })
+    @JoinTable(name = "asc_events", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "event_id") })
     private List<Event> events;
 
-    @Column(nullable = true)
+    @OneToMany(mappedBy = "author")
     private List<Event> eventsAsCreator;
 
-    @Column(nullable = true)
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(name = "asc_eventsAsOrganisator", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "event_id") })
     private List<Event> eventsAsOrganisator;
 
-    @Column(nullable = true)
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(name = "asc_hobbies", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "hobbie_id") })
     private List<Hobbie> hobbies;
 
-    @Column(nullable = true)
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(name = "asc_languages", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "language_id") })
     private List<Language> languages;
 
     public List<User> getFriends() {

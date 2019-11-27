@@ -3,8 +3,13 @@ package com.example.demo.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -12,7 +17,9 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "ovg_event")
 public class Event extends EntityBase {
 
-    @Column(nullable = false)
+    @ManyToOne(cascade = { CascadeType.ALL })
+    @JoinTable(name = "asc_events_creator", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "user_id") })
     private User author;
 
     static final int LENGTH = 255;
@@ -44,8 +51,32 @@ public class Event extends EntityBase {
     @NotBlank
     private String city;
 
-    @Column(nullable = true)
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(name = "asc_tags", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "tag_id") })
     private List<Tag> tags;
+
+    @ManyToMany(mappedBy = "events")
+    private List<User> participants;
+
+    @ManyToMany(mappedBy = "eventsAsOrganisator")
+    private List<User> organisators;
+
+    public List<User> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<User> participants) {
+        this.participants = participants;
+    }
+
+    public List<User> getOrganisators() {
+        return organisators;
+    }
+
+    public void setOrganisators(List<User> organisators) {
+        this.organisators = organisators;
+    }
 
     public User getAuthor() {
         return author;
