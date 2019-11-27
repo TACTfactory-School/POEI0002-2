@@ -61,6 +61,7 @@ public class User extends EntityBase {
     @Column(nullable = true)
     private String profession;
 
+
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(name = "asc_friendship_table", joinColumns = { @JoinColumn(name = "friend1_id") }, inverseJoinColumns = {
             @JoinColumn(name = "friend2_id") })
