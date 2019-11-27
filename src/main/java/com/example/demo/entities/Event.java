@@ -87,12 +87,8 @@ public class Event extends EntityBase {
         this.dueAt = dueAt;
     }
 
-
     public Integer getNbPlace() {
         return nbPlace;
-    }
-    public void setLabel(final String label) {
-        this.label = label;
     }
 
     public void setNbPlace(Integer nbPlace) {
