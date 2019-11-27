@@ -14,6 +14,6 @@ public class FixtureService implements Fixture {
 
     public void load() {
 //        this.eventFixture.load();
-//        this.userFixture.load();
+        this.userFixture.load();
     }
 }
