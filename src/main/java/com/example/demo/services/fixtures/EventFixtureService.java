@@ -19,6 +19,8 @@ public class EventFixtureService implements Fixture {
 
     @Override
     public void load() {
+    this.repository.save(event);
+
 
 //        Faker faker = new Faker();
 //
