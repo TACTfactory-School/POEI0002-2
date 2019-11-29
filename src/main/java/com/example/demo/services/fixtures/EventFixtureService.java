@@ -25,9 +25,7 @@ public class EventFixtureService implements Fixture {
 //        for(int i = 0; i < this.nbFakeEvent; i++) {
 //            Event event = new Event();
 //
-//            event.setLabel("bar");
-//            event.setAuthor("John");
-//            event.setDescription("bar du 15eme");
+//
 //
 //            this.repository.save(event);
 //        }

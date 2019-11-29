@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +23,12 @@ import com.example.demo.exeptions.BadRequestException;
 import com.example.demo.exeptions.NotFoundException;
 import com.example.demo.services.userservices.UserCrudService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
-@RequestMapping("user")
+@RequestMapping("api/v1/user")
+@Api(value="User Management System", tags = "Users")
 public class UserController {
 
     @Autowired
@@ -38,22 +43,27 @@ public class UserController {
     }
 
     @PostMapping
+    @ApiOperation(value = "Creates a new user")
+    @ResponseStatus(value = HttpStatus.CREATED)
     public User create(@Valid @RequestBody final User event) throws BadRequestException {
         return this.service.create(event);
     }
 
     @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ApiOperation(value = "Delete a user")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void delete(@PathVariable final Long id) {
         this.service.delete(id);
     }
 
     @GetMapping("{id}")
+    @ApiOperation(value = "Retrieve a user")
     public User getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
     }
 
     @PutMapping("{id}")
+    @ApiOperation(value = "Updates a user")
     public User update(@PathVariable final Long id, @Valid @RequestBody final User user)
             throws NotFoundException {
         final User entity = this.service.getOne(id);
