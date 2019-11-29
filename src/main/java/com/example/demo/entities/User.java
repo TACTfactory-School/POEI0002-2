@@ -19,7 +19,7 @@ public class User extends EntityBase {
 
     private static final int LENGTH = 255;
 
-    @Column(length = LENGTH, nullable = false)
+    @Column(length = LENGTH, nullable = false, unique = true)
     @NotBlank
     private String username;
 
@@ -66,9 +66,8 @@ public class User extends EntityBase {
             @JoinColumn(name = "friend2_id") })
     private List<User> friends;
 
-    @OneToMany(cascade = { CascadeType.ALL })
-    @JoinTable(name = "asc_events", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "event_id") })
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinColumn(name = "event_id")
     private List<Event> events;
 
     @OneToMany(mappedBy = "author")
