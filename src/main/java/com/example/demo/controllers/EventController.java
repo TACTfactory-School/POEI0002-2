@@ -22,8 +22,12 @@ import com.example.demo.exeptions.BadRequestException;
 import com.example.demo.exeptions.NotFoundException;
 import com.example.demo.services.eventservices.EventCrudService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("event")
+@Api(value="Event Management System", tags = "Events")
 public class EventController {
 
     @Autowired
@@ -33,16 +37,20 @@ public class EventController {
     private ModelMapper mapper;
 
     @GetMapping
+    @ApiOperation(value = "Retrieves all events")
     public List<Event> getAll() {
         return this.service.getAll();
     }
 
     @PostMapping
+    @ApiOperation(value = "Create an event")
+    @ResponseStatus(HttpStatus.CREATED)
     public Event create(@Valid @RequestBody final Event event) throws BadRequestException {
         return this.service.create(event);
     }
 
     @PutMapping("{id}")
+    @ApiOperation(value = "Update an event")
     public Event update(@PathVariable final Long id, @Valid @RequestBody final Event event)
             throws BadRequestException, NotFoundException {
 
@@ -55,12 +63,14 @@ public class EventController {
     }
 
     @DeleteMapping("{id}")
+    @ApiOperation(value = "Delete an event")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable final Long id) {
         this.service.delete(id);
     }
 
     @GetMapping("{id}")
+    @ApiOperation(value = "Retrieve an event")
     public Event getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
     }

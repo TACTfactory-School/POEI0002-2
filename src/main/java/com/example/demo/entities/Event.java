@@ -17,9 +17,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "ovg_event")
 public class Event extends EntityBase {
 
-    @ManyToOne(cascade = { CascadeType.ALL })
-    @JoinTable(name = "asc_events_creator", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "user_id") })
+    @ManyToOne(optional = false)
     private User author;
 
     static final int LENGTH = 255;

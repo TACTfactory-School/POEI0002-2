@@ -13,7 +13,7 @@ public class FixtureService implements Fixture {
     private UserFixtureService userFixture;
 
     public void load() {
-//        this.eventFixture.load();
         this.userFixture.load();
+//        this.eventFixture.load();
     }
 }
