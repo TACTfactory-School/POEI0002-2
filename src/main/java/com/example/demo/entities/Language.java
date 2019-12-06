@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -23,6 +25,7 @@ public class Language {
     @NotBlank
     private String label;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "languages")
     private List<User> speakers;
 

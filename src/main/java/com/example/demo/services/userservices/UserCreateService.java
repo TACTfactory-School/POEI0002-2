@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.example.demo.entities.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.services.eventservices.EventCreateService;
+import tools.HASH;
 
 @Component
 @Transactional
@@ -22,7 +23,7 @@ public class UserCreateService {
 
     User create(final User user) {
         logger.debug("Creation utilisateur");
-
+        user.setPassword(HASH.hash().encode(user.getPassword()));
         return this.user.save(user);
     }
 

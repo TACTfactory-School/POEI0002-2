@@ -1,5 +1,8 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -54,9 +57,11 @@ public class Event extends EntityBase {
             @JoinColumn(name = "tag_id") })
     private List<Tag> tags;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "events")
     private List<User> participants;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "eventsAsOrganisator")
     private List<User> organisators;
 

@@ -264,6 +264,7 @@ fabric.properties
 
 # Sonarlint plugin
 .idea/**/sonarlint/
+.attach*
 
 # SonarQube Plugin
 .idea/**/sonarIssues.xml
