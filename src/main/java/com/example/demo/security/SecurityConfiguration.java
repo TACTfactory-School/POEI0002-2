@@ -1,12 +1,13 @@
 package com.example.demo.security;
 
-import com.example.demo.security.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
+import com.example.demo.security.services.UserDetailsServiceImpl;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -23,6 +24,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // Les points accessibles à tout le monde
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/v1/user").anonymous()
+                .antMatchers(HttpMethod.GET, "/api/v1/user/*").anonymous()
                 .antMatchers(HttpMethod.GET, "/api/v1/event").anonymous()
                 .antMatchers(HttpMethod.POST, "/api/v1/user").anonymous()
                 // Disallow everything else..

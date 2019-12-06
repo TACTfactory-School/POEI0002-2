@@ -1,0 +1,33 @@
+<p>Formulaire Reactive</p>
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <table>
+    <tr>
+      <td><p>Username</p></td>
+      <td><input type="text" formControlName="username" />
+        <div [hidden]="username.valid || username.pristine"
+          class="alert alert-danger">Username is required
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><p>Password</p></td>
+      <td><input type="text" formControlName="password" />
+        <div [hidden]="password.valid || password.pristine"
+          class="alert alert-danger">Password is required
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><p>City</p></td>
+      <td><input type="text" formControlName="city" />
+        <div [hidden]="city.valid || city.pristine"
+          class="alert alert-danger">City is required
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Creer user" [disabled]="!userForm.valid"/></td>
+    </tr>
+  </table>
+</form>
