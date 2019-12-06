@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class User extends EntityBase {
     @NotBlank
     private String username;
 
+    @JsonIgnore
     @Column(length = LENGTH, nullable = false)
     @NotBlank
     private String password;
@@ -61,6 +64,28 @@ public class User extends EntityBase {
     @Column(nullable = true)
     private String profession;
 
+    @Column(nullable = false)
+    private String role;
+
+    @Column(nullable = false)
+    private Boolean enable;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
+    }
+
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(name = "asc_friendship_table", joinColumns = { @JoinColumn(name = "friend1_id") }, inverseJoinColumns = {
             @JoinColumn(name = "friend2_id") })
@@ -70,6 +95,7 @@ public class User extends EntityBase {
     @JoinColumn(name = "event_id")
     private List<Event> events;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "author")
     private List<Event> eventsAsCreator;
 

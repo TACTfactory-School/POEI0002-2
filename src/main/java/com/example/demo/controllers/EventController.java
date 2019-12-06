@@ -1,9 +1,11 @@
 package com.example.demo.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import com.example.demo.entities.EventDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +28,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("event")
+@RequestMapping("api/v1/event")
 @Api(value="Event Management System", tags = "Events")
 public class EventController {
 
@@ -38,8 +40,24 @@ public class EventController {
 
     @GetMapping
     @ApiOperation(value = "Retrieves all events")
-    public List<Event> getAll() {
-        return this.service.getAll();
+    public List<EventDTO> getAll() {
+        List<EventDTO> result = new ArrayList<>();
+
+        List<Event> events = this.service.getAll();
+
+        for (Event event: events) {
+            EventDTO eventDTO = new EventDTO();
+            eventDTO.setAuthor(event.getAuthor().getUsername());
+            eventDTO.setTitle(event.getTitle());
+            eventDTO.setCity(event.getCity());
+            eventDTO.setDescription(event.getDescription());
+            eventDTO.setDueAt(event.getDueAt());
+            eventDTO.setNbPlace(event.getNbPlace());
+            result.add(eventDTO);
+        }
+
+
+        return result;
     }
 
     @PostMapping

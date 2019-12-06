@@ -25,6 +25,7 @@ import com.example.demo.services.userservices.UserCrudService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import tools.HASH;
 
 @RestController
 @RequestMapping("api/v1/user")
@@ -45,8 +46,8 @@ public class UserController {
     @PostMapping
     @ApiOperation(value = "Creates a new user")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public User create(@Valid @RequestBody final User event) throws BadRequestException {
-        return this.service.create(event);
+    public User create(@Valid @RequestBody final User user) throws BadRequestException {
+        return this.service.create(user);
     }
 
     @DeleteMapping("{id}")
