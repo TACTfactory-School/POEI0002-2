@@ -17,14 +17,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
+
+                //.headers().frameOptions().disable().and()
         .antMatcher("/*").anonymous().and()
         .antMatcher("/api/**").authorizeRequests().and().httpBasic();
 
         // Les points accessibles à tout le monde
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/v1/user").anonymous()
-                .antMatchers(HttpMethod.GET, "/api/v1/event").anonymous()
-                .antMatchers(HttpMethod.POST, "/api/v1/user").anonymous()
+                .antMatchers(HttpMethod.GET, "/api/v1/user").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/v1/event").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/v1/user").permitAll()
                 // Disallow everything else..
                 ;//.anyRequest().authenticated();
         super.configure(http);
@@ -32,8 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //auth.inMemoryAuthentication().withUser("admin").password("admin");
         auth.userDetailsService(userDetailsServiceImpl);
         super.configure(auth);
     }
+
 }
