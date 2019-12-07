@@ -1,0 +1,16 @@
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    article {
+      cursor: pointer;
+      color: rgb(0, 0, 0);
+      min-width: 200px;
+      width: 20%;
+      border: 1px solid rgb(105, 102, 102);
+      border-radius: 15px;
+      margin: 5px;
+      padding: 5px;
+    }
+  }
