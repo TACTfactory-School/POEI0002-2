@@ -40,7 +40,6 @@ import { UserFormComponent } from './user/user-form/user-form.component';
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-FR'},
-    httpInterceptors
   ],
   bootstrap: [AppComponent],
 
