@@ -1,33 +1,51 @@
-<p>Formulaire Reactive</p>
 
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <table>
-    <tr>
-      <td><p>Username</p></td>
-      <td><input type="text" formControlName="username" />
-        <div [hidden]="username.valid || username.pristine"
-          class="alert alert-danger">Username is required
+<div class="form">
+  <ul class="tab-group">
+  <li class="tab active"><a  [routerLink]="['../sign-up']">Inscription</a></li>
+  <li class="tab"><a [routerLink]="['../login']">Connexion</a></li>
+</ul>
+
+    <div class="tab-content">
+        <h1>Sign Up for Free</h1>
+
+        <form action="/" method="post">
+
+        <div class="top-row">
+          <div class="field-wrap">
+            <label>
+              First Name<span class="req">*</span>
+            </label>
+            <input type="text" required autocomplete="off" />
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Last Name<span class="req">*</span>
+            </label>
+            <input type="text"required autocomplete="off"/>
+          </div>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td><p>Password</p></td>
-      <td><input type="text" formControlName="password" />
-        <div [hidden]="password.valid || password.pristine"
-          class="alert alert-danger">Password is required
+
+        <div class="field-wrap">
+          <label>
+            Email Address<span class="req">*</span>
+          </label>
+          <input type="email"required autocomplete="off"/>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td><p>City</p></td>
-      <td><input type="text" formControlName="city" />
-        <div [hidden]="city.valid || city.pristine"
-          class="alert alert-danger">City is required
+
+        <div class="field-wrap">
+          <label>
+            Set A Password<span class="req">*</span>
+          </label>
+          <input type="password"required autocomplete="off"/>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td><input type="submit" value="Creer user" [disabled]="!userForm.valid"/></td>
-    </tr>
-  </table>
-</form>
+
+        <button type="submit" [routerLink]="['../home']">Get Started</button>
+
+        </form>
+
+      </div>
+
+</div>
+
+
