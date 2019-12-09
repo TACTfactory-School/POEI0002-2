@@ -21,6 +21,6 @@ export class UserService {
   }
 
   create(user: User) {
-    return this.http.post<User>(`${URL}`, user);
+    return this.http.post<User>(`${URL}/singup`, user);
   }
 }
