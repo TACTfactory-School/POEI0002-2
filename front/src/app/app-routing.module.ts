@@ -6,6 +6,7 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDisplayComponent } from './user/user-display/user-display.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { LogguedGuard } from './auth/loggued.guard';
+import { UserFormLoginComponent } from './user/user-form/user-form-login/user-form-login.component';
 
 const routes: Routes = [
   {path: 'accueil', component: EventListCardComponent},
@@ -13,7 +14,9 @@ const routes: Routes = [
   {path: 'user',
   children: [
     { path: '',    component: UserListComponent, pathMatch: 'full' },
-    { path: 'createreactive', component: UserFormComponent, pathMatch: 'full'},
+    { path: 'sign-up', component: UserFormComponent, pathMatch: 'full'},
+    { path: 'login', component: UserFormLoginComponent, pathMatch: 'full'},
+
     { path: ':id', component: UserDisplayComponent},
   ]},
   {path: 'event', component: EventListCardComponent},

@@ -14,11 +14,14 @@ import { UserDisplayComponent } from './user/user-display/user-display.component
 import { AuthModule } from './auth/auth.module';
 import { PipesModule } from './pipes/pipes.module';
 import { httpInterceptors } from './interceptors';
+import { UserFormLoginComponent } from './user/user-form/user-form-login/user-form-login.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserDisplayComponent,
+    UserFormLoginComponent,
     UserListComponent,
     EventListCardComponent
   ],
