@@ -8,11 +8,15 @@ const URL = `${environment.apiUrl}/event`;
 @Injectable({
   providedIn: 'root'
 })
-export class EventListService {
+export class EventService {
 
   constructor(private  http: HttpClient) { }
+
   getAll() {
     return this.http.get<Event[]>(URL);
   }
 
+  getOne(id: number) {
+    return this.http.get<Event>(`${URL}/${id}`);
+  }
 }

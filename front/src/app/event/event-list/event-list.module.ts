@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
+import { EventListCardModule } from './event-list-card/event-list-card.module';
 import { CommonModule } from '@angular/common';
-import { EventListComponent } from './event-list.component';
-import {MatCardModule} from '@angular/material/card';
-import { EventListCardComponent } from './event-list-card/event-list-card.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [EventListComponent, EventListCardComponent],
   imports: [
-    MatCardModule,
     CommonModule,
-    MatCardModule
+    MatCardModule,
+    EventListCardModule
   ],
-  exports: [EventListComponent]
+  exports: [EventListCardModule]
 })
 export class EventListModule { }

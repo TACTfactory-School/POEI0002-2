@@ -14,15 +14,19 @@ import { UserDisplayComponent } from './user/user-display/user-display.component
 import { AuthModule } from './auth/auth.module';
 import { PipesModule } from './pipes/pipes.module';
 import { httpInterceptors } from './interceptors';
+import { MatCardModule } from '@angular/material/card';
+import { EventDisplayComponent } from './event/event-display/event-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserDisplayComponent,
     UserListComponent,
-    EventListCardComponent
+    EventListCardComponent,
+    EventDisplayComponent
   ],
   imports: [
+    MatCardModule,
     AppRoutingModule,
     HttpClientModule,
     MenuModule,
