@@ -13,14 +13,16 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDisplayComponent } from './user/user-display/user-display.component';
 import { AuthModule } from './auth/auth.module';
 import { PipesModule } from './pipes/pipes.module';
-import { httpInterceptors } from './interceptors';
 import { MatCardModule } from '@angular/material/card';
 import { EventDisplayComponent } from './event/event-display/event-display.component';
+import { UserFormLoginComponent } from './user/user-form/user-form-login/user-form-login.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserDisplayComponent,
+    UserFormLoginComponent,
     UserListComponent,
     EventListCardComponent,
     EventDisplayComponent
