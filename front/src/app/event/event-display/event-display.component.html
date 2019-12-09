@@ -1,0 +1,7 @@
+<ng-container>
+  <article *ngIf="(event$ | async) as event; else loading">
+        <h1>{{ event.title }}</h1>
+        <p>{{ event.description }}</p>
+  </article>
+  <a [routerLink]="['..']">Retour</a>
+</ng-container>

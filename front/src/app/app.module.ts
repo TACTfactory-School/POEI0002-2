@@ -13,7 +13,8 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDisplayComponent } from './user/user-display/user-display.component';
 import { AuthModule } from './auth/auth.module';
 import { PipesModule } from './pipes/pipes.module';
-import { httpInterceptors } from './interceptors';
+import { MatCardModule } from '@angular/material/card';
+import { EventDisplayComponent } from './event/event-display/event-display.component';
 import { UserFormLoginComponent } from './user/user-form/user-form-login/user-form-login.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 
@@ -23,9 +24,11 @@ import { UserFormComponent } from './user/user-form/user-form.component';
     UserDisplayComponent,
     UserFormLoginComponent,
     UserListComponent,
-    EventListCardComponent
+    EventListCardComponent,
+    EventDisplayComponent
   ],
   imports: [
+    MatCardModule,
     AppRoutingModule,
     HttpClientModule,
     MenuModule,
