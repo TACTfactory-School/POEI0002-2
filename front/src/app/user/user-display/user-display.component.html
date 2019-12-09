@@ -1,7 +1,7 @@
 <ng-container>
   <article *ngIf="(user$ | async) as user; else loading">
         <h1>{{ user.username }}</h1>
-        <img src="../../../assets/img/{{user.picture}}" alt="logo">
+        <img src="../../../assets/img/{{user.picture}}" alt="avatar">
         <p>Ville : {{ user.city }}</p>
         <p>Profession : {{ user.profession }}</p>
         <p>Description : {{ user.description }}</p>

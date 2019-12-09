@@ -44,7 +44,7 @@ public class User extends EntityBase {
     private String sex;
 
     @Column(nullable = true)
-    private String picture;
+    private String picture = "default_user.png";
 
     @Column(nullable = true)
     private String maritalStatus;
