@@ -42,7 +42,8 @@ public class UserFixtureService implements Fixture {
             User user = new User();
             user.setCity(faker.address().city());
             user.setEnable(true);
-            user.setRole("user");
+//            user.setRole("user");
+            user.setRole("ANONYMOUS");
 
             user.setPassword(HASH.hash().encode(faker.elderScrolls().dragon()));
             do{
