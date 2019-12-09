@@ -9,8 +9,8 @@ import { LogguedGuard } from './auth/loggued.guard';
 import { UserFormLoginComponent } from './user/user-form/user-form-login/user-form-login.component';
 
 const routes: Routes = [
-  {path: 'accueil', component: EventListCardComponent},
-  {path: '', redirectTo: 'accueil', pathMatch: 'full'},
+  {path: 'home', component: EventListCardComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'user',
   children: [
     { path: '',    component: UserListComponent, pathMatch: 'full' },
