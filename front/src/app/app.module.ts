@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { ErrorModule } from './error/error.module';
 import { AuthModule } from './auth/auth.module';
 import { PipesModule } from './pipes/pipes.module';
-import { httpInterceptors } from './interceptors';
 import { MatCardModule } from '@angular/material/card';
 import { EventModule } from './event/event.module';
 import { UserModule } from './user/user.module';
@@ -34,7 +33,6 @@ import { UserModule } from './user/user.module';
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-FR'},
-    httpInterceptors
   ],
   bootstrap: [AppComponent],
 

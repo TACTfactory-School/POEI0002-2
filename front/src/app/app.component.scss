@@ -1,13 +1,14 @@
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  
+
   html {
     overflow-y: scroll;
   }
-  
+
   body {
     background-image: url("../assets/img/low-poly-realistic-texture-red-wallpaper.jpg");
     background-repeat: no-repeat;
@@ -19,16 +20,109 @@ header {
     background-color: black;
     height: 5em;
   }
-  
+
   header img {
     float: left;
     height: 80px;
   }
-  
+
   header ul {
     float: right;
     width: 20%;
     min-width: 260px;
     max-width: 350px;
     margin: 10px;
-  }
+  } 
+
+$body-bg: #c1bdba;
+$form-bg: #13232f;
+$white: #ffffff;
+
+$main: #1ab188;
+$main-light: lighten($main,5%);
+$main-dark: darken($main,5%);
+
+$gray-light: #a0b3b0;
+$gray: #ddd;
+
+$thin: 300;
+$normal: 400;
+$bold: 600;
+$br: 4px;
+menu {
+  background-color: rgb(143, 114, 114);
+  width: 15%;
+  margin:0;
+  min-width: 150px;
+  color: rgb(202, 61, 61);
+  opacity: 1;
+  padding: 0;
+}
+
+menu ul {
+  list-style: none;
+  margin-top: 0;
+  padding: 0;
+}
+
+menu ul li {
+  border-bottom: 1px solid #2a2a2a;
+}
+
+menu > ul > li > a {
+  border-left: 4px solid #222;
+}
+
+menu ul li a {
+  color: inherit;
+  font-size: 1.1em;
+  display: block;
+  padding: 8px 0 8px 7px;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+menu ul li h2 {
+  padding: 15px;
+}
+
+menu ul a i {
+  margin-right: 10px;
+  font-size: 2em;
+  margin-top: 3px;
+}
+
+menu ul a i[class*='fa-caret'] {
+  float: right;
+}
+
+menu ul a:hover, #menu ul a.active {
+  background-color: #111;
+  border-left-color: #1a7ab1;
+  color: #1a7ab1;
+}
+button{
+    align-content: center;
+    float:right;
+      outline:none;
+      border:solid 2px black;
+      padding:15px 10px;
+      margin-right: 5px;
+      font-size:2rem;
+      font-weight:$bold;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      background:$main;
+      color:$white;
+      transition:all.5s ease;
+      -webkit-appearance: none;
+
+
+    .button-block {
+      display:block;
+      width:100%;
+    }
+}

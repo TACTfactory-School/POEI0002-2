@@ -11,8 +11,7 @@ import { UserDisplayModule } from './user-display/user-display.module';
     CommonModule,
     UserListModule,
     UserFormModule,
-    UserDisplayModule,
-    UserFormLoginModule
+    UserDisplayModule
   ],
   exports: [UserListModule, UserFormModule, UserDisplayModule]
 })
