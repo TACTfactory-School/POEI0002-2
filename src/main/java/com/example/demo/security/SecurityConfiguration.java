@@ -25,7 +25,7 @@ import tools.HASH;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@EnableResourceServer
+//@EnableResourceServer
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
@@ -54,9 +54,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf().disable().antMatcher("/").authorizeRequests().anyRequest().permitAll();
 
-                //.headers().frameOptions().disable().and()
+/*                //.headers().frameOptions().disable().and()
         .antMatcher("/*").anonymous().and()
         .antMatcher("/api/**").authorizeRequests().and().httpBasic();
 
@@ -64,10 +64,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/v1/user").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/event").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/v1/user").permitAll()
-                // Disallow everything else..
-                ;//.anyRequest().authenticated();
-        super.configure(http);
+                .antMatchers(HttpMethod.POST, "/api/v1/user").permitAll();*/
     }
 
     @Override

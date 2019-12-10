@@ -2,11 +2,11 @@
   <nav class="left show">
     <ul>
       <li><h2>Menu</h2></li>
-      <li><a [routerLink]="['accueil']">Accueil</a></li>
+      <li><a [routerLink]="['home']">Accueil</a></li>
       <li><a [routerLink]="['event']">Liste événements</a></li>
       <li><a [routerLink]="['user']">Liste membres</a></li>
-      <li><a [routerLink]="['user/createreactive']">Creer membre reactive</a></li>
-      <li *ngIf="loggued"><a [routerLink]="['user/accueil']">Je suis loggé :D</a></li>
+      <li><a [routerLink]="['user/sign-up']">Ajouter un membre</a></li>
+      <li *ngIf="loggued"><a [routerLink]="['user/home']">Je suis loggé :D</a></li>
    </ul>
   </nav>
 </menu>

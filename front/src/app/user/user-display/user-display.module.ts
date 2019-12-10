@@ -1,13 +1,15 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserDisplayComponent } from './user-display.component';
-import { DatetoagePipe } from '../../pipes/datetoage.pipe';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [UserDisplayComponent],
   imports: [
     CommonModule,
-    DatetoagePipe
+    SharedModule,
+    RouterModule
   ],
   exports: [UserDisplayComponent]
 })

@@ -23,8 +23,8 @@ export class AuthApiService {
       private readonly http: HttpClient,
       private readonly token: TokenStorageService) { }
 
-  login(login: string, password: string) {
-    return this.http.post<LoginResult>(`${URL}/login`, {login, password})
+  login(username: string, password: string) {
+    return this.http.post<LoginResult>(`${URL}/login`, {username, password})
         .pipe(tap((res: LoginResult) => this.token.save(res.token)));
   }
 
