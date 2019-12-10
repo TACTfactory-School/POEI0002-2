@@ -6,22 +6,30 @@
 
   <h1>Welcome Back!</h1>
 
+  <form [formGroup]="userLogin" (ngSubmit)="onSubmit()">
     <div class="field-wrap">
-    <label>
-      Email Address<span class="req">*</span>
-    </label>
-    <input type="email"required autocomplete="off"/>
-  </div>
+      <label>
+        Username<span class="req">*</span>
+      </label>
+      <input type="text" formControlName="username" />
+      <div [hidden]="username.valid || username.pristine"
+        class="alert alert-danger">Username is required
+      </div>
+    </div>
 
-  <div class="field-wrap">
-    <label>
-      Password<span class="req">*</span>
-    </label>
-    <input type="password"required autocomplete="off"/>
-  </div>
+    <div class="field-wrap">
+      <label>
+        Password<span class="req">*</span>
+      </label>
+      <input type="text" formControlName="password" />
+      <div [hidden]="password.valid || password.pristine"
+        class="alert alert-danger">Password is required
+      </div>
+    </div>
 
-  <p class="forgot"><a href="#">Forgot Password?</a></p>
+    <input type="submit" value="Login" [disabled]="!userForm.valid"/>
 
-  <button >Log In</button>
+    <p class="forgot"><a href="#">Forgot Password?</a></p>
+  </form>
 
 

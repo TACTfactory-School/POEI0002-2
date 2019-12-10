@@ -4,42 +4,47 @@
   <li class="tab"><a [routerLink]="['../login']">Connexion</a></li>
 </ul>
 
-
 <div class="tab-content">
   <h1>Sign Up for Free</h1>
 
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <div class="top-row">
-    <div class="field-wrap">
-      <label>
-        Username<span class="req">*</span>
-      </label>
-      <input type="text" formControlName="username" />
+  <form [formGroup]="userSign" (ngSubmit)="onSubmit()">
+    <div class="top-row">
+      <div class="field-wrap">
+        <label>
+          Username<span class="req">*</span>
+        </label>
+        <input type="text" formControlName="username" />
         <div [hidden]="username.valid || username.pristine"
           class="alert alert-danger">Username is required
         </div>
+      </div>
 
-        <div class="field-wrap">
-      <label>
-        Password<span class="req">*</span>
-      </label>
-      <input type="text" formControlName="password" />
+      <div class="field-wrap">
+        <label>
+          Password<span class="req">*</span>
+        </label>
+        <input type="text" formControlName="password" />
         <div [hidden]="password.valid || password.pristine"
           class="alert alert-danger">Password is required
         </div>
       </div>
 
       <div class="field-wrap">
-      <label>
+        <label>
           City is required<span class="req">*</span>
         </label>
-      <input type="text" formControlName="city" />
+        <input type="text" formControlName="city" />
         <div [hidden]="city.valid || city.pristine"
           class="alert alert-danger">
         </div>
       </div>
-    </div>
 
+      <input type="hidden" formControlName="enable" value="true"/>
+      <input type="hidden" formControlName="role" value="User"/>
+
+    </div>
       <input type="submit" value="Creer user" [disabled]="!userForm.valid"/>
+  </form>
+</div>
 
 

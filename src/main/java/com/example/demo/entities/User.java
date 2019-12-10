@@ -25,7 +25,6 @@ public class User extends EntityBase {
     @NotBlank
     private String username;
 
-    @JsonIgnore
     @Column(length = LENGTH, nullable = false)
     @NotBlank
     private String password;

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { User } from '../../user';
+import { AuthApiService } from '../../../auth/auth-api.service';
 
 @Component({
   selector: 'app-user-form-login',
@@ -7,7 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormLoginComponent implements OnInit {
 
-  constructor() { }
+  userLogin = this.fb.group({username: ['',  Validators.required],
+                            password: ['', Validators.required]
+                          });
 
-  ngOnInit() {}
+  constructor(private fb: FormBuilder, private service: AuthApiService) {}
+
+  ngOnInit() {
+    const user: User = this.userLogin.value;
+    this.service
+        .login(user.username, user.password)
+        .subscribe();
+    console.log('submitted');
+  }
+
+  get username(): AbstractControl { return this.userLogin.get('username'); }
+  get password(): AbstractControl { return this.userLogin.get('password'); }
 }

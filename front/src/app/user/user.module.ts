@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserListModule } from './user-list/user-list.module';
 import { UserFormModule } from './user-form/user-form.module';
-import { UserFormLoginComponent } from './user-form/user-form-login/user-form-login.component';
 import { UserFormLoginModule } from './user-form/user-form-login/user-form-login.module';
+import { UserDisplayModule } from './user-display/user-display.module';
 
 @NgModule({
   declarations: [],
@@ -11,8 +11,8 @@ import { UserFormLoginModule } from './user-form/user-form-login/user-form-login
     CommonModule,
     UserListModule,
     UserFormModule,
-    UserFormLoginModule
+    UserDisplayModule
   ],
-  exports: [UserListModule]
+  exports: [UserListModule, UserFormModule, UserDisplayModule]
 })
 export class UserModule { }
