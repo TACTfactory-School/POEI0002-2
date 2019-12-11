@@ -19,7 +19,7 @@ export class UserFormLoginComponent implements OnInit {
   onSubmit() {
     const user: User = this.userLogin.value;
     this.service
-        .login("password", user.username, user.password, "ANG", "POEI0002-2")
+        .login(user.username, user.password)
         .subscribe();
     console.log('submitted');
   }

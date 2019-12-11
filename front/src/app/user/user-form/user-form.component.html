@@ -5,37 +5,28 @@
 </ul>
 
 <div class="tab-content">
-  <h1>Sign Up for Free</h1>
+  <h1>Inscription</h1>
 
   <form [formGroup]="userSign" (ngSubmit)="onSubmit()">
     <div class="top-row">
       <div class="field-wrap">
-        <label>
-          Username<span class="req">*</span>
-        </label>
-        <input type="text" formControlName="username" />
+        <input type="text" formControlName="username" placeholder="Pseudonyme"/>
         <div [hidden]="username.valid || username.pristine"
-          class="alert alert-danger">Username is required
+          class="alert">Pseudonyme requis
         </div>
       </div>
 
       <div class="field-wrap">
-        <label>
-          Password<span class="req">*</span>
-        </label>
-        <input type="text" formControlName="password" />
+        <input type="text" formControlName="password" placeholder="Mot de passe"/>
         <div [hidden]="password.valid || password.pristine"
-          class="alert alert-danger">Password is required
+          class="alert">Mot de passe requis
         </div>
       </div>
 
       <div class="field-wrap">
-        <label>
-          City is required<span class="req">*</span>
-        </label>
-        <input type="text" formControlName="city" />
+        <input type="text" formControlName="city" placeholder="Ville"/>
         <div [hidden]="city.valid || city.pristine"
-          class="alert alert-danger">
+          class="alert"> Ville requise
         </div>
       </div>
 
@@ -43,7 +34,7 @@
       <input type="hidden" formControlName="role" value="User"/>
 
     </div>
-      <input type="submit" value="Creer user" [disabled]="!userForm.valid"/>
+      <input type="submit" value="Valider" [disabled]="!userForm.valid"/>
   </form>
 </div>
 
