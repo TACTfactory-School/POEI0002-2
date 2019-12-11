@@ -12,6 +12,10 @@ a:hover {
   color: #179b77;
 }
 
+.alert {
+  color: red;
+}
+
 .form {
   background: rgba(19, 35, 47, 0.9);
   padding: 40px;

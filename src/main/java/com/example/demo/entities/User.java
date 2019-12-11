@@ -85,10 +85,6 @@ public class User extends EntityBase {
         this.enable = enable;
     }
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(name = "asc_friendship_table", joinColumns = { @JoinColumn(name = "friend1_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "friend2_id") })
-    private List<User> friends;
 
     @JsonIgnore
     @OneToMany(mappedBy = "userParticipant")
@@ -102,9 +98,9 @@ public class User extends EntityBase {
     @OneToMany(mappedBy = "userOrganisator")
     private List<UserEventOrganisator> asOrganisators;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "userfriends")
-    private List<UserFriends> UserFriends;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "userfriends")
+//    private List<UserFriends> UserFriends;
 
     @JsonIgnore
     @OneToMany(mappedBy = "hobbie")
@@ -118,13 +114,6 @@ public class User extends EntityBase {
     @OneToMany(mappedBy = "user")
     private List<UserLanguage> userLanguages;
 
-    public List<User> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(List<User> friends) {
-        this.friends = friends;
-    }
 
     public List<Event> getEventsAsCreator() {
         return eventsAsCreator;
@@ -135,13 +124,7 @@ public class User extends EntityBase {
     }
 
 
-    public List<UserFriends> getUserFriends() {
-        return UserFriends;
-    }
 
-    public void setUserFriends(List<UserFriends> userfriends) {
-        this.UserFriends = userfriends;
-    }
 
     public String getName() {
         return name;

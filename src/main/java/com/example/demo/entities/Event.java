@@ -60,7 +60,7 @@ public class Event extends EntityBase {
 
     @JsonIgnore
     @OneToMany(mappedBy = "eventParticipant")
-    private List<UserEventOrganisator> participants;
+    private List<UserEventParticipant> participants;
 
     @JsonIgnore
     @OneToMany(mappedBy = "eventOrganisator")
@@ -154,12 +154,14 @@ public class Event extends EntityBase {
         this.organisators = organisators;
     }
 
-    public List<UserEventOrganisator> getParticipants() {
+    public List<UserEventParticipant> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<UserEventOrganisator> participants) {
+    public void setParticipants(List<UserEventParticipant> participants) {
         this.participants = participants;
     }
+
+
 
 }
