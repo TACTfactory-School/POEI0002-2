@@ -19,7 +19,6 @@ interface LoginResult {
 })
 export class AuthApiService {
 
-
   constructor(
       private readonly http: HttpClient,
       private readonly token: TokenStorageService) { }
@@ -30,11 +29,15 @@ export class AuthApiService {
     .set('username', username)
     .set('password', password);
 
-    return this.http.post<LoginResult>(`http://localhost:8777/oauth/token`, body.toString(), {
-                                                                              headers: new HttpHeaders()
-                                                                              .append('Content-Type', 'application/x-www-form-urlencoded')
-                                                                              .append('Authorization', 'Basic ' + btoa('ANG:POEI0002-2'))
-                                                                            })
+    let basic = 'Basic ' + btoa('ANG:POEI0002-2');
+
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    headers = headers.append('Authorization', basic);
+
+    const options = { headers: headers };
+
+    return this.http.post<LoginResult>(`http://localhost:8777/oauth/token`, body.toString(), options)
         .pipe(tap((res: LoginResult) => this.token.save(res.token)));
   }
 
