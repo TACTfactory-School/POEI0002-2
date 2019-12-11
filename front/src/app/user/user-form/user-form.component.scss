@@ -15,17 +15,8 @@ $normal: 400;
 $bold: 600;
 $br: 4px;
 
-*, *:before, *:after {
+* {
   box-sizing: border-box;
-}
-
-html {
-	overflow-y: scroll;
-}
-
-body {
-  background:$body-bg;
-  font-family: 'Titillium Web', sans-serif;
 }
 
 a {
@@ -38,6 +29,7 @@ a {
 }
 
 .form {
+  float: left;
   background:rgba($form-bg,.9);
   padding: 40px;
   max-width:600px;
@@ -154,7 +146,7 @@ textarea {
 
   > div {
     float:left;
-    width:48%;
+    width:100%;
     margin-right:4%;
     &:last-child {
       margin:0;
