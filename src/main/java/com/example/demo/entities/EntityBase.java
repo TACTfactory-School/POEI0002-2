@@ -25,6 +25,7 @@ public class EntityBase {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    private Boolean enable;
 
     protected EntityBase() {
         super();
@@ -55,6 +56,14 @@ public class EntityBase {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 
 

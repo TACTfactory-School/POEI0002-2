@@ -1,7 +1,5 @@
 package com.example.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ovg_hobbies")
@@ -26,8 +26,8 @@ public class Hobbie {
     private String label;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "hobbies")
-    private List<User> users;
+    @OneToMany(mappedBy = "user")
+    private List<UserHobbie> userHobbies;
 
     public Long getId() {
         return id;
@@ -45,13 +45,15 @@ public class Hobbie {
         this.label = label;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<UserHobbie> getUserHobbies() {
+        return userHobbies;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUserHobbies(List<UserHobbie> userHobbies) {
+        this.userHobbies = userHobbies;
     }
+
+
 
 
 

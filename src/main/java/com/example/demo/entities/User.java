@@ -1,7 +1,5 @@
 package com.example.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ovg_user")
@@ -90,28 +90,33 @@ public class User extends EntityBase {
             @JoinColumn(name = "friend2_id") })
     private List<User> friends;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinColumn(name = "event_id")
-    private List<Event> events;
+    @JsonIgnore
+    @OneToMany(mappedBy = "userParticipant")
+    private List<UserEventParticipant> asParticipant;
 
     @JsonIgnore
     @OneToMany(mappedBy = "author")
     private List<Event> eventsAsCreator;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(name = "asc_eventsAsOrganisator", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "event_id") })
-    private List<Event> eventsAsOrganisator;
+    @JsonIgnore
+    @OneToMany(mappedBy = "userOrganisator")
+    private List<UserEventOrganisator> asOrganisators;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(name = "asc_hobbies", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "hobbie_id") })
-    private List<Hobbie> hobbies;
+    @JsonIgnore
+    @OneToMany(mappedBy = "userfriends")
+    private List<UserFriends> UserFriends;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(name = "asc_languages", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "language_id") })
-    private List<Language> languages;
+    @JsonIgnore
+    @OneToMany(mappedBy = "hobbie")
+    private List<UserHobbie> UserHobbie;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "event")
+    private List<TagEvent> tagEvents;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<UserLanguage> userLanguages;
 
     public List<User> getFriends() {
         return friends;
@@ -119,14 +124,6 @@ public class User extends EntityBase {
 
     public void setFriends(List<User> friends) {
         this.friends = friends;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
     }
 
     public List<Event> getEventsAsCreator() {
@@ -137,28 +134,13 @@ public class User extends EntityBase {
         this.eventsAsCreator = eventsAsCreator;
     }
 
-    public List<Event> getEventsAsOrganisator() {
-        return eventsAsOrganisator;
+
+    public List<UserFriends> getUserFriends() {
+        return UserFriends;
     }
 
-    public void setEventsAsOrganisator(List<Event> eventsAsOrganisator) {
-        this.eventsAsOrganisator = eventsAsOrganisator;
-    }
-
-    public List<Hobbie> getHobbies() {
-        return hobbies;
-    }
-
-    public void setHobbies(List<Hobbie> hobbies) {
-        this.hobbies = hobbies;
-    }
-
-    public List<Language> getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(List<Language> languages) {
-        this.languages = languages;
+    public void setUserFriends(List<UserFriends> userfriends) {
+        this.UserFriends = userfriends;
     }
 
     public String getName() {
@@ -263,6 +245,46 @@ public class User extends EntityBase {
 
     public void setCity(final String city) {
         this.city = city;
+    }
+
+    public List<UserEventParticipant> getAsParticipant() {
+        return asParticipant;
+    }
+
+    public void setAsParticipant(List<UserEventParticipant> asParticipant) {
+        this.asParticipant = asParticipant;
+    }
+
+    public List<UserEventOrganisator> getAsOrganisators() {
+        return asOrganisators;
+    }
+
+    public void setAsOrganisators(List<UserEventOrganisator> asOrganisators) {
+        this.asOrganisators = asOrganisators;
+    }
+
+    public List<UserHobbie> getUserHobbie() {
+        return UserHobbie;
+    }
+
+    public void setUserHobbie(List<UserHobbie> userHobbie) {
+        UserHobbie = userHobbie;
+    }
+
+    public List<UserLanguage> getUserLanguages() {
+        return userLanguages;
+    }
+
+    public void setUserLanguages(List<UserLanguage> userLanguages) {
+        this.userLanguages = userLanguages;
+    }
+
+    public List<TagEvent> getTagEvents() {
+        return tagEvents;
+    }
+
+    public void setTagEvents(List<TagEvent> tagEvents) {
+        this.tagEvents = tagEvents;
     }
 
 }

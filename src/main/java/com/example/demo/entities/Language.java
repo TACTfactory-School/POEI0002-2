@@ -1,7 +1,5 @@
 package com.example.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ovg_languages")
@@ -26,8 +26,8 @@ public class Language {
     private String label;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "languages")
-    private List<User> speakers;
+    @OneToMany(mappedBy = "language")
+    private List<UserLanguage> speakers;
 
     public Long getId() {
         return id;
@@ -45,14 +45,12 @@ public class Language {
         this.label = label;
     }
 
-    public List<User> getSpeakers() {
+    public List<UserLanguage> getSpeakers() {
         return speakers;
     }
 
-    public void setSpeakers(List<User> speakers) {
+    public void setSpeakers(List<UserLanguage> speakers) {
         this.speakers = speakers;
     }
-
-
 
 }
