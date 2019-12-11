@@ -1,8 +1,9 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'datetoage'
 })
+
 export class DatetoagePipe implements PipeTransform {
 
   transform(birthdate: string[]): number {

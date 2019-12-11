@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import {FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { User } from '../user';
-import { from } from 'rxjs';
 import { UserService } from '../user.service';
 
 @Component({
@@ -11,25 +10,28 @@ import { UserService } from '../user.service';
 })
 export class UserFormComponent implements OnInit {
 
-  userForm = this.fb.group({username: ['',  Validators.required],
+  userSign = this.fb.group({username: ['',  Validators.required],
                             password: ['', Validators.required],
-                            city: ['', Validators.required]
+                            city: ['', Validators.required],
+                            enable: ['true', Validators.required],
+                            role: ['User', Validators.required]
                           });
 
   constructor(private fb: FormBuilder, private service: UserService) { }
 
   onSubmit(): void {
-    const user: User = this.userForm.value;
+    const user: User = this.userSign.value;
     this.service
         .create(user)
         .subscribe();
     console.log('submitted');
-
   }
 
-  get username(): AbstractControl { return this.userForm.get('username'); }
-  get password(): AbstractControl { return this.userForm.get('password'); }
-  get city(): AbstractControl { return this.userForm.get('city'); }
+  get username(): AbstractControl { return this.userSign.get('username'); }
+  get password(): AbstractControl { return this.userSign.get('password'); }
+  get city(): AbstractControl { return this.userSign.get('city'); }
+  get enable(): AbstractControl { return this.userSign.get('enable'); }
+  get role(): AbstractControl { return this.userSign.get('role'); }
 
   ngOnInit() {
   }

@@ -47,6 +47,7 @@ public class EventController {
 
         for (Event event: events) {
             EventDTO eventDTO = new EventDTO();
+            eventDTO.setId(event.getId());
             eventDTO.setAuthor(event.getAuthor().getUsername());
             eventDTO.setTitle(event.getTitle());
             eventDTO.setCity(event.getCity());
