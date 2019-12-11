@@ -45,4 +45,9 @@ public class UserCrudServiceImpl implements UserCrudService {
         return this.repository.save(user);
     }
 
+    @Override
+    public User getByUserName(String username) throws NotFoundException {
+        return this.repository.findByUsername(username);
+    }
+
 }

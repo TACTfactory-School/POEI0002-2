@@ -55,9 +55,6 @@ public class User extends EntityBase {
     private String description;
 
     @Column(nullable = true)
-    private LocalDateTime subscriptionDate;
-
-    @Column(nullable = true)
     private LocalDateTime lastConnectionDate;
 
     @Column(nullable = true)
@@ -180,14 +177,6 @@ public class User extends EntityBase {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public LocalDateTime getSubscriptionDate() {
-        return subscriptionDate;
-    }
-
-    public void setSubscriptionDate(LocalDateTime subscriptionDate) {
-        this.subscriptionDate = subscriptionDate;
     }
 
     public LocalDateTime getLastConnectionDate() {
