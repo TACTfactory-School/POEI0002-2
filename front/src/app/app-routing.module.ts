@@ -15,6 +15,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'sign-up', component: UserFormComponent, pathMatch: 'full'},
   { path: 'login', component: UserFormLoginComponent, pathMatch: 'full'},
+
   {path: 'user',
   children: [
     { path: '',    component: UserListComponent, pathMatch: 'full' },

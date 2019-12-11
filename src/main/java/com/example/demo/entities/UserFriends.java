@@ -9,11 +9,11 @@ import javax.persistence.Table;
 @Table(name = "ovg_user_friends")
 public class UserFriends extends EntityBase{
 
-    @OneToMany
-    private User user1;
-
-    @OneToMany
-    private User user2;
-
+//    @OneToMany
+//    private User user1;
+//
+//    @OneToMany
+//    private User user2;
+//
 
 }
