@@ -1,4 +1,3 @@
-
 $body-bg: #c1bdba;
 $form-bg: #13232f;
 $white: #ffffff;
@@ -22,14 +21,12 @@ $br: 4px;
 a {
   text-decoration:none;
   color:$main;
-  transition:.5s ease;
   &:hover {
     color:$main-dark;
   }
 }
 
 .form {
-  float: left;
   background:rgba($form-bg,.9);
   padding: 40px;
   max-width:600px;
@@ -58,7 +55,6 @@ a {
     width:50%;
     text-align:center;
     cursor:pointer;
-    transition:.5s ease;
     &:hover {
       background:$main-dark;
       color:$white;
@@ -74,7 +70,6 @@ a {
   display:none;
 }
 
-
 h1 {
   text-align:center;
   color:$white;
@@ -87,7 +82,6 @@ label {
   transform:translateY(6px);
   left:13px;
   color:rgba($white,.5);
-  transition:all 0.25s ease;
   pointer-events: none;
   font-size:22px;
   .req {
@@ -120,7 +114,6 @@ input, textarea {
   border:1px solid $gray-light;
   color:$white;
   border-radius:0;
-  transition:border-color .25s ease, box-shadow .25s ease;
   &:focus {
 		outline:0;
 		border-color:$main;
@@ -165,7 +158,6 @@ textarea {
   letter-spacing:.1em;
   background:$main;
   color:$white;
-  transition:all.5s ease;
   -webkit-appearance: none;
   &:hover, &:focus {
     background:$main-dark;
