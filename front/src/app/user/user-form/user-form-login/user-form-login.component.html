@@ -4,32 +4,26 @@
   <li class="tab active"><a [routerLink]="['../login']">Connexion</a></li>
 </ul>
 
-  <h1>Welcome Back!</h1>
+  <h1>Bienvenue</h1>
 
   <form [formGroup]="userLogin" (ngSubmit)="onSubmit()">
     <div class="field-wrap">
-      <label>
-        Username<span class="req">*</span>
-      </label>
-      <input type="text" formControlName="username" />
+      <input type="text" formControlName="username" placeholder="Pseudonyme"/>
       <div [hidden]="username.valid || username.pristine"
-        class="alert alert-danger">Username is required
+        class="alert">Pseudonyme requis
       </div>
     </div>
 
     <div class="field-wrap">
-      <label>
-        Password<span class="req">*</span>
-      </label>
-      <input type="text" formControlName="password" />
+      <input type="text" formControlName="password" placeholder="Mot de passe"/>
       <div [hidden]="password.valid || password.pristine"
-        class="alert alert-danger">Password is required
+        class="alert">Mot de passe requis
       </div>
     </div>
 
     <input type="submit" value="Login" [disabled]="!userForm.valid"/>
 
-    <p class="forgot"><a href="#">Forgot Password?</a></p>
+    <p class="forgot"><a href="#">Mot de passe oublié ?</a></p>
   </form>
 
 

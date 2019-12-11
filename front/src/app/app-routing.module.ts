@@ -13,12 +13,11 @@ import { PagenotfoundComponent } from './error/pagenotfound/pagenotfound.compone
 const routes: Routes = [
   {path: 'home', component: EventListCardComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'login', component: UserFormLoginComponent, pathMatch: 'full'},
+  { path: 'sign-up', component: UserFormComponent, pathMatch: 'full'},
   {path: 'user',
   children: [
     { path: '',    component: UserListComponent, pathMatch: 'full' },
-    { path: 'sign-up', component: UserFormComponent, pathMatch: 'full'},
-    { path: 'login', component: UserFormLoginComponent, pathMatch: 'full'},
-
     { path: ':id', component: UserDisplayComponent},
   ]},
   {path: 'event',
