@@ -1,33 +1,50 @@
-<p>Formulaire Reactive</p>
+<div class="form">
+  <ul class="tab-group">
+  <li class="tab active"><a  [routerLink]="['../sign-up']">Inscription</a></li>
+  <li class="tab"><a [routerLink]="['../login']">Connexion</a></li>
+</ul>
 
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <table>
-    <tr>
-      <td><p>Username</p></td>
-      <td><input type="text" formControlName="username" />
+<div class="tab-content">
+  <h1>Sign Up for Free</h1>
+
+  <form [formGroup]="userSign" (ngSubmit)="onSubmit()">
+    <div class="top-row">
+      <div class="field-wrap">
+        <label>
+          Username<span class="req">*</span>
+        </label>
+        <input type="text" formControlName="username" />
         <div [hidden]="username.valid || username.pristine"
           class="alert alert-danger">Username is required
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td><p>Password</p></td>
-      <td><input type="text" formControlName="password" />
+      </div>
+
+      <div class="field-wrap">
+        <label>
+          Password<span class="req">*</span>
+        </label>
+        <input type="text" formControlName="password" />
         <div [hidden]="password.valid || password.pristine"
           class="alert alert-danger">Password is required
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td><p>City</p></td>
-      <td><input type="text" formControlName="city" />
+      </div>
+
+      <div class="field-wrap">
+        <label>
+          City is required<span class="req">*</span>
+        </label>
+        <input type="text" formControlName="city" />
         <div [hidden]="city.valid || city.pristine"
-          class="alert alert-danger">City is required
+          class="alert alert-danger">
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td><input type="submit" value="Creer user" [disabled]="!userForm.valid"/></td>
-    </tr>
-  </table>
-</form>
+      </div>
+
+      <input type="hidden" formControlName="enable" value="true"/>
+      <input type="hidden" formControlName="role" value="User"/>
+
+    </div>
+      <input type="submit" value="Creer user" [disabled]="!userForm.valid"/>
+  </form>
+</div>
+
+

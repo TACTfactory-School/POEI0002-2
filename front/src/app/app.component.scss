@@ -1,13 +1,14 @@
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
-  
+
   html {
     overflow-y: scroll;
   }
-  
+
   body {
     background-image: url("../assets/img/low-poly-realistic-texture-red-wallpaper.jpg");
     background-repeat: no-repeat;
@@ -19,12 +20,12 @@ header {
     background-color: black;
     height: 5em;
   }
-  
+
   header img {
     float: left;
     height: 80px;
   }
-  
+
   header ul {
     float: right;
     width: 20%;
@@ -32,3 +33,42 @@ header {
     max-width: 350px;
     margin: 10px;
   }
+
+$body-bg: #c1bdba;
+$form-bg: #13232f;
+$white: #ffffff;
+
+$main: #1ab188;
+$main-light: lighten($main,5%);
+$main-dark: darken($main,5%);
+
+$gray-light: #a0b3b0;
+$gray: #ddd;
+
+$thin: 300;
+$normal: 400;
+$bold: 600;
+$br: 4px;
+
+button{
+    align-content: center;
+    float:right;
+      outline:none;
+      border:solid 2px black;
+      padding:15px 10px;
+      margin-right: 5px;
+      font-size:2rem;
+      font-weight:$bold;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      background:$main;
+      color:$white;
+      transition:all.5s ease;
+      -webkit-appearance: none;
+
+
+    .button-block {
+      display:block;
+      width:100%;
+    }
+}

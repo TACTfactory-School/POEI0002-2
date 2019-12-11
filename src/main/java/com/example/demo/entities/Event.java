@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -58,28 +59,12 @@ public class Event extends EntityBase {
     private List<Tag> tags;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "events")
-    private List<User> participants;
+    @OneToMany(mappedBy = "eventParticipant")
+    private List<UserEventParticipant> participants;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "eventsAsOrganisator")
-    private List<User> organisators;
-
-    public List<User> getParticipants() {
-        return participants;
-    }
-
-    public void setParticipants(List<User> participants) {
-        this.participants = participants;
-    }
-
-    public List<User> getOrganisators() {
-        return organisators;
-    }
-
-    public void setOrganisators(List<User> organisators) {
-        this.organisators = organisators;
-    }
+    @OneToMany(mappedBy = "eventOrganisator")
+    private List<UserEventOrganisator> organisators;
 
     public User getAuthor() {
         return author;
@@ -160,5 +145,23 @@ public class Event extends EntityBase {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public List<UserEventOrganisator> getOrganisators() {
+        return organisators;
+    }
+
+    public void setOrganisators(List<UserEventOrganisator> organisators) {
+        this.organisators = organisators;
+    }
+
+    public List<UserEventParticipant> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<UserEventParticipant> participants) {
+        this.participants = participants;
+    }
+
+
 
 }

@@ -1,23 +1,23 @@
 <ng-template #noData>
 
     <p class="text text-warning">
-  
+
       Aucun utilisateur enregistré
-  
+
     </p>
-  
+
   </ng-template>
-  
+
   <section *ngIf="(users$ | async) as users; else loading">
-  
+
     <ng-container *ngIf="users.length; else noData">
-  
+
       <article *ngFor="let u of users" [routerLink]="[u.id]">
-  
+
         <h1>{{ u.username }}</h1>
-  
+
       </article>
-  
+
     </ng-container>
-  
+
   </section>

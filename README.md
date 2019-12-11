@@ -17,4 +17,9 @@ We are working on :
 * Management of users : Registration, Login, Edit of profil, Display of users list.
 ## When the first Version of the Website is gonna be available ?
 When we can.
+## Have you done some Mock-ups ? 
+Yes ! For the Login, Sign-up and Events Pages !
+![Connexion](https://user-images.githubusercontent.com/53934907/70606345-8d075d00-1bfc-11ea-97e4-6236ec64df91.jpg)
+![Inscription](https://user-images.githubusercontent.com/53934907/70606338-88db3f80-1bfc-11ea-8f1c-23509512929e.jpg)
+![Navigateur](https://user-images.githubusercontent.com/53934907/70606342-8aa50300-1bfc-11ea-88a1-2c6419ba92c7.jpg)
 

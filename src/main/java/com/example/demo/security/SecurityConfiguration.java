@@ -36,6 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and().formLogin()
             .and().logout()
             .and().csrf().disable();
+
     }
 
     @Override
@@ -49,8 +50,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers( "/api/v1/user")
             .antMatchers( HttpMethod.OPTIONS,"/api/v1/user")
             .antMatchers(HttpMethod.GET, "/api/v1/user/*")
-            //.antMatchers(HttpMethod.GET, "/api/v1/event")
-           // .antMatchers(HttpMethod.GET, "/api/v1/event/*")
+            .antMatchers(HttpMethod.GET, "/api/v1/event")
+            .antMatchers(HttpMethod.GET, "/api/v1/event/*")
             .antMatchers(HttpMethod.DELETE ,"/api/v1/user");
     }
 

@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { EventListCardComponent } from './event-list-card.component';
 
-describe('EventListCardComponent', () => {
+describe('EventListComponent', () => {
   let component: EventListCardComponent;
   let fixture: ComponentFixture<EventListCardComponent>;
 
