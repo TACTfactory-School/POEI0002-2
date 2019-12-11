@@ -16,14 +16,17 @@ export class UserFormLoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private service: AuthApiService) {}
 
-  ngOnInit() {
+  onSubmit() {
     const user: User = this.userLogin.value;
     this.service
-        .login(user.username, user.password)
+        .login("password", user.username, user.password, "ANG", "POEI0002-2")
         .subscribe();
     console.log('submitted');
   }
 
   get username(): AbstractControl { return this.userLogin.get('username'); }
   get password(): AbstractControl { return this.userLogin.get('password'); }
+
+  ngOnInit() {
+  }
 }

@@ -23,8 +23,13 @@ export class AuthApiService {
       private readonly http: HttpClient,
       private readonly token: TokenStorageService) { }
 
-  login(username: string, password: string) {
-    return this.http.post<LoginResult>(`${URL}/login`, {username, password})
+  login(granttype: string, username: string, password: string, clientid: string, clientpassword: string) {
+    return this.http.post<LoginResult>(`http://localhost:8777/oauth/token`, {"grant_type": granttype,
+                                                                              "username": username,
+                                                                              "password": password,
+                                                                              "client_id": clientid,
+                                                                              "client_password": clientpassword
+                                                                            })
         .pipe(tap((res: LoginResult) => this.token.save(res.token)));
   }
 
