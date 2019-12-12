@@ -38,7 +38,7 @@ $body-bg: #c1bdba;
 $form-bg: #13232f;
 $white: #ffffff;
 
-$main: #1ab188;
+$main: #336699;
 $main-light: lighten($main,5%);
 $main-dark: darken($main,5%);
 
@@ -53,22 +53,23 @@ $br: 4px;
 button{
     align-content: center;
     float:right;
-      outline:none;
-      border:solid 2px black;
-      padding:15px 10px;
-      margin-right: 5px;
-      font-size:1.5em;
-      font-weight:$bold;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-      background:$main;
-      color:$white;
-      transition:all.5s ease;
-      -webkit-appearance: none;
+    cursor: pointer;
+    outline:none;
+    border:solid 2px black;
+    padding:15px 10px;
+    margin-right: 5px;
+    font-size:1.5em;
+    font-weight:$bold;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    background:$main;
+    color:$white;
+    transition:all.5s ease;
+    -webkit-appearance: none;
 
 
-    .button-block {
-      display:block;
-      width:100%;
-    }
+  .button-block {
+    display:block;
+    width:100%;
+  }
 }

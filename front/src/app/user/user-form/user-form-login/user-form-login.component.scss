@@ -3,7 +3,7 @@ $body-bg: #c1bdba;
 $form-bg: #13232f;
 $white: #ffffff;
 
-$main: #1ab188;
+$main: #336699;
 $main-light: lighten($main,5%);
 $main-dark: darken($main,5%);
 
@@ -120,6 +120,7 @@ input, textarea {
   font-size:22px;
   display:block;
   width:100%;
+  cursor: pointer;
   height:100%;
   padding:5px 10px;
   background:none;
