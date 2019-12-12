@@ -1,4 +1,4 @@
-import { Injectable, OnInit, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { CurrentUserService } from './current-user.service';
@@ -6,24 +6,16 @@ import { CurrentUserService } from './current-user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LogguedGuard implements CanActivate, OnInit, OnDestroy {
+export class LogguedGuard implements CanActivate {
   private loggued: boolean;
-  private subscription: Subscription;
 
   constructor(private readonly currentUser: CurrentUserService) {
+    this.currentUser.observable.subscribe(user => this.loggued = !!user);
   }
 
-  ngOnInit() {
-    this.subscription = this.currentUser.observable.subscribe(user => this.loggued = !!user);
-  }
-
-  ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
   canActivate(_: ActivatedRouteSnapshot, __: RouterStateSnapshot)
       : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    console.log('loggued : ' + this.loggued);
     return this.loggued;
   }
 }
