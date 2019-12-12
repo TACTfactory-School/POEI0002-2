@@ -1,0 +1,40 @@
+$body-bg: #c1bdba;
+$form-bg: #13232f;
+$white: #ffffff;
+
+$main: #336699;
+$main-light: lighten($main,5%);
+$main-dark: darken($main,5%);
+
+$gray-light: #a0b3b0;
+$gray: #ddd;
+
+$thin: 300;
+$normal: 400;
+$bold: 600;
+$br: 4px;
+
+
+button{
+  align-content: center;
+  float:right;
+  cursor: pointer;
+  outline:none;
+  border:solid 2px black;
+  padding:15px 10px;
+  margin-right: 5px;
+  font-size:1.5em;
+  font-weight:$bold;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  background:$main;
+  color:$white;
+  transition:all.5s ease;
+  -webkit-appearance: none;
+
+
+.button-block {
+  display:block;
+  width:100%;
+}
+}

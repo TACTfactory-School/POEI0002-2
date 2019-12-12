@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Event } from '../event';
+import { User } from '../../user/user';
 import { EventService } from '../event.service';
+import { CurrentUserService } from '../../auth/current-user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-event-form',
@@ -13,14 +16,13 @@ export class EventFormComponent implements OnInit {
 
   eventSign = this.fb.group({title: ['',  Validators.required],
                             description: ['',  Validators.required],
-                            author: ['', Validators.required],
                             city: ['', Validators.required],
                             nbPlace: ['', Validators.required],
                             dueAt: ['', Validators.required],
                             enable: ['true', Validators.required]
                           });
 
-  constructor(private fb: FormBuilder, private service: EventService) { }
+  constructor(private fb: FormBuilder, private service: EventService, private readonly currentUser: CurrentUserService) { }
 
   onSubmit(): void {
     const event: Event = this.eventSign.value;
@@ -32,9 +34,8 @@ export class EventFormComponent implements OnInit {
 
   get title(): AbstractControl { return this.eventSign.get('title'); }
   get description(): AbstractControl { return this.eventSign.get('description'); }
-  get author(): AbstractControl { return this.eventSign.get('author'); }
   get city(): AbstractControl { return this.eventSign.get('city'); }
-  get nblace(): AbstractControl { return this.eventSign.get('nbPlace'); }
+  get nbPlace(): AbstractControl { return this.eventSign.get('nbPlace'); }
   get dueAt(): AbstractControl { return this.eventSign.get('dueAt'); }
   get enable(): AbstractControl { return this.eventSign.get('enable'); }
 
