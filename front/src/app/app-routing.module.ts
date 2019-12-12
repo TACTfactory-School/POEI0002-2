@@ -18,13 +18,13 @@ const routes: Routes = [
   { path: 'sign-up', component: UserFormComponent, pathMatch: 'full'},
   {path: 'user',
   children: [
-    { path: '',    component: UserListComponent, pathMatch: 'full' },
+    { path: '',    component: UserListComponent, pathMatch: 'full'},
     { path: ':id', component: UserDisplayComponent},
   ]},
   {path: 'event',
     children: [
       {path: '', component: EventListCardComponent},
-      {path: 'create', component: EventFormComponent},
+      {path: 'create', component: EventFormComponent, canActivate: [ LogguedGuard ]},
       {path: ':id', component: EventDisplayComponent}
     ]},
   {path: '**', component: PagenotfoundComponent}

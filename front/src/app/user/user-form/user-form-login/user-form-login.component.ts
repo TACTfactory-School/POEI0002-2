@@ -28,5 +28,6 @@ export class UserFormLoginComponent implements OnInit {
   get password(): AbstractControl { return this.userLogin.get('password'); }
 
   ngOnInit() {
+    this.service.logout();
   }
 }

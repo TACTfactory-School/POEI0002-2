@@ -4,14 +4,18 @@ import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { TokenStorageService } from './token-storage.service';
 import { User } from '../user/user';
-import { headersToString } from 'selenium-webdriver/http';
 
 
 const URL = environment.apiUrl;
 
 
 interface LoginResult {
-  token: string;
+  access_token: string;
+  token_type: string;
+  refresh_token: string;
+  expires_in: number;
+  scope: string;
+  jti: string;
 }
 
 @Injectable({
@@ -38,10 +42,12 @@ export class AuthApiService {
     const options = {headers};
 
     return this.http.post<LoginResult>(`http://localhost:8777/oauth/token`, body.toString(), options)
-        .pipe(tap((res: LoginResult) => this.token.save(res.token)));
+    .pipe(tap((res: LoginResult) => this.token.save(res.access_token)));
   }
 
   logout() {
+    console.log('logout');
+    this.token.clear();
     return this.http.post<void>(`${URL}/logout`, {})
         .pipe(tap(() => this.token.clear()));
   }
