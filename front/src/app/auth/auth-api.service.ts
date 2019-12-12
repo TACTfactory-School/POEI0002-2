@@ -29,13 +29,13 @@ export class AuthApiService {
     .set('username', username)
     .set('password', password);
 
-    let basic = 'Basic ' + btoa('ANG:POEI0002-2');
+    const basic = 'Basic ' + btoa('ANG:POEI0002-2');
 
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers = headers.append('Authorization', basic);
 
-    const options = { headers: headers };
+    const options = {headers};
 
     return this.http.post<LoginResult>(`http://localhost:8777/oauth/token`, body.toString(), options)
         .pipe(tap((res: LoginResult) => this.token.save(res.token)));

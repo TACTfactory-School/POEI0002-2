@@ -8,6 +8,7 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserDisplayComponent } from './user/user-display/user-display.component';
 import { EventDisplayComponent } from './event/event-display/event-display.component';
 import { PagenotfoundComponent } from './error/pagenotfound/pagenotfound.component';
+import { EventFormComponent } from './event/event-form/event-form.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'event',
     children: [
       {path: '', component: EventListCardComponent},
+      {path: 'create', component: EventFormComponent},
       {path: ':id', component: EventDisplayComponent}
     ]},
   {path: '**', component: PagenotfoundComponent}
