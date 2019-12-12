@@ -4,9 +4,13 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.example.demo.entities.dtos.UserDTO;
+import com.example.demo.services.Mapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +38,9 @@ public class UserController {
     private UserCrudService service;
 
     @Autowired
+    private Mapper mapperDto;
+
+    @Autowired
     private ModelMapper mapper;
 
     @GetMapping
@@ -46,6 +53,18 @@ public class UserController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public User create(@Valid @RequestBody final User user) throws BadRequestException {
         return this.service.create(user);
+    }
+
+    @PostMapping("/me")
+    @ApiOperation(value = "Get the curent user")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public UserDTO me() throws BadRequestException, NotFoundException {
+        UserDTO result = new UserDTO();
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String username = loggedInUser.getName();
+        User user = this.service.getByUserName(username);
+        result = mapperDto.userToDto(user);
+        return result;
     }
 
     @DeleteMapping("{id}")

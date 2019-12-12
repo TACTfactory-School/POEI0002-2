@@ -10,6 +10,7 @@ public interface UserCrudService {
     List<User> getAll();
 
     User getOne(long id) throws NotFoundException;
+    User getByUserName(String username)throws NotFoundException;
 
     User create(User user);
 
