@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrentUserService } from '../auth/current-user.service';
+import { Observable } from 'rxjs';
+import { User } from '../user/user';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  user: Observable<User>;
+
+  constructor(private readonly currentUSer: CurrentUserService) { }
 
   ngOnInit() {
+    this.user = this.currentUSer.observable;
   }
 
 }

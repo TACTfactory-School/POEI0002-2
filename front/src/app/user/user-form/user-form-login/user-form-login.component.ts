@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import {FormBuilder, Validators, AbstractControl, FormGroup } from '@angular/forms';
 import { User } from '../../user';
 import { AuthApiService } from '../../../auth/auth-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form-login',
@@ -10,18 +11,18 @@ import { AuthApiService } from '../../../auth/auth-api.service';
 })
 export class UserFormLoginComponent implements OnInit {
 
-  userLogin = this.fb.group({username: ['',  Validators.required],
-                            password: ['', Validators.required]
-                          });
+  userLogin = this.fb.group({
+    username: ['',  Validators.required],
+    password: ['', Validators.required]
+  });
 
-  constructor(private fb: FormBuilder, private service: AuthApiService) {}
+  constructor(private fb: FormBuilder, private service: AuthApiService, private readonly router: Router) {}
 
   onSubmit() {
-    const user: User = this.userLogin.value;
+    const {username, password} = this.userLogin.value;
     this.service
-        .login(user.username, user.password)
-        .subscribe();
-    console.log('submitted');
+        .login(username, password)
+        .subscribe(() => this.loginSuccess());
   }
 
   get username(): AbstractControl { return this.userLogin.get('username'); }
@@ -29,5 +30,9 @@ export class UserFormLoginComponent implements OnInit {
 
   ngOnInit() {
     this.service.logout();
+  }
+
+  private loginSuccess() {
+    this.router.navigate(['event']);
   }
 }

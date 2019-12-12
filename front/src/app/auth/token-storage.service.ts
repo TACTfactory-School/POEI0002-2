@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 const TOKEN_KEY = 'token';
@@ -6,13 +6,14 @@ const TOKEN_KEY = 'token';
 @Injectable({
   providedIn: 'root'
 })
-
 export class TokenStorageService {
   private subject = new BehaviorSubject<string>(null);
   observable: Observable<string> = this.subject;
 
   constructor() {
     this.subject.next(this.get());
+
+    this.subject.subscribe(token => console.log('TOKEN s', {token}));
   }
 
   save(token: string) {
