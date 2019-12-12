@@ -12,10 +12,10 @@ export class MenuComponent implements OnInit {
 
   user: Observable<User>;
 
-  constructor(private readonly currentUSer: CurrentUserService) { }
+  constructor(private readonly currentUser: CurrentUserService) { }
 
   ngOnInit() {
-    this.user = this.currentUSer.observable;
+    this.user = this.currentUser.observable;
   }
 
 }
