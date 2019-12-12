@@ -5,4 +5,5 @@ export interface Event {
   description: string;
   dueAt: string;
   author: string;
+  city: string;
 }

@@ -8,11 +8,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorModule } from './error/error.module';
-import { AuthModule } from './auth/auth.module';
 import { PipesModule } from './pipes/pipes.module';
 import { MatCardModule } from '@angular/material/card';
 import { EventModule } from './event/event.module';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { httpInterceptors } from './interceptors';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UserModule } from './user/user.module';
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-FR'},
+    httpInterceptors,
   ],
   bootstrap: [AppComponent],
 

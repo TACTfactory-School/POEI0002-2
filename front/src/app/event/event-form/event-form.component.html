@@ -1,0 +1,44 @@
+  <h1>Creation d'événement.</h1>
+
+  <form [formGroup]="eventSign" (ngSubmit)="onSubmit()">
+
+    <div class="field-wrap">
+      <input type="text" formControlName="title" placeholder="Titre"/>
+      <div [hidden]="title.valid || title.pristine"
+        class="alert">Titre requis
+      </div>
+    </div>
+
+    <div class="field-wrap">
+      <input type="text" formControlName="description" placeholder="Description"/>
+      <div [hidden]="description.valid || description.pristine"
+        class="alert">Description requise
+      </div>
+    </div>
+
+    <div class="field-wrap">
+      <input type="text" formControlName="city" placeholder="Ville"/>
+      <div [hidden]="city.valid || city.pristine"
+        class="alert"> Ville requise
+      </div>
+    </div>
+
+    <div class="field-wrap">
+      <input type="datetime" formControlName="dueAt" placeholder="Date"/>
+      <div [hidden]="dueAt.valid || dueAt.pristine"
+        class="alert">Date requise
+      </div>
+    </div>
+
+    <div class="field-wrap">
+      <input type="number" formControlName="nbPlace" placeholder="Nombre de participants"/>
+      <div [hidden]="nbPlace.valid || nbPlace.pristine"
+        class="alert">Nombre de places requis
+      </div>
+    </div>
+
+    <input type="hidden" formControlName="enable" value="true"/>
+
+    <input type="submit" value="Valider" [disabled]="!userForm.valid"/>
+
+  </form>

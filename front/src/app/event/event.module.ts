@@ -13,6 +13,6 @@ import { EventDisplayModule } from './event-display/event-display.module';
     EventDisplayModule,
     MatCardModule
   ],
-  exports: [EventListModule, EventDisplayModule]
+  exports: [EventListModule, EventDisplayModule, EventFormModule]
 })
 export class EventModule { }

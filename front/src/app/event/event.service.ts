@@ -19,4 +19,8 @@ export class EventService {
   getOne(id: number) {
     return this.http.get<Event>(`${URL}/${id}`);
   }
+
+  create(event: Event) {
+    return this.http.post<Event>(`${URL}`, event);
+  }
 }
