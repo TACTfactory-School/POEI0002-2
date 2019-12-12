@@ -23,9 +23,6 @@ export class CurrentUserService {
 
   private updateUser(token: string) {
     if (token) {
-      // this.authApi
-      //     .me()
-      //     .subscribe(user => this.subject.next(user));
 
       of(null)
         .pipe(delay(100))

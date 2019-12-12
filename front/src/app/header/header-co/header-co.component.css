@@ -1,0 +1,22 @@
+button {
+  align-content: center;
+  float: right;
+  cursor: pointer;
+  outline: none;
+  border: solid 2px black;
+  padding: 15px 10px;
+  margin-right: 5px;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #336699;
+  color: #ffffff;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+
+button .button-block {
+  display: block;
+  width: 100%;
+}
