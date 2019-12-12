@@ -33,7 +33,6 @@ a {
 }
 
 .form {
-  float: left;
   background:rgba($form-bg,.9);
   padding: 40px;
   max-width:600px;
@@ -46,11 +45,7 @@ a {
   list-style:none;
   padding:0;
   margin:0 0 40px 0;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+
   li a {
     display:block;
     text-decoration:none;
@@ -63,10 +58,7 @@ a {
     text-align:center;
     cursor:pointer;
     transition:.5s ease;
-    &:hover {
-      background:$main-dark;
-      color:$white;
-    }
+
   }
   .active a {
     background:$main;
@@ -78,13 +70,13 @@ a {
   display:none;
 }
 
-
 h1 {
+  margin: 60px 0 20px 10px;
   text-align:center;
   color:$white;
   font-weight:$thin;
-  margin:0 0 40px;
 }
+
 
 label {
   position:absolute;
@@ -149,7 +141,6 @@ textarea {
   }
 
   > div {
-    float:left;
     width:100%;
     margin-right:4%;
     &:last-child {
