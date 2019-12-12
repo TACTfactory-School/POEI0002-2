@@ -41,7 +41,6 @@ public class EventFixtureService implements Fixture {
             event.setDueAt(LocalDateTime.now());
             event.setNbPlace(5);
 
-
             this.repository.save(event);
         }
     }
