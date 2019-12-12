@@ -21,7 +21,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "ovg_event")
 public class Event extends EntityBase {
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private User author;
 
     static final int LENGTH = 255;

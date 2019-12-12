@@ -5,10 +5,14 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.example.demo.entities.User;
 import com.example.demo.entities.dtos.EventDTO;
+import com.example.demo.services.userservices.UserCrudService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +38,9 @@ public class EventController {
 
     @Autowired
     private EventCrudService service;
+
+    @Autowired
+    private UserCrudService userService;
 
     @Autowired
     private ModelMapper mapper;
@@ -64,7 +71,11 @@ public class EventController {
     @PostMapping
     @ApiOperation(value = "Create an event")
     @ResponseStatus(HttpStatus.CREATED)
-    public Event create(@Valid @RequestBody final Event event) throws BadRequestException {
+    public Event create(@Valid @RequestBody final Event event) throws BadRequestException, NotFoundException {
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String username = loggedInUser.getName();
+        User user = this.userService.getByUserName(username);
+        event.setAuthor(user);
         return this.service.create(event);
     }
 
