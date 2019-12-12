@@ -1,6 +1,6 @@
 import { AuthApiService } from './auth-api.service';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import { User } from '../user/user';
 import { TokenStorageService } from './token-storage.service';
 import { delay } from 'rxjs/operators';
@@ -16,17 +16,20 @@ export class CurrentUserService {
   constructor(
       private readonly authApi: AuthApiService,
       readonly tokenstorage: TokenStorageService) {
-        tokenstorage
+    tokenstorage
         .observable
-        .pipe(delay(1000))
         .subscribe(token => this.updateUser(token));
-      }
+  }
 
   private updateUser(token: string) {
     if (token) {
-      this.authApi
-          .me()
-          .subscribe(user => this.subject.next(user));
+      // this.authApi
+      //     .me()
+      //     .subscribe(user => this.subject.next(user));
+
+      of(null)
+        .pipe(delay(100))
+        .subscribe(() => this.authApi.me().subscribe(user => this.subject.next(user)))
     } else {
       this.subject.next(null);
     }

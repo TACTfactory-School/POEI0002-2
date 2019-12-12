@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 export class AuthHttpInterceptor implements HttpInterceptor {
   private token: string;
 
-  constructor(private readonly tokenStorage: TokenStorageService) {
+  constructor(readonly tokenStorage: TokenStorageService) {
     this.tokenStorage.observable.
     pipe(tap(token => console.log('Interceptor got new token', {token}))).
     subscribe(token => this.token = token ? 'Bearer ' + token : null);
