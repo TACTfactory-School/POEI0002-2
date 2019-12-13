@@ -18,6 +18,7 @@ import { EventModule } from './event/event.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { httpInterceptors } from './interceptors';
+import { HeaderModule } from './header/header.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { httpInterceptors } from './interceptors';
   imports: [
     AppRoutingModule,
     HttpClientModule,
+    HeaderModule,
     EventModule,
     UserModule,
     MenuModule,

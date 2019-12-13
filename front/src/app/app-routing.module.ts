@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'event',
     children: [
       {path: '', component: EventListCardComponent},
-      {path: 'create', component: EventFormComponent, canActivate: [ LogguedGuard ]},
+      {path: 'create', component: EventFormComponent, /* canActivate: [ LogguedGuard ]*/},
       {path: ':id', component: EventDisplayComponent}
     ]},
   {path: '**', component: PagenotfoundComponent}
