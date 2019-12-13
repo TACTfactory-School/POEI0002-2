@@ -53,6 +53,6 @@ export class AuthApiService {
   }
 
   me() {
-    return this.http.post<User>(`${URL}/user/me`, '');
+    return this.http.get<User>(`${URL}/user/me`);
   }
 }

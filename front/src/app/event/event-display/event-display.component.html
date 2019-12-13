@@ -5,6 +5,13 @@
         <p>{{ event.description }}</p>
         <p>{{ event.dueAt | date: 'long'}}</p>
         <p>{{ event.author.username }}</p>
+
+        <article *ngIf="(listeParticipants$ | async) as participants; else loading">
+            <div *ngFor="let p of participants">
+                <p>{{ p.username }}</p>
+            </div>
+        </article>
+
   </article>
   <a [routerLink]="['..']">Retour</a>
 </ng-container>

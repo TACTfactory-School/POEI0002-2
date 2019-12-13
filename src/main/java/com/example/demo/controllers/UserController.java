@@ -49,7 +49,7 @@ public class UserController {
     @Autowired
     private ModelMapper mapper;
 
-    @GetMapping
+    @GetMapping("/public")
     @ApiOperation(value = "Retrieves all user")
     public Page<UserDTO> getAll(Pageable pageable){
         Page<User> userPage = this.service.getAll(pageable);
@@ -66,7 +66,7 @@ public class UserController {
         return this.service.create(user);
     }
 
-    @PostMapping("/me")
+    @GetMapping("/me")
     @ApiOperation(value = "Get the curent user")
     @ResponseStatus(value = HttpStatus.CREATED)
     public UserDTO me() throws BadRequestException, NotFoundException {
@@ -85,7 +85,7 @@ public class UserController {
         this.service.delete(id);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/public/{id}")
     @ApiOperation(value = "Retrieve a user")
     public User getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);

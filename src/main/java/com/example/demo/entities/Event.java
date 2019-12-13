@@ -162,6 +162,8 @@ public class Event extends EntityBase {
         this.participants = participants;
     }
 
-
+    public void addParticipant(UserEventParticipant usereventparticipant) {
+        this.participants.add(usereventparticipant);
+    }
 
 }

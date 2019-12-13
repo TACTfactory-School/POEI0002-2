@@ -11,6 +11,7 @@ public class Mapper {
 
     public UserDTO userToDto(final User user){
         UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
         userDTO.setUsername(user.getUsername());
         userDTO.setCity(user.getCity());
         userDTO.setName(user.getName());
