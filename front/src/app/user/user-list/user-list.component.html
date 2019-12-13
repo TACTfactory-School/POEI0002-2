@@ -7,9 +7,12 @@
     </p>
 
   </ng-template>
-
-  <section *ngIf="(users$ | async) as users; else loading">
-
+<ul>
+  <li *ngFor="let item of [].constructor(totalPages); let i = index">
+    <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
+  </li>
+</ul>
+  <section *ngIf="(users) as users; else loading">
     <ng-container *ngIf="users.length; else noData">
 
       <article *ngFor="let u of users" [routerLink]="[u.id]">
