@@ -3,6 +3,8 @@ package com.example.demo.services.userservices;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.User;
@@ -19,8 +21,15 @@ public class UserCrudServiceImpl implements UserCrudService {
     private UserCreateService createService;
 
     @Override
-    public List<User> getAll() {
-        return this.repository.findAll();
+    public Page getAll(Pageable pageable) {
+
+        Page pagedResult = this.repository.findAll(pageable);
+
+        if(pagedResult.hasContent()) {
+            return pagedResult;
+        } else {
+            return null;
+        }
     }
 
     @Override
