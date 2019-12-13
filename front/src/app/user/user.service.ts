@@ -13,11 +13,11 @@ export class UserService {
   constructor(private readonly http: HttpClient) { }
 
   getAll(page: number) {
-    return this.http.get(`${URL}?page=${page}`);
+    return this.http.get(`${URL}/public?page=${page}`);
   }
 
   getOne(id: number) {
-    return this.http.get<User>(`${URL}/${id}`);
+    return this.http.get<User>(`${URL}/public/${id}`);
   }
 
   create(user: User) {

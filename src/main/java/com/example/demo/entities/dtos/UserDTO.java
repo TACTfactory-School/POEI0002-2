@@ -7,6 +7,8 @@ import javax.validation.constraints.NotBlank;
 
 public class UserDTO {
 
+    private long id;
+
     private String username;
 
     private String city;
@@ -28,6 +30,16 @@ public class UserDTO {
     private LocalDateTime lastConnectionDate;
 
     private String profession;
+
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
