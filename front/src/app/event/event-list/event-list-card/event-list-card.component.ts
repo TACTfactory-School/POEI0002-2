@@ -9,10 +9,38 @@ import {Observable} from 'rxjs';
   styleUrls: ['./event-list-card.component.css']
 })
 export class EventListCardComponent implements OnInit {
-  events: Observable<Event[]>;
+  private events: Event[];
+  private totalElements: number;
+  private totalPages: number;
+  private pageNumber: number;
+  private numberOfElements: number;
+  private page = 0;
+
   constructor(private api: EventService) { }
 
   ngOnInit() {
-   this.events = this.api.getAll();
+    this.getPage();
+  }
+
+  getPage() {
+
+    this.api.getAll(this.page).subscribe(
+      data => {
+        this.events = data[`content`];
+        this.totalElements    = data[`totalElements`];
+        this.totalPages       = data[`totalPages`];
+        this.pageNumber       = data[`pageNumber`];
+        this.numberOfElements = data[`numberOfElements`];
+      },
+      error => {
+        console.log(error.error.message);
+      }
+    );
+  }
+
+  setPage(i: number, event: MouseEvent) {
+    event.preventDefault();
+    this.page = i;
+    this.getPage();
   }
 }

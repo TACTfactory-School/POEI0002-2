@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -10,6 +11,9 @@ import com.example.demo.entities.dtos.EventDTO;
 import com.example.demo.services.userservices.UserCrudService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entities.Event;
 import com.example.demo.exeptions.BadRequestException;
 import com.example.demo.exeptions.NotFoundException;
+import com.example.demo.services.Mapper;
 import com.example.demo.services.eventservices.EventCrudService;
 
 import io.swagger.annotations.Api;
@@ -45,27 +50,17 @@ public class EventController {
     @Autowired
     private ModelMapper mapper;
 
+    @Autowired
+    private Mapper mapperDto;
+
     @GetMapping
     @ApiOperation(value = "Retrieves all events")
-    public List<EventDTO> getAll() {
-        List<EventDTO> result = new ArrayList<>();
-
-        List<Event> events = this.service.getAll();
-
-        for (Event event: events) {
-            EventDTO eventDTO = new EventDTO();
-            eventDTO.setId(event.getId());
-            eventDTO.setAuthor(event.getAuthor().getUsername());
-            eventDTO.setTitle(event.getTitle());
-            eventDTO.setCity(event.getCity());
-            eventDTO.setDescription(event.getDescription());
-            eventDTO.setDueAt(event.getDueAt());
-            eventDTO.setNbPlace(event.getNbPlace());
-            result.add(eventDTO);
-        }
-
-
-        return result;
+    public Page<EventDTO> getAll(Pageable pageable){
+        Page<Event> eventPage = this.service.getAll(pageable);
+        eventPage.getTotalElements();
+        return new PageImpl<>(eventPage.stream()
+                .map(event->mapperDto.eventToDTO(event))
+                .collect(Collectors.toList()), pageable, eventPage.getTotalElements());
     }
 
     @PostMapping
@@ -101,7 +96,7 @@ public class EventController {
 
     @GetMapping("{id}")
     @ApiOperation(value = "Retrieve an event")
-    public Event getOne(@PathVariable final Long id) throws NotFoundException {
-        return this.service.getOne(id);
+    public EventDTO getOne(@PathVariable final Long id) throws NotFoundException {
+        return mapperDto.eventToDTO(this.service.getOne(id));
     }
 }

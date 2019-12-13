@@ -1,13 +1,15 @@
 package com.example.demo.services;
 
+import com.example.demo.entities.Event;
 import com.example.demo.entities.User;
+import com.example.demo.entities.dtos.EventDTO;
 import com.example.demo.entities.dtos.UserDTO;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Mapper {
 
-    public UserDTO userToDto(User user){
+    public UserDTO userToDto(final User user){
         UserDTO userDTO = new UserDTO();
         userDTO.setUsername(user.getUsername());
         userDTO.setCity(user.getCity());
@@ -22,5 +24,18 @@ public class Mapper {
         userDTO.setProfession(user.getProfession());
 
         return userDTO;
+    }
+
+    public EventDTO eventToDTO(final Event event){
+        EventDTO result = new EventDTO();
+        result.setId(event.getId());
+        result.setAuthor(event.getAuthor().getUsername());
+        result.setTitle(event.getTitle());
+        result.setCity(event.getCity());
+        result.setDescription(event.getDescription());
+        result.setDueAt(event.getDueAt());
+        result.setNbPlace(event.getNbPlace());
+
+        return result;
     }
 }

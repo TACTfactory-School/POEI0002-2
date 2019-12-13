@@ -4,6 +4,7 @@ import { EventListModule } from './event-list/event-list.module';
 import { EventFormModule } from './event-form/event-form.module';
 import { MatCardModule } from '@angular/material/card';
 import { EventDisplayModule } from './event-display/event-display.module';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { EventDisplayModule } from './event-display/event-display.module';
     EventListModule,
     EventFormModule,
     EventDisplayModule,
-    MatCardModule
+    MatCardModule,
+    SharedModule
   ],
   exports: [EventListModule, EventDisplayModule, EventFormModule]
 })
