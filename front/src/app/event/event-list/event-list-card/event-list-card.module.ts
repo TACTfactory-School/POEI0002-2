@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import { EventListCardComponent } from './event-list-card.component';
 import { RouterModule } from '@angular/router';
-import {SharedModule} from '../../../shared/shared.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   declarations: [EventListCardComponent],
     imports: [
         MatCardModule,
+        PipesModule,
         RouterModule,
-        CommonModule,
-        SharedModule
+        CommonModule
     ],
   exports: [EventListCardComponent]
 })

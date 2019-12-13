@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Event } from '../event';
-import { User } from '../../user/user';
 import { EventService } from '../event.service';
 import { CurrentUserService } from '../../auth/current-user.service';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-form',
@@ -22,13 +21,14 @@ export class EventFormComponent implements OnInit {
                             enable: ['true', Validators.required]
                           });
 
-  constructor(private fb: FormBuilder, private service: EventService, private readonly currentUser: CurrentUserService) { }
+  constructor(private fb: FormBuilder, private service: EventService, private readonly currentUser: CurrentUserService,
+              private readonly router: Router) { }
 
   onSubmit(): void {
     const event: Event = this.eventSign.value;
     this.service
         .create(event)
-        .subscribe();
+        .subscribe(() => this.eventCreateSuccess(event.id));
     console.log('submitted');
   }
 
@@ -40,5 +40,10 @@ export class EventFormComponent implements OnInit {
   get enable(): AbstractControl { return this.eventSign.get('enable'); }
 
   ngOnInit() {
+  }
+
+  private eventCreateSuccess(id: number) {
+    const route = 'event';
+    this.router.navigate([route]);
   }
 }
