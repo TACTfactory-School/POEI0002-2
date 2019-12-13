@@ -1,13 +1,19 @@
 package com.example.demo.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.example.demo.entities.Event;
+import com.example.demo.entities.dtos.EventDTO;
 import com.example.demo.entities.dtos.UserDTO;
 import com.example.demo.services.Mapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -44,8 +50,13 @@ public class UserController {
     private ModelMapper mapper;
 
     @GetMapping
-    public List<User> getAll() {
-        return this.service.getAll();
+    @ApiOperation(value = "Retrieves all user")
+    public Page<UserDTO> getAll(Pageable pageable){
+        Page<User> userPage = this.service.getAll(pageable);
+        userPage.getTotalElements();
+        return new PageImpl<>(userPage.stream()
+                .map(user->mapperDto.userToDto(user))
+                .collect(Collectors.toList()), pageable, userPage.getTotalElements());
     }
 
     @PostMapping
