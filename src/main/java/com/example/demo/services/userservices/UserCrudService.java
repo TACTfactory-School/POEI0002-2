@@ -4,12 +4,15 @@ import java.util.List;
 
 import com.example.demo.entities.User;
 import com.example.demo.exeptions.NotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface UserCrudService {
 
-    List<User> getAll();
+    Page getAll(Pageable pageable);
 
     User getOne(long id) throws NotFoundException;
+
     User getByUserName(String username)throws NotFoundException;
 
     User create(User user);
