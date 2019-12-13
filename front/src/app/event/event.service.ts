@@ -23,4 +23,8 @@ export class EventService {
   create(event: Event) {
     return this.http.post<Event>(`${URL}`, event);
   }
+
+  addUser(eventId: number) {
+    return this.http.get<Event>(`${URL}/join/${eventId}`);
+  }
 }
