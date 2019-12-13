@@ -1,7 +1,9 @@
 <ng-container>
   <article *ngIf="(event$ | async) as event; else loading">
         <h1>{{ event.title }}</h1>
+        <h2>{{ event.author }}</h2>
         <p>{{ event.description }}</p>
+        <p>{{ event.dueAt | date: 'long'}}</p>
         <p>{{ event.author.username }}</p>
   </article>
   <a [routerLink]="['..']">Retour</a>

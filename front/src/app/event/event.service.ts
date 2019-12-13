@@ -12,8 +12,8 @@ export class EventService {
 
   constructor(private  http: HttpClient) { }
 
-  getAll() {
-    return this.http.get<Event[]>(URL);
+  getAll(page: number) {
+    return this.http.get(`${URL}?page=${page}`);
   }
 
   getOne(id: number) {

@@ -1,13 +1,13 @@
 package com.example.demo.services.eventservices;
 
-import java.util.List;
-
 import com.example.demo.entities.Event;
 import com.example.demo.exeptions.NotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface EventCrudService {
 
-    List<Event> getAll();
+    Page getAll(Pageable pageable);
 
     Event getOne(long id) throws NotFoundException;
 
