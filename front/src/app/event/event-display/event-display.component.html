@@ -3,8 +3,9 @@
         <h1>{{ event.title }}</h1>
         <h2>{{ event.author }}</h2>
         <p>{{ event.description }}</p>
-        <p>{{ event.dueAt | date: 'long'}}</p>
+        <p>{{ event.dueAt | date: 'short'}}</p>
         <p>{{ event.author.username }}</p>
+    <a [routerLink]="['..']" (click)="delete(event.id)"> Supprimer </a>
   </article>
   <a [routerLink]="['..']">Retour</a>
 </ng-container>

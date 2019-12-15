@@ -1,7 +1,7 @@
 <ul>
-<li *ngFor="let item of [].constructor(totalPages); let i = index">
-  <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
-</li>
+  <li *ngFor="let item of [].constructor(totalPages); let i = index">
+    <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
+  </li>
 </ul>
 <section *ngFor="let e of events " class="main">
   <mat-card class="example-card">

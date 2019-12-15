@@ -23,4 +23,8 @@ export class EventService {
   create(event: Event) {
     return this.http.post<Event>(`${URL}`, event);
   }
+
+  delete(id: number) {
+    return this.http.delete(`${URL}/${id}`);
+  }
 }
