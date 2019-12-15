@@ -5,9 +5,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 public class ServletInitializer extends SpringBootServletInitializer {
 
-    @Override
+  @Override
     protected SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
-        return application.sources(Onvageeker1Application.class);
-    }
-
+    return application.sources(Onvageeker1Application.class);
+  }
 }
