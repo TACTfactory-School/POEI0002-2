@@ -1,3 +1,4 @@
+<button [routerLink]='["../tab-event"]'>Mode tableau</button>
 <ul>
   <li *ngFor="let item of [].constructor(totalPages); let i = index">
     <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
@@ -16,8 +17,7 @@
       <p>{{ e.dueAt | dateTransform }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <button mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)">Rejoindre</button>
     </mat-card-actions>
   </mat-card>
 </section>

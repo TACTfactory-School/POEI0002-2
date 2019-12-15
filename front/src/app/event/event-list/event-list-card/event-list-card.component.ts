@@ -43,4 +43,8 @@ export class EventListCardComponent implements OnInit {
     this.page = i;
     this.getPage();
   }
+
+  onJoin(eventId: number) {
+    this.api.addUser(eventId).subscribe();
+  }
 }

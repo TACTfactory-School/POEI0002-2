@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import com.example.demo.entities.User;
+import com.example.demo.entities.UserEventParticipant;
 import com.example.demo.entities.dtos.EventDTO;
 import com.example.demo.services.userservices.UserCrudService;
 import org.modelmapper.ModelMapper;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entities.Event;
 import com.example.demo.exeptions.BadRequestException;
 import com.example.demo.exeptions.NotFoundException;
+import com.example.demo.repository.UserEventParticipantRepository;
 import com.example.demo.services.Mapper;
 import com.example.demo.services.eventservices.EventCrudService;
 
@@ -48,12 +50,15 @@ public class EventController {
     private UserCrudService userService;
 
     @Autowired
+    private UserEventParticipantRepository repository;
+
+    @Autowired
     private ModelMapper mapper;
 
     @Autowired
     private Mapper mapperDto;
 
-    @GetMapping
+    @GetMapping("/public")
     @ApiOperation(value = "Retrieves all events")
     public Page<EventDTO> getAll(Pageable pageable){
         Page<Event> eventPage = this.service.getAll(pageable);
@@ -61,6 +66,18 @@ public class EventController {
         return new PageImpl<>(eventPage.stream()
                 .map(event->mapperDto.eventToDTO(event))
                 .collect(Collectors.toList()), pageable, eventPage.getTotalElements());
+    }
+
+    @GetMapping("/public/participants/{id}")
+    @ApiOperation(value = "Retrieves all users participating to the event")
+    public List<User> getAllParticipants(@PathVariable final Long id) throws NotFoundException{
+        Event event = this.service.getOne(id);
+        List<UserEventParticipant> evepart = event.getParticipants();
+        List<User> result = new ArrayList<>();
+        for(UserEventParticipant u : evepart) {
+            result.add(u.getUserParticipant());
+        }
+        return result;
     }
 
     @PostMapping
@@ -87,6 +104,28 @@ public class EventController {
         return entity;
     }
 
+    @GetMapping("/join/{id}")
+    @ApiOperation(value = "Add a user to an event as participant")
+    public void join(@PathVariable final Long id) throws NotFoundException {
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String username = loggedInUser.getName();
+        User user = this.userService.getByUserName(username);
+        Event event = this.service.getOne(id);
+
+        UserEventParticipant usereventpart = new UserEventParticipant();
+        usereventpart.setUserParticipant(user);
+        usereventpart.setEventParticipant(event);
+
+        this.repository.save(usereventpart);
+
+        user.addAsParticipant(usereventpart);
+        this.userService.update(user);
+
+        event.addParticipant(usereventpart);
+        this.service.update(event);
+
+    }
+
     @DeleteMapping("{id}")
     @ApiOperation(value = "Delete an event")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -94,7 +133,7 @@ public class EventController {
         this.service.delete(id);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/public/{id}")
     @ApiOperation(value = "Retrieve an event")
     public EventDTO getOne(@PathVariable final Long id) throws NotFoundException {
         return mapperDto.eventToDTO(this.service.getOne(id));

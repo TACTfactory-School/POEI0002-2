@@ -1,6 +1,7 @@
 package com.example.demo.services.eventservices;
 
 import com.example.demo.entities.Event;
+import com.example.demo.entities.User;
 import com.example.demo.exeptions.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

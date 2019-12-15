@@ -6,6 +6,13 @@
         <p>{{ event.dueAt | date: 'short'}}</p>
         <p>{{ event.author.username }}</p>
     <a [routerLink]="['..']" (click)="delete(event.id)"> Supprimer </a>
+
+        <article *ngIf="(listeParticipants$ | async) as participants; else loading">
+            <div *ngFor="let p of participants">
+                <p>{{ p.username }}</p>
+            </div>
+        </article>
+
   </article>
   <a [routerLink]="['..']">Retour</a>
 </ng-container>

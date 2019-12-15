@@ -223,6 +223,10 @@ public class User extends EntityBase {
         return asParticipant;
     }
 
+    public void addAsParticipant(UserEventParticipant usereventparticipant){
+        this.asParticipant.add(usereventparticipant);
+    }
+
     public void setAsParticipant(List<UserEventParticipant> asParticipant) {
         this.asParticipant = asParticipant;
     }
