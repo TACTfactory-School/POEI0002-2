@@ -7,6 +7,15 @@
         <p>Description : {{ user.description }}</p>
         <p>Age : {{ user.birthDate|datetoage}}</p>
   </article>
+
+  <h2>Liste des événements auxquels je participe</h2>
+
+  <article *ngIf="(listEvents$ | async) as events; else loading">
+    <div *ngFor="let e of events">
+        <p>{{ e.title }}</p>
+    </div>
+  </article>
+
   <a [routerLink]="['..']">Retour</a>
 </ng-container>
 
