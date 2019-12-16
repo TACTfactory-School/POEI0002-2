@@ -6,68 +6,95 @@ import java.time.LocalDateTime;
 
 public class EventDTO {
 
-  private String title;
-  private String description;
-  private String author;
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-  private LocalDateTime dueAt;
-  private Integer nbPlace;
-  private String city;
-  private long id;
+    private String title;
+    private String description;
+    private String author;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime dueAt;
+    private Integer nbPlace;
+    private String city;
+    private long id;
+    private String photo;
+    private String adresse;
+    private Integer Cp;
 
-  public long getId() {
-    return id;
-  }
+    public String getPhoto() {
+        return photo;
+    }
 
-  public void setId(long id) {
-    this.id = id;
-  }
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
-  public String getTitle() {
-    return title;
-  }
+    public String getAdresse() {
+        return adresse;
+    }
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
 
-  public String getDescription() {
-    return description;
-  }
+    public Integer getCp() {
+        return Cp;
+    }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+    public void setCp(Integer cp) {
+        Cp = cp;
+    }
 
-  public String getAuthor() {
-    return author;
-  }
+    public long getId() {
+        return id;
+    }
 
-  public void setAuthor(String author) {
-    this.author = author;
-  }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-  public LocalDateTime getDueAt() {
-    return dueAt;
-  }
+    public String getTitle() {
+        return title;
+    }
 
-  public void setDueAt(LocalDateTime dueAt) {
-    this.dueAt = dueAt;
-  }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-  public Integer getNbPlace() {
-    return nbPlace;
-  }
+    public String getDescription() {
+        return description;
+    }
 
-  public void setNbPlace(Integer nbPlace) {
-    this.nbPlace = nbPlace;
-  }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-  public String getCity() {
-    return city;
-  }
+    public String getAuthor() {
+        return author;
+    }
 
-  public void setCity(String city) {
-    this.city = city;
-  }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public LocalDateTime getDueAt() {
+        return dueAt;
+    }
+
+    public void setDueAt(LocalDateTime dueAt) {
+        this.dueAt = dueAt;
+    }
+
+    public Integer getNbPlace() {
+        return nbPlace;
+    }
+
+    public void setNbPlace(Integer nbPlace) {
+        this.nbPlace = nbPlace;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 }

@@ -24,7 +24,6 @@ public class Mapper {
     userDTO.setDescription(user.getDescription());
     userDTO.setLastConnectionDate(user.getLastConnectionDate());
     userDTO.setProfession(user.getProfession());
-
     return userDTO;
   }
   public EventDTO eventToDTO(final Event event){
@@ -35,8 +34,10 @@ public class Mapper {
     result.setCity(event.getCity());
     result.setDescription(event.getDescription());
     result.setDueAt(event.getDueAt());
-    result.setNbPlace(event.getNbPlace());
-
+    result.setNbPlace(event.getNbPlace());    
+    result.setAdresse(event.getAdresse());
+    result.setPhoto(event.getPhoto());
+    result.setCp(event.getCP());
     return result;
   }
 }

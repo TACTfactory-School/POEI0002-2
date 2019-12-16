@@ -47,15 +47,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     auth.userDetailsService(userDetailsService).passwordEncoder(HASH.hash());
   }
 
-  @Override
-  public void configure(WebSecurity web) throws Exception {
-    web.ignoring()
-    .antMatchers(HttpMethod.OPTIONS,"/**")
-    .antMatchers(HttpMethod.POST,"/api/v1/user")
-    .antMatchers(HttpMethod.GET, "/api/v1/user/public**")
-    .antMatchers(HttpMethod.GET, "/api/v1/event/public**")
-      .antMatchers(HttpMethod.DELETE,"/api/v1/user");
-  }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+            .antMatchers( HttpMethod.OPTIONS,"/**")
+            .antMatchers( HttpMethod.POST,"/api/v1/user")
+            .antMatchers(HttpMethod.GET, "/api/v1/*/public**")
+            .antMatchers(HttpMethod.GET, "/api/v1/*/public/**");
+    }
+
 
   @Bean
   public CorsFilter corsFilter() {

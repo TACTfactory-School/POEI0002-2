@@ -25,6 +25,13 @@ export class EventService {
     return this.http.post<Event>(`${URL}`, event);
   }
 
+  update(event: Event) {
+    return this.http.put<Event>(`${URL}/${event.id}`, event);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${URL}/${id}`);
+  }
   addUser(eventId: number) {
     return this.http.get(`${URL}/join/${eventId}`);
   }
