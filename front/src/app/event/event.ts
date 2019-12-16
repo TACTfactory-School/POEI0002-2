@@ -5,6 +5,7 @@ export interface Event {
   id: number;
   title: string;
   description: string;
+  createdAt: string;
   dueAt: string;
   author: User;
   city: string;
