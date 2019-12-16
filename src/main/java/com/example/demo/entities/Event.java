@@ -21,149 +21,150 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "ovg_event")
 public class Event extends EntityBase {
 
-    @ManyToOne(optional = true)
-    private User author;
+  @ManyToOne(optional = true)
+  private User author;
 
-    static final int LENGTH = 255;
+  static final int LENGTH = 255;
 
-    @Column(length = LENGTH, nullable = false)
-    @NotBlank
-    private String title;
+  @Column(length = LENGTH, nullable = false)
+  @NotBlank
+  private String title;
 
-    @Column(length = 5000, nullable = false)
-    @NotBlank
-    private String description;
+  @Column(length = 5000, nullable = false)
+  @NotBlank
+  private String description;
 
-    @Column(nullable = false)
-    private LocalDateTime dueAt;
+  @Column(nullable = false)
+  private LocalDateTime dueAt;
 
-    @Column(nullable = false)
-    private Integer nbPlace;
+  @Column(nullable = false)
+  private Integer nbPlace;
 
-    @Column(length = 255, nullable = true)
-    private String photo;
+  @Column(length = 255, nullable = true)
+  private String photo;
 
-    @Column(length = 255, nullable = true)
-    private String adresse;
+  @Column(length = 255, nullable = true)
+  private String adresse;
 
-    @Column(nullable = true)
-    private Integer CP;
+  @Column(nullable = true) //modifier en cp pour checkstyle
+  private Integer CP;
 
-    @Column(length = 255, nullable = false)
-    @NotBlank
-    private String city;
+  @Column(length = 255, nullable = false)
+  @NotBlank
+  private String city;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(name = "asc_tags", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "tag_id") })
-    private List<Tag> tags;
+  @ManyToMany(cascade = { CascadeType.ALL })
+  @JoinTable(name = "asc_tags", joinColumns =
+      { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
+      @JoinColumn(name = "tag_id") })
+  private List<Tag> tags;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "eventParticipant")
-    private List<UserEventParticipant> participants;
+  @JsonIgnore
+  @OneToMany(mappedBy = "eventParticipant")
+  private List<UserEventParticipant> participants;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "eventOrganisator")
-    private List<UserEventOrganisator> organisators;
+  @JsonIgnore
+  @OneToMany(mappedBy = "eventOrganisator")
+  private List<UserEventOrganisator> organisators;
 
-    public User getAuthor() {
-        return author;
-    }
+  public User getAuthor() {
+    return author;
+  }
 
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+  public void setAuthor(User author) {
+    this.author = author;
+  }
 
-    public List<Tag> getTags() {
-        return tags;
-    }
+  public List<Tag> getTags() {
+    return tags;
+  }
 
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
+  public void setTags(List<Tag> tags) {
+    this.tags = tags;
+  }
 
-    public String getTitle() {
-        return title;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    public String getDescription() {
-        return description;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public void setDescription(final String description) {
-        this.description = description;
-    }
+  public void setDescription(final String description) {
+    this.description = description;
+  }
 
-    public LocalDateTime getDueAt() {
-        return dueAt;
-    }
+  public LocalDateTime getDueAt() {
+    return dueAt;
+  }
 
-    public void setDueAt(LocalDateTime dueAt) {
-        this.dueAt = dueAt;
-    }
+  public void setDueAt(LocalDateTime dueAt) {
+    this.dueAt = dueAt;
+  }
 
-    public Integer getNbPlace() {
-        return nbPlace;
-    }
+  public Integer getNbPlace() {
+    return nbPlace;
+  }
 
-    public void setNbPlace(Integer nbPlace) {
-        this.nbPlace = nbPlace;
-    }
+  public void setNbPlace(Integer nbPlace) {
+    this.nbPlace = nbPlace;
+  }
 
-    public String getPhoto() {
-        return photo;
-    }
+  public String getPhoto() {
+    return photo;
+  }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
+  public void setPhoto(String photo) {
+    this.photo = photo;
+  }
 
-    public String getAdresse() {
-        return adresse;
-    }
+  public String getAdresse() {
+    return adresse;
+  }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
+  public void setAdresse(String adresse) {
+    this.adresse = adresse;
+  }
 
-    public Integer getCP() {
-        return CP;
-    }
+  public Integer getCP() {
+    return CP;
+  }
 
-    public void setCP(Integer cP) {
-        CP = cP;
-    }
+  public void setCP(Integer cP) {
+    CP = cP;
+  }
 
-    public String getCity() {
-        return city;
-    }
+  public String getCity() {
+    return city;
+  }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+  public void setCity(String city) {
+    this.city = city;
+  }
 
-    public List<UserEventOrganisator> getOrganisators() {
-        return organisators;
-    }
+  public List<UserEventOrganisator> getOrganisators() {
+    return organisators;
+  }
 
-    public void setOrganisators(List<UserEventOrganisator> organisators) {
-        this.organisators = organisators;
-    }
+  public void setOrganisators(List<UserEventOrganisator> organisators) {
+    this.organisators = organisators;
+  }
 
-    public List<UserEventParticipant> getParticipants() {
-        return participants;
-    }
+  public List<UserEventParticipant> getParticipants() {
+    return participants;
+  }
 
-    public void setParticipants(List<UserEventParticipant> participants) {
-        this.participants = participants;
-    }
+  public void setParticipants(List<UserEventParticipant> participants) {
+    this.participants = participants;
+  }
 
-    public void addParticipant(UserEventParticipant usereventparticipant) {
-        this.participants.add(usereventparticipant);
-    }
+  public void addParticipant(UserEventParticipant usereventparticipant) {
+    this.participants.add(usereventparticipant);
+  }
 
 }

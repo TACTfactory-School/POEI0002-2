@@ -8,26 +8,26 @@ import javax.persistence.Table;
 @Table(name = "ovg_user_language")
 public class UserLanguage extends EntityBase {
 
-    @ManyToOne
-    private Language language;
+  @ManyToOne
+  private Language language;
 
-    @ManyToOne
-    private User user;
+  @ManyToOne
+  private User user;
 
-    public Language getLanguage() {
-        return language;
-    }
+  public Language getLanguage() {
+    return language;
+  }
 
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
+  public void setLanguage(Language language) {
+    this.language = language;
+  }
 
-    public User getUser() {
-        return user;
-    }
+  public User getUser() {
+    return user;
+  }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  public void setUser(User user) {
+    this.user = user;
+  }
 
 }

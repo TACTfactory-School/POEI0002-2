@@ -1,0 +1,39 @@
+<h1>Edition d'un événement.</h1>
+
+<form [formGroup]="eventSign" (ngSubmit)="onSubmit()" *ngIf="(event | async) as e">
+
+  <div class="field-wrap">
+    <input type="text" formControlName="title" placeholder="Titre" [value]="e.title"/>
+  </div>
+
+  <input type="number" formControlName="id" [value]="e.id"/>
+
+  <div class="field-wrap">
+    <input type="text" formControlName="description" placeholder="Description" [value]="e.description"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="text" formControlName="adresse" placeholder="{{e.adresse}}"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="text" formControlName="city" placeholder="Ville" [value]="e.city"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="text" formControlName="Cp" placeholder="{{e.Cp}}"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="datetime-local" formControlName="dueAt" placeholder="Date" [value]="e.dueAt"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="number" formControlName="nbPlace" placeholder="Nombre de participants" [value]="e.nbPlace"/>
+  </div>
+
+  <input type="hidden" formControlName="enable" value="true"/>
+
+  <input type="submit" value="Valider"/>
+
+</form>

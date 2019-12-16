@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
 
 import javax.persistence.GeneratedValue;
@@ -10,61 +11,64 @@ import javax.persistence.MappedSuperclass;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * @author renau
+ *
+ */
 @MappedSuperclass
 public class EntityBase {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "The generated database ID", readOnly = true)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @ApiModelProperty(value = "The generated database ID", readOnly = true)
+  private Long id;
 
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
+  @CreationTimestamp
+  private LocalDateTime createdAt;
+  @UpdateTimestamp
+  private LocalDateTime updatedAt;
 
-    private Boolean enable;
+  private Boolean enable;
 
-    protected EntityBase() {
-        super();
-    }
+  protected EntityBase() {
+    super();
+  }
 
-    /**
-     * @return the id
-     */
-    public Long getId() {
-        return id;
-    }
+  /**
+   * @return the id
+   */
+  public Long getId() {
+    return id;
+  }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+  public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
+  public LocalDateTime getUpdatedAt() {
+    return updatedAt;
+  }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+  public void setUpdatedAt(LocalDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public Boolean getEnable() {
-        return enable;
-    }
+  public Boolean getEnable() {
+    return enable;
+  }
 
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
-    }
+  public void setEnable(Boolean enable) {
+    this.enable = enable;
+  }
 
 
 }

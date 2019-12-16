@@ -14,6 +14,33 @@ public class EventDTO {
     private Integer nbPlace;
     private String city;
     private long id;
+    private String photo;
+    private String adresse;
+    private Integer Cp;
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public Integer getCp() {
+        return Cp;
+    }
+
+    public void setCp(Integer cp) {
+        Cp = cp;
+    }
 
     public long getId() {
         return id;

@@ -1,24 +1,23 @@
 package com.example.demo.services.userservices;
 
-import java.util.List;
-
 import com.example.demo.entities.User;
 import com.example.demo.exeptions.NotFoundException;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface UserCrudService {
 
-    Page getAll(Pageable pageable);
+  Page getAll(Pageable pageable);
 
-    User getOne(long id) throws NotFoundException;
+  User getOne(long id) throws NotFoundException;
 
-    User getByUserName(String username)throws NotFoundException;
+  User getByUserName(String username)throws NotFoundException;
 
-    User create(User user);
+  User create(User user);
 
-    void delete(long id);
+  void delete(long id);
 
-    User update(User user);
+  User update(User user);
 
 }
