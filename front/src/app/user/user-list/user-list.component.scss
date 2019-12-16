@@ -3,23 +3,11 @@ section {
     flex-direction:column;
     flex-wrap:nowrap;
     align-items: center;
+}
 
-    article {
-      cursor: pointer;
-      min-width: 200px;
-      color:grey; //TODO: si admin : apparaitra en rouge
-      background-color:white;
-      width: 20%;
-      border: 2px solid rgb(105, 102, 102);
-      margin: 5px;
-      padding: 5px;
-      border-radius:5px
-    }
-    img{
-      border-radius:50px;
-    }
-  }
-
+table {
+  width: 100%;
+}
 
 li {
   float: left;

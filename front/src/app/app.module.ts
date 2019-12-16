@@ -19,12 +19,14 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { httpInterceptors } from './interceptors';
 import { HeaderModule } from './header/header.module';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    MatSidenavModule,
     AppRoutingModule,
     HttpClientModule,
     HeaderModule,
