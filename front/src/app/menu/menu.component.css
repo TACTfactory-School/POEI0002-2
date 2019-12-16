@@ -1,8 +1,5 @@
 menu {
   background-color: #222;
-  width: 15%;
-  float: left;
-  min-width: 150px;
   height: 100%;
   color: #bbb;
   opacity: 1;
@@ -50,7 +47,7 @@ menu ul a i[class*='fa-caret'] {
 }
 
 menu ul a:hover, #menu ul a.active {
-  background-color: #111;
+  background-color: #336699;
   border-left-color: #1a7ab1;
   color: #1a7ab1;
 }
