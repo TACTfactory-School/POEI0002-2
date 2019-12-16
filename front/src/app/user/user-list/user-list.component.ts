@@ -17,6 +17,7 @@ export class UserListComponent implements OnInit {
   private numberOfElements: number;
   private page = 0;
 
+  displayedColumns = ['username', 'city', 'profession', 'picture', 'detail'];
 
   constructor(private readonly service: UserService) { }
 

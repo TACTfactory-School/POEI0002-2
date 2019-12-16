@@ -9,5 +9,7 @@ export interface Event {
   dueAt: string;
   author: User;
   city: string;
-
+  photo: string;
+  adresse: string;
+  Cp: number;
 }

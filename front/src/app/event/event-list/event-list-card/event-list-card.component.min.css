@@ -1,1 +1,1 @@
-.example-card{max-width:400px;float:left;flex:auto;margin:1em}.example-header-image{background-image:url("https://material.angular.io/assets/img/examples/shiba1.jpg");background-size:cover}#spacer{flex-grow:1}
+.example-card{max-width:400px;max-height:600px;height:600px;float:left;margin:1em}.example-header-image{background-image:url("https://material.angular.io/assets/img/examples/shiba1.jpg");background-size:cover}#spacer{flex-grow:1}ul{display:inline-block}ul li{color:white;margin:2px;float:left;list-style-type:none}

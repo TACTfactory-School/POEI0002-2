@@ -16,7 +16,7 @@ export class EventListCardComponent implements OnInit {
   private numberOfElements: number;
   private page = 0;
 
-  constructor(private api: EventService) { }
+  constructor(private service: EventService) { }
 
   ngOnInit() {
     this.getPage();
@@ -24,7 +24,7 @@ export class EventListCardComponent implements OnInit {
 
   getPage() {
 
-    this.api.getAll(this.page).subscribe(
+    this.service.getAll(this.page).subscribe(
       data => {
         this.events = data[`content`];
         this.totalElements    = data[`totalElements`];
@@ -45,6 +45,6 @@ export class EventListCardComponent implements OnInit {
   }
 
   onJoin(eventId: number) {
-    this.api.addUser(eventId).subscribe();
+    this.service.addUser(eventId).subscribe();
   }
 }
