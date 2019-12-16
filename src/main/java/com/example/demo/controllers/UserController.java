@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.User;
+import com.example.demo.entities.UserEventParticipant;
 import com.example.demo.exeptions.BadRequestException;
 import com.example.demo.exeptions.NotFoundException;
 import com.example.demo.services.userservices.UserCrudService;
@@ -57,6 +59,18 @@ public class UserController {
         return new PageImpl<>(userPage.stream()
                 .map(user->mapperDto.userToDto(user))
                 .collect(Collectors.toList()), pageable, userPage.getTotalElements());
+    }
+
+    @GetMapping("/public/participating/{id}")
+    @ApiOperation(value = "Retrieves all events the user takes part in.")
+    public List<Event> getAllEvents(@PathVariable final Long id) throws NotFoundException{
+        User user = this.service.getOne(id);
+        List<UserEventParticipant> evepart = user.getAsParticipant();
+        List<Event> result = new ArrayList<>();
+        for(UserEventParticipant u : evepart) {
+            result.add(u.getEventParticipant());
+        }
+        return result;
     }
 
     @PostMapping

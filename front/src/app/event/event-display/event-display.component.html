@@ -7,6 +7,8 @@
         <p>{{ event.author.username }}</p>
     <a [routerLink]="['../..']" (click)="delete(event.id)"> Supprimer </a>
 
+        <h2> Liste des participants</h2>
+
         <article *ngIf="(listeParticipants$ | async) as participants; else loading">
             <div *ngFor="let p of participants">
                 <p>{{ p.username }}</p>

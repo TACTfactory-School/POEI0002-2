@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../user';
+import { Event } from '../../event/event';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
@@ -12,6 +13,7 @@ import { UserService } from '../user.service';
 export class UserDisplayComponent implements OnInit {
 
   user$: Observable<User>;
+  listEvents$: Observable<Event[]>;
 
   constructor(private readonly route: ActivatedRoute, private readonly service: UserService) { }
 
@@ -21,6 +23,7 @@ export class UserDisplayComponent implements OnInit {
         .subscribe(params => {
           if (params.id) {
             this.user$ = this.service.getOne(params.id);
+            this.listEvents$ = this.service.getAllEvents(params.id);
           }
         });
   }

@@ -21,31 +21,32 @@ import tools.HASH;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    UserDetailsService userDetailsService;
+  @Autowired
+  UserDetailsService userDetailsService;
 
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+  @Bean
+  @Override
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
+  }
 
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
-        http.cors().and()
-            .antMatcher("/")
-            .authorizeRequests()
-                .anyRequest().authenticated()
-            .and().formLogin()
-            .and().logout()
-            .and().csrf().disable();
+  @Override
+  public void configure(HttpSecurity http) throws Exception {
+    http.cors().and()
+    .antMatcher("/")
+    .authorizeRequests()
+    .anyRequest().authenticated()
+    .and().formLogin()
+    .and().logout()
+    .and().csrf().disable();
 
-    }
+  }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(HASH.hash());
-    }
+  @Override
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(userDetailsService).passwordEncoder(HASH.hash());
+  }
+
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -56,19 +57,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers(HttpMethod.GET, "/api/v1/*/public/**");
     }
 
+
   @Bean
   public CorsFilter corsFilter() {
 
-      UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-      CorsConfiguration config = new CorsConfiguration();
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    CorsConfiguration config = new CorsConfiguration();
 
-      config.setAllowCredentials(true);
-      config.addAllowedOrigin("*");
-      config.addAllowedHeader("*");
-      config.addAllowedMethod("*");
+    config.setAllowCredentials(true);
+    config.addAllowedOrigin("*");
+    config.addAllowedHeader("*");
+    config.addAllowedMethod("*");
 
-      source.registerCorsConfiguration("/**", config);
-      return new CorsFilter(source);
+    source.registerCorsConfiguration("/**", config);
+    return new CorsFilter(source);
   }
-
 }

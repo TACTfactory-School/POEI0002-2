@@ -2,7 +2,9 @@ package com.example.demo.exeptions;
 
 public class NotFoundException extends HttpException {
 
-    public NotFoundException() {
+  private static final long serialVersionUID = 1L;
 
-    }
+  public NotFoundException() {
+
+  }
 }

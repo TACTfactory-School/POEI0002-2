@@ -9,32 +9,37 @@ import javax.persistence.Table;
 @Table(name = "ovg_user_event_organisator")
 public class UserEventOrganisator extends EntityBase {
 
-    @ManyToOne
-    private User userOrganisator;
+  @ManyToOne
+  private User userOrganisator;
 
-    @ManyToOne
-    private Event eventOrganisator;
+  @ManyToOne
+  private Event eventOrganisator;
 
 
-    @Column(nullable = false)
-    private Boolean validation = false;
+  @Column(nullable = false)
+  private Boolean validation = false;
 
-    public Boolean getValidation() {
-        return validation;
-    }
-    public void setValidation(Boolean validation) {
-        this.validation = validation;
-    }
-    public User getUserOrganisator() {
-        return userOrganisator;
-    }
-    public void setUserOrganisator(User userOrganisator) {
-        this.userOrganisator = userOrganisator;
-    }
-    public Event getEventOrganisator() {
-        return eventOrganisator;
-    }
-    public void setEventOrganisator(Event eventOrganisator) {
-        this.eventOrganisator = eventOrganisator;
-    }
+  public Boolean getValidation() {
+    return validation;
+  }
+
+  public void setValidation(Boolean validation) {
+    this.validation = validation;
+  }
+
+  public User getUserOrganisator() {
+    return userOrganisator;
+  }
+
+  public void setUserOrganisator(User userOrganisator) {
+    this.userOrganisator = userOrganisator;
+  }
+
+  public Event getEventOrganisator() {
+    return eventOrganisator;
+  }
+
+  public void setEventOrganisator(Event eventOrganisator) {
+    this.eventOrganisator = eventOrganisator;
+  }
 }
