@@ -14,45 +14,45 @@ import com.example.demo.repository.EventRepository;
 @Service
 public class EventCrudServiceImpl implements EventCrudService {
 
-    @Autowired
-    private EventRepository repository;
+  @Autowired
+  private EventRepository repository;
 
-    @Autowired
-    private EventCreateService createService;
+  @Autowired
+  private EventCreateService createService;
 
-    @Transactional(readOnly = true)
-    @Override
-    public Page getAll(Pageable pageable) {
+  @Transactional(readOnly = true)
+  @Override
+  public Page getAll(Pageable pageable) {
 
-        Page pagedResult = this.repository.findAll(pageable);
+    Page pagedResult = this.repository.findAll(pageable);
 
-        if(pagedResult.hasContent()) {
-            return pagedResult;
-        } else {
-            return null;
-        }
+    if (pagedResult.hasContent()) {
+      return pagedResult;
+    } else {
+      return null;
     }
+  }
 
-    @Transactional(readOnly = true)
-    @Override
-    public Event getOne(final long id) throws NotFoundException {
-        return this.repository
-                .findById(id)
-                .orElseThrow(() -> new NotFoundException());
-    }
+  @Transactional(readOnly = true)
+  @Override
+  public Event getOne(final long id) throws NotFoundException {
+    return this.repository
+        .findById(id)
+        .orElseThrow(() -> new NotFoundException());
+  }
 
-    @Transactional()
-    @Override
-    public Event create(final Event event) {
-        return this.createService.create(event);
-    }
+  @Transactional()
+  @Override
+  public Event create(final Event event) {
+    return this.createService.create(event);
+  }
 
-    public Event update(final Event event) {
-        return this.repository.save(event);
-    }
+  public Event update(final Event event) {
+    return this.repository.save(event);
+  }
 
-    @Override
-    public void delete(final long id) {
-        this.repository.deleteById(id);
-    }
+  @Override
+  public void delete(final long id) {
+    this.repository.deleteById(id);
+  }
 }
