@@ -122,15 +122,12 @@ public class EventController {
 
   @PutMapping("{id}")
   @ApiOperation(value = "Update an event")
-  public Event update(@PathVariable final Long id, @Valid @RequestBody final Event event)
+  public Event update(@PathVariable final Long id, @Valid @RequestBody final EventDTO eventDTO)
       throws BadRequestException, NotFoundException {
 
-    final Event entity = this.service.getOne(id);
-
-    this.mapper.map(event, entity);
-    this.service.update(entity);
-
-    return entity;
+    final Event event = this.service.getOne(id);
+    this.service.update(this.mapperDto.dtoToEvent(event,eventDTO));
+    return event;
   }
 
   @GetMapping("/join/{id}")

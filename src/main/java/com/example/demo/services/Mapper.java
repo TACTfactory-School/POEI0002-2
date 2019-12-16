@@ -40,4 +40,17 @@ public class Mapper {
     result.setCp(event.getCP());
     return result;
   }
+
+  public Event dtoToEvent(final Event event, final EventDTO eventDTO){
+    event.setId(eventDTO.getId());
+    event.setTitle(eventDTO.getTitle());
+    event.setCity(eventDTO.getCity());
+    event.setDescription(eventDTO.getDescription());
+    event.setDueAt(eventDTO.getDueAt());
+    event.setNbPlace(eventDTO.getNbPlace());
+    event.setAdresse(eventDTO.getAdresse());
+    event.setPhoto(eventDTO.getPhoto());
+    event.setCP(eventDTO.getCp());
+    return event;
+  }
 }

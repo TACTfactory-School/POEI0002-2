@@ -47,6 +47,7 @@ public class EventCrudServiceImpl implements EventCrudService {
     return this.createService.create(event);
   }
 
+  @Override
   public Event update(final Event event) {
     return this.repository.save(event);
   }
