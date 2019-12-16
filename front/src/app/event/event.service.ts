@@ -25,16 +25,18 @@ export class EventService {
     return this.http.post<Event>(`${URL}`, event);
   }
 
-<<<<<<< HEAD
+  update(event: Event) {
+    return this.http.put<Event>(`${URL}/${event.id}`, event);
+  }
+
   delete(id: number) {
     return this.http.delete(`${URL}/${id}`);
-=======
+  }
   addUser(eventId: number) {
     return this.http.get(`${URL}/join/${eventId}`);
   }
 
   getAllParticipants(id: number) {
     return this.http.get<User[]>(`${URL}/public/participants/${id}`);
->>>>>>> 6e96b8c5f816cdf950173f7b5ef97101ac0c955b
   }
 }

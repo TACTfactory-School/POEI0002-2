@@ -5,6 +5,7 @@ import { EventFormModule } from './event-form/event-form.module';
 import { MatCardModule } from '@angular/material/card';
 import { EventDisplayModule } from './event-display/event-display.module';
 import {SharedModule} from '../shared/shared.module';
+import {EventEditModule} from './event-edit/event-edit.module';
 
 @NgModule({
   imports: [
@@ -12,9 +13,10 @@ import {SharedModule} from '../shared/shared.module';
     EventListModule,
     EventFormModule,
     EventDisplayModule,
+    EventEditModule,
     MatCardModule,
     SharedModule
   ],
-  exports: [EventListModule, EventDisplayModule, EventFormModule]
+  exports: [EventListModule, EventDisplayModule, EventFormModule, EventEditModule]
 })
 export class EventModule { }

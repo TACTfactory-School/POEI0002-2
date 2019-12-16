@@ -10,6 +10,7 @@ import { EventDisplayComponent } from './event/event-display/event-display.compo
 import { PagenotfoundComponent } from './error/pagenotfound/pagenotfound.component';
 import { EventFormComponent } from './event/event-form/event-form.component';
 import { EventListTableComponent } from './event/event-list/event-list-table/event-list-table.component';
+import {EventEditComponent} from './event/event-edit/event-edit.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,11 @@ const routes: Routes = [
     children: [
       {path: '', component: EventListCardComponent},
       {path: 'create', component: EventFormComponent, /* canActivate: [ LogguedGuard ]*/},
-      {path: ':id', component: EventDisplayComponent}
+      {path: ':id',
+        children: [
+          {path: '', component: EventDisplayComponent},
+          {path: 'edit', component: EventEditComponent}
+          ]}
     ]},
   {path: '**', component: PagenotfoundComponent}
 ];
