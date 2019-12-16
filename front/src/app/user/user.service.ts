@@ -28,4 +28,8 @@ export class UserService {
   getAllEvents(id: number) {
     return this.http.get<Event[]>(`${URL}/public/participating/${id}`);
   }
+
+  update(user: User){
+    return this.http.put<User>(`${environment.apiUrl}/me/edit`, user);
+  }
 }
