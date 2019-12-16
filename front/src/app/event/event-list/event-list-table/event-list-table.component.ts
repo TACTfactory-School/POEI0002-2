@@ -18,6 +18,7 @@ private numberOfElements: number;
 private page = 0;
 
 constructor(private api: EventService) { }
+displayedColumns: string[] = ['title', 'author', 'createdAt', 'dueAt' , 'city', 'nb_place'];
 
 ngOnInit() {
   this.getPage();
