@@ -50,6 +50,10 @@ public class UserController {
     @Autowired
     private ModelMapper mapper;
 
+    /**
+     * @param pageable
+     * @return Return a Page of user
+     */
     @GetMapping("/public")
     @ApiOperation(value = "Retrieves all user")
     public Page<UserDTO> getAll(final Pageable pageable) {
@@ -60,6 +64,13 @@ public class UserController {
                 .collect(Collectors.toList()), pageable, userPage.getTotalElements());
     }
 
+    /**
+     * @param id
+     * @return Return a List of Event
+     * @throws NotFoundException
+     *
+     * Retrieves all events the user, determined by its id,  takes part in.
+     */
     @GetMapping("/public/participating/{id}")
     @ApiOperation(value = "Retrieves all events the user takes part in.")
     public List<Event> getAllEvents(@PathVariable final Long id) throws NotFoundException {
@@ -72,6 +83,13 @@ public class UserController {
         return result;
     }
 
+    /**
+     * @return Return a List of Event
+     * @throws BadRequestException
+     * @throws NotFoundException
+     *
+     * Retrieves all events the user, determined by its authentication token, takes part in.
+     */
     @GetMapping("/participating")
     @ApiOperation(value = "Retrieves all events the user takes part in.")
     public List<Event> getAllMeEvents() throws BadRequestException, NotFoundException {
@@ -86,6 +104,13 @@ public class UserController {
         return result;
     }
 
+    /**
+     * @param user
+     * @return Return a User
+     * @throws BadRequestException
+     *
+     * Create a new User and return it.
+     */
     @PostMapping
     @ApiOperation(value = "Creates a new user")
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -93,6 +118,15 @@ public class UserController {
         return this.service.create(user);
     }
 
+
+
+    /**
+     * @return Return a User
+     * @throws BadRequestException
+     * @throws NotFoundException
+     *
+     * Get the current User, determined by its authentication token.
+     */
     @GetMapping("/me")
     @ApiOperation(value = "Get the curent user")
     @ResponseStatus(value = HttpStatus.OK)
@@ -105,6 +139,11 @@ public class UserController {
         return result;
     }
 
+    /**
+     * @param id of a User
+     *
+     * Delete a user, determined by its id.
+     */
     @DeleteMapping("{id}")
     @ApiOperation(value = "Delete a user")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
@@ -112,14 +151,29 @@ public class UserController {
         this.service.delete(id);
     }
 
+    /**
+     * @param id of a User
+     * @return Return a User
+     * @throws NotFoundException
+     *
+     * Retrieve a user, determined by its id.
+     */
     @GetMapping("/public/{id}")
     @ApiOperation(value = "Retrieve a user")
     public User getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
     }
 
+    /**
+     * @param userDTO
+     * @return Return an updated User
+     * @throws BadRequestException
+     * @throws NotFoundException
+     *
+     * Update a User, determined by its authentication token
+     */
     @PutMapping("/me/edit")
-    @ApiOperation(value = "Update an event")
+    @ApiOperation(value = "Update a user")
     public User update(@Valid @RequestBody final UserDTO userDTO)
         throws BadRequestException, NotFoundException {
 
@@ -131,6 +185,14 @@ public class UserController {
       return user;
     }
 
+    /**
+     * @param id of a User
+     * @param User
+     * @return Return an updated User.
+     * @throws NotFoundException
+     *
+     * Updates a user, determined by its id.
+     */
     @PutMapping("{id}")
     @ApiOperation(value = "Updates a user")
     public User update(@PathVariable final Long id, @Valid @RequestBody final User user)
