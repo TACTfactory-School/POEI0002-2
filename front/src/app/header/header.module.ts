@@ -4,13 +4,15 @@ import { HeaderCoComponent } from './header-co/header-co.component';
 import { UserFormModule } from '../user/user-form/user-form.module';
 import { RouterModule } from '@angular/router';
 import { LogguedGuard } from '../auth/loggued.guard';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [HeaderCoComponent],
   imports: [
     RouterModule,
     UserFormModule,
-    CommonModule
+    CommonModule,
+    MatBadgeModule
   ],
   providers: [LogguedGuard],
   exports : [HeaderCoComponent]

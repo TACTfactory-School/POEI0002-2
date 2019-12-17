@@ -45,7 +45,11 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
       </table>
-
+      <ul>
+        <li *ngFor="let item of [].constructor(totalPages); let i = index">
+          <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
+        </li>
+      </ul>
     </ng-container>
 
   </section>
