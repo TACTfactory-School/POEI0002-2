@@ -29,6 +29,13 @@
           class="alert"> Ville requise
         </div>
       </div>
+       <mat-form-field>
+        <mat-label>Ville</mat-label>
+        <mat-select>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let c of city" >{{c.city}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <input type="hidden" formControlName="enable" value="true"/>
       <input type="hidden" formControlName="role" value="User"/>
