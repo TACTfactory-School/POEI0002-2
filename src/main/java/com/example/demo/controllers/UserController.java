@@ -153,8 +153,8 @@ public class UserController {
      */
     @GetMapping("/public/{id}")
     @ApiOperation(value = "Retrieve a user")
-    public User getOne(@PathVariable final Long id) throws NotFoundException {
-        return this.service.getOne(id);
+    public UserDTO getOne(@PathVariable final Long id) throws NotFoundException {
+        return  mapperDto.userToDto(this.service.getOne(id));
     }
 
     /**
@@ -171,8 +171,8 @@ public class UserController {
       Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
       String username = loggedInUser.getName();
       User user = this.service.getByUserName(username);
-      this.service.update(this.mapperDto.dtoToUser(user,userDTO));
-      System.out.println("");
+      user = this.mapperDto.dtoToUser(user,userDTO);
+      this.service.update(user);
       return user;
     }
 
@@ -185,11 +185,13 @@ public class UserController {
      */
     @PutMapping("{id}")
     @ApiOperation(value = "Updates a user")
-    public User update(@PathVariable final Long id, @Valid @RequestBody final User user)
+    public User update(@PathVariable final Long id, @Valid @RequestBody final UserDTO userDTO)
             throws NotFoundException {
-        final User entity = this.service.getOne(id);
+        User entity = this.service.getOne(id);
 
-        this.mapper.map(user, entity);
+        System.out.println(userDTO.getBirthDate());
+
+        entity = this.mapperDto.dtoToUser(entity,userDTO);
         this.service.update(entity);
 
         return entity;

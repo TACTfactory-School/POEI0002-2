@@ -39,4 +39,7 @@ export class EventService {
   getAllParticipants(id: number) {
     return this.http.get<User[]>(`${URL}/public/participants/${id}`);
   }
+  getAllOrganisators(id: number) {
+    return this.http.get<User[]>(`${URL}/public/organisators/${id}`);
+  }
 }

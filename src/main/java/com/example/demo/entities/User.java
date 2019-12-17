@@ -3,10 +3,7 @@ package com.example.demo.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -91,22 +88,31 @@ public class User extends EntityBase {
   @OneToMany(mappedBy = "userOrganisator")
   private List<UserEventOrganisator> asOrganisators;
 
-  //    @JsonIgnore
-  //    @OneToMany(mappedBy = "userfriends")
-  //    private List<UserFriends> UserFriends;
+  @JsonIgnore
+  @ManyToMany
+  @JoinTable(
+          name="ovg_user_friends",
+          joinColumns=@JoinColumn(name="friend1_id", referencedColumnName="id"),
+          inverseJoinColumns=@JoinColumn(name="friend2_id", referencedColumnName="id"))
+  private List<User> friends;
 
   @JsonIgnore
   @OneToMany(mappedBy = "hobbie")
   private List<UserHobbie> userHobbie;
 
-  @JsonIgnore
-  @OneToMany(mappedBy = "event")
-  private List<TagEvent> tagEvents;
 
   @JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<UserLanguage> userLanguages;
 
+
+  public List<User> getFriends() {
+    return friends;
+  }
+
+  public void setFriends(List<User> friends) {
+    this.friends = friends;
+  }
 
   public List<Event> getEventsAsCreator() {
     return eventsAsCreator;
@@ -115,9 +121,6 @@ public class User extends EntityBase {
   public void setEventsAsCreator(final List<Event> eventsAsCreator) {
     this.eventsAsCreator = eventsAsCreator;
   }
-
-
-
 
   public String getName() {
     return name;
@@ -249,14 +252,6 @@ public class User extends EntityBase {
 
   public void setUserLanguages(final List<UserLanguage> userLanguages) {
     this.userLanguages = userLanguages;
-  }
-
-  public List<TagEvent> getTagEvents() {
-    return tagEvents;
-  }
-
-  public void setTagEvents(final List<TagEvent> tagEvents) {
-    this.tagEvents = tagEvents;
   }
 
 }

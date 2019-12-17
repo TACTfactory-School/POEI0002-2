@@ -20,15 +20,14 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "ovg_event")
 public class Event extends EntityBase {
 
-    private static final int DESC_LENGTH = 5000;
-    private static final int STRING_LENGTH = 255;
 
-  @ManyToOne(optional = true)
+  private static final int DESC_LENGTH = 5000;
+  private static final int STRING_LENGTH = 255;
+
+  @ManyToOne(optional = false)
   private User author;
 
-  static final int LENGTH = 255;
-
-  @Column(length = LENGTH, nullable = false)
+  @Column(length = STRING_LENGTH, nullable = false)
   @NotBlank
   private String title;
 
@@ -55,11 +54,9 @@ public class Event extends EntityBase {
   @NotBlank
   private String city;
 
-  @ManyToMany(cascade = { CascadeType.ALL })
-  @JoinTable(name = "asc_tags", joinColumns =
-      { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
-      @JoinColumn(name = "tag_id") })
-  private List<Tag> tags;
+  @JsonIgnore
+  @OneToMany(mappedBy = "event")
+  private List<TagEvent> tagEvents;
 
   @JsonIgnore
   @OneToMany(mappedBy = "eventParticipant")
@@ -77,12 +74,12 @@ public class Event extends EntityBase {
     this.author = author;
   }
 
-  public List<Tag> getTags() {
-    return tags;
+  public List<TagEvent> getTagEvents() {
+    return tagEvents;
   }
 
-  public void setTags(final List<Tag> tags) {
-    this.tags = tags;
+  public void setTagEvents(List<TagEvent> tagEvents) {
+    this.tagEvents = tagEvents;
   }
 
   public String getTitle() {
@@ -133,12 +130,12 @@ public class Event extends EntityBase {
     this.adresse = adresse;
   }
 
-  public Integer getCP() {
+  public Integer getCp() {
     return cp;
   }
 
-  public void setCP(final Integer cP) {
-    cp = cP;
+  public void setCp(final Integer cp) {
+    this.cp = cp;
   }
 
   public String getCity() {

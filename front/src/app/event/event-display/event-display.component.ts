@@ -14,6 +14,7 @@ export class EventDisplayComponent implements OnInit {
 
   event$: Observable<Event>;
   listeParticipants$: Observable<User[]>;
+  listeOrganisators$: Observable<User[]>;
 
   constructor(private readonly route: ActivatedRoute, private readonly service: EventService) { }
 
@@ -24,6 +25,7 @@ export class EventDisplayComponent implements OnInit {
           if (params.id) {
             this.event$ = this.service.getOne(params.id);
             this.listeParticipants$ = this.service.getAllParticipants(params.id);
+            this.listeOrganisators$ = this.service.getAllOrganisators(params.id);
           }
         });
   }

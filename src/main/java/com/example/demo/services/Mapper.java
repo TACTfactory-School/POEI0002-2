@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 public class Mapper {
 
   public UserDTO userToDto(final User user) {
-
     UserDTO userDTO = new UserDTO();
     userDTO.setId(user.getId());
     userDTO.setUsername(user.getUsername());
@@ -24,6 +23,10 @@ public class Mapper {
     userDTO.setDescription(user.getDescription());
     userDTO.setLastConnectionDate(user.getLastConnectionDate());
     userDTO.setProfession(user.getProfession());
+    userDTO.setLastConnectionDate(user.getLastConnectionDate());
+    userDTO.setCreatedAt(user.getCreatedAt());
+    userDTO.setUpdatedAt(user.getUpdatedAt());
+    userDTO.setMaritalStatus(user.getMaritalStatus());
     return userDTO;
   }
   public EventDTO eventToDTO(final Event event) {
@@ -37,7 +40,7 @@ public class Mapper {
     result.setNbPlace(event.getNbPlace());
     result.setAdresse(event.getAdresse());
     result.setPhoto(event.getPhoto());
-    result.setCp(event.getCP());
+    result.setCp(event.getCp());
     return result;
   }
 
@@ -50,12 +53,11 @@ public class Mapper {
     event.setNbPlace(eventDTO.getNbPlace());
     event.setAdresse(eventDTO.getAdresse());
     event.setPhoto(eventDTO.getPhoto());
-    event.setCP(eventDTO.getCp());
+    event.setCp(eventDTO.getCp());
     return event;
   }
 
   public User dtoToUser(final User user, final UserDTO userDTO) {
-      user.setId(userDTO.getId());
       user.setUsername(userDTO.getUsername());
       user.setCity(userDTO.getCity());
       user.setName(userDTO.getName());
@@ -65,8 +67,9 @@ public class Mapper {
       user.setMaritalStatus(userDTO.getMaritalStatus());
       user.setBirthDate(userDTO.getBirthDate());
       user.setDescription(userDTO.getDescription());
-      user.setLastConnectionDate(userDTO.getLastConnectionDate());
       user.setProfession(userDTO.getProfession());
+      user.setLastConnectionDate(userDTO.getLastConnectionDate());
+      user.setMaritalStatus(userDTO.getMaritalStatus());
       return user;
   }
 }
