@@ -17,5 +17,4 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.user = this.currentUser.observable;
   }
-
 }

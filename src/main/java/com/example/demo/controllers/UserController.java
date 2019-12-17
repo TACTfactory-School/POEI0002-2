@@ -73,6 +73,20 @@ public class UserController {
         return result;
     }
 
+    @GetMapping("/participating")
+    @ApiOperation(value = "Retrieves all events the user takes part in.")
+    public List<Event> getAllMeEvents() throws BadRequestException, NotFoundException{
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String username = loggedInUser.getName();
+        User user = this.service.getByUserName(username);
+        List<UserEventParticipant> evepart = user.getAsParticipant();
+        List<Event> result = new ArrayList<>();
+        for(UserEventParticipant u : evepart) {
+            result.add(u.getEventParticipant());
+        }
+        return result;
+    }
+
     @PostMapping
     @ApiOperation(value = "Creates a new user")
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -82,7 +96,7 @@ public class UserController {
 
     @GetMapping("/me")
     @ApiOperation(value = "Get the curent user")
-    @ResponseStatus(value = HttpStatus.CREATED)
+    @ResponseStatus(value = HttpStatus.OK)
     public UserDTO me() throws BadRequestException, NotFoundException {
         UserDTO result = new UserDTO();
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
@@ -103,6 +117,19 @@ public class UserController {
     @ApiOperation(value = "Retrieve a user")
     public User getOne(@PathVariable final Long id) throws NotFoundException {
         return this.service.getOne(id);
+    }
+
+    @PutMapping("/me/edit")
+    @ApiOperation(value = "Update an event")
+    public User update(@Valid @RequestBody final UserDTO userDTO)
+        throws BadRequestException, NotFoundException {
+
+      Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+      String username = loggedInUser.getName();
+      User user = this.service.getByUserName(username);
+      this.service.update(this.mapperDto.dtoToUser(user,userDTO));
+      System.out.println("");
+      return user;
     }
 
     @PutMapping("{id}")

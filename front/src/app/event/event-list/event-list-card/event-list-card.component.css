@@ -1,7 +1,7 @@
 .example-card {
-  max-width: 400px;
-  max-height: 600px;
-  height: 600px;
+  max-width: 300px;
+  max-height: 450px;
+  height: 500px;
   float: left;
   margin: 1em;
 }
@@ -15,13 +15,25 @@
   flex-grow: 1;
 }
 
-ul {
-  display: inline-block;
+li {
+  float: left;
 }
 
-ul li {
+li a {
+  display: block;
   color: white;
-  margin: 2px;
-  float: left;
+  text-align: center;
+  padding: 4px 6px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }

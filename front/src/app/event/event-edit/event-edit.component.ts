@@ -12,8 +12,6 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class EventEditComponent implements OnInit {
 
-  private event: Observable<Event>;
-
   eventSign = this.fb.group({title: ['',  Validators.required],
     description: ['',  Validators.required],
     id: ['',  Validators.required],
@@ -52,7 +50,10 @@ export class EventEditComponent implements OnInit {
       .params
       .subscribe(params => {
         if (params.id) {
-          this.event = this.service.getOne(params.id);
+          this.service
+              .getOne(params.id)
+              .subscribe(e => this.eventSign.patchValue(e));
+
         }
       });
   }

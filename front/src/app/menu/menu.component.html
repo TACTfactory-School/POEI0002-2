@@ -5,7 +5,8 @@
       <li><a [routerLink]="['home']">Accueil</a></li>
       <li><a [routerLink]="['event']">Liste événements</a></li>
       <li><a [routerLink]="['user']">Liste membres</a></li>
-      <li *ngIf="user|async"><a [routerLink]="['event/create']">Créer un événement </a></li>
+      <li *ngIf="user|async"><a [routerLink]="['event/create']">Creer un événement</a></li>
+      <li *ngIf="user|async"><a [routerLink]="['user/me']">Mon profil</a></li>
    </ul>
   </nav>
 </menu>
