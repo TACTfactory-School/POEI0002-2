@@ -111,12 +111,13 @@ public class EventController {
   @PostMapping
   @ApiOperation(value = "Create an event")
   @ResponseStatus(HttpStatus.CREATED)
-  public Event create(@Valid @RequestBody final Event event)
-      throws BadRequestException, NotFoundException {
+  public Event create(@Valid @RequestBody final EventDTO eventDTO) throws BadRequestException, NotFoundException {
     Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+    Event event = new Event();
     String username = loggedInUser.getName();
     User user = this.userService.getByUserName(username);
     event.setAuthor(user);
+    event = this.mapperDto.dtoToEvent(event,eventDTO);
     return this.service.create(event);
   }
 

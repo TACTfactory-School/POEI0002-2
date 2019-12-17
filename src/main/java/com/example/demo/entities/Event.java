@@ -1,7 +1,6 @@
 package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,7 +20,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "ovg_event")
 public class Event extends EntityBase {
 
-  @ManyToOne(optional = true)
+  @ManyToOne(optional = false)
   private User author;
 
   static final int LENGTH = 255;
@@ -40,24 +39,22 @@ public class Event extends EntityBase {
   @Column(nullable = false)
   private Integer nbPlace;
 
-  @Column(length = 255, nullable = true)
+  @Column(length = LENGTH, nullable = true)
   private String photo;
 
-  @Column(length = 255, nullable = true)
+  @Column(length = LENGTH, nullable = true)
   private String adresse;
 
   @Column(nullable = true) //modifier en cp pour checkstyle
-  private Integer CP;
+  private Integer Cp;
 
-  @Column(length = 255, nullable = false)
+  @Column(length = LENGTH, nullable = false)
   @NotBlank
   private String city;
 
-  @ManyToMany(cascade = { CascadeType.ALL })
-  @JoinTable(name = "asc_tags", joinColumns =
-      { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
-      @JoinColumn(name = "tag_id") })
-  private List<Tag> tags;
+  @JsonIgnore
+  @OneToMany(mappedBy = "event")
+  private List<TagEvent> tagEvents;
 
   @JsonIgnore
   @OneToMany(mappedBy = "eventParticipant")
@@ -75,12 +72,12 @@ public class Event extends EntityBase {
     this.author = author;
   }
 
-  public List<Tag> getTags() {
-    return tags;
+  public List<TagEvent> getTagEvents() {
+    return tagEvents;
   }
 
-  public void setTags(List<Tag> tags) {
-    this.tags = tags;
+  public void setTagEvents(List<TagEvent> tagEvents) {
+    this.tagEvents = tagEvents;
   }
 
   public String getTitle() {
@@ -131,12 +128,12 @@ public class Event extends EntityBase {
     this.adresse = adresse;
   }
 
-  public Integer getCP() {
-    return CP;
+  public Integer getCp() {
+    return Cp;
   }
 
-  public void setCP(Integer cP) {
-    CP = cP;
+  public void setCp(Integer cP) {
+    Cp = cP;
   }
 
   public String getCity() {

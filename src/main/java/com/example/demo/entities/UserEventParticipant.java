@@ -1,18 +1,18 @@
 package com.example.demo.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "ovg_user_event_participant")
+@Table(name = "ovg_user_event_participant",
+        uniqueConstraints={@UniqueConstraint(columnNames = {"participant_id" , "event_id"})})
 public class UserEventParticipant extends EntityBase {
 
   @ManyToOne
+  @JoinColumn(name = "participant_id")
   private User userParticipant;
 
   @ManyToOne
+  @JoinColumn(name = "event_id")
   private Event eventParticipant;
 
 

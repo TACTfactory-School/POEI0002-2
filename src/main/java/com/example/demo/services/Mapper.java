@@ -37,7 +37,7 @@ public class Mapper {
     result.setNbPlace(event.getNbPlace());    
     result.setAdresse(event.getAdresse());
     result.setPhoto(event.getPhoto());
-    result.setCp(event.getCP());
+    result.setCp(event.getCp());
     return result;
   }
 
@@ -50,7 +50,7 @@ public class Mapper {
     event.setNbPlace(eventDTO.getNbPlace());
     event.setAdresse(eventDTO.getAdresse());
     event.setPhoto(eventDTO.getPhoto());
-    event.setCP(eventDTO.getCp());
+    event.setCp(eventDTO.getCp());
     return event;
   }
 }
