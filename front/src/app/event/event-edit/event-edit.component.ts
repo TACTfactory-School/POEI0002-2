@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {EventService} from '../event.service';
 import {Event} from '../event';
-import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({

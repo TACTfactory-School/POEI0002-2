@@ -30,6 +30,4 @@ public class UserHobbie extends EntityBase {
   public void setUser(User user) {
     this.user = user;
   }
-
-
 }
