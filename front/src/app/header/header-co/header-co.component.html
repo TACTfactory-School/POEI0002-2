@@ -4,7 +4,6 @@
 <button *ngIf="!(user|async)" [routerLink]="['login']"> Connexion </button>
 <button *ngIf="!(user|async)" [routerLink]="['sign-up']"> Inscription</button>
 <button *ngIf="user|async" [routerLink]="[ 'login' ]">Logout </button>
-<button *ngIf="user|async" [routerLink]="[ 'notification' ]">Notification </button>
 
   <a *ngIf="user|async" [routerLink]="['notification']"
   matBadge="4" matBadgeColor="warn" >  <img src= "assets/img/default_user.png" width="80"  >
