@@ -15,13 +15,13 @@ import org.springframework.stereotype.Component;
 @Transactional
 public class EventCreateService {
 
-  private static final Logger logger = LoggerFactory.getLogger(EventCreateService.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(EventCreateService.class);
 
   @Autowired
   private EventRepository event;
 
   Event create(final Event event) {
-    logger.debug("Create employee");
+    LOGGER.debug("Create employee");
 
     return this.event.save(event);
   }

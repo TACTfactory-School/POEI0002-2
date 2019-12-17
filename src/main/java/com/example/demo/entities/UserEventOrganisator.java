@@ -23,7 +23,7 @@ public class UserEventOrganisator extends EntityBase {
     return validation;
   }
 
-  public void setValidation(Boolean validation) {
+  public void setValidation(final Boolean validation) {
     this.validation = validation;
   }
 
@@ -31,7 +31,7 @@ public class UserEventOrganisator extends EntityBase {
     return userOrganisator;
   }
 
-  public void setUserOrganisator(User userOrganisator) {
+  public void setUserOrganisator(final User userOrganisator) {
     this.userOrganisator = userOrganisator;
   }
 
@@ -39,7 +39,7 @@ public class UserEventOrganisator extends EntityBase {
     return eventOrganisator;
   }
 
-  public void setEventOrganisator(Event eventOrganisator) {
+  public void setEventOrganisator(final Event eventOrganisator) {
     this.eventOrganisator = eventOrganisator;
   }
 }

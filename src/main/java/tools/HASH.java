@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class HASH {
 
-  public static PasswordEncoder hash(){
+  public static PasswordEncoder hash() {
     String idForEncode = "bcrypt";
     Map<String, PasswordEncoder> encoders = new HashMap<String, PasswordEncoder>();
     encoders.put(idForEncode, new BCryptPasswordEncoder());

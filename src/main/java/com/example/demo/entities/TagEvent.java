@@ -19,7 +19,7 @@ public class TagEvent extends EntityBase {
     return event;
   }
 
-  public void setEvent(Event event) {
+  public void setEvent(final Event event) {
     this.event = event;
   }
 
@@ -27,7 +27,7 @@ public class TagEvent extends EntityBase {
     return tag;
   }
 
-  public void setTag(Tag tag) {
+  public void setTag(final Tag tag) {
     this.tag = tag;
   }
 }

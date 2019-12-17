@@ -33,7 +33,7 @@ public class Hobbie {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
@@ -41,7 +41,7 @@ public class Hobbie {
     return label;
   }
 
-  public void setLabel(String label) {
+  public void setLabel(final String label) {
     this.label = label;
   }
 
@@ -49,7 +49,7 @@ public class Hobbie {
     return userHobbies;
   }
 
-  public void setUserHobbies(List<UserHobbie> userHobbies) {
+  public void setUserHobbies(final List<UserHobbie> userHobbies) {
     this.userHobbies = userHobbies;
   }
 }

@@ -1,4 +1,4 @@
-<button [routerLink]='["../event"]'>Mode tableau</button>
+<button [routerLink]='["../event"]'>Mode Carte</button>
 <ul>
 <li  *ngFor="let item of [].constructor(totalPages); let i = index">
   <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
@@ -8,7 +8,7 @@
 <table mat-table [dataSource]="events">
 
   <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef> title </th>
+    <th mat-header-cell *matHeaderCellDef> Titre  </th>
     <td mat-cell *matCellDef="let e"> {{e.title}} </td>
   </ng-container>
 

@@ -1,0 +1,39 @@
+<h1>Edition du profil.</h1>
+
+<form [formGroup]="userEdit" (ngSubmit)="onSubmit()">
+
+  <div class="field-wrap">
+    <input type="hidden" formControlName="username" placeholder="Pseudo"/>
+  </div>
+
+  <input type="hidden" formControlName="id"/>
+
+  <div class="field-wrap">
+    <input type="text" formControlName="city" placeholder="Ville"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="text" formControlName="profession" placeholder = "Metier"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="text" formControlName="description" placeholder = "Description"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="datetime-local" formControlName="birthdate" placeholder="Date de naissance"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="text" formControlName="mail" placeholder="E-Mail"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="text" formControlName="password" placeholder="Mot de passe"/>
+  </div>
+
+  <input type="hidden" formControlName="enable"/>
+
+  <input type="submit" value="Valider"/>
+
+</form>
