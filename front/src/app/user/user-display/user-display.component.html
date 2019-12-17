@@ -1,11 +1,23 @@
 <ng-container>
   <article *ngIf="(user$ | async) as user; else loading">
-        <h1>{{ user.username }}</h1>
-        <img src="../../../assets/img/{{user.picture}}" alt="avatar">
-        <p>Ville : {{ user.city }}</p>
-        <p>Profession : {{ user.profession }}</p>
-        <p>Description : {{ user.description }}</p>
-        <p>Age : {{ user.birthDate|datetoage}}</p>
+    <h1> {{ user.username }}</h1>
+    <p> Prénom : {{ user.name }}</p>
+    <p> Sexe : {{ user.sex }}</p>
+    <img src="../../../assets/img/{{user.picture}}" alt="avatar">
+    <p> Situation : {{ user.marital_status }}</p>
+    <p> Age : {{ user.birthDate|datetoage}}</p>
+    <p> Ville : {{ user.city }}</p>
+    <p> Description : {{ user.description }}</p>
+    <p> Inscrit le  : {{ user.created_at }}</p>
+    <p> Dernière connexion : {{ user.last_connection_date }}</p>
+    <p> Activités favorites : </p>
+    <p> Fiabilité : </p>
+    <p> Profession: {{ user.profession }} </p>
+    <p> Langues parlés : </p>
+    <p> Loisirs : </p>
+    <p> Liste d'amis : </p>
+    <p> Evenement futur : </p>
+    <p> Profession : {{ user.profession }}</p>
   </article>
 
   <h2>Liste des événements auxquels je participe</h2>
