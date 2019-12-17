@@ -1,12 +1,17 @@
 export interface User {
-
-    id: number;
-    username: string;
-    city: string;
-    role: string;
-    enable: boolean;
-    password: string;
-    profession: string;
-    description: string;
-    birthDate: string;
+  id: number;
+  created_at: string;
+  update_at: string;
+  birthDate: string;
+  city: string;
+  description: string;
+  email: string;
+  last_connection_date: string;
+  marital_status: string;
+  name: string;
+  password: string;
+  picture: string;
+  profession: string;
+  sex: string;
+  username: string;
   }

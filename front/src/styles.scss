@@ -1,16 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body {font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-
-  html {
-    overflow-y: scroll;
   }
 
   body {
@@ -19,6 +13,8 @@ body {font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-size: cover;
     background-attachment: fixed;
   }
-
+  .mat-drawer-content{
+    padding-left: 1%;
+  }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
