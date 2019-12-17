@@ -67,7 +67,7 @@ public class EventController {
   private Mapper mapperDto;
 
   /**
- * @param pageable
+ * @param pageable containing a page number and a number of elements.
  * @return Return a page of users.
  */
 @GetMapping("/public")
@@ -170,7 +170,13 @@ public class EventController {
     return event;
   }
 
-  @GetMapping("/join/{id}")
+  /**
+ * @param id of an Event
+ * @throws NotFoundException
+ *
+ * Add a user determined by an authentication token, to an event determined by its id.
+ */
+@GetMapping("/join/{id}")
   @ApiOperation(value = "Add a user to an event as participant")
   public void join(@PathVariable final Long id) throws NotFoundException {
     Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
@@ -192,14 +198,24 @@ public class EventController {
 
   }
 
-  @DeleteMapping("{id}")
+  /**
+ * @param id of an Event
+ *
+ * Delete an event
+ */
+@DeleteMapping("{id}")
   @ApiOperation(value = "Delete an event")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void delete(@PathVariable final Long id) {
     this.service.delete(id);
   }
 
-  @GetMapping("/public/{id}")
+  /**
+ * @param id
+ * @return Return an event
+ * @throws NotFoundException
+ */
+@GetMapping("/public/{id}")
   @ApiOperation(value = "Retrieve an event")
   public EventDTO getOne(@PathVariable final Long id) throws NotFoundException {
     return mapperDto.eventToDTO(this.service.getOne(id));
