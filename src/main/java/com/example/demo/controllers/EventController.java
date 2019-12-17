@@ -67,7 +67,7 @@ public class EventController {
   private Mapper mapperDto;
 
   /**
- * @param pageable
+ * @param pageable containing a page number and a number of elements.
  * @return Return a page of users.
  */
 @GetMapping("/public")
@@ -100,7 +100,6 @@ public class EventController {
     /**
      * @param id of an event
      * @return Return a list of users organizing the event with the defined id.
-     * @throws NotFoundException
      */
     @GetMapping("/public/organisators/{id}")
     @ApiOperation(value = "Retrieves all users organisators to the event")
@@ -119,8 +118,6 @@ public class EventController {
      * @param username
      *
      * Set a user defined by his username as organizer of an event defined by his id.
-     *
-     * @throws NotFoundException
      */
     @PostMapping("/organisators")
     @ApiOperation(value = "Add a user as organizer of an event")
@@ -138,8 +135,6 @@ public class EventController {
   /**
  * @param event
  * @return Return the event created.
- * @throws BadRequestException
- * @throws NotFoundException
  */
 @PostMapping
   @ApiOperation(value = "Create an event")
@@ -158,8 +153,6 @@ public class EventController {
  * @param id
  * @param eventDTO
  * @return return the event updated
- * @throws BadRequestException
- * @throws NotFoundException
  */
 @PutMapping("{id}")
   @ApiOperation(value = "Update an event")
@@ -171,7 +164,12 @@ public class EventController {
     return event;
   }
 
-  @GetMapping("/join/{id}")
+  /**
+ * @param id of an Event
+ *
+ * Add a user determined by an authentication token, to an event determined by its id.
+ */
+@GetMapping("/join/{id}")
   @ApiOperation(value = "Add a user to an event as participant")
   public void join(@PathVariable final Long id) throws NotFoundException {
     Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
@@ -193,14 +191,23 @@ public class EventController {
 
   }
 
-  @DeleteMapping("{id}")
+  /**
+ * @param id of an Event
+ *
+ * Delete an event
+ */
+@DeleteMapping("{id}")
   @ApiOperation(value = "Delete an event")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void delete(@PathVariable final Long id) {
     this.service.delete(id);
   }
 
-  @GetMapping("/public/{id}")
+  /**
+ * @param id
+ * @return Return an event
+ */
+@GetMapping("/public/{id}")
   @ApiOperation(value = "Retrieve an event")
   public EventDTO getOne(@PathVariable final Long id) throws NotFoundException {
     return mapperDto.eventToDTO(this.service.getOne(id));

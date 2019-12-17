@@ -6,12 +6,8 @@
 </ul>
 <section *ngFor="let e of events " class="main">
   <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title [routerLink]="[e.id]">{{ e.title }}</mat-card-title>
-      <mat-card-subtitle>{{ e.author }}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+
+    <img mat-card-image src="assets/img/ohshit.jpg" alt="Oh shit">
     <mat-card-content>
       <p>{{ e.description }}</p>
       <p>{{ e.dueAt | dateTransform }}</p>
