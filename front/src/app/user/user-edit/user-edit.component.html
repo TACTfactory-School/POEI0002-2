@@ -2,6 +2,10 @@
 
 <form [formGroup]="userEdit" (ngSubmit)="onSubmit()">
 
+  <div class="field-wrap">
+    <input type="hidden" formControlName="username" placeholder="Pseudo"/>
+  </div>
+
   <input type="hidden" formControlName="id"/>
 
   <div class="field-wrap">
@@ -10,6 +14,10 @@
 
   <div class="field-wrap">
     <input type="text" formControlName="profession" placeholder = "Metier"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="text" formControlName="description" placeholder = "Description"/>
   </div>
 
   <div class="field-wrap">

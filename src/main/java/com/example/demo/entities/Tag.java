@@ -33,7 +33,7 @@ public class Tag {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
@@ -41,7 +41,7 @@ public class Tag {
     return label;
   }
 
-  public void setLabel(String label) {
+  public void setLabel(final String label) {
     this.label = label;
   }
 
@@ -49,7 +49,7 @@ public class Tag {
     return tagEvents;
   }
 
-  public void setTagEvents(List<TagEvent> tagEvents) {
+  public void setTagEvents(final List<TagEvent> tagEvents) {
     this.tagEvents = tagEvents;
   }
 

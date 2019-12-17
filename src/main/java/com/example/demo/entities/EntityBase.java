@@ -46,7 +46,7 @@ public class EntityBase {
     return createdAt;
   }
 
-  public void setCreatedAt(LocalDateTime createdAt) {
+  public void setCreatedAt(final LocalDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -54,11 +54,11 @@ public class EntityBase {
     return updatedAt;
   }
 
-  public void setUpdatedAt(LocalDateTime updatedAt) {
+  public void setUpdatedAt(final LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
 
-  public void setId(Long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
@@ -66,7 +66,7 @@ public class EntityBase {
     return enable;
   }
 
-  public void setEnable(Boolean enable) {
+  public void setEnable(final Boolean enable) {
     this.enable = enable;
   }
 

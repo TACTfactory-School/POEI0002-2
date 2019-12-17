@@ -1,7 +1,6 @@
 package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,6 +20,9 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "ovg_event")
 public class Event extends EntityBase {
 
+    private static final int DESC_LENGTH = 5000;
+    private static final int STRING_LENGTH = 255;
+
   @ManyToOne(optional = true)
   private User author;
 
@@ -30,7 +32,7 @@ public class Event extends EntityBase {
   @NotBlank
   private String title;
 
-  @Column(length = 5000, nullable = false)
+  @Column(length = DESC_LENGTH, nullable = false)
   @NotBlank
   private String description;
 
@@ -40,16 +42,16 @@ public class Event extends EntityBase {
   @Column(nullable = false)
   private Integer nbPlace;
 
-  @Column(length = 255, nullable = true)
+  @Column(length = STRING_LENGTH, nullable = true)
   private String photo;
 
-  @Column(length = 255, nullable = true)
+  @Column(length = STRING_LENGTH, nullable = true)
   private String adresse;
 
   @Column(nullable = true) //modifier en cp pour checkstyle
-  private Integer CP;
+  private Integer cp;
 
-  @Column(length = 255, nullable = false)
+  @Column(length = STRING_LENGTH, nullable = false)
   @NotBlank
   private String city;
 
@@ -71,7 +73,7 @@ public class Event extends EntityBase {
     return author;
   }
 
-  public void setAuthor(User author) {
+  public void setAuthor(final User author) {
     this.author = author;
   }
 
@@ -79,7 +81,7 @@ public class Event extends EntityBase {
     return tags;
   }
 
-  public void setTags(List<Tag> tags) {
+  public void setTags(final List<Tag> tags) {
     this.tags = tags;
   }
 
@@ -87,7 +89,7 @@ public class Event extends EntityBase {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(final String title) {
     this.title = title;
   }
 
@@ -103,7 +105,7 @@ public class Event extends EntityBase {
     return dueAt;
   }
 
-  public void setDueAt(LocalDateTime dueAt) {
+  public void setDueAt(final LocalDateTime dueAt) {
     this.dueAt = dueAt;
   }
 
@@ -111,7 +113,7 @@ public class Event extends EntityBase {
     return nbPlace;
   }
 
-  public void setNbPlace(Integer nbPlace) {
+  public void setNbPlace(final Integer nbPlace) {
     this.nbPlace = nbPlace;
   }
 
@@ -119,7 +121,7 @@ public class Event extends EntityBase {
     return photo;
   }
 
-  public void setPhoto(String photo) {
+  public void setPhoto(final String photo) {
     this.photo = photo;
   }
 
@@ -127,23 +129,23 @@ public class Event extends EntityBase {
     return adresse;
   }
 
-  public void setAdresse(String adresse) {
+  public void setAdresse(final String adresse) {
     this.adresse = adresse;
   }
 
   public Integer getCP() {
-    return CP;
+    return cp;
   }
 
-  public void setCP(Integer cP) {
-    CP = cP;
+  public void setCP(final Integer cP) {
+    cp = cP;
   }
 
   public String getCity() {
     return city;
   }
 
-  public void setCity(String city) {
+  public void setCity(final String city) {
     this.city = city;
   }
 
@@ -151,7 +153,7 @@ public class Event extends EntityBase {
     return organisators;
   }
 
-  public void setOrganisators(List<UserEventOrganisator> organisators) {
+  public void setOrganisators(final List<UserEventOrganisator> organisators) {
     this.organisators = organisators;
   }
 
@@ -159,11 +161,11 @@ public class Event extends EntityBase {
     return participants;
   }
 
-  public void setParticipants(List<UserEventParticipant> participants) {
+  public void setParticipants(final List<UserEventParticipant> participants) {
     this.participants = participants;
   }
 
-  public void addParticipant(UserEventParticipant usereventparticipant) {
+  public void addParticipant(final UserEventParticipant usereventparticipant) {
     this.participants.add(usereventparticipant);
   }
 

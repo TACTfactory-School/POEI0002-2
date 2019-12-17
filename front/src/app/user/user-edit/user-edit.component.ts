@@ -12,9 +12,11 @@ import { AuthApiService } from '../../auth/auth-api.service';
 })
 export class UserEditComponent implements OnInit {
 
-  userEdit = this.fb.group({city: ['',  Validators.required],
+  userEdit = this.fb.group({username: ['',  Validators.required],
+                            city: ['',  Validators.required],
                             id: ['',  Validators.required],
                             profession: [''],
+                            description: [''],
                             birthdate: [''],
                             enable: ['true', Validators.required],
                             mail: [''],
@@ -32,9 +34,11 @@ export class UserEditComponent implements OnInit {
     console.log('submitted');
   }
 
+  get username(): AbstractControl { return this.userEdit.get('username'); }
   get city(): AbstractControl { return this.userEdit.get('city'); }
   get id(): AbstractControl { return this.userEdit.get('id'); }
   get profession(): AbstractControl { return this.userEdit.get('profession'); }
+  get description(): AbstractControl { return this.userEdit.get('description'); }
   get birthdate(): AbstractControl { return this.userEdit.get('birthdate'); }
   get enable(): AbstractControl { return this.userEdit.get('enable'); }
   get mail(): AbstractControl { return this.userEdit.get('mail'); }

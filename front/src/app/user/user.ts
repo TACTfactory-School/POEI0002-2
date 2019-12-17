@@ -2,7 +2,7 @@ export interface User {
   id: number;
   created_at: string;
   update_at: string;
-  birthDate: string;
+  birthDate: Date;
   city: string;
   description: string;
   email: string;

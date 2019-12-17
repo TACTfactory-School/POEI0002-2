@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import com.example.demo.entities.Event;
-import com.example.demo.entities.dtos.EventDTO;
 import com.example.demo.entities.dtos.UserDTO;
 import com.example.demo.services.Mapper;
 import org.modelmapper.ModelMapper;
@@ -39,7 +38,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("api/v1/user")
-@Api(value="User Management System", tags = "Users")
+@Api(value = "User Management System", tags = "Users")
 public class UserController {
 
     @Autowired
@@ -53,17 +52,17 @@ public class UserController {
 
     @GetMapping("/public")
     @ApiOperation(value = "Retrieves all user")
-    public Page<UserDTO> getAll(Pageable pageable){
+    public Page<UserDTO> getAll(final Pageable pageable) {
         Page<User> userPage = this.service.getAll(pageable);
         userPage.getTotalElements();
         return new PageImpl<>(userPage.stream()
-                .map(user->mapperDto.userToDto(user))
+                .map(user -> mapperDto.userToDto(user))
                 .collect(Collectors.toList()), pageable, userPage.getTotalElements());
     }
 
     @GetMapping("/public/participating/{id}")
     @ApiOperation(value = "Retrieves all events the user takes part in.")
-    public List<Event> getAllEvents(@PathVariable final Long id) throws NotFoundException{
+    public List<Event> getAllEvents(@PathVariable final Long id) throws NotFoundException {
         User user = this.service.getOne(id);
         List<UserEventParticipant> evepart = user.getAsParticipant();
         List<Event> result = new ArrayList<>();
@@ -75,7 +74,7 @@ public class UserController {
 
     @GetMapping("/participating")
     @ApiOperation(value = "Retrieves all events the user takes part in.")
-    public List<Event> getAllMeEvents() throws BadRequestException, NotFoundException{
+    public List<Event> getAllMeEvents() throws BadRequestException, NotFoundException {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String username = loggedInUser.getName();
         User user = this.service.getByUserName(username);
