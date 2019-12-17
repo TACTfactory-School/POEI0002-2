@@ -15,6 +15,14 @@
             </div>
         </article>
 
+        <h2> Liste des organisateurs</h2>
+
+        <article *ngIf="(listeOrganisators$ | async) as organisateurs; else loading">
+            <div *ngFor="let o of organisateurs">
+                <p>{{ o.username }}</p>
+            </div>
+        </article>
+
   </article>
   <a [routerLink]="['../..']">Retour</a>
 
