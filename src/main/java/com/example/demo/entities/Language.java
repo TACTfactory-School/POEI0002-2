@@ -33,7 +33,7 @@ public class Language {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
@@ -41,7 +41,7 @@ public class Language {
     return label;
   }
 
-  public void setLabel(String label) {
+  public void setLabel(final String label) {
     this.label = label;
   }
 
@@ -49,7 +49,7 @@ public class Language {
     return speakers;
   }
 
-  public void setSpeakers(List<UserLanguage> speakers) {
+  public void setSpeakers(final List<UserLanguage> speakers) {
     this.speakers = speakers;
   }
 

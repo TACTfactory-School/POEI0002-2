@@ -31,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   }
 
   @Override
-  public void configure(HttpSecurity http) throws Exception {
+  public void configure(final HttpSecurity http) throws Exception {
     http.cors().and()
     .antMatcher("/")
     .authorizeRequests()
@@ -43,16 +43,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   }
 
   @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+  protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
     auth.userDetailsService(userDetailsService).passwordEncoder(HASH.hash());
   }
 
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(final WebSecurity web) throws Exception {
         web.ignoring()
-            .antMatchers( HttpMethod.OPTIONS,"/**")
-            .antMatchers( HttpMethod.POST,"/api/v1/user")
+            .antMatchers(HttpMethod.OPTIONS, "/**")
+            .antMatchers(HttpMethod.POST, "/api/v1/user")
             .antMatchers(HttpMethod.GET, "/api/v1/*/public**")
             .antMatchers(HttpMethod.GET, "/api/v1/*/public/**");
     }

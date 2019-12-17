@@ -66,7 +66,7 @@ public class User extends EntityBase {
     return role;
   }
 
-  public void setRole(String role) {
+  public void setRole(final String role) {
     this.role = role;
   }
 
@@ -74,7 +74,7 @@ public class User extends EntityBase {
     return enable;
   }
 
-  public void setEnable(Boolean enable) {
+  public void setEnable(final Boolean enable) {
     this.enable = enable;
   }
 
@@ -97,7 +97,7 @@ public class User extends EntityBase {
 
   @JsonIgnore
   @OneToMany(mappedBy = "hobbie")
-  private List<UserHobbie> UserHobbie;
+  private List<UserHobbie> userHobbie;
 
   @JsonIgnore
   @OneToMany(mappedBy = "event")
@@ -112,7 +112,7 @@ public class User extends EntityBase {
     return eventsAsCreator;
   }
 
-  public void setEventsAsCreator(List<Event> eventsAsCreator) {
+  public void setEventsAsCreator(final List<Event> eventsAsCreator) {
     this.eventsAsCreator = eventsAsCreator;
   }
 
@@ -123,7 +123,7 @@ public class User extends EntityBase {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(final String name) {
     this.name = name;
   }
 
@@ -131,7 +131,7 @@ public class User extends EntityBase {
     return email;
   }
 
-  public void setEmail(String email) {
+  public void setEmail(final String email) {
     this.email = email;
   }
 
@@ -139,7 +139,7 @@ public class User extends EntityBase {
     return sex;
   }
 
-  public void setSex(String sex) {
+  public void setSex(final String sex) {
     this.sex = sex;
   }
 
@@ -147,7 +147,7 @@ public class User extends EntityBase {
     return picture;
   }
 
-  public void setPicture(String picture) {
+  public void setPicture(final String picture) {
     this.picture = picture;
   }
 
@@ -155,7 +155,7 @@ public class User extends EntityBase {
     return maritalStatus;
   }
 
-  public void setMaritalStatus(String maritalStatus) {
+  public void setMaritalStatus(final String maritalStatus) {
     this.maritalStatus = maritalStatus;
   }
 
@@ -163,7 +163,7 @@ public class User extends EntityBase {
     return birthDate;
   }
 
-  public void setBirthDate(LocalDateTime birthDate) {
+  public void setBirthDate(final LocalDateTime birthDate) {
     this.birthDate = birthDate;
   }
 
@@ -171,7 +171,7 @@ public class User extends EntityBase {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(final String description) {
     this.description = description;
   }
 
@@ -179,7 +179,7 @@ public class User extends EntityBase {
     return lastConnectionDate;
   }
 
-  public void setLastConnectionDate(LocalDateTime lastConnectionDate) {
+  public void setLastConnectionDate(final LocalDateTime lastConnectionDate) {
     this.lastConnectionDate = lastConnectionDate;
   }
 
@@ -187,7 +187,7 @@ public class User extends EntityBase {
     return profession;
   }
 
-  public void setProfession(String profession) {
+  public void setProfession(final String profession) {
     this.profession = profession;
   }
 
@@ -219,11 +219,11 @@ public class User extends EntityBase {
     return asParticipant;
   }
 
-  public void addAsParticipant(UserEventParticipant usereventparticipant){
+  public void addAsParticipant(final UserEventParticipant usereventparticipant) {
     this.asParticipant.add(usereventparticipant);
   }
 
-  public void setAsParticipant(List<UserEventParticipant> asParticipant) {
+  public void setAsParticipant(final List<UserEventParticipant> asParticipant) {
     this.asParticipant = asParticipant;
   }
 
@@ -231,23 +231,23 @@ public class User extends EntityBase {
     return asOrganisators;
   }
 
-  public void setAsOrganisators(List<UserEventOrganisator> asOrganisators) {
+  public void setAsOrganisators(final List<UserEventOrganisator> asOrganisators) {
     this.asOrganisators = asOrganisators;
   }
 
   public List<UserHobbie> getUserHobbie() {
-    return UserHobbie;
+    return userHobbie;
   }
 
-  public void setUserHobbie(List<UserHobbie> userHobbie) {
-    UserHobbie = userHobbie;
+  public void setUserHobbie(final List<UserHobbie> userHobbie) {
+    this.userHobbie = userHobbie;
   }
 
   public List<UserLanguage> getUserLanguages() {
     return userLanguages;
   }
 
-  public void setUserLanguages(List<UserLanguage> userLanguages) {
+  public void setUserLanguages(final List<UserLanguage> userLanguages) {
     this.userLanguages = userLanguages;
   }
 
@@ -255,7 +255,7 @@ public class User extends EntityBase {
     return tagEvents;
   }
 
-  public void setTagEvents(List<TagEvent> tagEvents) {
+  public void setTagEvents(final List<TagEvent> tagEvents) {
     this.tagEvents = tagEvents;
   }
 

@@ -18,7 +18,7 @@ public class UserCrudServiceImpl implements UserCrudService {
   private UserCreateService createService;
 
   @Override
-  public Page getAll(Pageable pageable) {
+  public Page getAll(final Pageable pageable) {
 
     Page pagedResult = this.repository.findAll(pageable);
 
@@ -52,7 +52,7 @@ public class UserCrudServiceImpl implements UserCrudService {
   }
 
   @Override
-  public User getByUserName(String username) throws NotFoundException {
+  public User getByUserName(final String username) throws NotFoundException {
     return this.repository.findByUsername(username);
   }
 

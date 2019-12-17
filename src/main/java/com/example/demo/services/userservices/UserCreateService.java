@@ -17,13 +17,13 @@ import tools.HASH;
 @Transactional
 public class UserCreateService {
 
-  private static final Logger logger = LoggerFactory.getLogger(EventCreateService.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(EventCreateService.class);
 
   @Autowired
   private UserRepository user;
 
   User create(final User user) {
-    logger.debug("Creation utilisateur");
+    LOGGER.debug("Creation utilisateur");
     user.setPassword(HASH.hash().encode(user.getPassword()));
     return this.user.save(user);
   }

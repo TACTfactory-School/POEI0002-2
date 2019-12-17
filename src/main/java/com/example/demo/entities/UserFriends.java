@@ -5,7 +5,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ovg_user_friends")
-public class UserFriends extends EntityBase{
+public class UserFriends extends EntityBase {
 
 //    @OneToMany
 //    private User user1;

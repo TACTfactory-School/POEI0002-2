@@ -303,3 +303,7 @@ fabric.properties
 mvn.sh
 /README.md.rej
 /schema-utils
+
+
+### JAVADOC ####
+doc/javadoc

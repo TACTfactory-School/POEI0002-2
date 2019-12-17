@@ -16,13 +16,13 @@ public class EventDTO {
     private long id;
     private String photo;
     private String adresse;
-    private Integer Cp;
+    private Integer cp;
 
     public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(final String photo) {
         this.photo = photo;
     }
 
@@ -30,23 +30,23 @@ public class EventDTO {
         return adresse;
     }
 
-    public void setAdresse(String adresse) {
+    public void setAdresse(final String adresse) {
         this.adresse = adresse;
     }
 
     public Integer getCp() {
-        return Cp;
+        return cp;
     }
 
-    public void setCp(Integer cp) {
-        Cp = cp;
+    public void setCp(final Integer cp) {
+        this.cp = cp;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(final long id) {
         this.id = id;
     }
 
@@ -54,7 +54,7 @@ public class EventDTO {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(final String title) {
         this.title = title;
     }
 
@@ -62,7 +62,7 @@ public class EventDTO {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -70,7 +70,7 @@ public class EventDTO {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(final String author) {
         this.author = author;
     }
 
@@ -78,7 +78,7 @@ public class EventDTO {
         return dueAt;
     }
 
-    public void setDueAt(LocalDateTime dueAt) {
+    public void setDueAt(final LocalDateTime dueAt) {
         this.dueAt = dueAt;
     }
 
@@ -86,7 +86,7 @@ public class EventDTO {
         return nbPlace;
     }
 
-    public void setNbPlace(Integer nbPlace) {
+    public void setNbPlace(final Integer nbPlace) {
         this.nbPlace = nbPlace;
     }
 
@@ -94,7 +94,7 @@ public class EventDTO {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(final String city) {
         this.city = city;
     }
 }
