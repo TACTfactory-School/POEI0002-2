@@ -1,0 +1,14 @@
+com.example.demo
+com.example.demo.configurations
+com.example.demo.controllers
+com.example.demo.entities
+com.example.demo.entities.dtos
+com.example.demo.exeptions
+com.example.demo.repository
+com.example.demo.security
+com.example.demo.security.services
+com.example.demo.services
+com.example.demo.services.eventservices
+com.example.demo.services.fixtures
+com.example.demo.services.userservices
+tools
