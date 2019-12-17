@@ -1,5 +1,7 @@
 package com.example.demo.entities.dtos;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import java.time.LocalDateTime;
 
 
@@ -19,13 +21,21 @@ public class UserDTO {
 
   private String picture = "default_user.png";
 
+  @JsonProperty("marital_status")
   private String maritalStatus;
 
   private LocalDateTime birthDate;
 
   private String description;
 
+  @JsonProperty("last_connection_date")
   private LocalDateTime lastConnectionDate;
+
+  @JsonProperty("created_at")
+  private LocalDateTime createdAt;
+
+  @JsonProperty("update_at")
+  private LocalDateTime updatedAt;
 
   private String profession;
 
@@ -125,5 +135,21 @@ public class UserDTO {
 
   public void setProfession(final String profession) {
     this.profession = profession;
+  }
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(final LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public LocalDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(final LocalDateTime updatedAt) {
+    this.updatedAt = updatedAt;
   }
 }

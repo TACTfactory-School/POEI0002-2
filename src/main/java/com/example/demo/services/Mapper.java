@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 public class Mapper {
 
   public UserDTO userToDto(final User user) {
-
     UserDTO userDTO = new UserDTO();
     userDTO.setId(user.getId());
     userDTO.setUsername(user.getUsername());
@@ -24,6 +23,10 @@ public class Mapper {
     userDTO.setDescription(user.getDescription());
     userDTO.setLastConnectionDate(user.getLastConnectionDate());
     userDTO.setProfession(user.getProfession());
+    userDTO.setLastConnectionDate(user.getLastConnectionDate());
+    userDTO.setCreatedAt(user.getCreatedAt());
+    userDTO.setUpdatedAt(user.getUpdatedAt());
+    userDTO.setMaritalStatus(user.getMaritalStatus());
     return userDTO;
   }
   public EventDTO eventToDTO(final Event event) {
@@ -67,6 +70,10 @@ public class Mapper {
       user.setDescription(userDTO.getDescription());
       user.setLastConnectionDate(userDTO.getLastConnectionDate());
       user.setProfession(userDTO.getProfession());
+      user.setLastConnectionDate(userDTO.getLastConnectionDate());
+      user.setCreatedAt(userDTO.getCreatedAt());
+      user.setUpdatedAt(userDTO.getUpdatedAt());
+      user.setMaritalStatus(userDTO.getMaritalStatus());
       return user;
   }
 }
