@@ -11,6 +11,8 @@ import { PagenotfoundComponent } from './error/pagenotfound/pagenotfound.compone
 import { EventFormComponent } from './event/event-form/event-form.component';
 import { EventListTableComponent } from './event/event-list/event-list-table/event-list-table.component';
 import {EventEditComponent} from './event/event-edit/event-edit.component';
+import { MeComponent } from './user/me/me.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 
 const routes: Routes = [
@@ -19,10 +21,14 @@ const routes: Routes = [
   {path: 'login', component: UserFormLoginComponent, pathMatch: 'full'},
   { path: 'sign-up', component: UserFormComponent, pathMatch: 'full'},
   { path: 'tab-event', component: EventListTableComponent, pathMatch: 'full'},
-
   {path: 'user',
   children: [
     { path: '',    component: UserListComponent, pathMatch: 'full'},
+    { path: 'me',
+        children: [
+           {path: '', component: MeComponent, pathMatch: 'full'},
+           {path: 'edit', component: UserEditComponent, pathMatch: 'full'},
+        ]},
     { path: ':id', component: UserDisplayComponent},
   ]},
   {path: 'event',

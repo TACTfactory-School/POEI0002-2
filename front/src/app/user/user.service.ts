@@ -29,7 +29,11 @@ export class UserService {
     return this.http.get<Event[]>(`${URL}/public/participating/${id}`);
   }
 
+  getAllMeEvents() {
+    return this.http.get<Event[]>(`${URL}/participating`);
+  }
+
   update(user: User) {
-    return this.http.put<User>(`${environment.apiUrl}/me/edit`, user);
+    return this.http.put<User>(`${environment.apiUrl}/user/me/edit`, user);
   }
 }

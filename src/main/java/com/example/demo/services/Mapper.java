@@ -34,7 +34,7 @@ public class Mapper {
     result.setCity(event.getCity());
     result.setDescription(event.getDescription());
     result.setDueAt(event.getDueAt());
-    result.setNbPlace(event.getNbPlace());    
+    result.setNbPlace(event.getNbPlace());
     result.setAdresse(event.getAdresse());
     result.setPhoto(event.getPhoto());
     result.setCp(event.getCP());
@@ -52,5 +52,21 @@ public class Mapper {
     event.setPhoto(eventDTO.getPhoto());
     event.setCP(eventDTO.getCp());
     return event;
+  }
+
+  public User dtoToUser(final User user, final UserDTO userDTO) {
+      user.setId(userDTO.getId());
+      user.setUsername(userDTO.getUsername());
+      user.setCity(userDTO.getCity());
+      user.setName(userDTO.getName());
+      user.setEmail(userDTO.getEmail());
+      user.setSex(userDTO.getSex());
+      user.setPicture(userDTO.getPicture());
+      user.setMaritalStatus(userDTO.getMaritalStatus());
+      user.setBirthDate(userDTO.getBirthDate());
+      user.setDescription(userDTO.getDescription());
+      user.setLastConnectionDate(userDTO.getLastConnectionDate());
+      user.setProfession(userDTO.getProfession());
+      return user;
   }
 }

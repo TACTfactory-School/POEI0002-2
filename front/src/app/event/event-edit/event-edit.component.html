@@ -1,35 +1,35 @@
 <h1>Edition d'un événement.</h1>
 
-<form [formGroup]="eventSign" (ngSubmit)="onSubmit()" *ngIf="(event | async) as e">
+<form [formGroup]="eventSign" (ngSubmit)="onSubmit()">
 
   <div class="field-wrap">
-    <input type="text" formControlName="title" placeholder="Titre" value="{{e.title}}"/>
+    <input type="text" formControlName="title" placeholder="Titre"/>
   </div>
 
-  <input type="hidden" formControlName="id" value="e.id"/>
+  <input type="hidden" formControlName="id"/>
 
   <div class="field-wrap">
-    <input type="text" formControlName="description" placeholder="Description" value="{{e.description}}"/>
-  </div>
-
-  <div class="field-wrap">
-    <input type="text" formControlName="adresse" placeholder="Adresse" value="{{e.adresse}}"/>
+    <input type="text" formControlName="description" placeholder="Description"/>
   </div>
 
   <div class="field-wrap">
-    <input type="text" formControlName="city" placeholder="Ville" value="{{e.city}}"/>
+    <input type="text" formControlName="adresse" placeholder="Adresse"/>
   </div>
 
   <div class="field-wrap">
-    <input type="text" formControlName="Cp" placeholder="Le code postal" value="{{e.Cp}}"/>
+    <input type="text" formControlName="city" placeholder="Ville"/>
   </div>
 
   <div class="field-wrap">
-    <input type="datetime-local" formControlName="dueAt" placeholder="Date" value="{{e.dueAt}}"/>
+    <input type="text" formControlName="Cp" placeholder="Le code postal"/>
   </div>
 
   <div class="field-wrap">
-    <input type="number" formControlName="nbPlace" placeholder="Nombre de participants" value="{{e.nbPlace}}"/>
+    <input type="datetime-local" formControlName="dueAt" placeholder="Date"/>
+  </div>
+
+  <div class="field-wrap">
+    <input type="number" formControlName="nbPlace" placeholder="Nombre de participants"/>
   </div>
 
   <input type="hidden" formControlName="enable" value="true"/>

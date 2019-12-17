@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { AuthApiService } from '../../auth/auth-api.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -12,10 +12,7 @@ import { UserService } from '../user.service';
 })
 export class UserEditComponent implements OnInit {
 
-  private user: Observable<User>;
-
-  userEdit = this.fb.group({username: ['',  Validators.required],
-                            city: ['',  Validators.required],
+  userEdit = this.fb.group({city: ['',  Validators.required],
                             id: ['',  Validators.required],
                             profession: [''],
                             birthdate: [''],
@@ -24,7 +21,8 @@ export class UserEditComponent implements OnInit {
                             password: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private service: UserService, private readonly route: ActivatedRoute, ) { }
+  constructor(private fb: FormBuilder, private service: UserService, private readonly route: ActivatedRoute,
+              private apiservice: AuthApiService) { }
 
   onSubmit(): void {
     const user: User = this.userEdit.value;
@@ -34,7 +32,6 @@ export class UserEditComponent implements OnInit {
     console.log('submitted');
   }
 
-  get username(): AbstractControl { return this.userEdit.get('username'); }
   get city(): AbstractControl { return this.userEdit.get('city'); }
   get id(): AbstractControl { return this.userEdit.get('id'); }
   get profession(): AbstractControl { return this.userEdit.get('profession'); }
@@ -44,12 +41,9 @@ export class UserEditComponent implements OnInit {
   get password(): AbstractControl { return this.userEdit.get('password'); }
 
   ngOnInit() {
-    this.route
-      .params
-      .subscribe(params => {
-        if (params.id) {
-          this.user = this.service.getOne(params.id);
-        }
+    this.route.url
+      .subscribe(() => {
+          this.apiservice.me().subscribe( u => this.userEdit.patchValue(u));
       });
   }
 }

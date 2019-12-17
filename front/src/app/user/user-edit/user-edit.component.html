@@ -1,34 +1,30 @@
 <h1>Edition du profil.</h1>
 
-<form [formGroup]="userEdit" (ngSubmit)="onSubmit()" *ngIf="(users | async) as u">
+<form [formGroup]="userEdit" (ngSubmit)="onSubmit()">
+
+  <input type="hidden" formControlName="id"/>
 
   <div class="field-wrap">
-    <input type="text" formControlName="username" placeholder="Pseudo" [value]="u.username"/>
-  </div>
-
-  <input type="hidden" formControlName="id" [value]="u.id"/>
-
-  <div class="field-wrap">
-    <input type="text" formControlName="city" placeholder="Ville" [value]="u.city"/>
+    <input type="text" formControlName="city" placeholder="Ville"/>
   </div>
 
   <div class="field-wrap">
-    <input type="text" formControlName="profession" placeholder = "Metier" [value]="{{u.profession}}"/>
+    <input type="text" formControlName="profession" placeholder = "Metier"/>
   </div>
 
   <div class="field-wrap">
-    <input type="datetime-local" formControlName="birthdate" placeholder="Date de naissance" [value]="u.dueAt"/>
+    <input type="datetime-local" formControlName="birthdate" placeholder="Date de naissance"/>
   </div>
 
   <div class="field-wrap">
-    <input type="text" formControlName="mail" placeholder="E-Mail" [value]="u.mail"/>
+    <input type="text" formControlName="mail" placeholder="E-Mail"/>
   </div>
 
   <div class="field-wrap">
-    <input type="text" formControlName="password" placeholder="Mot de passe" [value]="u.password"/>
+    <input type="text" formControlName="password" placeholder="Mot de passe"/>
   </div>
 
-  <input type="hidden" formControlName="enable" value="true"/>
+  <input type="hidden" formControlName="enable"/>
 
   <input type="submit" value="Valider"/>
 
