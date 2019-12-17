@@ -1,20 +1,26 @@
 .example-card {
   max-width: 300px;
-  max-height: 450px;
-  height: 500px;
+  max-height: 400px;
+  height: 300px;
   float: left;
   margin: 1em;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+p{
+  text-align: center;
 }
 
-#spacer {
-  flex-grow: 1;
+mat-card img{
+  margin-bottom: 0px;
 }
+mat-card mat-card-content p{
+  margin-bottom: 0px;
+  margin-top: 0px;
 
+}
+mat-card-action button {
+width: 100px;
+}
 li {
   float: left;
 }
