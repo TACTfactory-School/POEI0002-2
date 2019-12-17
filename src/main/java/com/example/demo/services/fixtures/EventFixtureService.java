@@ -33,7 +33,7 @@ public class EventFixtureService implements Fixture {
 
     for (int i = 0; i < this.nbFakeEvent; i++) {
       Event event = new Event();
-      Long authorId = Long.valueOf(faker.random().nextInt(1,userRepository.findAll().size()));
+      Long authorId = Long.valueOf(faker.random().nextInt(1, userRepository.findAll().size()));
       User user = userRepository.getOne(authorId);
       event.setAuthor(user);
       event.setCity(faker.address().city());

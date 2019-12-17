@@ -17,7 +17,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableResourceServer
 public class Onvageeker1Application implements CommandLineRunner {
 
-  private static final Logger logger = LoggerFactory
+  private static final Logger LOGGER = LoggerFactory
             .getLogger(Onvageeker1Application.class);
 
   @Autowired(required = false)
@@ -35,11 +35,11 @@ public class Onvageeker1Application implements CommandLineRunner {
   @Override
     public void run(final String... args) throws Exception {
     if (this.fixtures != null) {
-      logger.debug("Fixtures loading...");
+        LOGGER.debug("Fixtures loading...");
 
       this.fixtures.load();
 
-      logger.debug("Fixtures loaded");
+      LOGGER.debug("Fixtures loaded");
     }
   }
 }

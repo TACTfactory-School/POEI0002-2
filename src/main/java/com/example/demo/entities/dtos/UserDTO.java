@@ -35,7 +35,7 @@ public class UserDTO {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(final long id) {
     this.id = id;
   }
 
@@ -43,7 +43,7 @@ public class UserDTO {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(final String username) {
     this.username = username;
   }
 
@@ -51,7 +51,7 @@ public class UserDTO {
     return city;
   }
 
-  public void setCity(String city) {
+  public void setCity(final String city) {
     this.city = city;
   }
 
@@ -59,7 +59,7 @@ public class UserDTO {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(final String name) {
     this.name = name;
   }
 
@@ -67,7 +67,7 @@ public class UserDTO {
     return email;
   }
 
-  public void setEmail(String email) {
+  public void setEmail(final String email) {
     this.email = email;
   }
 
@@ -75,7 +75,7 @@ public class UserDTO {
     return sex;
   }
 
-  public void setSex(String sex) {
+  public void setSex(final String sex) {
     this.sex = sex;
   }
 
@@ -83,7 +83,7 @@ public class UserDTO {
     return picture;
   }
 
-  public void setPicture(String picture) {
+  public void setPicture(final String picture) {
     this.picture = picture;
   }
 
@@ -91,7 +91,7 @@ public class UserDTO {
     return maritalStatus;
   }
 
-  public void setMaritalStatus(String maritalStatus) {
+  public void setMaritalStatus(final String maritalStatus) {
     this.maritalStatus = maritalStatus;
   }
 
@@ -99,7 +99,7 @@ public class UserDTO {
     return birthDate;
   }
 
-  public void setBirthDate(LocalDateTime birthDate) {
+  public void setBirthDate(final LocalDateTime birthDate) {
     this.birthDate = birthDate;
   }
 
@@ -107,7 +107,7 @@ public class UserDTO {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(final String description) {
     this.description = description;
   }
 
@@ -115,7 +115,7 @@ public class UserDTO {
     return lastConnectionDate;
   }
 
-  public void setLastConnectionDate(LocalDateTime lastConnectionDate) {
+  public void setLastConnectionDate(final LocalDateTime lastConnectionDate) {
     this.lastConnectionDate = lastConnectionDate;
   }
 
@@ -123,7 +123,7 @@ public class UserDTO {
     return profession;
   }
 
-  public void setProfession(String profession) {
+  public void setProfession(final String profession) {
     this.profession = profession;
   }
 }

@@ -95,7 +95,7 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
   }
 
   @Override
-  public void configure(ClientDetailsServiceConfigurer configurer) throws Exception {
+  public void configure(final ClientDetailsServiceConfigurer configurer) throws Exception {
     configurer
     .inMemory()
     .withClient(clientId)
@@ -107,12 +107,12 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
   }
 
   @Override
-  public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+  public void configure(final AuthorizationServerSecurityConfigurer security) throws Exception {
     security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
   }
 
   @Override
-  public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+  public void configure(final AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
     TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
     enhancerChain.setTokenEnhancers(Arrays.asList(accessTokenConverter));
     endpoints.tokenStore(tokenStore()).accessTokenConverter(accessTokenConverter).tokenEnhancer(enhancerChain)
