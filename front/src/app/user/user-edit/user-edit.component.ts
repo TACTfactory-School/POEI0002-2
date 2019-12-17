@@ -17,7 +17,7 @@ export class UserEditComponent implements OnInit {
                             id: ['',  Validators.required],
                             profession: [''],
                             description: [''],
-                            birthdate: [''],
+                            birthDate: [''],
                             enable: ['true', Validators.required],
                             mail: [''],
                             password: ['', Validators.required]
@@ -39,7 +39,7 @@ export class UserEditComponent implements OnInit {
   get id(): AbstractControl { return this.userEdit.get('id'); }
   get profession(): AbstractControl { return this.userEdit.get('profession'); }
   get description(): AbstractControl { return this.userEdit.get('description'); }
-  get birthdate(): AbstractControl { return this.userEdit.get('birthdate'); }
+  get birthdate(): AbstractControl { return this.userEdit.get('birthDate'); }
   get enable(): AbstractControl { return this.userEdit.get('enable'); }
   get mail(): AbstractControl { return this.userEdit.get('mail'); }
   get password(): AbstractControl { return this.userEdit.get('password'); }

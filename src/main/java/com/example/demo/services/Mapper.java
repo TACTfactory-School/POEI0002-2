@@ -58,7 +58,6 @@ public class Mapper {
   }
 
   public User dtoToUser(final User user, final UserDTO userDTO) {
-      user.setId(userDTO.getId());
       user.setUsername(userDTO.getUsername());
       user.setCity(userDTO.getCity());
       user.setName(userDTO.getName());
@@ -68,11 +67,8 @@ public class Mapper {
       user.setMaritalStatus(userDTO.getMaritalStatus());
       user.setBirthDate(userDTO.getBirthDate());
       user.setDescription(userDTO.getDescription());
-      user.setLastConnectionDate(userDTO.getLastConnectionDate());
       user.setProfession(userDTO.getProfession());
       user.setLastConnectionDate(userDTO.getLastConnectionDate());
-      user.setCreatedAt(userDTO.getCreatedAt());
-      user.setUpdatedAt(userDTO.getUpdatedAt());
       user.setMaritalStatus(userDTO.getMaritalStatus());
       return user;
   }

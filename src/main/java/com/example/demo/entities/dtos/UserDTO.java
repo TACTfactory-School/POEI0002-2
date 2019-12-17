@@ -1,6 +1,7 @@
 package com.example.demo.entities.dtos;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
 
@@ -24,6 +25,7 @@ public class UserDTO {
   @JsonProperty("marital_status")
   private String maritalStatus;
 
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
   private LocalDateTime birthDate;
 
   private String description;
