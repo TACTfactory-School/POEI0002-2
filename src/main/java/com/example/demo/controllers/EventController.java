@@ -100,7 +100,6 @@ public class EventController {
     /**
      * @param id of an event
      * @return Return a list of users organizing the event with the defined id.
-     * @throws NotFoundException
      */
     @GetMapping("/public/organisators/{id}")
     @ApiOperation(value = "Retrieves all users organisators to the event")
@@ -119,8 +118,6 @@ public class EventController {
      * @param username
      *
      * Set a user defined by his username as organizer of an event defined by his id.
-     *
-     * @throws NotFoundException
      */
     @PostMapping("/organisators")
     @ApiOperation(value = "Add a user as organizer of an event")
@@ -138,8 +135,6 @@ public class EventController {
   /**
  * @param event
  * @return Return the event created.
- * @throws BadRequestException
- * @throws NotFoundException
  */
 @PostMapping
   @ApiOperation(value = "Create an event")
@@ -157,8 +152,6 @@ public class EventController {
  * @param id
  * @param eventDTO
  * @return return the event updated
- * @throws BadRequestException
- * @throws NotFoundException
  */
 @PutMapping("{id}")
   @ApiOperation(value = "Update an event")
@@ -172,7 +165,6 @@ public class EventController {
 
   /**
  * @param id of an Event
- * @throws NotFoundException
  *
  * Add a user determined by an authentication token, to an event determined by its id.
  */
@@ -213,7 +205,6 @@ public class EventController {
   /**
  * @param id
  * @return Return an event
- * @throws NotFoundException
  */
 @GetMapping("/public/{id}")
   @ApiOperation(value = "Retrieve an event")

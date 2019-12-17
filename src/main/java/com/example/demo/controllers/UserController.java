@@ -67,7 +67,6 @@ public class UserController {
     /**
      * @param id
      * @return Return a List of Event
-     * @throws NotFoundException
      *
      * Retrieves all events the user, determined by its id,  takes part in.
      */
@@ -85,8 +84,6 @@ public class UserController {
 
     /**
      * @return Return a List of Event
-     * @throws BadRequestException
-     * @throws NotFoundException
      *
      * Retrieves all events the user, determined by its authentication token, takes part in.
      */
@@ -107,7 +104,6 @@ public class UserController {
     /**
      * @param user
      * @return Return a User
-     * @throws BadRequestException
      *
      * Create a new User and return it.
      */
@@ -122,8 +118,6 @@ public class UserController {
 
     /**
      * @return Return a User
-     * @throws BadRequestException
-     * @throws NotFoundException
      *
      * Get the current User, determined by its authentication token.
      */
@@ -154,7 +148,6 @@ public class UserController {
     /**
      * @param id of a User
      * @return Return a User
-     * @throws NotFoundException
      *
      * Retrieve a user, determined by its id.
      */
@@ -167,8 +160,6 @@ public class UserController {
     /**
      * @param userDTO
      * @return Return an updated User
-     * @throws BadRequestException
-     * @throws NotFoundException
      *
      * Update a User, determined by its authentication token
      */
@@ -187,9 +178,8 @@ public class UserController {
 
     /**
      * @param id of a User
-     * @param User
+     * @param user
      * @return Return an updated User.
-     * @throws NotFoundException
      *
      * Updates a user, determined by its id.
      */
