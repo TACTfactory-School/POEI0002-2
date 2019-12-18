@@ -36,6 +36,10 @@ import com.example.demo.services.userservices.UserCrudService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+/**
+ * Controller of the User entity.
+ * @author Cedrick Pennec
+ */
 @RestController
 @RequestMapping("api/v1/user")
 @Api(value = "User Management System", tags = "Users")
@@ -46,9 +50,6 @@ public class UserController {
 
     @Autowired
     private Mapper mapperDto;
-
-    @Autowired
-    private ModelMapper mapper;
 
     /**
      * @param pageable
@@ -65,10 +66,9 @@ public class UserController {
     }
 
     /**
+     * Retrieves all events the user, determined by its id,  takes part in.
      * @param id
      * @return Return a List of Event
-     *
-     * Retrieves all events the user, determined by its id,  takes part in.
      */
     @GetMapping("/public/participating/{id}")
     @ApiOperation(value = "Retrieves all events the user takes part in.")
@@ -83,9 +83,8 @@ public class UserController {
     }
 
     /**
-     * @return Return a List of Event
-     *
      * Retrieves all events the user, determined by its authentication token, takes part in.
+     * @return Return a List of Event
      */
     @GetMapping("/participating")
     @ApiOperation(value = "Retrieves all events the user takes part in.")
@@ -102,10 +101,9 @@ public class UserController {
     }
 
     /**
+     * Create a new User and return it.
      * @param user
      * @return Return a User
-     *
-     * Create a new User and return it.
      */
     @PostMapping
     @ApiOperation(value = "Creates a new user")
@@ -117,9 +115,8 @@ public class UserController {
 
 
     /**
-     * @return Return a User
-     *
      * Get the current User, determined by its authentication token.
+     * @return Return a User
      */
     @GetMapping("/me")
     @ApiOperation(value = "Get the curent user")
@@ -134,9 +131,8 @@ public class UserController {
     }
 
     /**
-     * @param id of a User
-     *
      * Delete a user, determined by its id.
+     * @param id of a User
      */
     @DeleteMapping("{id}")
     @ApiOperation(value = "Delete a user")
@@ -146,10 +142,9 @@ public class UserController {
     }
 
     /**
+     * Retrieve a user, determined by its id.
      * @param id of a User
      * @return Return a User
-     *
-     * Retrieve a user, determined by its id.
      */
     @GetMapping("/public/{id}")
     @ApiOperation(value = "Retrieve a user")
@@ -158,10 +153,9 @@ public class UserController {
     }
 
     /**
+     * Update a User, determined by its authentication token
      * @param userDTO
      * @return Return an updated User
-     *
-     * Update a User, determined by its authentication token
      */
     @PutMapping("/me/edit")
     @ApiOperation(value = "Update a user")
@@ -177,11 +171,10 @@ public class UserController {
     }
 
     /**
-     * @param id of a User
-     * @param user
-     * @return Return an updated User.
-     *
      * Updates a user, determined by its id.
+     * @param id of a User
+     * @param userDTO
+     * @return Return an updated User.
      */
     @PutMapping("{id}")
     @ApiOperation(value = "Updates a user")

@@ -16,6 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+/**
+ * Entity of an event
+ * @author ckp
+ */
 @Entity
 @Table(name = "ovg_event")
 public class Event extends EntityBase {
@@ -24,73 +28,135 @@ public class Event extends EntityBase {
   private static final int DESC_LENGTH = 5000;
   private static final int STRING_LENGTH = 255;
 
-  @ManyToOne(optional = false)
+  /**
+ * User who created the event.
+ */
+@ManyToOne(optional = false)
   private User author;
 
-  @Column(length = STRING_LENGTH, nullable = false)
+  /**
+ * Title of the event.
+ */
+@Column(length = STRING_LENGTH, nullable = false)
   @NotBlank
   private String title;
 
-  @Column(length = DESC_LENGTH, nullable = false)
+  /**
+ * Description of the event.
+ */
+@Column(length = DESC_LENGTH, nullable = false)
   @NotBlank
   private String description;
 
-  @Column(nullable = false)
+  /**
+ * Date at wich the event takes place.
+ */
+@Column(nullable = false)
   private LocalDateTime dueAt;
 
-  @Column(nullable = false)
+  /**
+ * Maximum amount of participants.
+ */
+@Column(nullable = false)
   private Integer nbPlace;
 
-  @Column(length = STRING_LENGTH, nullable = true)
+  /**
+ * Photo of the event.
+ */
+@Column(length = STRING_LENGTH, nullable = true)
   private String photo;
 
-  @Column(length = STRING_LENGTH, nullable = true)
+  /**
+ * Adress of the event.
+ */
+@Column(length = STRING_LENGTH, nullable = true)
   private String adresse;
 
-  @Column(nullable = true) //modifier en cp pour checkstyle
+  /**
+ * Postal code of the event.
+ */
+@Column(nullable = true) //modifier en cp pour checkstyle
   private Integer cp;
 
-  @Column(length = STRING_LENGTH, nullable = false)
+  /**
+ * City where the events takes place.
+ */
+@Column(length = STRING_LENGTH, nullable = false)
   @NotBlank
   private String city;
 
-  @JsonIgnore
+  /**
+ * Tags of the event.
+ */
+@JsonIgnore
   @OneToMany(mappedBy = "event")
   private List<TagEvent> tagEvents;
 
-  @JsonIgnore
+  /**
+ * Participating Users.
+ */
+@JsonIgnore
   @OneToMany(mappedBy = "eventParticipant")
   private List<UserEventParticipant> participants;
 
-  @JsonIgnore
+  /**
+ * Organistaors of the event.
+ */
+@JsonIgnore
   @OneToMany(mappedBy = "eventOrganisator")
   private List<UserEventOrganisator> organisators;
 
-  public User getAuthor() {
+  /**
+ * @return the author.
+ */
+public User getAuthor() {
     return author;
   }
 
-  public void setAuthor(final User author) {
+  /**
+   * Set a User as the author.
+ * @param author User.
+ */
+public void setAuthor(final User author) {
     this.author = author;
   }
 
-  public List<TagEvent> getTagEvents() {
+  /**
+ * @return a List of tagEvents
+ */
+public List<TagEvent> getTagEvents() {
     return tagEvents;
   }
 
-  public void setTagEvents(List<TagEvent> tagEvents) {
+  /**
+   * Set the tags of the events.
+ * @param tagEvents, a List of TagEvents.
+ */
+public void setTagEvents(List<TagEvent> tagEvents) {
     this.tagEvents = tagEvents;
   }
 
-  public String getTitle() {
+  /**
+   * Get the title.
+ * @return the title.
+ */
+public String getTitle() {
     return title;
   }
 
-  public void setTitle(final String title) {
+  /**
+   * Set the title.
+ * @param title as String
+ */
+public void setTitle(final String title) {
     this.title = title;
   }
 
-  public String getDescription() {
+  /**
+   * Get the description.
+ * @return the description.
+ */
+public String getDescription() {
     return description;
   }
 
