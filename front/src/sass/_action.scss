@@ -1,0 +1,8 @@
+@mixin actions($justify: center) {
+  display: flex;
+  justify-content: center;
+}
+
+%actions {
+  @include actions();
+}
