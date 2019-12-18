@@ -5,153 +5,310 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
 
-
+/**
+ * DTO of the User entity.
+ * @author Cedrick Pennec
+ */
 public class UserDTO {
 
-  private long id;
+  /**
+ * id of the UserDTO.
+ */
+private long id;
 
-  private String username;
+  /**
+ * username of the UserDTO.
+ */
+private String username;
 
-  private String city;
+  /**
+ * city of the UserDTO.
+ */
+private String city;
 
-  private String name;
+  /**
+ * name of the UserDTO.
+ */
+private String name;
 
-  private String email;
+  /**
+ * email of the UserDTO.
+ */
+private String email;
 
-  private String sex;
+  /**
+ * sex of the UserDTO.
+ */
+private String sex;
 
-  private String picture = "default_user.png";
+  /**
+ * picture of the UserDTO. With a default value of "default_user.png".
+ */
+private String picture = "default_user.png";
 
-  @JsonProperty("marital_status")
+  /**
+ * Marital status of the UserDTO.
+ */
+@JsonProperty("marital_status")
   private String maritalStatus;
 
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+  /**
+ * Date of birth of the UserDTO.
+ */
+@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
   private LocalDateTime birthDate;
 
-  private String description;
+  /**
+ * Description of the UserDTO.
+ */
+private String description;
 
-  @JsonProperty("last_connection_date")
+  /**
+ * Last connection date of the UserDTO.
+ */
+@JsonProperty("last_connection_date")
   private LocalDateTime lastConnectionDate;
 
-  @JsonProperty("created_at")
+  /**
+ * Creation date of the UserDTO.
+ */
+@JsonProperty("created_at")
   private LocalDateTime createdAt;
 
-  @JsonProperty("update_at")
+  /**
+ * Last modification date of the UserDTO.
+ */
+@JsonProperty("update_at")
   private LocalDateTime updatedAt;
 
-  private String profession;
+  /**
+ * Profession of the UserDTO.
+ */
+private String profession;
 
 
 
-  public long getId() {
+  /**
+   * Retrieve the id of the UserDTO.
+ * @return id long.
+ */
+public long getId() {
     return id;
   }
 
-  public void setId(final long id) {
+  /**
+   * Set the id of the UserDTO.
+ * @param id long.
+ */
+public void setId(final long id) {
     this.id = id;
   }
 
-  public String getUsername() {
+  /**
+   * Retrieves the username of the UserDTO.
+ * @return username String.
+ */
+public String getUsername() {
     return username;
   }
 
-  public void setUsername(final String username) {
+  /**
+   * Set the username of the UserDTO.
+ * @param username String
+ */
+public void setUsername(final String username) {
     this.username = username;
   }
 
-  public String getCity() {
+  /**
+   * Retrieves the city of the UserDTO.
+ * @return city String.
+ */
+public String getCity() {
     return city;
   }
 
-  public void setCity(final String city) {
+  /**
+   * Set the city of the UserDTO.
+ * @param city String.
+ */
+public void setCity(final String city) {
     this.city = city;
   }
 
-  public String getName() {
+  /**
+   * retrieves the name of the UserDTO.
+ * @return name String.
+ */
+public String getName() {
     return name;
   }
 
-  public void setName(final String name) {
+  /**
+   * Set the name of the UserDTO.
+ * @param name String.
+ */
+public void setName(final String name) {
     this.name = name;
   }
 
-  public String getEmail() {
+  /**
+   * Retrieves the email of the UserDTO.
+ * @return email String.
+ */
+public String getEmail() {
     return email;
   }
 
-  public void setEmail(final String email) {
+  /**
+   * Set the email of the UserDTO.
+ * @param email String.
+ */
+public void setEmail(final String email) {
     this.email = email;
   }
 
-  public String getSex() {
+  /**
+   * Retrieves the sex of the UserDTO.
+ * @return sex String.
+ */
+public String getSex() {
     return sex;
   }
 
-  public void setSex(final String sex) {
+  /**
+   * Set the sex of the UserDTO.
+ * @param sex String.
+ */
+public void setSex(final String sex) {
     this.sex = sex;
   }
 
-  public String getPicture() {
+  /**
+   * Retrieves the picture of the UserDTO.
+ * @return picture String.
+ */
+public String getPicture() {
     return picture;
   }
 
-  public void setPicture(final String picture) {
+  /**
+   * Set the picture of the UserDTO.
+ * @param picture String.
+ */
+public void setPicture(final String picture) {
     this.picture = picture;
   }
 
-  public String getMaritalStatus() {
+  /**
+   * Retrieves the marital status of the UserDTO.
+ * @return maritalStatus String.
+ */
+public String getMaritalStatus() {
     return maritalStatus;
   }
 
-  public void setMaritalStatus(final String maritalStatus) {
+  /**
+   * Set the marital status of the UserDTO.
+ * @param maritalStatus String.
+ */
+public void setMaritalStatus(final String maritalStatus) {
     this.maritalStatus = maritalStatus;
   }
 
-  public LocalDateTime getBirthDate() {
+  /**
+   * Retrieves the date of birth of the UserDTO.
+ * @return birthdate LocalDateTime.
+ */
+public LocalDateTime getBirthDate() {
     return birthDate;
   }
 
-  public void setBirthDate(final LocalDateTime birthDate) {
+  /**
+   * Set the date of birth of birth of the UserDTO.
+ * @param birthDate LocalDateTime.
+ */
+public void setBirthDate(final LocalDateTime birthDate) {
     this.birthDate = birthDate;
   }
 
-  public String getDescription() {
+  /**
+   * retrieves the description of the UserDTO.
+ * @return description String.
+ */
+public String getDescription() {
     return description;
   }
 
-  public void setDescription(final String description) {
+  /**
+   * Set the description of the UserDTO.
+ * @param description String.
+ */
+public void setDescription(final String description) {
     this.description = description;
   }
 
-  public LocalDateTime getLastConnectionDate() {
+  /**
+   * Retrieves the last connection date of the UserDTO.
+ * @return lastConnectionDate LocalDateTime.
+ */
+public LocalDateTime getLastConnectionDate() {
     return lastConnectionDate;
   }
 
-  public void setLastConnectionDate(final LocalDateTime lastConnectionDate) {
+  /**
+   * Set  the last connection date of the UserDTO.
+ * @param lastConnectionDate LocalDateTime.
+ */
+public void setLastConnectionDate(final LocalDateTime lastConnectionDate) {
     this.lastConnectionDate = lastConnectionDate;
   }
 
-  public String getProfession() {
+  /**
+   * Retrieves the profession of the UserDTO.
+ * @return profession String.
+ */
+public String getProfession() {
     return profession;
   }
 
-  public void setProfession(final String profession) {
+  /**
+   * Set the profession of the UserDTO.
+ * @param profession String.
+ */
+public void setProfession(final String profession) {
     this.profession = profession;
   }
 
-  public LocalDateTime getCreatedAt() {
+  /**
+   * Retrieves the date of creation of the UserDTO.
+ * @return createdAt LocalDateTime.
+ */
+public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(final LocalDateTime createdAt) {
+  /**
+   * Set  the date of creation of the UserDTO.
+ * @param createdAt LocalDateTime.
+ */
+public void setCreatedAt(final LocalDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
-  public LocalDateTime getUpdatedAt() {
+  /**
+   * Retrieves the date of the last modification of the UserDTO.
+ * @return updatedAt LocalDateTime.
+ */
+public LocalDateTime getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(final LocalDateTime updatedAt) {
+  /**
+   * Set the date of the last modification of the UserDTO.
+ * @param updatedAt LocalDateTime.
+ */
+public void setUpdatedAt(final LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
 }
