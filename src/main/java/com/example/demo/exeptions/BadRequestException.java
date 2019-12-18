@@ -3,6 +3,10 @@ package com.example.demo.exeptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ *
+ * @author Cedrick Pennec.
+ */
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class BadRequestException extends HttpException {
 

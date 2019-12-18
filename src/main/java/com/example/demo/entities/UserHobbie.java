@@ -11,6 +11,10 @@ import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
+/**
+ * Association between User and Hobby describing which User possess which Hobby.
+ * @author Cedrick Pennec
+ */
 @Entity
 @Table(name = UserHobbieContract.TABLE,
         uniqueConstraints={@UniqueConstraint(columnNames =
@@ -25,27 +29,49 @@ import javax.persistence.JoinColumn;
         column = @Column(name=UserEventOrganisatorContract.COL_ENABLE))
 public class UserHobbie extends EntityBase {
 
-  @ManyToOne(optional = false)
-  @JoinColumn(name = UserHobbieContract.COL_HOBBIE)
+  /**
+ * Hobby of the association.
+ */
+@ManyToOne(optional = false)
+@JoinColumn(name = UserHobbieContract.COL_HOBBIE)
   private Hobbie hobbie;
 
-  @ManyToOne(optional = false)
-  @JoinColumn(name = UserHobbieContract.COL_USER)
+  /**
+ * User of the association.
+ */
+@ManyToOne(optional = false)
+@JoinColumn(name = UserHobbieContract.COL_USER)
   private User user;
 
-  public Hobbie getHobbie() {
+  /**
+   * Retrieves the Hobby of the association.
+ * @return hobbie Hobby.
+ */
+public Hobbie getHobbie() {
     return hobbie;
   }
 
-  public void setHobbie(final Hobbie hobbie) {
+  /**
+   * Set the Hobby of the association.
+ * @param hobbie Hobby.
+ */
+public void setHobbie(final Hobbie hobbie) {
     this.hobbie = hobbie;
   }
 
-  public User getUser() {
+  /**
+   * Retrieves the User of the association.
+ * @return user User.
+ */
+public User getUser() {
     return user;
   }
 
-  public void setUser(final User user) {
+  /**
+   * Set the User of the association.
+ * @param user User.
+ */
+public void setUser(final User user) {
     this.user = user;
   }
 }

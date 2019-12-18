@@ -10,6 +10,11 @@ import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
+
+/**
+ * Association between User and Language describing which User speaks which Language.
+ * @author Cedrick Pennec
+ */
 @Entity
 @Table(name = UserLanguageContract.TABLE,
         uniqueConstraints={@UniqueConstraint(columnNames =
@@ -24,27 +29,50 @@ import javax.persistence.JoinColumn;
         column = @Column(name= UserLanguageContract.COL_ENABLE))
 public class UserLanguage extends EntityBase {
 
-  @ManyToOne
-  @JoinColumn(name = UserLanguageContract.COL_LANGUAGE)
+
+  /**
+ * Language of the association.
+ */
+@ManyToOne
+@JoinColumn(name = UserLanguageContract.COL_LANGUAGE)
   private Language language;
 
-  @ManyToOne
-  @JoinColumn(name = UserLanguageContract.COL_USER)
+  /**
+ * User of the association.
+ */
+@ManyToOne
+@JoinColumn(name = UserLanguageContract.COL_USER)
   private User user;
 
-  public Language getLanguage() {
+  /**
+   * Retrieves the Language of the association.
+ * @return language Language.
+ */
+public Language getLanguage() {
     return language;
   }
 
-  public void setLanguage(final Language language) {
+  /**
+   * Set the Language of the association.
+ * @param language Language.
+ */
+public void setLanguage(final Language language) {
     this.language = language;
   }
 
-  public User getUser() {
+  /**
+   * Retrieves the User of the association.
+ * @return user User.
+ */
+public User getUser() {
     return user;
   }
 
-  public void setUser(final User user) {
+  /**
+   * Set the User of the association.
+ * @param user User.
+ */
+public void setUser(final User user) {
     this.user = user;
   }
 

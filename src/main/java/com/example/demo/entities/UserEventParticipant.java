@@ -10,6 +10,10 @@ import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
+/**
+ * Association between User and Event describing which User is participating to which Event.
+ * @author Cedrick Pennec
+ */
 @Entity
 @Table(name = UserEventParticipantContract.TABLE,
         uniqueConstraints={@UniqueConstraint(columnNames =
@@ -24,39 +28,72 @@ import javax.persistence.JoinColumn;
         column = @Column(name=UserEventParticipantContract.COL_ENABLE))
 public class UserEventParticipant extends EntityBase {
 
-  @ManyToOne
-  @JoinColumn(name = UserEventParticipantContract.COL_USER)
+  /**
+ * User of the association.
+ */
+@ManyToOne
+@JoinColumn(name = UserEventParticipantContract.COL_USER)
   private User userParticipant;
 
-  @ManyToOne
-  @JoinColumn(name = UserEventParticipantContract.COL_EVENT)
+  /**
+ * Event of the association.
+ */
+@ManyToOne
+@JoinColumn(name = UserEventParticipantContract.COL_EVENT)
   private Event eventParticipant;
 
 
-  @Column(nullable = false)
+  /**
+ * Check if an organisator has validated his the User participation to the Event. False by default.
+ */
+@Column(nullable = false)
   private Boolean validation = false;
 
-  public Boolean getValidation() {
+  /**
+   * Retrieves the participation status of the User.
+ * @return validation Boolean.
+ */
+public Boolean getValidation() {
     return validation;
   }
 
-  public void setValidation(final Boolean validation) {
+  /**
+   * Set the participation status of the User.
+ * @param validation Boolean.
+ */
+public void setValidation(final Boolean validation) {
     this.validation = validation;
   }
 
-  public User getUserParticipant() {
+  /**
+   * Retrieves the User of the association.
+ * @return userParticipant User.
+ */
+public User getUserParticipant() {
     return userParticipant;
   }
 
-  public void setUserParticipant(final User userParticipant) {
+  /**
+   * Set the User of the association.
+ * @param userParticipant User.
+ */
+public void setUserParticipant(final User userParticipant) {
     this.userParticipant = userParticipant;
   }
 
-  public Event getEventParticipant() {
+  /**
+   * Retrieves the Event of the association.
+ * @return eventParticipant User.
+ */
+public Event getEventParticipant() {
     return eventParticipant;
   }
 
-  public void setEventParticipant(final Event eventParticipant) {
+  /**
+   * Set the Event of the association.
+ * @param eventParticipant Event.
+ */
+public void setEventParticipant(final Event eventParticipant) {
     this.eventParticipant = eventParticipant;
   }
 }
