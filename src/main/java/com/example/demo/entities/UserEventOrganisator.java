@@ -2,44 +2,80 @@ package com.example.demo.entities;
 
 import javax.persistence.*;
 
+/**
+ * Association between User and Event describing which User is organistor of which Event.
+ * @author Cedrick Pennec
+ */
 @Entity
 @Table(name = "ovg_user_event_organisator",
         uniqueConstraints={@UniqueConstraint(columnNames = {"organisator_id" , "event_id"})})
 public class UserEventOrganisator extends EntityBase {
 
-  @ManyToOne
+  /**
+ * The User of the association.
+ */
+@ManyToOne
   @JoinColumn(name = "organisator_id")
   private User userOrganisator;
 
-  @ManyToOne
+  /**
+ * The Event of the association.
+ */
+@ManyToOne
   @JoinColumn(name = "event_id")
   private Event eventOrganisator;
 
 
-  @Column(nullable = false)
+  /**
+ * Check if the User has validated his status as organisator. False by default.
+ */
+@Column(nullable = false)
   private Boolean validation = false;
 
-  public Boolean getValidation() {
+  /**
+   * Check whether the User has validated his status as organisator.
+ * @return validation Boolean.
+ */
+public Boolean getValidation() {
     return validation;
   }
 
-  public void setValidation(final Boolean validation) {
+  /**
+   * Set whether the User has validated his status as organisator.
+ * @param validation Boolean.
+ */
+public void setValidation(final Boolean validation) {
     this.validation = validation;
   }
 
-  public User getUserOrganisator() {
+  /**
+   * Retrieves the User of the association.
+ * @return userOrganisator User.
+ */
+public User getUserOrganisator() {
     return userOrganisator;
   }
 
-  public void setUserOrganisator(final User userOrganisator) {
+  /**
+   * Set the User of the association.
+ * @param userOrganisator User.
+ */
+public void setUserOrganisator(final User userOrganisator) {
     this.userOrganisator = userOrganisator;
   }
 
-  public Event getEventOrganisator() {
+  /**
+   * Retrieves the Event of the association.
+ * @return eventOrganisator Event.
+ */
+public Event getEventOrganisator() {
     return eventOrganisator;
   }
 
-  public void setEventOrganisator(final Event eventOrganisator) {
+  /** set the Event of the association.
+ * @param eventOrganisator Event.
+ */
+public void setEventOrganisator(final Event eventOrganisator) {
     this.eventOrganisator = eventOrganisator;
   }
 }
