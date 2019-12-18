@@ -42,6 +42,10 @@ import com.example.demo.services.eventservices.EventCrudService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+/**
+ * Controller of the event entity.
+ * @author Cedrick Pennec.
+ */
 @RestController
 @RequestMapping("api/v1/event")
 @Api(value = "Event Management System", tags = "Events")
@@ -59,9 +63,6 @@ public class EventController {
 
   @Autowired
   private UserEventOrganisatorRepository eventOrganisatorRepository;
-
-  @Autowired
-  private ModelMapper mapper;
 
   @Autowired
   private Mapper mapperDto;
@@ -114,10 +115,9 @@ public class EventController {
     }
 
     /**
+     * Set a user defined by his username as organizer of an event defined by his id.
      * @param id of an event
      * @param username
-     *
-     * Set a user defined by his username as organizer of an event defined by his id.
      */
     @PostMapping("/organisators")
     @ApiOperation(value = "Add a user as organizer of an event")
@@ -133,7 +133,7 @@ public class EventController {
     }
 
   /**
- * @param event
+ * @param eventDTO
  * @return Return the event created.
  */
 @PostMapping
@@ -165,10 +165,9 @@ public class EventController {
   }
 
   /**
- * @param id of an Event
- *
- * Add a user determined by an authentication token, to an event determined by its id.
- */
+   * Add a user determined by an authentication token, to an event determined by its id.
+   * @param id Id of an Event
+   */
 @GetMapping("/join/{id}")
   @ApiOperation(value = "Add a user to an event as participant")
   public void join(@PathVariable final Long id) throws NotFoundException {
@@ -192,10 +191,9 @@ public class EventController {
   }
 
   /**
- * @param id of an Event
- *
- * Delete an event
- */
+   * Delete an event
+   * @param id Id of an Event
+   */
 @DeleteMapping("{id}")
   @ApiOperation(value = "Delete an event")
   @ResponseStatus(HttpStatus.NO_CONTENT)

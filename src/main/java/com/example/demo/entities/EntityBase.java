@@ -13,8 +13,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 
 /**
+ * Extended by all entities.
  * @author renau
- *
  */
 @MappedSuperclass
 public class EntityBase {
@@ -24,49 +24,83 @@ public class EntityBase {
   @ApiModelProperty(value = "The generated database ID", readOnly = true)
   private Long id;
 
-  @CreationTimestamp
+  /**
+ * Creation date
+ */
+@CreationTimestamp
   private LocalDateTime createdAt;
-  @UpdateTimestamp
+  /**
+ * Last modification date.
+ */
+@UpdateTimestamp
   private LocalDateTime updatedAt;
 
-  private Boolean enable;
+  /**
+ * allow the desactivation of an entity.
+ */
+private Boolean enable;
 
   protected EntityBase() {
     super();
   }
 
   /**
-   * @return the id
+   * @return the id.
    */
-  public Long getId() {
+public Long getId() {
     return id;
   }
 
-  public LocalDateTime getCreatedAt() {
+  /**
+   * @return the creation date.
+   */
+public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(final LocalDateTime createdAt) {
+  /**
+   * Set the creation date.
+   * @param createdAt creation date in LocalDateTime.
+   */
+public void setCreatedAt(final LocalDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
-  public LocalDateTime getUpdatedAt() {
+  /**
+   * @return Return the date of the last modification.
+   */
+public LocalDateTime getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(final LocalDateTime updatedAt) {
+  /**
+   * Set the last modification date.
+   * @param updatedAt last modification date in LocalDateTime.
+   */
+public void setUpdatedAt(final LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
 
-  public void setId(final Long id) {
+  /**
+   * Set the id.
+   * @param id Entity id.
+   */
+public void setId(final Long id) {
     this.id = id;
   }
 
-  public Boolean getEnable() {
+  /**
+   * @return the enabled boolean.
+   */
+public Boolean getEnable() {
     return enable;
   }
 
-  public void setEnable(final Boolean enable) {
+  /**
+   * Set the enabled boolean
+   * @param enable
+   */
+public void setEnable(final Boolean enable) {
     this.enable = enable;
   }
 
