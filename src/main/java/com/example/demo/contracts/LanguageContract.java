@@ -1,15 +1,14 @@
 package com.example.demo.contracts;
 
-public class HobbieContract extends BaseContract {
+public class LanguageContract extends BaseContract {
 
-    public final static String TABLE = "ovg_hobbies";
+    public final static String TABLE = "ovg_languages";
 
     public final static String COL_ID = "id";
     public final static String COL_CREATED_AT = "created_at";
     public final static String COL_UPDATED_AT = "updated_at";
     public final static String COL_ENABLE = "enable";
     public final static String COL_LABEL = "label";
-
 
     public static final int LENGTH = 255;
 
@@ -28,7 +27,7 @@ public class HobbieContract extends BaseContract {
             COL_LABEL + " VARCHAR("+LENGTH+") NOT NULL" +
             ")";
 
-    public HobbieContract() {
+    public LanguageContract() {
         super(TABLE, COL_ID, COLS, CREATE_TABLE);
     }
 }

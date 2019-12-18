@@ -2,7 +2,13 @@ package com.example.demo.entities;
 
 import com.example.demo.contracts.UserLanguageContract;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = UserLanguageContract.TABLE,
@@ -30,7 +36,7 @@ public class UserLanguage extends EntityBase {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(final Language language) {
     this.language = language;
   }
 
@@ -38,7 +44,7 @@ public class UserLanguage extends EntityBase {
     return user;
   }
 
-  public void setUser(User user) {
+  public void setUser(final User user) {
     this.user = user;
   }
 

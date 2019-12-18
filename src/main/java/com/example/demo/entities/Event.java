@@ -9,9 +9,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 import javax.validation.constraints.NotBlank;
 
+/**
+ * Entity of an event
+ * @author ckp
+ */
 @Entity
 @Table(name = EventContract.TABLE)
 @AttributeOverride(name = EventContract.COL_ID,
@@ -24,145 +34,279 @@ import javax.validation.constraints.NotBlank;
         column = @Column(name=EventContract.COL_ENABLE))
 public class Event extends EntityBase {
 
-  @ManyToOne(optional = false)
-  private User author;
 
-  @Column(length = EventContract.STRING_LENGTH, nullable = false)
+  /**
+ * User who created the event.
+ */
+  @ManyToOne(optional = false)
+  @JoinColumn(name = EventContract.COL_AUTHOR)
+  private User author;
+	
+  /**
+ * Title of the event.
+ */
+  @Column(length = EventContract.STRING_LENGTH, nullable = false, name = EventContract.COL_TITLE)
   @NotBlank
   private String title;
-
-  @Column(length = EventContract.DESC_LENGTH, nullable = false)
+	
+  /**
+ * Description of the event.
+ */
+  @Column(length = EventContract.DESC_LENGTH, nullable = false, name = EventContract.COL_DESCRIPTION)
   @NotBlank
   private String description;
 
-  @Column(nullable = false)
+  /**
+ * Date at wich the event takes place.
+ */
+  @Column(nullable = false, name = EventContract.COL_DUE_AT)
   private LocalDateTime dueAt;
 
-  @Column(nullable = false)
+  /**
+ * Maximum amount of participants.
+ */
+  @Column(nullable = false, name = EventContract.COL_NB_PLACE)
   private Integer nbPlace;
 
-  @Column(length = EventContract.STRING_LENGTH, nullable = true)
+
+  /**
+ * Photo of the event.
+ */
+  @Column(length = EventContract.STRING_LENGTH, nullable = true, name = EventContract.COL_PHOTO)
   private String photo;
 
-  @Column(length = EventContract.STRING_LENGTH, nullable = true)
+  /**
+ * Adress of the event.
+ */
+  @Column(length = EventContract.STRING_LENGTH, nullable = true, name = EventContract.COL_ADRESSE)
   private String adresse;
 
-  @Column(nullable = true)
+  /**
+ * Postal code of the event.
+ */
+  @Column(nullable = true, name = EventContract.COL_CP)
   private Integer cp;
 
-  @Column(length = EventContract.STRING_LENGTH, nullable = false)
+  /**
+ * City where the events takes place.
+ */
+  @Column(length = EventContract.STRING_LENGTH, nullable = false, name = EventContract.COL_CITY)
   @NotBlank
   private String city;
 
+  /**
+ * Tags of the event.
+ */
   @JsonIgnore
   @OneToMany(mappedBy = TagEventContract.EVENT)
   private List<TagEvent> tagEvents;
 
+  /**
+ * Participating Users.
+ */
   @JsonIgnore
   @OneToMany(mappedBy = UserEventParticipantContract.EVENT_PARTICIPANT)
   private List<UserEventParticipant> participants;
 
+  /**
+ * Organistaors of the event.
+ */
   @JsonIgnore
   @OneToMany(mappedBy = UserEventOrganisatorContract.EVENT_ORGANISATOR)
   private List<UserEventOrganisator> organisators;
 
+  /**
+ * @return the author.
+ */
   public User getAuthor() {
     return author;
   }
 
+  /**
+   * Set a User as the author.
+ * @param author User.
+ */
   public void setAuthor(final User author) {
     this.author = author;
   }
 
+  /**
+ * @return a List of tagEvents
+ */
   public List<TagEvent> getTagEvents() {
     return tagEvents;
   }
 
-  public void setTagEvents(List<TagEvent> tagEvents) {
+  /**
+   * Set the tags of the events.
+ * @param tagEvents, a List of TagEvents.
+ */
+  public void setTagEvents(final List<TagEvent> tagEvents) {
     this.tagEvents = tagEvents;
   }
 
-  public String getTitle() {
+  /**
+   * Get the title.
+ * @return the title.
+ */
+public String getTitle() {
     return title;
   }
 
-  public void setTitle(final String title) {
+  /**
+   * Set the title.
+ * @param title as String
+ */
+public void setTitle(final String title) {
     this.title = title;
   }
 
-  public String getDescription() {
+  /**
+   * Get the description.
+ * @return the description.
+ */
+public String getDescription() {
     return description;
   }
 
-  public void setDescription(final String description) {
+  /**
+ * @param description of the event
+ */
+public void setDescription(final String description) {
     this.description = description;
   }
 
-  public LocalDateTime getDueAt() {
+  /**
+ * @return the Date at which the event takes place.
+ */
+public LocalDateTime getDueAt() {
     return dueAt;
   }
 
-  public void setDueAt(final LocalDateTime dueAt) {
+  /**
+   * Set the date at which the event takes place.
+ * @param dueAt Date at which the event takes place.
+ */
+public void setDueAt(final LocalDateTime dueAt) {
     this.dueAt = dueAt;
   }
 
-  public Integer getNbPlace() {
+  /**
+   * Retrieves the number of participants allowed to participate in the event.
+ * @return the number of participants allowed.
+ */
+public Integer getNbPlace() {
     return nbPlace;
   }
 
-  public void setNbPlace(final Integer nbPlace) {
+  /**
+   * Set the number of participants allowed to participate in the event.
+ * @param nbPlace the number of participants allowed.
+ */
+public void setNbPlace(final Integer nbPlace) {
     this.nbPlace = nbPlace;
   }
 
-  public String getPhoto() {
+  /**
+   * Retrieves the photo of the event.
+ * @return the photo of the Event
+ */
+public String getPhoto() {
     return photo;
   }
 
-  public void setPhoto(final String photo) {
+  /**
+   * Set the photo of the Event
+ * @param photo the photo of the Event
+ */
+public void setPhoto(final String photo) {
     this.photo = photo;
   }
 
-  public String getAdresse() {
+  /**
+   * Retrieves the address of the event.
+ * @return the address of the event.
+ */
+public String getAdresse() {
     return adresse;
   }
 
-  public void setAdresse(final String adresse) {
+  /**
+   * Set the address of the event.
+ * @param adresse the address of the event.
+ */
+public void setAdresse(final String adresse) {
     this.adresse = adresse;
   }
 
-  public Integer getCp() {
+  /**
+   * Retrieves the postal code of the Event.
+ * @return the postal code of the Event.
+ */
+public Integer getCp() {
     return cp;
   }
 
-  public void setCp(final Integer cp) {
+  /**
+   * Set the postal code of the Event.
+ * @param cp the postal code of the Event.
+ */
+public void setCp(final Integer cp) {
     this.cp = cp;
   }
 
-  public String getCity() {
+  /**
+   * Retrieves the city of the Event.
+ * @return the city of the Event.
+ */
+public String getCity() {
     return city;
   }
 
-  public void setCity(final String city) {
+  /**
+   * Set the city of the Event.
+ * @param city the city of the Event.
+ */
+public void setCity(final String city) {
     this.city = city;
   }
 
-  public List<UserEventOrganisator> getOrganisators() {
+  /**
+   * Retrieves the organisators of the Event.
+ * @return the organisators of the Event.
+ */
+public List<UserEventOrganisator> getOrganisators() {
     return organisators;
   }
 
-  public void setOrganisators(final List<UserEventOrganisator> organisators) {
+  /** Set the organisators of the Event.
+ * @param organisators the organisators of the Event.
+ */
+public void setOrganisators(final List<UserEventOrganisator> organisators) {
     this.organisators = organisators;
   }
 
-  public List<UserEventParticipant> getParticipants() {
+  /**
+   * Retrieves the participants of the Event.
+ * @return the participants of the Event.
+ */
+public List<UserEventParticipant> getParticipants() {
     return participants;
   }
 
-  public void setParticipants(final List<UserEventParticipant> participants) {
+  /**
+   * Set the participants of the Event.
+ * @param participants the participants of the Event.
+ */
+public void setParticipants(final List<UserEventParticipant> participants) {
     this.participants = participants;
   }
 
-  public void addParticipant(final UserEventParticipant usereventparticipant) {
+  /**
+   * Add a participant to the Event.
+ * @param usereventparticipant Participant to add.
+ */
+public void addParticipant(final UserEventParticipant usereventparticipant) {
     this.participants.add(usereventparticipant);
   }
 

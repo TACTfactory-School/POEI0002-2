@@ -3,7 +3,13 @@ package com.example.demo.entities;
 import com.example.demo.contracts.UserEventOrganisatorContract;
 import com.example.demo.contracts.UserHobbieContract;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = UserHobbieContract.TABLE,
@@ -31,7 +37,7 @@ public class UserHobbie extends EntityBase {
     return hobbie;
   }
 
-  public void setHobbie(Hobbie hobbie) {
+  public void setHobbie(final Hobbie hobbie) {
     this.hobbie = hobbie;
   }
 
@@ -39,7 +45,7 @@ public class UserHobbie extends EntityBase {
     return user;
   }
 
-  public void setUser(User user) {
+  public void setUser(final User user) {
     this.user = user;
   }
 }

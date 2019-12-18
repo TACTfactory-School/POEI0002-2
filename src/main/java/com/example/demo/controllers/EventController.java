@@ -13,7 +13,6 @@ import com.example.demo.entities.dtos.EventDTO;
 import com.example.demo.repository.UserEventOrganisatorRepository;
 import com.example.demo.services.userservices.UserCrudService;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -33,7 +32,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Event;
-import com.example.demo.exeptions.BadRequestException;
 import com.example.demo.exeptions.NotFoundException;
 import com.example.demo.repository.UserEventParticipantRepository;
 import com.example.demo.services.Mapper;
@@ -42,37 +40,53 @@ import com.example.demo.services.eventservices.EventCrudService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+/**
+ * Controller of the event entity.
+ * @author Cedrick Pennec.
+ */
 @RestController
 @RequestMapping("api/v1/event")
 @Api(value = "Event Management System", tags = "Events")
 public class EventController {
 
 
-  @Autowired
+  /**
+ * CRUD service of an Event
+ */
+@Autowired
   private EventCrudService service;
 
-  @Autowired
+  /**
+ * CRUD service of a User.
+ */
+@Autowired
   private UserCrudService userService;
 
-  @Autowired
+  /**
+ * Repository of a UserEventParticipant.
+ */
+@Autowired
   private UserEventParticipantRepository eventParticipantRepository;
 
-  @Autowired
+  /**
+ * Repository of a UserEventOrganisator.
+ */
+@Autowired
   private UserEventOrganisatorRepository eventOrganisatorRepository;
 
-  @Autowired
-  private ModelMapper mapper;
-
-  @Autowired
+  /**
+ * Mapper used to convert entities to their DTO.
+ */
+@Autowired
   private Mapper mapperDto;
 
   /**
- * @param pageable
+ * @param pageable containing a page number and a number of elements.
  * @return Return a page of users.
  */
 @GetMapping("/public")
   @ApiOperation(value = "Retrieves all events")
-  public Page<EventDTO> getAll(Pageable pageable) {
+  public Page<EventDTO> getAll(final Pageable pageable) {
     Page<Event> eventPage = this.service.getAll(pageable);
     eventPage.getTotalElements();
     return new PageImpl<>(eventPage.stream()
@@ -81,9 +95,9 @@ public class EventController {
   }
 
   /**
- * @param id of an event
+ * @param id of an event.
  * @return Return a list of users participating to the event with the defined id.
- * @throws NotFoundException
+ * @throws NotFoundException Event was not found.
  */
 @GetMapping("/public/participants/{id}")
   @ApiOperation(value = "Retrieves all users participating to the event")
@@ -100,7 +114,7 @@ public class EventController {
     /**
      * @param id of an event
      * @return Return a list of users organizing the event with the defined id.
-     * @throws NotFoundException
+     * @throws NotFoundException Event was not found.
      */
     @GetMapping("/public/organisators/{id}")
     @ApiOperation(value = "Retrieves all users organisators to the event")
@@ -115,12 +129,10 @@ public class EventController {
     }
 
     /**
-     * @param id of an event
-     * @param username
-     *
-     * Set a user defined by his username as organizer of an event defined by his id.
-     *
-     * @throws NotFoundException
+     * Set a user defined by his username as organizer of an event defined by its id.
+     * @param id of an event.
+     * @param username username of the user.
+     * @throws NotFoundException User or Event was not found.
      */
     @PostMapping("/organisators")
     @ApiOperation(value = "Add a user as organizer of an event")
@@ -136,15 +148,14 @@ public class EventController {
     }
 
   /**
- * @param event
+ * @param eventDTO DTO of an event.
  * @return Return the event created.
- * @throws BadRequestException
- * @throws NotFoundException
+ * @throws NotFoundException User was not found.
  */
 @PostMapping
   @ApiOperation(value = "Create an event")
   @ResponseStatus(HttpStatus.CREATED)
-  public Event create(@Valid @RequestBody final EventDTO eventDTO) throws BadRequestException, NotFoundException {
+  public Event create(@Valid @RequestBody final EventDTO eventDTO) throws NotFoundException {
     Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
     Event event = new Event();
     String username = loggedInUser.getName();
@@ -155,23 +166,27 @@ public class EventController {
   }
 
   /**
- * @param id
- * @param eventDTO
+ * @param id id of an event
+ * @param eventDTO DTO of an event
  * @return return the event updated
- * @throws BadRequestException
- * @throws NotFoundException
+ * @throws NotFoundException Event was not found.
  */
 @PutMapping("{id}")
   @ApiOperation(value = "Update an event")
   public Event update(@PathVariable final Long id, @Valid @RequestBody final EventDTO eventDTO)
-      throws BadRequestException, NotFoundException {
+      throws NotFoundException {
 
     final Event event = this.service.getOne(id);
     this.service.update(this.mapperDto.dtoToEvent(event, eventDTO));
     return event;
   }
 
-  @GetMapping("/join/{id}")
+  /**
+   * Add a user determined by an authentication token, to an event determined by its id.
+   * @param id Id of an Event
+   * @throws NotFoundException Event or User was not found.
+   */
+@GetMapping("/join/{id}")
   @ApiOperation(value = "Add a user to an event as participant")
   public void join(@PathVariable final Long id) throws NotFoundException {
     Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
@@ -203,14 +218,24 @@ public class EventController {
     this.eventParticipantRepository.delete(userEventParticipant);
   }
 
-  @DeleteMapping("{id}")
+
+  /**
+   * Delete an event
+   * @param id Id of an Event
+   */
+@DeleteMapping("{id}")
   @ApiOperation(value = "Delete an event")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void delete(@PathVariable final Long id) {
     this.service.delete(id);
   }
 
-  @GetMapping("/public/{id}")
+  /**
+ * @param id of an Event
+ * @return Return an event
+ * @throws NotFoundException Event was not found.
+ */
+@GetMapping("/public/{id}")
   @ApiOperation(value = "Retrieve an event")
   public EventDTO getOne(@PathVariable final Long id) throws NotFoundException {
     return mapperDto.eventToDTO(this.service.getOne(id));

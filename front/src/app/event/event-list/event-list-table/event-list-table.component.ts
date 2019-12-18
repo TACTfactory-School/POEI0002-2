@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 @Component({
   selector: 'app-event-list-table',
   templateUrl: './event-list-table.component.html',
-  styleUrls: ['./event-list-table.component.css']
+  styleUrls: ['./event-list-table.component.scss']
 })
 export class EventListTableComponent implements OnInit {
 

@@ -2,13 +2,18 @@ package com.example.demo.entities;
 
 import com.example.demo.contracts.UserEventParticipantContract;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = UserEventParticipantContract.TABLE,
         uniqueConstraints={@UniqueConstraint(columnNames =
                 {UserEventParticipantContract.COL_USER , UserEventParticipantContract.COL_EVENT})})
-
 @AttributeOverride(name = UserEventParticipantContract.COL_ID,
         column = @Column(name=UserEventParticipantContract.COL_ID))
 @AttributeOverride(name = UserEventParticipantContract.COL_UPDATED_AT,

@@ -3,12 +3,29 @@ package com.example.demo.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import com.example.demo.contracts.*;
+import com.example.demo.contracts.UserContract;
+import com.example.demo.contracts.UserEventParticipantContract;
+import com.example.demo.contracts.EventContract;
+import com.example.demo.contracts.UserEventOrganisatorContract;
+import com.example.demo.contracts.UserHobbieContract;
+import com.example.demo.contracts.UserLanguageContract;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Entity of a User
+ * @author Cedrick Pennec
+ */
 @Entity
 @Table(name = UserContract.TABLE)
 @AttributeOverride(name = UserContract.COL_ID,
@@ -21,81 +38,127 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
         column = @Column(name=UserContract.COL_ENABLE))
 public class User extends EntityBase {
 
-
+  /**
+ * Username of the user
+ */
   @Column(length = UserContract.LENGTH, nullable = false, unique = true, name = UserContract.COL_USERNAME)
   @NotBlank
   private String username;
 
+  /**
+ * Password of User
+ */
   @Column(length = UserContract.LENGTH, nullable = false, name = UserContract.COL_PASSWORD)
   @NotBlank
   private String password;
 
+  /**
+ * City of User
+ */
   @Column(length = UserContract.LENGTH, nullable = false, name = UserContract.COL_CITY)
   @NotBlank
   private String city;
 
+  /**
+ * Name of User
+ */
   @Column(nullable = true, name = UserContract.COL_NAME)
   private String name;
 
+  /**
+ * Email of User
+ */
   @Column(nullable = true, name = UserContract.COL_EMAIL)
   private String email;
 
+  /**
+ * Sex of User
+ */
   @Column(nullable = true, name = UserContract.COL_SEX)
   private String sex;
 
+  /**
+ * Picture of user possessing a default value.
+ */
   @Column(nullable = true, name = UserContract.COL_PICTURE)
   private String picture = UserContract.DEFAULT_PICTURE;
 
+  /**
+ * Marital status of User.
+ */
   @Column(nullable = true, name = UserContract.COL_MARITAL_STATUS)
   private String maritalStatus;
 
+  /**
+ * Date of birth of User.
+ */
   @Column(nullable = true, name = UserContract.COL_BIRTH_DATE)
   private LocalDateTime birthDate;
 
+  /**
+ * Description of User.
+ */
   @Column(nullable = true, name = UserContract.COL_DESCRIPTION)
   private String description;
 
+  /**
+ * Last connection date of User.
+ */
   @Column(nullable = true, name = UserContract.COL_LAST_CONNECTION_DATE)
   private LocalDateTime lastConnectionDate;
 
+  /**
+ * Profession of User
+ */
   @Column(nullable = true, name = UserContract.COL_PROFESSION)
   private String profession;
 
+  /**
+ * Security role of User
+ */
   @Column(nullable = false, name = UserContract.COL_ROLE)
   private String role;
 
-  @Column(nullable = false, name = UserContract.COL_ENABLE)
-  private Boolean enable;
-
-  public String getRole() {
+  /**
+   * Retrieves the role of User.
+ * @return the role of User.
+ */
+public String getRole() {
     return role;
   }
 
-  public void setRole(final String role) {
+  /**
+   * Set the role of User.
+ * @param role the role of User.
+ */
+public void setRole(final String role) {
     this.role = role;
   }
 
-  public Boolean getEnable() {
-    return enable;
-  }
-
-  public void setEnable(final Boolean enable) {
-    this.enable = enable;
-  }
-
-
+  /**
+ * List of associations between User and Event containing those this User is participating in.
+ */
   @JsonIgnore
   @OneToMany(mappedBy = UserEventParticipantContract.USER_PARTICIPANT)
   private List<UserEventParticipant> asParticipant;
 
+  /**
+ * List of Events created by this User.
+ */
   @JsonIgnore
   @OneToMany(mappedBy = EventContract.AUTHOR)
   private List<Event> eventsAsCreator;
 
+  /**
+ * List of associations between User and Event containing those this User is organizing.
+ */
   @JsonIgnore
   @OneToMany(mappedBy = UserEventOrganisatorContract.USER_ORGANISATOR)
   private List<UserEventOrganisator> asOrganisators;
 
+  /**
+ * List of Users this User is friend with.
+ */
   @JsonIgnore
   @ManyToMany
   @JoinTable(
@@ -104,161 +167,315 @@ public class User extends EntityBase {
           inverseJoinColumns=@JoinColumn(name=UserContract.ASC_COL_FRIEND2, referencedColumnName="id"))
   private List<User> friends;
 
+  /**
+ * List of associations between User and Hobby containing those concerning this User.
+ */
   @JsonIgnore
   @OneToMany(mappedBy = UserHobbieContract.HOBBIE)
   private List<UserHobbie> userHobbie;
 
 
+  /**
+ * List of associations between User and Language containing those concerning this User.
+ */
   @JsonIgnore
   @OneToMany(mappedBy = UserLanguageContract.USER_LANGUAGE)
   private List<UserLanguage> userLanguages;
 
 
-  public List<User> getFriends() {
+  /**
+   * Retrieves this User's friends.
+ * @return a List of User.
+ */
+public List<User> getFriends() {
     return friends;
   }
 
-  public void setFriends(List<User> friends) {
+  /**
+   * Set this User's friends.
+ * @param friends List of User.
+ */
+public void setFriends(final List<User> friends) {
     this.friends = friends;
   }
 
-  public List<Event> getEventsAsCreator() {
+  /**
+   * Retrieves the events this User created.
+ * @return a List of Event.
+ */
+public List<Event> getEventsAsCreator() {
     return eventsAsCreator;
   }
 
-  public void setEventsAsCreator(final List<Event> eventsAsCreator) {
+  /**
+   * Set the events this User created.
+ * @param eventsAsCreator List of Event.
+ */
+public void setEventsAsCreator(final List<Event> eventsAsCreator) {
     this.eventsAsCreator = eventsAsCreator;
   }
 
-  public String getName() {
+  /**
+   * Retrieves this User's name.
+ * @return this User's name.
+ */
+public String getName() {
     return name;
   }
 
-  public void setName(final String name) {
+  /**
+   * Set this User's name.
+ * @param name String.
+ */
+public void setName(final String name) {
     this.name = name;
   }
 
-  public String getEmail() {
+  /**
+   * Retrieves the Email of User.
+ * @return String email.
+ */
+public String getEmail() {
     return email;
   }
 
-  public void setEmail(final String email) {
+  /**
+   * Set this User's email.
+ * @param email String
+ */
+public void setEmail(final String email) {
     this.email = email;
   }
 
-  public String getSex() {
+  /**
+   * retrieve this User's sex.
+ * @return String sex.
+ */
+public String getSex() {
     return sex;
   }
 
-  public void setSex(final String sex) {
+  /**
+   * Set this User's Sex.
+ * @param sex String.
+ */
+public void setSex(final String sex) {
     this.sex = sex;
   }
 
-  public String getPicture() {
+  /**
+   * Retrieves this User's picture.
+ * @return String picture.
+ */
+public String getPicture() {
     return picture;
   }
 
-  public void setPicture(final String picture) {
+  /**
+   * Set this User's picture.
+ * @param picture String
+ */
+public void setPicture(final String picture) {
     this.picture = picture;
   }
 
-  public String getMaritalStatus() {
+  /**
+   * Retrieves the marital status of User.
+ * @return String MaritalStatus.
+ */
+public String getMaritalStatus() {
     return maritalStatus;
   }
 
-  public void setMaritalStatus(final String maritalStatus) {
+  /**
+   * Set marital Status of User
+ * @param maritalStatus String.
+ */
+public void setMaritalStatus(final String maritalStatus) {
     this.maritalStatus = maritalStatus;
   }
 
-  public LocalDateTime getBirthDate() {
+  /**
+   * Retrieve birth date of User.
+ * @return LocalDateTime birthDate.
+ */
+public LocalDateTime getBirthDate() {
     return birthDate;
   }
 
-  public void setBirthDate(final LocalDateTime birthDate) {
+  /**
+   * Set the birth date of User.
+ * @param birthDate LocalDateTime.
+ */
+public void setBirthDate(final LocalDateTime birthDate) {
     this.birthDate = birthDate;
   }
 
-  public String getDescription() {
+  /**
+   * Retrieves the description of User.
+ * @return String description.
+ */
+public String getDescription() {
     return description;
   }
 
-  public void setDescription(final String description) {
+  /**
+   * Set the description of User.
+ * @param description String.
+ */
+public void setDescription(final String description) {
     this.description = description;
   }
 
-  public LocalDateTime getLastConnectionDate() {
+  /**
+   * Retrieves the last connection date of User.
+ * @return LocalDateTime lastConnectionDate.
+ */
+public LocalDateTime getLastConnectionDate() {
     return lastConnectionDate;
   }
 
-  public void setLastConnectionDate(final LocalDateTime lastConnectionDate) {
+  /**
+   * set the last connection date of User.
+ * @param lastConnectionDate LocalDateTime.
+ */
+public void setLastConnectionDate(final LocalDateTime lastConnectionDate) {
     this.lastConnectionDate = lastConnectionDate;
   }
 
-  public String getProfession() {
+  /**
+   * Retrieves the User's profession.
+ * @return String profession.
+ */
+public String getProfession() {
     return profession;
   }
 
-  public void setProfession(final String profession) {
+  /**
+   * Set the User's profession.
+ * @param profession String.
+ */
+public void setProfession(final String profession) {
     this.profession = profession;
   }
 
-  public String getUsername() {
+  /**
+   * Retrieves the User's username.
+ * @return String username.
+ */
+public String getUsername() {
     return username;
   }
 
-  public void setUsername(final String username) {
+  /**
+   * Set the User's username.
+ * @param username String.
+ */
+public void setUsername(final String username) {
     this.username = username;
   }
 
-  public String getPassword() {
+  /**
+   * Retrieves the User's password.
+ * @return String password.
+ */
+public String getPassword() {
     return password;
   }
 
-  public void setPassword(final String password) {
+  /**
+   * Set the User's password.
+ * @param password String.
+ */
+public void setPassword(final String password) {
     this.password = password;
   }
 
-  public String getCity() {
+  /**
+   * retrieves the User's city.
+ * @return String city.
+ */
+public String getCity() {
     return city;
   }
 
-  public void setCity(final String city) {
+  /**
+   * Set the User's city.
+ * @param city String.
+ */
+public void setCity(final String city) {
     this.city = city;
   }
 
-  public List<UserEventParticipant> getAsParticipant() {
+  /**
+   * Retrieves the associations between User and Event containing those this User is participating in.
+ * @return asParticipant List of UserEventParticipant
+ */
+public List<UserEventParticipant> getAsParticipant() {
     return asParticipant;
   }
 
-  public void addAsParticipant(final UserEventParticipant usereventparticipant) {
+  /**
+   * Add an association between User and Event concerning the participation oh this User in that Event.
+ * @param usereventparticipant UserEventParticipant
+ */
+public void addAsParticipant(final UserEventParticipant usereventparticipant) {
     this.asParticipant.add(usereventparticipant);
   }
 
-  public void setAsParticipant(final List<UserEventParticipant> asParticipant) {
+  /**
+   * Set an association between User and Event concerning the participation oh this User in that Event.
+ * @param asParticipant UserEventParticipant.
+ */
+public void setAsParticipant(final List<UserEventParticipant> asParticipant) {
     this.asParticipant = asParticipant;
   }
 
-  public List<UserEventOrganisator> getAsOrganisators() {
+  /**
+   * Retrieves the associations between User and Event containing those this User is organizing.
+ * @return asOrganisators List of UserEventOrganisator
+ */
+public List<UserEventOrganisator> getAsOrganisators() {
     return asOrganisators;
   }
 
-  public void setAsOrganisators(final List<UserEventOrganisator> asOrganisators) {
+  /**
+   * Set an association between User and Event concerning the organizing oh that Event by this User.
+ * @param asOrganisators List of UserEventOrganisator
+ */
+public void setAsOrganisators(final List<UserEventOrganisator> asOrganisators) {
     this.asOrganisators = asOrganisators;
   }
 
-  public List<UserHobbie> getUserHobbie() {
+  /**
+   * Retrieves the associations between this User and its Hobbies.
+ * @return userHobbie List of UserHobbie
+ */
+public List<UserHobbie> getUserHobbie() {
     return userHobbie;
   }
 
-  public void setUserHobbie(final List<UserHobbie> userHobbie) {
+  /**
+   * Set the associations between this User and its Hobbies.
+ * @param userHobbie List of UserHobbie
+ */
+public void setUserHobbie(final List<UserHobbie> userHobbie) {
     this.userHobbie = userHobbie;
   }
 
-  public List<UserLanguage> getUserLanguages() {
+  /**
+   * Retrieves Retrieves the associations between this User and its Languages.
+ * @return List of UserLanguage
+ */
+public List<UserLanguage> getUserLanguages() {
     return userLanguages;
   }
 
-  public void setUserLanguages(final List<UserLanguage> userLanguages) {
+  /**
+   * Set the associations between this User and its Languages.
+ * @param userLanguages List UserLanguage
+ */
+public void setUserLanguages(final List<UserLanguage> userLanguages) {
     this.userLanguages = userLanguages;
   }
 
