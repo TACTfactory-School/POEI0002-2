@@ -5,52 +5,62 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 
+/**
+ * Tags of an Event.
+ * @author ckp
+ */
 @Entity
 @Table(name = "ovg_tags")
-public class Tag {
+public class Tag extends EntityBase{
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
-
-  @Column(length = 255, nullable = false, unique = true)
+  /**
+ * Label of the tag.
+ */
+@Column(length = 255, nullable = false, unique = true)
   @NotBlank
   private String label;
 
-  @JsonIgnore
+  /**
+ * List of associations between the Tag and its associated Events.
+ */
+@JsonIgnore
   @OneToMany(mappedBy = "tag")
   private List<TagEvent> tagEvents;
 
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(final Long id) {
-    this.id = id;
-  }
-
-  public String getLabel() {
+  /**
+   * Retrieves the label of the Tag.
+ * @return the label of the Tag.
+ */
+public String getLabel() {
     return label;
   }
 
-  public void setLabel(final String label) {
+  /**
+   * Set the label of the Tag.
+ * @param label the label of the Tag.
+ */
+public void setLabel(final String label) {
     this.label = label;
   }
 
-  public List<TagEvent> getTagEvents() {
+  /**
+   * Retrieves the List of associations between the Tag and its associated Events.
+ * @return the List of associations between the Tag and its associated Events.
+ */
+public List<TagEvent> getTagEvents() {
     return tagEvents;
   }
 
-  public void setTagEvents(final List<TagEvent> tagEvents) {
+  /**
+   * Set the List of associations between the Tag and its associated Events.
+ * @param tagEvents the List of associations between the Tag and its associated Events.
+ */
+public void setTagEvents(final List<TagEvent> tagEvents) {
     this.tagEvents = tagEvents;
   }
-
 }

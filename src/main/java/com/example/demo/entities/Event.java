@@ -156,75 +156,144 @@ public String getDescription() {
     return description;
   }
 
-  public void setDescription(final String description) {
+  /**
+ * @param description of the event
+ */
+public void setDescription(final String description) {
     this.description = description;
   }
 
-  public LocalDateTime getDueAt() {
+  /**
+ * @return the Date at which the event takes place.
+ */
+public LocalDateTime getDueAt() {
     return dueAt;
   }
 
-  public void setDueAt(final LocalDateTime dueAt) {
+  /**
+   * Set the date at which the event takes place.
+ * @param dueAt Date at which the event takes place.
+ */
+public void setDueAt(final LocalDateTime dueAt) {
     this.dueAt = dueAt;
   }
 
-  public Integer getNbPlace() {
+  /**
+   * Retrieves the number of participants allowed to participate in the event.
+ * @return the number of participants allowed.
+ */
+public Integer getNbPlace() {
     return nbPlace;
   }
 
-  public void setNbPlace(final Integer nbPlace) {
+  /**
+   * Set the number of participants allowed to participate in the event.
+ * @param nbPlace the number of participants allowed.
+ */
+public void setNbPlace(final Integer nbPlace) {
     this.nbPlace = nbPlace;
   }
 
-  public String getPhoto() {
+  /**
+   * Retrieves the photo of the event.
+ * @return the photo of the Event
+ */
+public String getPhoto() {
     return photo;
   }
 
-  public void setPhoto(final String photo) {
+  /**
+   * Set the photo of the Event
+ * @param photo the photo of the Event
+ */
+public void setPhoto(final String photo) {
     this.photo = photo;
   }
 
-  public String getAdresse() {
+  /**
+   * Retrieves the address of the event.
+ * @return the address of the event.
+ */
+public String getAdresse() {
     return adresse;
   }
 
-  public void setAdresse(final String adresse) {
+  /**
+   * Set the address of the event.
+ * @param adresse the address of the event.
+ */
+public void setAdresse(final String adresse) {
     this.adresse = adresse;
   }
 
-  public Integer getCp() {
+  /**
+   * Retrieves the postal code of the Event.
+ * @return the postal code of the Event.
+ */
+public Integer getCp() {
     return cp;
   }
 
-  public void setCp(final Integer cp) {
+  /**
+   * Set the postal code of the Event.
+ * @param cp the postal code of the Event.
+ */
+public void setCp(final Integer cp) {
     this.cp = cp;
   }
 
-  public String getCity() {
+  /**
+   * Retrieves the city of the Event.
+ * @return the city of the Event.
+ */
+public String getCity() {
     return city;
   }
 
-  public void setCity(final String city) {
+  /**
+   * Set the city of the Event.
+ * @param city the city of the Event.
+ */
+public void setCity(final String city) {
     this.city = city;
   }
 
-  public List<UserEventOrganisator> getOrganisators() {
+  /**
+   * Retrieves the organisators of the Event.
+ * @return the organisators of the Event.
+ */
+public List<UserEventOrganisator> getOrganisators() {
     return organisators;
   }
 
-  public void setOrganisators(final List<UserEventOrganisator> organisators) {
+  /** Set the organisators of the Event.
+ * @param organisators the organisators of the Event.
+ */
+public void setOrganisators(final List<UserEventOrganisator> organisators) {
     this.organisators = organisators;
   }
 
-  public List<UserEventParticipant> getParticipants() {
+  /**
+   * Retrieves the participants of the Event.
+ * @return the participants of the Event.
+ */
+public List<UserEventParticipant> getParticipants() {
     return participants;
   }
 
-  public void setParticipants(final List<UserEventParticipant> participants) {
+  /**
+   * Set the participants of the Event.
+ * @param participants the participants of the Event.
+ */
+public void setParticipants(final List<UserEventParticipant> participants) {
     this.participants = participants;
   }
 
-  public void addParticipant(final UserEventParticipant usereventparticipant) {
+  /**
+   * Add a participant to the Event.
+ * @param usereventparticipant Participant to add.
+ */
+public void addParticipant(final UserEventParticipant usereventparticipant) {
     this.participants.add(usereventparticipant);
   }
 

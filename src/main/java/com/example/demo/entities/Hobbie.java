@@ -5,51 +5,62 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 
+/**
+ * Hobbies of a User.
+ * @author Cedrick Pennec
+ */
 @Entity
 @Table(name = "ovg_hobbies")
-public class Hobbie {
+public class Hobbie extends EntityBase{
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
-
-  @Column(length = 255, nullable = false, unique = true)
+  /**
+ * Label of the Hobby.
+ */
+@Column(length = 255, nullable = false, unique = true)
   @NotBlank
   private String label;
 
-  @JsonIgnore
+  /**
+ * List of Users associated to the Hobby.
+ */
+@JsonIgnore
   @OneToMany(mappedBy = "user")
   private List<UserHobbie> userHobbies;
 
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(final Long id) {
-    this.id = id;
-  }
-
-  public String getLabel() {
+  /**
+   * Retrieves the label of the Hobby.
+ * @return label the label of the Hobby.
+ */
+public String getLabel() {
     return label;
   }
 
-  public void setLabel(final String label) {
+  /**
+   * Set the label of the Hobby.
+ * @param label the label of the Hobby.
+ */
+public void setLabel(final String label) {
     this.label = label;
   }
 
-  public List<UserHobbie> getUserHobbies() {
+  /**
+   * Retrieves the List of Users associated to the Hobby.
+ * @return the List of Users associated to the Hobby.
+ */
+public List<UserHobbie> getUserHobbies() {
     return userHobbies;
   }
 
-  public void setUserHobbies(final List<UserHobbie> userHobbies) {
+  /**
+   * Set the List of Users associated to the Hobby.
+ * @param userHobbies the List of Users associated to the Hobby.
+ */
+public void setUserHobbies(final List<UserHobbie> userHobbies) {
     this.userHobbies = userHobbies;
   }
 }
