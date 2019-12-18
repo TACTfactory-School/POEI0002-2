@@ -1,18 +1,29 @@
 package com.example.demo.entities;
 
+import com.example.demo.contracts.UserLanguageContract;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ovg_user_language",
-        uniqueConstraints={@UniqueConstraint(columnNames = {"language_id" , "user_id"})})
+@Table(name = UserLanguageContract.TABLE,
+        uniqueConstraints={@UniqueConstraint(columnNames =
+                {UserLanguageContract.COL_LANGUAGE , UserLanguageContract.COL_USER})})
+@AttributeOverride(name = UserLanguageContract.COL_ID,
+        column = @Column(name=UserLanguageContract.COL_ID))
+@AttributeOverride(name = UserLanguageContract.COL_UPDATED_AT,
+        column = @Column(name=UserLanguageContract.COL_CREATED_AT))
+@AttributeOverride(name = UserLanguageContract.COL_UPDATED_AT,
+        column = @Column(name=UserLanguageContract.COL_UPDATED_AT))
+@AttributeOverride(name = UserLanguageContract.COL_ENABLE,
+        column = @Column(name= UserLanguageContract.COL_ENABLE))
 public class UserLanguage extends EntityBase {
 
   @ManyToOne
-  @JoinColumn(name = "language_id")
+  @JoinColumn(name = UserLanguageContract.COL_LANGUAGE)
   private Language language;
 
   @ManyToOne
-  @JoinColumn(name = "user_id")
+  @JoinColumn(name = UserLanguageContract.COL_USER)
   private User user;
 
   public Language getLanguage() {

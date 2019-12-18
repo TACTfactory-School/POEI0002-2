@@ -1,18 +1,29 @@
 package com.example.demo.entities;
 
+import com.example.demo.contracts.UserEventOrganisatorContract;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ovg_user_event_organisator",
-        uniqueConstraints={@UniqueConstraint(columnNames = {"organisator_id" , "event_id"})})
+@Table(name = UserEventOrganisatorContract.TABLE,
+        uniqueConstraints={@UniqueConstraint(columnNames =
+                {UserEventOrganisatorContract.COL_USER , UserEventOrganisatorContract.COL_EVENT})})
+@AttributeOverride(name = UserEventOrganisatorContract.COL_ID,
+        column = @Column(name=UserEventOrganisatorContract.COL_ID))
+@AttributeOverride(name = UserEventOrganisatorContract.COL_UPDATED_AT,
+        column = @Column(name=UserEventOrganisatorContract.COL_CREATED_AT))
+@AttributeOverride(name = UserEventOrganisatorContract.COL_UPDATED_AT,
+        column = @Column(name=UserEventOrganisatorContract.COL_UPDATED_AT))
+@AttributeOverride(name = UserEventOrganisatorContract.COL_ENABLE,
+        column = @Column(name=UserEventOrganisatorContract.COL_ENABLE))
 public class UserEventOrganisator extends EntityBase {
 
   @ManyToOne
-  @JoinColumn(name = "organisator_id")
+  @JoinColumn(name = UserEventOrganisatorContract.COL_USER)
   private User userOrganisator;
 
   @ManyToOne
-  @JoinColumn(name = "event_id")
+  @JoinColumn(name = UserEventOrganisatorContract.COL_EVENT)
   private Event eventOrganisator;
 
 

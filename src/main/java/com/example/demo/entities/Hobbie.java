@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import com.example.demo.contracts.HobbieContract;
+import com.example.demo.contracts.UserHobbieContract;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
@@ -14,19 +16,19 @@ import javax.validation.constraints.NotBlank;
 
 
 @Entity
-@Table(name = "ovg_hobbies")
+@Table(name = HobbieContract.TABLE)
 public class Hobbie {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  @Column(length = 255, nullable = false, unique = true)
+  @Column(length = HobbieContract.LENGTH, nullable = false, unique = true)
   @NotBlank
   private String label;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "user")
+  @OneToMany(mappedBy = UserHobbieContract.USER_HOBBIE)
   private List<UserHobbie> userHobbies;
 
   public Long getId() {

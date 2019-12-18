@@ -1,18 +1,21 @@
 package com.example.demo.entities;
 
+import com.example.demo.contracts.TagEventContract;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ovg_tag_event",
-        uniqueConstraints={@UniqueConstraint(columnNames = {"event_id" , "tag_id"})})
+@Table(name = TagEventContract.TABLE,
+        uniqueConstraints={@UniqueConstraint(columnNames =
+                {TagEventContract.COL_EVENT, TagEventContract.COL_TAG})})
 public class TagEvent extends EntityBase {
 
   @ManyToOne
-  @JoinColumn(name = "event_id")
+  @JoinColumn(name = TagEventContract.COL_EVENT)
   private Event event;
 
   @ManyToOne
-  @JoinColumn(name = "tag_id")
+  @JoinColumn(name = TagEventContract.COL_TAG)
   private Tag tag;
 
   public Event getEvent() {

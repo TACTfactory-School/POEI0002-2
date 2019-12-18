@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.example.demo.contracts.UserLanguageContract;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Language {
   private String label;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "language")
+  @OneToMany(mappedBy = UserLanguageContract.LANGUAGE)
   private List<UserLanguage> speakers;
 
   public Long getId() {

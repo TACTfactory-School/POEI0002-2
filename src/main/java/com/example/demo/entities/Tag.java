@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import com.example.demo.contracts.TagEventContract;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class Tag {
   private String label;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "tag")
+  @OneToMany(mappedBy = TagEventContract.TAG)
   private List<TagEvent> tagEvents;
 
   public Long getId() {

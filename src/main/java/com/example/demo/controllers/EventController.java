@@ -193,6 +193,16 @@ public class EventController {
 
   }
 
+  @DeleteMapping("disjoin/{id}")
+  public void disjoin(@PathVariable final Long id) throws NotFoundException {
+    Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+    String username = loggedInUser.getName();
+    User user = this.userService.getByUserName(username);
+    Event event = this.service.getOne(id);
+    UserEventParticipant userEventParticipant = this.eventParticipantRepository.getByUserParticipantAndEventParticipant(user, event);
+    this.eventParticipantRepository.delete(userEventParticipant);
+  }
+
   @DeleteMapping("{id}")
   @ApiOperation(value = "Delete an event")
   @ResponseStatus(HttpStatus.NO_CONTENT)

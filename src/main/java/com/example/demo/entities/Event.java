@@ -1,37 +1,37 @@
 package com.example.demo.entities;
 
+import com.example.demo.contracts.EventContract;
+import com.example.demo.contracts.TagEventContract;
+import com.example.demo.contracts.UserEventOrganisatorContract;
+import com.example.demo.contracts.UserEventParticipantContract;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "ovg_event")
+@Table(name = EventContract.TABLE)
+@AttributeOverride(name = EventContract.COL_ID,
+        column = @Column(name=EventContract.COL_ID))
+@AttributeOverride(name = EventContract.COL_UPDATED_AT,
+        column = @Column(name=EventContract.COL_CREATED_AT))
+@AttributeOverride(name = EventContract.COL_UPDATED_AT,
+        column = @Column(name=EventContract.COL_UPDATED_AT))
+@AttributeOverride(name = EventContract.COL_ENABLE,
+        column = @Column(name=EventContract.COL_ENABLE))
 public class Event extends EntityBase {
-
-
-  private static final int DESC_LENGTH = 5000;
-  private static final int STRING_LENGTH = 255;
 
   @ManyToOne(optional = false)
   private User author;
 
-  @Column(length = STRING_LENGTH, nullable = false)
+  @Column(length = EventContract.STRING_LENGTH, nullable = false)
   @NotBlank
   private String title;
 
-  @Column(length = DESC_LENGTH, nullable = false)
+  @Column(length = EventContract.DESC_LENGTH, nullable = false)
   @NotBlank
   private String description;
 
@@ -41,29 +41,29 @@ public class Event extends EntityBase {
   @Column(nullable = false)
   private Integer nbPlace;
 
-  @Column(length = STRING_LENGTH, nullable = true)
+  @Column(length = EventContract.STRING_LENGTH, nullable = true)
   private String photo;
 
-  @Column(length = STRING_LENGTH, nullable = true)
+  @Column(length = EventContract.STRING_LENGTH, nullable = true)
   private String adresse;
 
-  @Column(nullable = true) //modifier en cp pour checkstyle
+  @Column(nullable = true)
   private Integer cp;
 
-  @Column(length = STRING_LENGTH, nullable = false)
+  @Column(length = EventContract.STRING_LENGTH, nullable = false)
   @NotBlank
   private String city;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "event")
+  @OneToMany(mappedBy = TagEventContract.EVENT)
   private List<TagEvent> tagEvents;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "eventParticipant")
+  @OneToMany(mappedBy = UserEventParticipantContract.EVENT_PARTICIPANT)
   private List<UserEventParticipant> participants;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "eventOrganisator")
+  @OneToMany(mappedBy = UserEventOrganisatorContract.EVENT_ORGANISATOR)
   private List<UserEventOrganisator> organisators;
 
   public User getAuthor() {
