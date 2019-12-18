@@ -1,14 +1,14 @@
 package com.example.demo.services.eventservices;
 
+import com.example.demo.entities.Event;
+import com.example.demo.exeptions.NotFoundException;
+import com.example.demo.repository.EventRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.example.demo.entities.Event;
-import com.example.demo.exeptions.NotFoundException;
-import com.example.demo.repository.EventRepository;
 
 @Service
 public class EventCrudServiceImpl implements EventCrudService {

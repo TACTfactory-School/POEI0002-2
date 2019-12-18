@@ -15,7 +15,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import tools.HASH;
+import tools.Hash;
 
 @Configuration
 @EnableWebSecurity
@@ -33,29 +33,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Override
   public void configure(final HttpSecurity http) throws Exception {
     http.cors().and()
-    .antMatcher("/")
-    .authorizeRequests()
-    .anyRequest().authenticated()
-    .and().formLogin()
-    .and().logout()
-    .and().csrf().disable();
+      .antMatcher("/")
+      .authorizeRequests()
+      .anyRequest().authenticated()
+      .and().formLogin()
+      .and().logout()
+      .and().csrf().disable();
 
   }
 
   @Override
   protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(userDetailsService).passwordEncoder(HASH.hash());
+    auth.userDetailsService(userDetailsService).passwordEncoder(Hash.hash());
   }
 
 
-    @Override
-    public void configure(final WebSecurity web) throws Exception {
-        web.ignoring()
-            .antMatchers(HttpMethod.OPTIONS, "/**")
-            .antMatchers(HttpMethod.POST, "/api/v1/user")
-            .antMatchers(HttpMethod.GET, "/api/v1/*/public**")
-            .antMatchers(HttpMethod.GET, "/api/v1/*/public/**");
-    }
+  @Override
+  public void configure(final WebSecurity web) throws Exception {
+    web.ignoring()
+      .antMatchers(HttpMethod.OPTIONS, "/**")
+      .antMatchers(HttpMethod.POST, "/api/v1/user")
+      .antMatchers(HttpMethod.GET, "/api/v1/*/public**")
+      .antMatchers(HttpMethod.GET, "/api/v1/*/public/**");
+  }
 
 
   @Bean
@@ -63,12 +63,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     CorsConfiguration config = new CorsConfiguration();
-
     config.setAllowCredentials(true);
     config.addAllowedOrigin("*");
     config.addAllowedHeader("*");
     config.addAllowedMethod("*");
-
     source.registerCorsConfiguration("/**", config);
     return new CorsFilter(source);
   }

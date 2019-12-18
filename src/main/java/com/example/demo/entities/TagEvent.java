@@ -2,11 +2,11 @@ package com.example.demo.entities;
 
 import com.example.demo.contracts.TagEventContract;
 
-import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.UniqueConstraint;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Association between Tag and User.
@@ -14,7 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = TagEventContract.TABLE,
-        uniqueConstraints={@UniqueConstraint(columnNames =
+        uniqueConstraints = {@UniqueConstraint(columnNames =
                 {TagEventContract.COL_EVENT, TagEventContract.COL_TAG})})
 public class TagEvent extends EntityBase {
 
