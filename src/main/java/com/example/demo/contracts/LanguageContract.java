@@ -5,7 +5,7 @@ package com.example.demo.contracts;
  * @author Cheikh E.
  */
 
-public class LanguageContract extends BaseContract {
+public class LanguageContract {
 
   /**
    ** The constants used by the Language class.

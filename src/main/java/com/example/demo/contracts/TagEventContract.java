@@ -5,7 +5,7 @@ package com.example.demo.contracts;
  * @author Cheikh E.
  */
 
-public class TagEventContract extends BaseContract {
+public class TagEventContract {
 
   /**
    ** The constants used by the TagEvent class.

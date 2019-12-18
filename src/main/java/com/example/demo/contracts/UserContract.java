@@ -5,7 +5,7 @@ package com.example.demo.contracts;
  * @author Cheikh E.
  */
 
-public class UserContract extends BaseContract {
+public class UserContract {
 
   /**
    ** The constants used by the User class.

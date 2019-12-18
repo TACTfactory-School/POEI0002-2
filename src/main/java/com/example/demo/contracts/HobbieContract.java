@@ -5,7 +5,7 @@ package com.example.demo.contracts;
  * @author Cheikh E.
  */
 
-public class HobbieContract extends BaseContract {
+public class HobbieContract {
 
   /**
    ** The constants used by the Hobbie class.
