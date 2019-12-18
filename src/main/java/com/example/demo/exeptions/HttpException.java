@@ -1,15 +1,19 @@
 package com.example.demo.exeptions;
 
 //@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+/**
+ * @author Cedrick Pennec
+ *
+ */
 public class HttpException extends Exception {
 
   /** The serial number. */
   private static final long serialVersionUID = 1L;
 
   /**
-   *
-   */
-  public HttpException() {
+ *
+ */
+public HttpException() {
     super();
   }
 
