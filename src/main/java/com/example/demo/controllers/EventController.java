@@ -52,19 +52,34 @@ import io.swagger.annotations.ApiOperation;
 public class EventController {
 
 
-  @Autowired
+  /**
+ * CRUD service of an Event
+ */
+@Autowired
   private EventCrudService service;
 
-  @Autowired
+  /**
+ * CRUD service of a User.
+ */
+@Autowired
   private UserCrudService userService;
 
-  @Autowired
+  /**
+ * Repository of a UserEventParticipant.
+ */
+@Autowired
   private UserEventParticipantRepository eventParticipantRepository;
 
-  @Autowired
+  /**
+ * Repository of a UserEventOrganisator.
+ */
+@Autowired
   private UserEventOrganisatorRepository eventOrganisatorRepository;
 
-  @Autowired
+  /**
+ * Mapper used to convert entities to their DTO.
+ */
+@Autowired
   private Mapper mapperDto;
 
   /**
@@ -73,7 +88,7 @@ public class EventController {
  */
 @GetMapping("/public")
   @ApiOperation(value = "Retrieves all events")
-  public Page<EventDTO> getAll(Pageable pageable) {
+  public Page<EventDTO> getAll(final Pageable pageable) {
     Page<Event> eventPage = this.service.getAll(pageable);
     eventPage.getTotalElements();
     return new PageImpl<>(eventPage.stream()
@@ -82,9 +97,9 @@ public class EventController {
   }
 
   /**
- * @param id of an event
+ * @param id of an event.
  * @return Return a list of users participating to the event with the defined id.
- * @throws NotFoundException
+ * @throws NotFoundException Event was not found.
  */
 @GetMapping("/public/participants/{id}")
   @ApiOperation(value = "Retrieves all users participating to the event")
@@ -101,6 +116,7 @@ public class EventController {
     /**
      * @param id of an event
      * @return Return a list of users organizing the event with the defined id.
+     * @throws NotFoundException Event was not found.
      */
     @GetMapping("/public/organisators/{id}")
     @ApiOperation(value = "Retrieves all users organisators to the event")
@@ -115,9 +131,10 @@ public class EventController {
     }
 
     /**
-     * Set a user defined by his username as organizer of an event defined by his id.
-     * @param id of an event
-     * @param username
+     * Set a user defined by his username as organizer of an event defined by its id.
+     * @param id of an event.
+     * @param username username of the user.
+     * @throws NotFoundException User or Event was not found.
      */
     @PostMapping("/organisators")
     @ApiOperation(value = "Add a user as organizer of an event")
@@ -133,13 +150,14 @@ public class EventController {
     }
 
   /**
- * @param eventDTO
+ * @param eventDTO DTO of an event.
  * @return Return the event created.
+ * @throws NotFoundException User was not found.
  */
 @PostMapping
   @ApiOperation(value = "Create an event")
   @ResponseStatus(HttpStatus.CREATED)
-  public Event create(@Valid @RequestBody final EventDTO eventDTO) throws BadRequestException, NotFoundException {
+  public Event create(@Valid @RequestBody final EventDTO eventDTO) throws NotFoundException {
     Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
     Event event = new Event();
     String username = loggedInUser.getName();
@@ -150,14 +168,15 @@ public class EventController {
   }
 
   /**
- * @param id
- * @param eventDTO
+ * @param id id of an event
+ * @param eventDTO DTO of an event
  * @return return the event updated
+ * @throws NotFoundException Event was not found.
  */
 @PutMapping("{id}")
   @ApiOperation(value = "Update an event")
   public Event update(@PathVariable final Long id, @Valid @RequestBody final EventDTO eventDTO)
-      throws BadRequestException, NotFoundException {
+      throws NotFoundException {
 
     final Event event = this.service.getOne(id);
     this.service.update(this.mapperDto.dtoToEvent(event, eventDTO));
@@ -167,6 +186,7 @@ public class EventController {
   /**
    * Add a user determined by an authentication token, to an event determined by its id.
    * @param id Id of an Event
+   * @throws NotFoundException Event or User was not found.
    */
 @GetMapping("/join/{id}")
   @ApiOperation(value = "Add a user to an event as participant")
@@ -202,8 +222,9 @@ public class EventController {
   }
 
   /**
- * @param id
+ * @param id of an Event
  * @return Return an event
+ * @throws NotFoundException Event was not found.
  */
 @GetMapping("/public/{id}")
   @ApiOperation(value = "Retrieve an event")

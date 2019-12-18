@@ -110,7 +110,7 @@ public class User extends EntityBase {
     return friends;
   }
 
-  public void setFriends(List<User> friends) {
+  public void setFriends(final List<User> friends) {
     this.friends = friends;
   }
 

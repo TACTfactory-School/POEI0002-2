@@ -19,7 +19,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 @MappedSuperclass
 public class EntityBase {
 
-  @Id
+  /**
+ * Id of the entity
+ */
+@Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @ApiModelProperty(value = "The generated database ID", readOnly = true)
   private Long id;
@@ -98,7 +101,7 @@ public Boolean getEnable() {
 
   /**
    * Set the enabled boolean
-   * @param enable
+   * @param enable Wether the entity is enabled or not.
    */
 public void setEnable(final Boolean enable) {
     this.enable = enable;

@@ -19,7 +19,7 @@ public class UserLanguage extends EntityBase {
     return language;
   }
 
-  public void setLanguage(Language language) {
+  public void setLanguage(final Language language) {
     this.language = language;
   }
 
@@ -27,7 +27,7 @@ public class UserLanguage extends EntityBase {
     return user;
   }
 
-  public void setUser(User user) {
+  public void setUser(final User user) {
     this.user = user;
   }
 
