@@ -8,10 +8,16 @@
   <mat-card class="example-card">
 
     <img mat-card-image src="assets/img/ohshit.jpg" alt="Oh shit">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title [routerLink]="[e.id]">{{ e.title }}</mat-card-title>
+      <mat-card-subtitle>{{ e.author }}</mat-card-subtitle>
+    </mat-card-header>
     <mat-card-content>
       <p>{{ e.description }}</p>
       <p>{{ e.dueAt | dateTransform }}</p>
     </mat-card-content>
+
     <mat-card-actions>
       <button mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)">Rejoindre</button>
     </mat-card-actions>

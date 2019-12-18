@@ -13,9 +13,9 @@ body {
   padding: 0;
 }
 
-html {
+/* html {
   overflow-y: scroll;
-}
+} */
 
 body {
   background: url("./assets/img/low-poly-realistic-texture-red-wallpaper.jpg");
