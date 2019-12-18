@@ -5,12 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -132,7 +128,7 @@ public List<TagEvent> getTagEvents() {
    * Set the tags of the events.
  * @param tagEvents, a List of TagEvents.
  */
-public void setTagEvents(List<TagEvent> tagEvents) {
+public void setTagEvents(final List<TagEvent> tagEvents) {
     this.tagEvents = tagEvents;
   }
 

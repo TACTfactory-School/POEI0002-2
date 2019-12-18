@@ -19,7 +19,7 @@ public class UserHobbie extends EntityBase {
     return hobbie;
   }
 
-  public void setHobbie(Hobbie hobbie) {
+  public void setHobbie(final Hobbie hobbie) {
     this.hobbie = hobbie;
   }
 
@@ -27,7 +27,7 @@ public class UserHobbie extends EntityBase {
     return user;
   }
 
-  public void setUser(User user) {
+  public void setUser(final User user) {
     this.user = user;
   }
 }
