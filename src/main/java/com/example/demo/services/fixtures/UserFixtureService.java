@@ -13,7 +13,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import tools.HASH;
+import tools.Hash;
 
 @Component
 public class UserFixtureService implements Fixture {
@@ -33,7 +33,7 @@ public class UserFixtureService implements Fixture {
 
     User user1 = new User();
     user1.setUsername("admin");
-    user1.setPassword(HASH.hash().encode("admin"));
+    user1.setPassword(Hash.hash().encode("admin"));
     user1.setCity("paris");
     user1.setRole("admin");
     user1.setEnable(true);
@@ -47,7 +47,7 @@ public class UserFixtureService implements Fixture {
       //            user.setRole("user");
       user.setRole("ANONYMOUS");
 
-      user.setPassword(HASH.hash().encode(faker.elderScrolls().dragon()));
+      user.setPassword(Hash.hash().encode(faker.elderScrolls().dragon()));
       do {
         username = faker.harryPotter().character();
       } while (this.usernames.contains(username));

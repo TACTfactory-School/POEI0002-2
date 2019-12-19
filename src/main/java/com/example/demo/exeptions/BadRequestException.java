@@ -37,7 +37,6 @@ public BadRequestException(final Throwable cause) {
 public BadRequestException(final String message, final Throwable cause) {
     super(message, cause);
   }
-
   /**
  * @param message String
  * @param cause Throwable

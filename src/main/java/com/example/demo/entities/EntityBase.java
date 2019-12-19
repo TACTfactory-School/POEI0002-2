@@ -20,28 +20,28 @@ import org.hibernate.annotations.UpdateTimestamp;
 public class EntityBase {
 
   /**
- * Id of the entity
+ * Id of the entity.
  */
-@Id
+  @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @ApiModelProperty(value = "The generated database ID", readOnly = true)
   private Long id;
 
   /**
- * Creation date
+ * Creation date.
  */
-@CreationTimestamp
+  @CreationTimestamp
   private LocalDateTime createdAt;
   /**
  * Last modification date.
  */
-@UpdateTimestamp
+  @UpdateTimestamp
   private LocalDateTime updatedAt;
 
   /**
  * allow the desactivation of an entity.
  */
-private Boolean enable;
+  private Boolean enable;
 
   protected EntityBase() {
     super();
@@ -50,14 +50,14 @@ private Boolean enable;
   /**
    * @return the id.
    */
-public Long getId() {
+  public Long getId() {
     return id;
   }
 
   /**
    * @return the creation date.
    */
-public LocalDateTime getCreatedAt() {
+  public LocalDateTime getCreatedAt() {
     return createdAt;
   }
 
@@ -65,14 +65,14 @@ public LocalDateTime getCreatedAt() {
    * Set the creation date.
    * @param createdAt creation date in LocalDateTime.
    */
-public void setCreatedAt(final LocalDateTime createdAt) {
+  public void setCreatedAt(final LocalDateTime createdAt) {
     this.createdAt = createdAt;
   }
 
   /**
    * @return Return the date of the last modification.
    */
-public LocalDateTime getUpdatedAt() {
+  public LocalDateTime getUpdatedAt() {
     return updatedAt;
   }
 
@@ -80,7 +80,7 @@ public LocalDateTime getUpdatedAt() {
    * Set the last modification date.
    * @param updatedAt last modification date in LocalDateTime.
    */
-public void setUpdatedAt(final LocalDateTime updatedAt) {
+  public void setUpdatedAt(final LocalDateTime updatedAt) {
     this.updatedAt = updatedAt;
   }
 
@@ -88,22 +88,22 @@ public void setUpdatedAt(final LocalDateTime updatedAt) {
    * Set the id.
    * @param id Entity id.
    */
-public void setId(final Long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
   /**
    * @return the enabled boolean.
    */
-public Boolean getEnable() {
+  public Boolean getEnable() {
     return enable;
   }
 
   /**
-   * Set the enabled boolean
+   * Set the enabled boolean.
    * @param enable Wether the entity is enabled or not.
    */
-public void setEnable(final Boolean enable) {
+  public void setEnable(final Boolean enable) {
     this.enable = enable;
   }
 

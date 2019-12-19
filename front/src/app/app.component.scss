@@ -1,25 +1,50 @@
 header {
-    background-color: black;
-    height: 5em;
+  background-color: black;
+  height: 5em;
+
+  img {
+    float: left;
+    height: 80px;
   }
 
-header img {
-  float: left;
-  height: 80px;
+  ul {
+    float: right;
+    width: 20%;
+    min-width: 260px;
+    max-width: 350px;
+    margin: 10px;
+  }
 }
-header ul {
-  float: right;
-  width: 20%;
-  min-width: 260px;
-  max-width: 350px;
-  margin: 10px;
+
+@mixin no-mobile() {
+  @media screen and (min-width: 800px) {
+    @content;
+  }
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  app-menu {
+    width: 100%;
+
+    @include no-mobile() {
+      width: 200px;
+    }
+  }
+
+  div {
+    flex: 2;
+  }
 }
 
 
-mat-drawer-container {
-  background : url("../assets/img/low-poly-realistic-texture-red-wallpaper.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 100%;
-}
+// mat-drawer-container {
+//   background : url("../assets/img/low-poly-realistic-texture-red-wallpaper.jpg");
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-attachment: fixed;
+//   height: 100%;
+// }

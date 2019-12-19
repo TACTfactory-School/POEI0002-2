@@ -20,71 +20,70 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @author Cedrick Pennec
- *Configuration class of the open API.
- */
+* @author Cedrick Pennec
+* Configuration class of the open API.
+*/
 @Configuration
 @EnableSwagger2
 public class OpenApiConfiguration {
-
   private static final String BASE_PACKAGE = "com.example.demo";
 
   @Bean
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2)
-        .select()
-        .apis(RequestHandlerSelectors.basePackage(BASE_PACKAGE))
-        .paths(PathSelectors.any())
-        .build()
-        .globalResponseMessage(
-            RequestMethod.GET, this.httpErrorResponses(
-                HttpStatus.OK,
-                HttpStatus.FORBIDDEN,
-                HttpStatus.NOT_FOUND,
-                HttpStatus.INTERNAL_SERVER_ERROR))
-        .globalResponseMessage(
-            RequestMethod.POST, this.httpErrorResponses(
-                HttpStatus.CREATED,
-                HttpStatus.FORBIDDEN,
-                HttpStatus.BAD_REQUEST,
-                HttpStatus.INTERNAL_SERVER_ERROR))
-        .globalResponseMessage(
-            RequestMethod.PUT, this.httpErrorResponses(
-                HttpStatus.OK,
-                HttpStatus.FORBIDDEN,
-                HttpStatus.BAD_REQUEST,
-                HttpStatus.NOT_FOUND,
-                HttpStatus.INTERNAL_SERVER_ERROR))
-        .globalResponseMessage(
-            RequestMethod.DELETE, this.httpErrorResponses(
-                HttpStatus.NO_CONTENT,
-                HttpStatus.FORBIDDEN,
-                HttpStatus.NOT_FOUND,
-                HttpStatus.INTERNAL_SERVER_ERROR))
-        .apiInfo(this.metaData());
+      .select()
+      .apis(RequestHandlerSelectors.basePackage(BASE_PACKAGE))
+      .paths(PathSelectors.any())
+      .build()
+      .globalResponseMessage(
+        RequestMethod.GET, this.httpErrorResponses(
+          HttpStatus.OK,
+          HttpStatus.FORBIDDEN,
+          HttpStatus.NOT_FOUND,
+          HttpStatus.INTERNAL_SERVER_ERROR))
+      .globalResponseMessage(
+        RequestMethod.POST, this.httpErrorResponses(
+          HttpStatus.CREATED,
+          HttpStatus.FORBIDDEN,
+          HttpStatus.BAD_REQUEST,
+          HttpStatus.INTERNAL_SERVER_ERROR))
+      .globalResponseMessage(
+        RequestMethod.PUT, this.httpErrorResponses(
+          HttpStatus.OK,
+          HttpStatus.FORBIDDEN,
+          HttpStatus.BAD_REQUEST,
+          HttpStatus.NOT_FOUND,
+          HttpStatus.INTERNAL_SERVER_ERROR))
+      .globalResponseMessage(
+        RequestMethod.DELETE, this.httpErrorResponses(
+          HttpStatus.NO_CONTENT,
+          HttpStatus.FORBIDDEN,
+          HttpStatus.NOT_FOUND,
+          HttpStatus.INTERNAL_SERVER_ERROR))
+      .apiInfo(this.metaData());
   }
 
   private ApiInfo metaData() {
     return new ApiInfoBuilder()
-        .title("OVG API documentation")
-        .description("Documentation of the back-end API of On Va Geeker")
-        .license("Apache 2.0")
-        .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-        .version("1.0.0")
-        .build();
+      .title("OVG API documentation")
+      .description("Documentation of the back-end API of On Va Geeker")
+      .license("Apache 2.0")
+      .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
+      .version("1.0.0")
+      .build();
   }
 
-  private List<ResponseMessage> httpErrorResponses(final HttpStatus...status) {
+  private List<ResponseMessage> httpErrorResponses(final HttpStatus... status) {
     return Stream
-        .of(status)
-        .map(this::httpErrorResponse)
-        .collect(Collectors.toList());
+      .of(status)
+      .map(this::httpErrorResponse)
+      .collect(Collectors.toList());
   }
 
   private ResponseMessage httpErrorResponse(final HttpStatus status) {
     return new ResponseMessageBuilder()
-        .code(status.value())
-        .message(status.getReasonPhrase())
-        .build();
+      .code(status.value())
+      .message(status.getReasonPhrase())
+      .build();
   }
 }

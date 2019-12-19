@@ -16,8 +16,8 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 
 const routes: Routes = [
-  {path: 'home', component: EventListCardComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', redirectTo: 'event'},
+  {path: '', redirectTo: 'event', pathMatch: 'full'},
   {path: 'login', component: UserFormLoginComponent, pathMatch: 'full'},
   { path: 'sign-up', component: UserFormComponent, pathMatch: 'full'},
   { path: 'tab-event', component: EventListTableComponent, pathMatch: 'full'},

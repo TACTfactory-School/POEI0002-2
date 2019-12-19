@@ -5,7 +5,7 @@
         <p>{{ event.description }}</p>
         <p>{{ event.dueAt | date: 'short'}}</p>
         <p>{{ event.author.username }}</p>
-    <a [routerLink]="['../..']" (click)="delete(event.id)"> Supprimer </a>
+
 
         <h2> Liste des participants</h2>
 
@@ -24,7 +24,11 @@
         </article>
 
   </article>
-  <a [routerLink]="['../..']">Retour</a>
+  <button [routerLink]="['../..']" (click)="delete(event.id)"> Supprimer </button>
 
-  <a [routerLink]="['edit']" >Editer</a>
+  <button [routerLink]="['../..']">Retour</button>
+
+  <button [routerLink]="['edit']" >Editer</button>
+           <button>Rejoindre</button>
+           <!-- mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)" -->
 </ng-container>
