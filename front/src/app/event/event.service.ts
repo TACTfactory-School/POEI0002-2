@@ -14,7 +14,7 @@ export class EventService {
   constructor(private  http: HttpClient) { }
 
   getAll(page: number) {
-    return this.http.get(`${URL}/public?page=${page}`);
+    return this.http.get(`${URL}/public?sort=dueAt&page=${page}`);
   }
 
   getOne(id: number) {
