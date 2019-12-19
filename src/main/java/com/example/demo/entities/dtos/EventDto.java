@@ -33,6 +33,10 @@ public class EventDto {
    */
   private Integer nbPlace;
   /**
+   * Number of places available at an EventDTO.
+   */
+  private Integer nbPlaceRest;
+  /**
    * City of the EventDTO.
    */
   private String city;
@@ -213,6 +217,24 @@ public class EventDto {
    */
   public void setNbPlace(final Integer nbPlace) {
     this.nbPlace = nbPlace;
+  }
+
+  /**
+   * Retrieves the number of places available at an EventDTO.
+   *
+   * @return nbPlaceRest Integer.
+   */
+  public Integer getNbPlaceRest() {
+    return nbPlaceRest;
+  }
+
+  /**
+   * Set the number of places available at an EventDTO.
+   *
+   * @param nbPlaceRest Integer.
+   */
+  public void setNbPlaceRest(Integer nbPlaceRest) {
+    this.nbPlaceRest = nbPlaceRest;
   }
 
   /**

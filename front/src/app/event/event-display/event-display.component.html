@@ -5,6 +5,7 @@
         <p>{{ event.description }}</p>
         <p>{{ event.dueAt | date: 'short'}}</p>
         <p>{{ event.author.username }}</p>
+        <p>{{ event.author.birthDate }}</p>
 
 
         <h2> Liste des participants</h2>
@@ -23,11 +24,15 @@
             </div>
         </article>
 
-    <button (click)="onJoin(event.id)">Rejoindre</button>
-    <button [routerLink]="['../..']" (click)="delete(event.id)"> Supprimer </button>
     <button [routerLink]="['../..']">Retour</button>
+    <ng-container *ngIf="user|async">
+      <button (click)="onJoin(event.id)">Rejoindre</button>
+      <button (click)="onDisjoin(event.id)">Déjoindre</button>
+      <button (click)="onOrganisator(event.id)">Devenir organisateur</button>
+      <button [routerLink]="['../..']" (click)="delete(event.id)"> Supprimer </button>
+      <button [routerLink]="['edit']" >Editer</button>
+    </ng-container>
 
-    <button [routerLink]="['edit']" >Editer</button>
     <!-- mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)" -->
   </article>
 

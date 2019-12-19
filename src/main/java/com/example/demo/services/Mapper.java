@@ -39,6 +39,7 @@ public class Mapper {
     result.setDescription(event.getDescription());
     result.setDueAt(event.getDueAt());
     result.setNbPlace(event.getNbPlace());
+    result.setNbPlaceRest(event.getNbPlace() - event.getParticipants().size());
     result.setAdresse(event.getAdresse());
     result.setPhoto(event.getPhoto());
     result.setCp(event.getCp());

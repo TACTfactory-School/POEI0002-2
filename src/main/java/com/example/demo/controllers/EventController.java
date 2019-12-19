@@ -6,10 +6,11 @@ import com.example.demo.entities.UserEventOrganisator;
 import com.example.demo.entities.UserEventParticipant;
 import com.example.demo.entities.dtos.EventDto;
 import com.example.demo.exeptions.NotFoundException;
-import com.example.demo.repository.UserEventOrganisatorRepository;
-import com.example.demo.repository.UserEventParticipantRepository;
+
 import com.example.demo.services.Mapper;
 import com.example.demo.services.eventservices.EventCrudService;
+import com.example.demo.services.usereventorganisatorservices.UserEventOrganisatorService;
+import com.example.demo.services.usereventparticipantservice.UserEventParticipantService;
 import com.example.demo.services.userservices.UserCrudService;
 
 import io.swagger.annotations.Api;
@@ -39,7 +40,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -68,16 +68,16 @@ public class EventController {
   private UserCrudService userService;
 
   /**
- * Repository of a UserEventParticipant.
+ * CRUD service of a UserEventParticipant.
  */
   @Autowired
-  private UserEventParticipantRepository eventParticipantRepository;
+  private UserEventParticipantService userEventParticipantService;
 
   /**
- * Repository of a UserEventOrganisator.
+ * CRUD service of a UserEventOrganisator.
  */
   @Autowired
-  private UserEventOrganisatorRepository eventOrganisatorRepository;
+  private UserEventOrganisatorService userEventOrganisatorService;
 
   /**
  * Mapper used to convert entities to their DTO.
@@ -136,21 +136,21 @@ public class EventController {
   /**
    * Set a user defined by his username as organizer of an event defined by its id.
    * @param id of an event.
-   * @param username username of the user.
    * @throws NotFoundException User or Event was not found.
    */
-  @PostMapping("/organisators")
+  @GetMapping("/organisator/{id}")
   @ApiOperation(value = "Add a user as organizer of an event")
-  public void addOrganisator(@RequestParam(value = "id") final Long id,
-                             @RequestParam(value = "username") final String username)
+  public void addOrganisator(@PathVariable final Long id)
                              throws NotFoundException {
+    Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+    String username = loggedInUser.getName();
     User user = this.userService.getByUserName(username);
     Event event = this.service.getOne(id);
     UserEventOrganisator userEventOrganisator = new UserEventOrganisator();
     userEventOrganisator.setEventOrganisator(event);
     userEventOrganisator.setUserOrganisator(user);
 
-    this.eventOrganisatorRepository.save(userEventOrganisator);
+    this.userEventOrganisatorService.save(userEventOrganisator);
   }
 
   /**
@@ -204,7 +204,7 @@ public class EventController {
     usereventpart.setUserParticipant(user);
     usereventpart.setEventParticipant(event);
 
-    this.eventParticipantRepository.save(usereventpart);
+    this.userEventParticipantService.save(usereventpart);
 
     user.addAsParticipant(usereventpart);
     this.userService.update(user);
@@ -220,9 +220,9 @@ public class EventController {
     String username = loggedInUser.getName();
     User user = this.userService.getByUserName(username);
     Event event = this.service.getOne(id);
-    UserEventParticipant userEventParticipant = this.eventParticipantRepository
-            .getByUserParticipantAndEventParticipant(user, event);
-    this.eventParticipantRepository.delete(userEventParticipant);
+    UserEventParticipant userEventParticipant = this.userEventParticipantService
+            .getOne(user, event);
+    this.userEventParticipantService.delete(userEventParticipant);
   }
 
 

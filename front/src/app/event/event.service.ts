@@ -36,10 +36,18 @@ export class EventService {
     return this.http.get(`${URL}/join/${eventId}`);
   }
 
-  getAllParticipants(id: number) {
-    return this.http.get<User[]>(`${URL}/public/participants/${id}`);
+getAllParticipants(id: number) {
+  return this.http.get<User[]>(`${URL}/public/participants/${id}`);
+}
+getAllOrganisators(id: number) {
+  return this.http.get<User[]>(`${URL}/public/organisators/${id}`);
+}
+
+disjoin(eventId: number) {
+  return this.http.delete(`${URL}/disjoin/${eventId}`);
   }
-  getAllOrganisators(id: number) {
-    return this.http.get<User[]>(`${URL}/public/organisators/${id}`);
+
+addOrganisator(eventId: number) {
+  return this.http.get(`${URL}/organisator/${eventId}`);
   }
 }
