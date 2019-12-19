@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UserFormLoginModule } from './user-form-login/user-form-login.module';
 import {MatSelectModule} from '@angular/material/select';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [UserFormComponent],
@@ -13,6 +14,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule,
     UserFormLoginModule,
     RouterModule,
+    SharedModule,
     CommonModule
   ],
   exports: [UserFormComponent, UserFormLoginModule]

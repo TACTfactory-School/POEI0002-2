@@ -1,3 +1,4 @@
+<ng-template #loading><app-loader></app-loader></ng-template>
 <ng-container>
   <article *ngIf="(user$ | async) as user; else loading">
     <h1> {{ user.username }}</h1>

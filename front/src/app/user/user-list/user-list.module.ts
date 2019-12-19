@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import { UserListComponent } from './user-list.component';
 import { RouterModule } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 @NgModule({
   declarations: [UserListComponent],
   imports: [
     MatTableModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [UserListComponent]
 })

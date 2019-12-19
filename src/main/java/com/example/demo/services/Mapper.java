@@ -9,39 +9,56 @@ import org.springframework.stereotype.Service;
 @Service
 public class Mapper {
 
+
   public UserDto userToDto(final User user) {
-    UserDto userDto = new UserDto();
-    userDto.setId(user.getId());
-    userDto.setUsername(user.getUsername());
-    userDto.setCity(user.getCity());
-    userDto.setName(user.getName());
-    userDto.setEmail(user.getEmail());
-    userDto.setSex(user.getSex());
-    userDto.setPicture(user.getPicture());
-    userDto.setMaritalStatus(user.getMaritalStatus());
-    userDto.setBirthDate(user.getBirthDate());
-    userDto.setDescription(user.getDescription());
-    userDto.setLastConnectionDate(user.getLastConnectionDate());
-    userDto.setProfession(user.getProfession());
-    userDto.setLastConnectionDate(user.getLastConnectionDate());
-    userDto.setCreatedAt(user.getCreatedAt());
-    userDto.setUpdatedAt(user.getUpdatedAt());
-    userDto.setMaritalStatus(user.getMaritalStatus());
+    final UserDto userDto;
+
+    if (user != null) {
+      userDto = new UserDto();
+
+      userDto.setId(user.getId());
+      userDto.setUsername(user.getUsername());
+      userDto.setCity(user.getCity());
+      userDto.setName(user.getName());
+      userDto.setEmail(user.getEmail());
+      userDto.setSex(user.getSex());
+      userDto.setPicture(user.getPicture());
+      userDto.setMaritalStatus(user.getMaritalStatus());
+      userDto.setBirthDate(user.getBirthDate());
+      userDto.setDescription(user.getDescription());
+      userDto.setLastConnectionDate(user.getLastConnectionDate());
+      userDto.setProfession(user.getProfession());
+      userDto.setLastConnectionDate(user.getLastConnectionDate());
+      userDto.setCreatedAt(user.getCreatedAt());
+      userDto.setUpdatedAt(user.getUpdatedAt());
+      userDto.setMaritalStatus(user.getMaritalStatus());
+    } else {
+      userDto = null;
+    }
+
     return userDto;
   }
 
+
   public EventDto eventToDto(final Event event) {
-    EventDto result = new EventDto();
-    result.setId(event.getId());
-    result.setAuthor(event.getAuthor().getUsername());
-    result.setTitle(event.getTitle());
-    result.setCity(event.getCity());
-    result.setDescription(event.getDescription());
-    result.setDueAt(event.getDueAt());
-    result.setNbPlace(event.getNbPlace());
-    result.setAdresse(event.getAdresse());
-    result.setPhoto(event.getPhoto());
-    result.setCp(event.getCp());
+    final EventDto result;
+
+    if (event != null) {
+      result = new EventDto();
+
+      result.setId(event.getId());
+      result.setAuthor(event.getAuthor().getUsername());
+      result.setTitle(event.getTitle());
+      result.setCity(event.getCity());
+      result.setDescription(event.getDescription());
+      result.setDueAt(event.getDueAt());
+      result.setNbPlace(event.getNbPlace());
+      result.setAdresse(event.getAdresse());
+      result.setPhoto(event.getPhoto());
+      result.setCp(event.getCp());
+    } else {
+      result = null;
+    }
     return result;
   }
 
