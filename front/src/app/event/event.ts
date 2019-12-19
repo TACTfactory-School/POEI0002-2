@@ -12,4 +12,5 @@ export interface Event {
   photo: string;
   adresse: string;
   Cp: number;
+
 }

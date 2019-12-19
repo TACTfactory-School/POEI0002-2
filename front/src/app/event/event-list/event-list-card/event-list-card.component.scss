@@ -1,28 +1,48 @@
-.example-card {
+.card-event {
   max-width: 300px;
   max-height: 400px;
-  height: 300px;
   float: left;
   margin: 1em;
 }
 
-p{
-  text-align: center;
+
+.mat-card {
+  height: 500px;
+  background-color: white;
 }
-mat-card-header{
+
+.mat-card-action {
+  padding: 0;
+  margin: 0;
+
+}
+button {
+  width: 100px;
+  margin-left: 80px;
+  padding:10px 15px;
+  cursor:pointer;
+  border-radius: 10px;
+  color: white;
+  background-color: #336699;
+}
+p {
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
 
 }
 
-mat-card img{
-  margin-bottom: 0px;
+.event-mat-card {
+  padding: 0;
+  margin: 0;
 }
-mat-card mat-card-content p{
-  margin-bottom: 0px;
-  margin-top: 0px;
+.mat-card-image {
+  padding: 0;
+  margin: -16px -16px 0 -16px;
 }
-mat-card-action button {
-width: 100px;
-}
+
 li {
   float: left;
 }
@@ -45,3 +65,4 @@ ul {
   padding: 0;
   overflow: hidden;
 }
+
