@@ -21,7 +21,7 @@ public class EventCrudServiceImpl implements EventCrudService {
 
   @Transactional(readOnly = true)
   @Override
-  public Page getAll(Pageable pageable) {
+  public Page getAll(final Pageable pageable) {
 
     Page pagedResult = this.repository.findAll(pageable);
 
