@@ -14,7 +14,7 @@ export class UserService {
   constructor(private readonly http: HttpClient) { }
 
   getAll(page: number) {
-    return this.http.get(`${URL}/public?page=${page}`);
+    return this.http.get(`${URL}/public?sort=username&page${page}`);
   }
 
   getOne(id: number) {

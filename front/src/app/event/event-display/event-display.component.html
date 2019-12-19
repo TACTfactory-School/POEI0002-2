@@ -23,12 +23,12 @@
             </div>
         </article>
 
+    <button (click)="onJoin(event.id)">Rejoindre</button>
+    <button [routerLink]="['../..']" (click)="delete(event.id)"> Supprimer </button>
+    <button [routerLink]="['../..']">Retour</button>
+
+    <button [routerLink]="['edit']" >Editer</button>
+    <!-- mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)" -->
   </article>
-  <button [routerLink]="['../..']" (click)="delete(event.id)"> Supprimer </button>
 
-  <button [routerLink]="['../..']">Retour</button>
-
-  <button [routerLink]="['edit']" >Editer</button>
-           <button>Rejoindre</button>
-           <!-- mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)" -->
 </ng-container>

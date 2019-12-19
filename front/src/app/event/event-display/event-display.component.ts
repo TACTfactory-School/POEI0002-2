@@ -32,4 +32,8 @@ export class EventDisplayComponent implements OnInit {
   delete(id: number) {
     this.service.delete(id).subscribe();
   }
+
+  onJoin(id: number) {
+    this.service.addUser(id).subscribe();
+  }
 }
