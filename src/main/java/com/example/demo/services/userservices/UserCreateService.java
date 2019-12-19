@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import tools.HASH;
+import tools.Hash;
 
 @Component
 @Transactional
@@ -24,7 +24,7 @@ public class UserCreateService {
 
   User create(final User user) {
     LOGGER.debug("Creation utilisateur");
-    user.setPassword(HASH.hash().encode(user.getPassword()));
+    user.setPassword(Hash.hash().encode(user.getPassword()));
     return this.user.save(user);
   }
 

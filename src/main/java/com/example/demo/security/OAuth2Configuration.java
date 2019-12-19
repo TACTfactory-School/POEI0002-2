@@ -97,13 +97,13 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
   @Override
   public void configure(final ClientDetailsServiceConfigurer configurer) throws Exception {
     configurer
-    .inMemory()
-    .withClient(clientId)
-    .secret(passwordEncoder().encode(clientSecret))
-    .authorizedGrantTypes(grantType, "authorization_code", "refresh_token", "client_credentials")
-    .scopes(scopeRead, scopeWrite)
-    .accessTokenValiditySeconds(tokenValidity)
-    .refreshTokenValiditySeconds(tokenRefreshValidity);
+      .inMemory()
+      .withClient(clientId)
+      .secret(passwordEncoder().encode(clientSecret))
+      .authorizedGrantTypes(grantType, "authorization_code", "refresh_token", "client_credentials")
+      .scopes(scopeRead, scopeWrite)
+      .accessTokenValiditySeconds(tokenValidity)
+      .refreshTokenValiditySeconds(tokenRefreshValidity);
   }
 
   @Override
@@ -115,8 +115,9 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
   public void configure(final AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
     TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
     enhancerChain.setTokenEnhancers(Arrays.asList(accessTokenConverter));
-    endpoints.tokenStore(tokenStore()).accessTokenConverter(accessTokenConverter).tokenEnhancer(enhancerChain)
-    .authenticationManager(authenticationManager).userDetailsService(userDetailsService)
-    .reuseRefreshTokens(false);
+    endpoints.tokenStore(tokenStore()).accessTokenConverter(accessTokenConverter)
+      .tokenEnhancer(enhancerChain)
+      .authenticationManager(authenticationManager).userDetailsService(userDetailsService)
+      .reuseRefreshTokens(false);
   }
 }

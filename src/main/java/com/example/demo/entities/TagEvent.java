@@ -1,35 +1,43 @@
 package com.example.demo.entities;
 
-import javax.persistence.*;
+import com.example.demo.contracts.TagEventContract;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Association between Tag and User.
  * @author Cedrick Pennec.
  */
 @Entity
-@Table(name = "ovg_tag_event",
-        uniqueConstraints={@UniqueConstraint(columnNames = {"event_id" , "tag_id"})})
+@Table(name = TagEventContract.TABLE,
+        uniqueConstraints = {@UniqueConstraint(columnNames =
+                {TagEventContract.COL_EVENT, TagEventContract.COL_TAG})})
 public class TagEvent extends EntityBase {
+
 
   /**
  * Event of the association.
  */
-@ManyToOne
-  @JoinColumn(name = "event_id")
+  @ManyToOne
+  @JoinColumn(name = TagEventContract.COL_EVENT)
   private Event event;
 
   /**
  * Tag of the association.
  */
-@ManyToOne
-  @JoinColumn(name = "tag_id")
+  @ManyToOne
+  @JoinColumn(name = TagEventContract.COL_TAG)
   private Tag tag;
 
   /**
    * Retrieve the Event of the Association.
  * @return the Event of the Association.
  */
-public Event getEvent() {
+  public Event getEvent() {
     return event;
   }
 
@@ -37,7 +45,7 @@ public Event getEvent() {
    * Set the Event of the Association.
  * @param event the Event of the Association.
  */
-public void setEvent(final Event event) {
+  public void setEvent(final Event event) {
     this.event = event;
   }
 
@@ -45,7 +53,7 @@ public void setEvent(final Event event) {
    * Retrieves the Tag of the association.
  * @return the Tag of the association.
  */
-public Tag getTag() {
+  public Tag getTag() {
     return tag;
   }
 
@@ -53,7 +61,7 @@ public Tag getTag() {
    * Set the Tag of the association.
  * @param tag the Tag of the association.
  */
-public void setTag(final Tag tag) {
+  public void setTag(final Tag tag) {
     this.tag = tag;
   }
 }

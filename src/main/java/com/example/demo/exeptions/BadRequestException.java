@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- *
  * @author Cedrick Pennec.
  */
 @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -28,8 +27,9 @@ public class BadRequestException extends HttpException {
     super(message, cause);
   }
 
-  public BadRequestException(final String message, final Throwable cause, final boolean enableSuppression,
-          final boolean writableStackTrace) {
+  public BadRequestException(final String message,
+                             final Throwable cause, final boolean enableSuppression,
+                             final boolean writableStackTrace) {
     super(message, cause, enableSuppression, writableStackTrace);
   }
 }

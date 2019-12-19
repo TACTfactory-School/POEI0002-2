@@ -1,111 +1,125 @@
 package com.example.demo.entities;
 
+import com.example.demo.contracts.EventContract;
+import com.example.demo.contracts.TagEventContract;
+import com.example.demo.contracts.UserEventOrganisatorContract;
+import com.example.demo.contracts.UserEventParticipantContract;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 /**
- * Entity of an event
+ * Entity of an event.
  * @author ckp
  */
 @Entity
-@Table(name = "ovg_event")
+@Table(name = EventContract.TABLE)
+@AttributeOverride(name = EventContract.COL_ID,
+        column = @Column(name = EventContract.COL_ID))
+@AttributeOverride(name = EventContract.COL_UPDATED_AT,
+        column = @Column(name = EventContract.COL_CREATED_AT))
+@AttributeOverride(name = EventContract.COL_UPDATED_AT,
+        column = @Column(name = EventContract.COL_UPDATED_AT))
+@AttributeOverride(name = EventContract.COL_ENABLE,
+        column = @Column(name = EventContract.COL_ENABLE))
 public class Event extends EntityBase {
 
-
-  private static final int DESC_LENGTH = 5000;
-  private static final int STRING_LENGTH = 255;
 
   /**
  * User who created the event.
  */
-@ManyToOne(optional = false)
+  @ManyToOne(optional = false)
+  @JoinColumn(name = EventContract.COL_AUTHOR)
   private User author;
 
   /**
  * Title of the event.
  */
-@Column(length = STRING_LENGTH, nullable = false)
+  @Column(length = EventContract.STRING_LENGTH, nullable = false, name = EventContract.COL_TITLE)
   @NotBlank
   private String title;
 
   /**
  * Description of the event.
  */
-@Column(length = DESC_LENGTH, nullable = false)
+  @Column(length = EventContract.DESC_LENGTH,
+          nullable = false, name = EventContract.COL_DESCRIPTION)
   @NotBlank
   private String description;
 
   /**
  * Date at wich the event takes place.
  */
-@Column(nullable = false)
+  @Column(nullable = false, name = EventContract.COL_DUE_AT)
   private LocalDateTime dueAt;
 
   /**
  * Maximum amount of participants.
  */
-@Column(nullable = false)
+  @Column(nullable = false, name = EventContract.COL_NB_PLACE)
   private Integer nbPlace;
+
 
   /**
  * Photo of the event.
  */
-@Column(length = STRING_LENGTH, nullable = true)
+  @Column(length = EventContract.STRING_LENGTH, nullable = true, name = EventContract.COL_PHOTO)
   private String photo;
 
   /**
  * Adress of the event.
  */
-@Column(length = STRING_LENGTH, nullable = true)
+  @Column(length = EventContract.STRING_LENGTH, nullable = true, name = EventContract.COL_ADRESSE)
   private String adresse;
 
   /**
  * Postal code of the event.
  */
-@Column(nullable = true) //modifier en cp pour checkstyle
+  @Column(nullable = true, name = EventContract.COL_CP)
   private Integer cp;
 
   /**
  * City where the events takes place.
  */
-@Column(length = STRING_LENGTH, nullable = false)
+  @Column(length = EventContract.STRING_LENGTH, nullable = false, name = EventContract.COL_CITY)
   @NotBlank
   private String city;
 
   /**
  * Tags of the event.
  */
-@JsonIgnore
-  @OneToMany(mappedBy = "event")
+  @JsonIgnore
+  @OneToMany(mappedBy = TagEventContract.EVENT)
   private List<TagEvent> tagEvents;
 
   /**
  * Participating Users.
  */
-@JsonIgnore
-  @OneToMany(mappedBy = "eventParticipant")
+  @JsonIgnore
+  @OneToMany(mappedBy = UserEventParticipantContract.EVENT_PARTICIPANT)
   private List<UserEventParticipant> participants;
 
   /**
  * Organistaors of the event.
  */
-@JsonIgnore
-  @OneToMany(mappedBy = "eventOrganisator")
+  @JsonIgnore
+  @OneToMany(mappedBy = UserEventOrganisatorContract.EVENT_ORGANISATOR)
   private List<UserEventOrganisator> organisators;
 
   /**
  * @return the author.
  */
-public User getAuthor() {
+  public User getAuthor() {
     return author;
   }
 
@@ -113,22 +127,22 @@ public User getAuthor() {
    * Set a User as the author.
  * @param author User.
  */
-public void setAuthor(final User author) {
+  public void setAuthor(final User author) {
     this.author = author;
   }
 
   /**
  * @return a List of tagEvents
  */
-public List<TagEvent> getTagEvents() {
+  public List<TagEvent> getTagEvents() {
     return tagEvents;
   }
 
   /**
    * Set the tags of the events.
- * @param tagEvents, a List of TagEvents.
+ * @param tagEvents a List of TagEvents.
  */
-public void setTagEvents(final List<TagEvent> tagEvents) {
+  public void setTagEvents(final List<TagEvent> tagEvents) {
     this.tagEvents = tagEvents;
   }
 
@@ -136,7 +150,7 @@ public void setTagEvents(final List<TagEvent> tagEvents) {
    * Get the title.
  * @return the title.
  */
-public String getTitle() {
+  public String getTitle() {
     return title;
   }
 
@@ -144,7 +158,7 @@ public String getTitle() {
    * Set the title.
  * @param title as String
  */
-public void setTitle(final String title) {
+  public void setTitle(final String title) {
     this.title = title;
   }
 
@@ -152,21 +166,21 @@ public void setTitle(final String title) {
    * Get the description.
  * @return the description.
  */
-public String getDescription() {
+  public String getDescription() {
     return description;
   }
 
   /**
  * @param description of the event
  */
-public void setDescription(final String description) {
+  public void setDescription(final String description) {
     this.description = description;
   }
 
   /**
  * @return the Date at which the event takes place.
  */
-public LocalDateTime getDueAt() {
+  public LocalDateTime getDueAt() {
     return dueAt;
   }
 
@@ -174,7 +188,7 @@ public LocalDateTime getDueAt() {
    * Set the date at which the event takes place.
  * @param dueAt Date at which the event takes place.
  */
-public void setDueAt(final LocalDateTime dueAt) {
+  public void setDueAt(final LocalDateTime dueAt) {
     this.dueAt = dueAt;
   }
 
@@ -182,7 +196,7 @@ public void setDueAt(final LocalDateTime dueAt) {
    * Retrieves the number of participants allowed to participate in the event.
  * @return the number of participants allowed.
  */
-public Integer getNbPlace() {
+  public Integer getNbPlace() {
     return nbPlace;
   }
 
@@ -190,7 +204,7 @@ public Integer getNbPlace() {
    * Set the number of participants allowed to participate in the event.
  * @param nbPlace the number of participants allowed.
  */
-public void setNbPlace(final Integer nbPlace) {
+  public void setNbPlace(final Integer nbPlace) {
     this.nbPlace = nbPlace;
   }
 
@@ -198,15 +212,15 @@ public void setNbPlace(final Integer nbPlace) {
    * Retrieves the photo of the event.
  * @return the photo of the Event
  */
-public String getPhoto() {
+  public String getPhoto() {
     return photo;
   }
 
   /**
-   * Set the photo of the Event
+   * Set the photo of the Event.
  * @param photo the photo of the Event
  */
-public void setPhoto(final String photo) {
+  public void setPhoto(final String photo) {
     this.photo = photo;
   }
 
@@ -214,7 +228,7 @@ public void setPhoto(final String photo) {
    * Retrieves the address of the event.
  * @return the address of the event.
  */
-public String getAdresse() {
+  public String getAdresse() {
     return adresse;
   }
 
@@ -222,7 +236,7 @@ public String getAdresse() {
    * Set the address of the event.
  * @param adresse the address of the event.
  */
-public void setAdresse(final String adresse) {
+  public void setAdresse(final String adresse) {
     this.adresse = adresse;
   }
 
@@ -230,7 +244,7 @@ public void setAdresse(final String adresse) {
    * Retrieves the postal code of the Event.
  * @return the postal code of the Event.
  */
-public Integer getCp() {
+  public Integer getCp() {
     return cp;
   }
 
@@ -238,7 +252,7 @@ public Integer getCp() {
    * Set the postal code of the Event.
  * @param cp the postal code of the Event.
  */
-public void setCp(final Integer cp) {
+  public void setCp(final Integer cp) {
     this.cp = cp;
   }
 
@@ -246,7 +260,7 @@ public void setCp(final Integer cp) {
    * Retrieves the city of the Event.
  * @return the city of the Event.
  */
-public String getCity() {
+  public String getCity() {
     return city;
   }
 
@@ -254,7 +268,7 @@ public String getCity() {
    * Set the city of the Event.
  * @param city the city of the Event.
  */
-public void setCity(final String city) {
+  public void setCity(final String city) {
     this.city = city;
   }
 
@@ -262,14 +276,14 @@ public void setCity(final String city) {
    * Retrieves the organisators of the Event.
  * @return the organisators of the Event.
  */
-public List<UserEventOrganisator> getOrganisators() {
+  public List<UserEventOrganisator> getOrganisators() {
     return organisators;
   }
 
   /** Set the organisators of the Event.
  * @param organisators the organisators of the Event.
  */
-public void setOrganisators(final List<UserEventOrganisator> organisators) {
+  public void setOrganisators(final List<UserEventOrganisator> organisators) {
     this.organisators = organisators;
   }
 
@@ -277,7 +291,7 @@ public void setOrganisators(final List<UserEventOrganisator> organisators) {
    * Retrieves the participants of the Event.
  * @return the participants of the Event.
  */
-public List<UserEventParticipant> getParticipants() {
+  public List<UserEventParticipant> getParticipants() {
     return participants;
   }
 
@@ -285,7 +299,7 @@ public List<UserEventParticipant> getParticipants() {
    * Set the participants of the Event.
  * @param participants the participants of the Event.
  */
-public void setParticipants(final List<UserEventParticipant> participants) {
+  public void setParticipants(final List<UserEventParticipant> participants) {
     this.participants = participants;
   }
 
@@ -293,7 +307,7 @@ public void setParticipants(final List<UserEventParticipant> participants) {
    * Add a participant to the Event.
  * @param usereventparticipant Participant to add.
  */
-public void addParticipant(final UserEventParticipant usereventparticipant) {
+  public void addParticipant(final UserEventParticipant usereventparticipant) {
     this.participants.add(usereventparticipant);
   }
 

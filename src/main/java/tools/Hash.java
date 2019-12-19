@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 
-public class HASH {
+public class Hash {
 
   public static PasswordEncoder hash() {
     String idForEncode = "bcrypt";
