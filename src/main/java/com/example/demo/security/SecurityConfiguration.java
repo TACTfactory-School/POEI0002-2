@@ -17,11 +17,18 @@ import org.springframework.web.filter.CorsFilter;
 
 import tools.Hash;
 
+/**
+ * Security configuration file.
+ * @author Cedrick Pennec
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  @Autowired
+  /**
+ *
+ */
+@Autowired
   UserDetailsService userDetailsService;
 
   @Bean
@@ -30,7 +37,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     return super.authenticationManagerBean();
   }
 
-  @Override
+  /**
+   * Cors configuration.
+ * @param http HttpSecurity
+ */
+@Override
   public void configure(final HttpSecurity http) throws Exception {
     http.cors().and()
       .antMatcher("/")
@@ -42,13 +53,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   }
 
-  @Override
+  /**
+   * Security configuration.
+ * @param auth AuthenticationManagerBuilder
+ */
+@Override
   protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
     auth.userDetailsService(userDetailsService).passwordEncoder(Hash.hash());
   }
 
 
-  @Override
+  /**
+   * Open routes for non authenticated user.
+ * @param web WebSecurity
+ */
+@Override
   public void configure(final WebSecurity web) throws Exception {
     web.ignoring()
       .antMatchers(HttpMethod.OPTIONS, "/**")
@@ -58,7 +77,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   }
 
 
-  @Bean
+  /**
+   * Cors configuration
+ * @return CorsFilter
+ */
+@Bean
   public CorsFilter corsFilter() {
 
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

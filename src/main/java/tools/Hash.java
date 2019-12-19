@@ -7,11 +7,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-
-
+/**
+ * @author Cheikh Ejeyed.
+ */
 public class Hash {
 
-  public static PasswordEncoder hash() {
+  /**
+ * @return PasswordEncoder
+ */
+public static PasswordEncoder hash() {
     String idForEncode = "bcrypt";
     Map<String, PasswordEncoder> encoders = new HashMap<String, PasswordEncoder>();
     encoders.put(idForEncode, new BCryptPasswordEncoder());
