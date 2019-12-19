@@ -5,17 +5,35 @@ package com.example.demo.contracts;
  * @author Cheikh E.
  */
 
-public class TagContract {
+public final class TagContract {
 
-  /**
-   ** The constants used by the Tag class.
-   **/
+    /**
+     * Table name.
+     */
   public static final String TABLE = "ovg_tags";
+  /**
+   * Column name.
+   */
   public static final String COL_ID = "id";
+  /**
+   * Column name.
+   */
   public static final String COL_CREATED_AT = "created_at";
+  /**
+   * Column name.
+   */
   public static final String COL_UPDATED_AT = "updated_at";
+  /**
+   * Column name.
+   */
   public static final String COL_ENABLE = "enable";
+  /**
+   * Column name.
+   */
   public static final String COL_LABEL = "label";
+  /**
+   * Length.
+   */
   public static final int LENGTH = 255;
 
   /**

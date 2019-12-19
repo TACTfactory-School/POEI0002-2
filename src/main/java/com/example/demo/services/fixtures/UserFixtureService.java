@@ -15,18 +15,37 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import tools.Hash;
 
+/**
+ * User fixtures service.
+ * @author Cedrick Pennec
+ */
 @Component
 public class UserFixtureService implements Fixture {
 
-  @Autowired
+  /**
+ * UserRepository
+ */
+@Autowired
   private UserRepository repository;
-  private List<String> usernames;
-  private String username;
+  /**
+ * List of String
+ */
+private List<String> usernames;
+  /**
+ * String
+ */
+private String username;
 
-  @Value("${number.fakeuser:100}")
+  /**
+ * Number of fake users to create. 100 by default.
+ */
+@Value("${number.fakeuser:100}")
   int nbFakeUser;
 
-  @Override
+  /**
+ * Load user fakers.
+ */
+@Override
   public void load() {
     Faker faker = new Faker();
     usernames = new ArrayList<>();

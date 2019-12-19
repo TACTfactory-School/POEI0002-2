@@ -5,17 +5,35 @@ package com.example.demo.contracts;
  * @author Cheikh E.
  */
 
-public class LanguageContract {
+public final class LanguageContract {
 
-  /**
-   ** The constants used by the Language class.
-   **/
+    /**
+     * Table name.
+     */
   public static final String TABLE = "ovg_languages";
+  /**
+   * Column name.
+   */
   public static final String COL_ID = "id";
+  /**
+   * Column name.
+   */
   public static final String COL_CREATED_AT = "created_at";
+  /**
+   * Column name.
+   */
   public static final String COL_UPDATED_AT = "updated_at";
+  /**
+   * Column name.
+   */
   public static final String COL_ENABLE = "enable";
+  /**
+   * Column name.
+   */
   public static final String COL_LABEL = "label";
+  /**
+   * Length.
+   */
   public static final int LENGTH = 255;
 
   /**
