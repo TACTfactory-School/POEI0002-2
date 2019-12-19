@@ -22,67 +22,119 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
+/**
+ * Configuration file of Oauth2.
+ * @author Cheikh Ejeyed
+ */
 @Configuration
 @EnableAuthorizationServer
 public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
-  @Value("${token.validity:50000}")
+  /**
+ * Validity duration of token in seconds. 50 000 by default.
+ */
+@Value("${token.validity:50000}")
   int tokenValidity;
 
-  @Value("${token.refresh.validity:25000}")
+  /**
+ * Validity duration of refreshed token in seconds. 25 000 by default.
+ */
+@Value("${token.refresh.validity:25000}")
   int tokenRefreshValidity;
 
-  @Value("${security.signing-key}")
+  /**
+ * SigningKey.
+ */
+@Value("${security.signing-key}")
   private String signingKey;
 
-  @Value("${security.jwt.client-id}")
+  /**
+ * Id of client.
+ */
+@Value("${security.jwt.client-id}")
   private String clientId;
 
-  @Value("${security.jwt.client-secret}")
+  /**
+ * ClientSecret.
+ */
+@Value("${security.jwt.client-secret}")
   private String clientSecret;
 
-  @Value("${security.jwt.grant-type}")
+  /**
+ * GrantType.
+ */
+@Value("${security.jwt.grant-type}")
   private String grantType;
 
-  @Value("${security.jwt.scope-read}")
+  /**
+ * scopeRead
+ */
+@Value("${security.jwt.scope-read}")
   private String scopeRead;
 
-  @Value("${security.jwt.scope-write}")
+  /**
+ * scopeWrite
+ */
+@Value("${security.jwt.scope-write}")
   private String scopeWrite = "write";
 
-  @Value("${security.jwt.resource-ids}")
+  /**
+ * resourceIds
+ */
+@Value("${security.jwt.resource-ids}")
   private String resourceIds;
 
 
-  @Autowired
+  /**
+ * accessTokenConverter
+ */
+@Autowired
   private JwtAccessTokenConverter accessTokenConverter;
 
-  @Autowired
+  /**
+ * authenticationManager
+ */
+@Autowired
   @Qualifier("authenticationManagerBean")
   private AuthenticationManager authenticationManager;
 
-  @Autowired
+  /**
+ * userDetailsService
+ */
+@Autowired
   private UserDetailsService userDetailsService;
 
-  @SuppressWarnings("deprecation")
+  /**
+ * @return instance of NoOpPasswordEncoder
+ */
+@SuppressWarnings("deprecation")
   @Bean
   public static NoOpPasswordEncoder passwordEncoder() {
     return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
   }
 
-  @Bean
+  /**
+ * @return converter JwtAccessTokenConverter
+ */
+@Bean
   public JwtAccessTokenConverter accessTokenConverter() {
     JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
     converter.setSigningKey(signingKey);
     return converter;
   }
 
-  @Bean
+  /**
+ * @return JwtTokenStore
+ */
+@Bean
   public TokenStore tokenStore() {
     return new JwtTokenStore(accessTokenConverter());
   }
 
-  @Bean
+  /**
+ * @return defaultTokenServices DefaultTokenServices
+ */
+@Bean
   @Primary
   public DefaultTokenServices tokenServices() {
     DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
@@ -94,7 +146,11 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
     return defaultTokenServices;
   }
 
-  @Override
+  /**
+   * configurer configuration.
+ * @param configurer ClientDetailsServiceConfigurer
+ */
+@Override
   public void configure(final ClientDetailsServiceConfigurer configurer) throws Exception {
     configurer
       .inMemory()
@@ -106,12 +162,18 @@ public class OAuth2Configuration extends AuthorizationServerConfigurerAdapter {
       .refreshTokenValiditySeconds(tokenRefreshValidity);
   }
 
-  @Override
+  /**
+ * @param security AuthorizationServerSecurityConfigurer
+ */
+@Override
   public void configure(final AuthorizationServerSecurityConfigurer security) throws Exception {
     security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
   }
 
-  @Override
+  /**
+ *@param endpoints AuthorizationServerEndpointsConfigurer
+ */
+@Override
   public void configure(final AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
     TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
     enhancerChain.setTokenEnhancers(Arrays.asList(accessTokenConverter));

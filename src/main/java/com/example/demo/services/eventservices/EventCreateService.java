@@ -11,16 +11,28 @@ import org.springframework.stereotype.Component;
 
 
 
+/**
+ * Creation event service.
+ * @author Cedrick Pennec
+ */
 @Component
 @Transactional
 public class EventCreateService {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(EventCreateService.class);
 
-  @Autowired
+  /**
+ * EventRepository
+ */
+@Autowired
   private EventRepository event;
 
-  Event create(final Event event) {
+  /**
+   * Create an event and return it.
+ * @param event Event
+ * @return Event
+ */
+Event create(final Event event) {
     LOGGER.debug("Create employee");
 
     return this.event.save(event);

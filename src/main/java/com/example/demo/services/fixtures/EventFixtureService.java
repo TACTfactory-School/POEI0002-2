@@ -11,22 +11,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-
-
-
+/**
+ * Event fixtures.
+ * @author Cedrick Pennec
+ */
 @Component
 public class EventFixtureService implements Fixture {
 
-  @Autowired
+  /**
+ * Event repository.
+ */
+@Autowired
   private EventRepository repository;
 
-  @Autowired
+  /**
+ * User repository.
+ */
+@Autowired
   private UserRepository userRepository;
 
-  @Value("${number.fakeevent:25}")
+  /**
+ * Number of fake events to create. 25 by default.
+ */
+@Value("${number.fakeevent:25}")
   int nbFakeEvent;
 
-  @Override
+  /**
+ * Load the fakers.
+ */
+@Override
   public void load() {
 
     Faker faker = new Faker();

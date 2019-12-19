@@ -6,10 +6,19 @@ import com.example.demo.entities.dtos.EventDto;
 import com.example.demo.entities.dtos.UserDto;
 import org.springframework.stereotype.Service;
 
+/**
+ * Mappers between entities and their DTOs
+ * @author Cheick Ejeyed.
+ */
 @Service
 public class Mapper {
 
-  public UserDto userToDto(final User user) {
+  /**
+   * Convert a user to his DTO.
+ * @param user User
+ * @return userDto UserDto
+ */
+public UserDto userToDto(final User user) {
     UserDto userDto = new UserDto();
     userDto.setId(user.getId());
     userDto.setUsername(user.getUsername());
@@ -30,7 +39,12 @@ public class Mapper {
     return userDto;
   }
 
-  public EventDto eventToDto(final Event event) {
+  /**
+   * Convert an event to his DTO.
+ * @param event Event
+ * @return result EventDto
+ */
+public EventDto eventToDto(final Event event) {
     EventDto result = new EventDto();
     result.setId(event.getId());
     result.setAuthor(event.getAuthor().getUsername());
@@ -45,7 +59,13 @@ public class Mapper {
     return result;
   }
 
-  public Event dtoToEvent(final Event event, final EventDto eventDto) {
+  /**
+   * Convert an  eventDto to an event.
+ * @param event Event
+ * @param eventDto EventDto
+ * @return event Event
+ */
+public Event dtoToEvent(final Event event, final EventDto eventDto) {
     event.setId(eventDto.getId());
     event.setTitle(eventDto.getTitle());
     event.setCity(eventDto.getCity());
@@ -58,7 +78,13 @@ public class Mapper {
     return event;
   }
 
-  public User dtoToUser(final User user, final UserDto userDto) {
+  /**
+   * Convert a UserDto to a User
+ * @param user User
+ * @param userDto UserDto
+ * @return user User
+ */
+public User dtoToUser(final User user, final UserDto userDto) {
     user.setUsername(userDto.getUsername());
     user.setCity(userDto.getCity());
     user.setName(userDto.getName());
