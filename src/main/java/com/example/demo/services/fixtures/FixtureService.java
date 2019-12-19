@@ -6,13 +6,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class FixtureService implements Fixture {
 
-  @Autowired
+  /**
+ * event fixtures.
+ */
+@Autowired
   private EventFixtureService eventFixture;
 
-  @Autowired
+  /**
+ * user Fixtures.
+ */
+@Autowired
   private UserFixtureService userFixture;
 
-  public void load() {
+  /**
+ * Load fixtures.
+ */
+public void load() {
     this.userFixture.load();
     this.eventFixture.load();
   }

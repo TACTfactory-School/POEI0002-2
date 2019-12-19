@@ -12,6 +12,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 
+/**
+ * Main class. Application entry point.
+ * @author Cedrick Pennecc
+ */
 @SpringBootApplication
 @EnableResourceServer
 public class Onvageeker1Application implements CommandLineRunner {
@@ -19,19 +23,33 @@ public class Onvageeker1Application implements CommandLineRunner {
   private static final Logger LOGGER = LoggerFactory
       .getLogger(Onvageeker1Application.class);
 
-  @Autowired(required = false)
+  /**
+ * FixtureService
+ */
+@Autowired(required = false)
   private FixtureService fixtures;
 
-  public static void main(final String[] args) {
+  /**
+   * Application's starting point.
+ * @param args application launch arguments.
+ */
+public static void main(final String[] args) {
     SpringApplication.run(Onvageeker1Application.class, args);
   }
 
-  @Bean
+  /**
+ * @return ModelMapper
+ */
+@Bean
   public ModelMapper buildMapper() {
     return new ModelMapper();
   }
 
-  @Override
+  /**
+   * Load fixtures.
+ * @param args String...
+ */
+@Override
   public void run(final String... args) throws Exception {
     if (this.fixtures != null) {
       LOGGER.debug("Fixtures loading...");
