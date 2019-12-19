@@ -1,8 +1,5 @@
 package com.example.demo.security.services;
 
-import com.example.demo.entities.User;
-import com.example.demo.repository.UserRepository;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,14 +12,27 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entities.User;
+import com.example.demo.repository.UserRepository;
 
+/**
+ * Implementation of the user detail service.
+ * @author Cheikh Ejeyed
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-  @Autowired
+  /**
+ * User repository.
+ */
+@Autowired
   UserRepository userRepository;
 
-  @Override
+  /**
+   * Grant the user with corresponding authorities according to his role.
+ *@param username String.
+ */
+@Override
   public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
     UserDetails result = null;
     User user = userRepository.findByUsername(username);

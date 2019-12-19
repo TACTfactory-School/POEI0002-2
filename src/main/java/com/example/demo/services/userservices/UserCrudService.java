@@ -6,18 +6,53 @@ import com.example.demo.exeptions.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+/**
+ * User crud service interface.
+ * @author Cedrick Pennec
+ */
 public interface UserCrudService {
 
-  Page getAll(Pageable pageable);
+  /**
+   * Retrieves all Users according to pageable parameters.
+ * @param pageable Pageable
+ * @return Page
+ */
+Page getAll(Pageable pageable);
 
-  User getOne(long id) throws NotFoundException;
+  /**
+   * Retrieves one User according to its id.
+ * @param id long
+ * @return User
+ * @throws NotFoundException User not found
+ */
+User getOne(long id) throws NotFoundException;
 
-  User getByUserName(String username)throws NotFoundException;
+  /**
+   * Retrieves one User according to its name.
+ * @param username String
+ * @return User
+ * @throws NotFoundException User not found.
+ */
+User getByUserName(String username)throws NotFoundException;
 
-  User create(User user);
+  /**
+   * Create a User.
+ * @param user User
+ * @return User
+ */
+User create(User user);
 
-  void delete(long id);
+  /**
+   * Delete a User according to its id.
+ * @param id long.
+ */
+void delete(long id);
 
-  User update(User user);
+  /**
+   * Update a User.
+ * @param user User
+ * @return User
+ */
+User update(User user);
 
 }

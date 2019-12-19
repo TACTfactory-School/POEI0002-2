@@ -6,16 +6,21 @@ import com.example.demo.entities.dtos.EventDto;
 import com.example.demo.entities.dtos.UserDto;
 import org.springframework.stereotype.Service;
 
+/**
+ * Mappers between entities and their DTOs
+ * @author Cheick Ejeyed.
+ */
 @Service
 public class Mapper {
-
-
-  public UserDto userToDto(final User user) {
-    final UserDto userDto;
-
+  
+  /**
+   * Convert a user to his DTO.
+ * @param user User
+ * @return userDto UserDto
+ */
+public UserDto userToDto(final User user) {
     if (user != null) {
-      userDto = new UserDto();
-
+      UserDto userDto = new UserDto();
       userDto.setId(user.getId());
       userDto.setUsername(user.getUsername());
       userDto.setCity(user.getCity());
@@ -32,20 +37,18 @@ public class Mapper {
       userDto.setCreatedAt(user.getCreatedAt());
       userDto.setUpdatedAt(user.getUpdatedAt());
       userDto.setMaritalStatus(user.getMaritalStatus());
-    } else {
-      userDto = null;
+      return userDto;
     }
-
-    return userDto;
   }
 
-
-  public EventDto eventToDto(final Event event) {
-    final EventDto result;
-
+  /**
+   * Convert an event to his DTO.
+ * @param event Event
+ * @return result EventDto
+ */
+public EventDto eventToDto(final Event event) {
     if (event != null) {
-      result = new EventDto();
-
+      EventDto result = new EventDto();
       result.setId(event.getId());
       result.setAuthor(event.getAuthor().getUsername());
       result.setTitle(event.getTitle());
@@ -56,13 +59,17 @@ public class Mapper {
       result.setAdresse(event.getAdresse());
       result.setPhoto(event.getPhoto());
       result.setCp(event.getCp());
-    } else {
-      result = null;
+      return result;
     }
-    return result;
   }
 
-  public Event dtoToEvent(final Event event, final EventDto eventDto) {
+  /**
+   * Convert an  eventDto to an event.
+ * @param event Event
+ * @param eventDto EventDto
+ * @return event Event
+ */
+public Event dtoToEvent(final Event event, final EventDto eventDto) {
     event.setId(eventDto.getId());
     event.setTitle(eventDto.getTitle());
     event.setCity(eventDto.getCity());
@@ -75,7 +82,13 @@ public class Mapper {
     return event;
   }
 
-  public User dtoToUser(final User user, final UserDto userDto) {
+  /**
+   * Convert a UserDto to a User
+ * @param user User
+ * @param userDto UserDto
+ * @return user User
+ */
+public User dtoToUser(final User user, final UserDto userDto) {
     user.setUsername(userDto.getUsername());
     user.setCity(userDto.getCity());
     user.setName(userDto.getName());

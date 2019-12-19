@@ -167,7 +167,7 @@ public class EventController {
     String username = loggedInUser.getName();
     User user = this.userService.getByUserName(username);
     event.setAuthor(user);
-    event = this.mapperDto.dtoToEvent(event,eventDto);
+    event = this.mapperDto.dtoToEvent(event, eventDto);
     return this.service.create(event);
   }
 
