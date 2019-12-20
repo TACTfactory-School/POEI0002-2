@@ -13,20 +13,30 @@ import org.springframework.stereotype.Component;
 
 import tools.Hash;
 
+/**
+ * User creation service.
+ * @author Cedrick Pennec
+ */
 @Component
 @Transactional
 public class UserCreateService {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(EventCreateService.class);
 
-  @Autowired
+  /**
+ * User repository
+ */
+@Autowired
   private UserRepository user;
 
-  User create(final User user) {
+  /**
+   * Create a User.
+ * @param user User
+ * @return User
+ */
+User create(final User user) {
     LOGGER.debug("Creation utilisateur");
     user.setPassword(Hash.hash().encode(user.getPassword()));
     return this.user.save(user);
   }
-
-
 }
