@@ -12,14 +12,14 @@ describe('UserFormComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         UserFormComponent
-       ],
-       imports: [
+      ],
+      imports: [
         ReactiveFormsModule,
         HttpClientTestingModule
-       ],
-       providers: [
-         FormBuilder
-       ]
+      ],
+      providers: [
+        FormBuilder
+      ]
     })
     .compileComponents();
   }));
@@ -48,36 +48,36 @@ describe('UserFormComponent', () => {
     fixture.detectChanges();
 
     expect(console.log).toHaveBeenCalled();
-});
+  });
 
   it('form invalid when empty', () => {
-  expect(component.userForm.valid).toBeFalsy();
-});
+    expect(component.userForm.valid).toBeFalsy();
+  });
 
   it('name field validity', () => {
 
-  const keyUsername = 'username';
-  const keyPassword = 'password';
-  const keyCity = 'city';
+    const keyUsername = 'username';
+    const keyPassword = 'password';
+    const keyCity = 'city';
 
-  const username = component.userForm.controls[keyUsername];
-  const password = component.userForm.controls[keyPassword];
-  const city = component.userForm.controls[keyCity];
+    const username = component.userForm.controls[keyUsername];
+    const password = component.userForm.controls[keyPassword];
+    const city = component.userForm.controls[keyCity];
 
-  expect(username.valid).toBeFalsy();
+    expect(username.valid).toBeFalsy();
 
-  username.setValue('');
-  expect(username.hasError('required')).toBeTruthy();
+    username.setValue('');
+    expect(username.hasError('required')).toBeTruthy();
 
-  password.setValue('');
-  expect(password.hasError('required')).toBeTruthy();
+    password.setValue('');
+    expect(password.hasError('required')).toBeTruthy();
 
-  city.setValue('');
-  expect(city.hasError('required')).toBeTruthy();
+    city.setValue('');
+    expect(city.hasError('required')).toBeTruthy();
 
-  username.setValue('A');
-  password.setValue('B');
-  city.setValue('C');
-  expect(component.userForm.valid).toBeTruthy();
-});
+    username.setValue('A');
+    password.setValue('B');
+    city.setValue('C');
+    expect(component.userForm.valid).toBeTruthy();
+  });
 });

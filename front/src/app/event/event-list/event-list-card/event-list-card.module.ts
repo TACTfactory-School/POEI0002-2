@@ -4,6 +4,7 @@ import {MatCardModule} from '@angular/material/card';
 import { EventListCardComponent } from './event-list-card.component';
 import { RouterModule } from '@angular/router';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [EventListCardComponent],
@@ -11,6 +12,7 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
         MatCardModule,
         PipesModule,
         RouterModule,
+        SharedModule,
         CommonModule
     ],
   exports: [EventListCardComponent]

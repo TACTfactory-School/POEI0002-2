@@ -25,22 +25,22 @@ const routes: Routes = [
   children: [
     { path: '',    component: UserListComponent, pathMatch: 'full'},
     { path: 'me',
-        children: [
-           {path: '', component: MeComponent, pathMatch: 'full'},
-           {path: 'edit', component: UserEditComponent, pathMatch: 'full'},
-        ]},
+    children: [
+      {path: '', component: MeComponent, pathMatch: 'full'},
+      {path: 'edit', component: UserEditComponent, pathMatch: 'full'},
+    ]},
     { path: ':id', component: UserDisplayComponent},
   ]},
   {path: 'event',
+  children: [
+    {path: '', component: EventListCardComponent},
+    {path: 'create', component: EventFormComponent, /* canActivate: [ LogguedGuard ]*/},
+    {path: ':id',
     children: [
-      {path: '', component: EventListCardComponent},
-      {path: 'create', component: EventFormComponent, /* canActivate: [ LogguedGuard ]*/},
-      {path: ':id',
-        children: [
-          {path: '', component: EventDisplayComponent},
-          {path: 'edit', component: EventEditComponent}
-          ]}
-    ]},
+      {path: '', component: EventDisplayComponent},
+      {path: 'edit', component: EventEditComponent}
+    ]}
+  ]},
   {path: '**', component: PagenotfoundComponent}
 ];
 
