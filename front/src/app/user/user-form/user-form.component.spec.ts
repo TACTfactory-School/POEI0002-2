@@ -1,8 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import {ReactiveFormsModule, FormBuilder, FormsModule} from '@angular/forms';
 import { UserFormComponent } from './user-form.component';
 import { HttpClientTestingModule} from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
+import {RouterTestingModule} from '@angular/router/testing';
+import {MatInputModule, MatSelectModule} from '@angular/material';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('UserFormComponent', () => {
   let component: UserFormComponent;
@@ -13,13 +16,12 @@ describe('UserFormComponent', () => {
       declarations: [
         UserFormComponent
        ],
-       imports: [
-        ReactiveFormsModule,
-        HttpClientTestingModule
-       ],
-       providers: [
-         FormBuilder
-       ]
+       imports: [HttpClientTestingModule,
+                 RouterTestingModule,
+                 MatInputModule,
+                 MatSelectModule,
+                 ReactiveFormsModule,
+         ],
     })
     .compileComponents();
   }));
@@ -40,10 +42,14 @@ describe('UserFormComponent', () => {
     const keyUsername = 'username';
     const keyPassword = 'password';
     const keyCity = 'city';
+    const keyEnable = 'enable';
+    const keyRole = 'role';
 
-    component.userForm.controls[keyUsername].setValue('pingouin');
-    component.userForm.controls[keyPassword].setValue('linux');
-    component.userForm.controls[keyCity].setValue('Brest');
+    component.userSign.controls[keyUsername].setValue('pingouin');
+    component.userSign.controls[keyPassword].setValue('linux');
+    component.userSign.controls[keyCity].setValue('Brest');
+    component.userSign.controls[keyEnable].setValue('true');
+    component.userSign.controls[keyRole].setValue('USER');
     fixture.debugElement.query(By.css('form')).triggerEventHandler('ngSubmit', null);
     fixture.detectChanges();
 
@@ -51,7 +57,7 @@ describe('UserFormComponent', () => {
 });
 
   it('form invalid when empty', () => {
-  expect(component.userForm.valid).toBeFalsy();
+  expect(component.userSign.valid).toBeFalsy();
 });
 
   it('name field validity', () => {
@@ -59,10 +65,14 @@ describe('UserFormComponent', () => {
   const keyUsername = 'username';
   const keyPassword = 'password';
   const keyCity = 'city';
+  const keyEnable = 'enable';
+  const keyRole = 'role';
 
-  const username = component.userForm.controls[keyUsername];
-  const password = component.userForm.controls[keyPassword];
-  const city = component.userForm.controls[keyCity];
+  const username = component.userSign.controls[keyUsername];
+  const password = component.userSign.controls[keyPassword];
+  const city = component.userSign.controls[keyCity];
+  const enable = component.userSign.controls[keyEnable];
+  const role = component.userSign.controls[keyRole];
 
   expect(username.valid).toBeFalsy();
 
@@ -75,9 +85,17 @@ describe('UserFormComponent', () => {
   city.setValue('');
   expect(city.hasError('required')).toBeTruthy();
 
+  enable.setValue('');
+  expect(enable.hasError('required')).toBeTruthy();
+
+  role.setValue('');
+  expect(role.hasError('required')).toBeTruthy();
+
   username.setValue('A');
   password.setValue('B');
   city.setValue('C');
-  expect(component.userForm.valid).toBeTruthy();
+  enable.setValue('true');
+  role.setValue('USER');
+  expect(component.userSign.valid).toBeTruthy();
 });
 });

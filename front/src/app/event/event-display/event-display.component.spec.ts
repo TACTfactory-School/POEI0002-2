@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { EventDisplayComponent } from './event-display.component';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('EventDisplayComponent', () => {
   let component: EventDisplayComponent;
@@ -8,6 +9,8 @@ describe('EventDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule,
+                HttpClientTestingModule],
       declarations: [ EventDisplayComponent ]
     })
     .compileComponents();

@@ -7,6 +7,9 @@ import {
 import {
   EventEditComponent
 } from './event-edit.component';
+import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('EventEditComponent', () => {
   let component: EventEditComponent;
@@ -14,7 +17,11 @@ describe('EventEditComponent', () => {
 
   beforeEach(async (() => {
     TestBed.configureTestingModule({
-        declarations: [EventEditComponent]
+        declarations: [EventEditComponent],
+        imports: [ReactiveFormsModule,
+                  FormsModule,
+                  RouterTestingModule,
+                  HttpClientTestingModule],
       })
       .compileComponents();
   }));

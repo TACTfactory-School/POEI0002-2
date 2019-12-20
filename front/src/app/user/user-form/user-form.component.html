@@ -17,7 +17,7 @@
       </div>
 
       <div class="field-wrap">
-        <input type="text" formControlName="password" placeholder="Mot de passe"/>
+        <input type="password" formControlName="password" placeholder="Mot de passe"/>
         <div [hidden]="password.valid || password.pristine"
           class="alert">Mot de passe requis
         </div>
@@ -31,10 +31,7 @@
       </div>
        <mat-form-field>
         <mat-label>Ville</mat-label>
-        <mat-select>
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let c of city" >{{c.city}}</mat-option>
-        </mat-select>
+         <input type="text" formControlName="city" placeholder="Ville"/>
       </mat-form-field>
 
       <input type="hidden" formControlName="enable" value="true"/>

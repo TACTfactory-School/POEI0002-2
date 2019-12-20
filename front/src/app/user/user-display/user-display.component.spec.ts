@@ -4,6 +4,7 @@ import { UserDisplayComponent } from './user-display.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import {PipesModule} from '../../pipes/pipes.module';
 
 describe('UserDisplayComponent', () => {
   let component: UserDisplayComponent;
@@ -16,7 +17,8 @@ describe('UserDisplayComponent', () => {
        ],
       imports: [
         RouterTestingModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        PipesModule
       ]
     })
     .compileComponents();
