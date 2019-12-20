@@ -13,8 +13,13 @@ $thin: 300;
 $normal: 400;
 $bold: 600;
 $br: 4px;
+h1{
+  text-align: center;
+}
 
-
+img{
+ align-items: center;
+}
 button{
   align-content: center;
   float:left;
@@ -26,6 +31,5 @@ button{
   padding:15px 10px;
   margin-right: 5px;
   font-size:1.5em;
-  text-transform:uppercase;
 
 }
