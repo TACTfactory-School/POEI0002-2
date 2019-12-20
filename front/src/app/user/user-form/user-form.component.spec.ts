@@ -4,8 +4,9 @@ import { UserFormComponent } from './user-form.component';
 import { HttpClientTestingModule} from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
-import {MatInputModule, MatSelectModule} from '@angular/material';
+import {MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatSelectModule} from '@angular/material';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {LoaderComponent} from '../../shared/loader/loader.component';
 
 describe('UserFormComponent', () => {
   let component: UserFormComponent;
@@ -14,13 +15,17 @@ describe('UserFormComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        UserFormComponent
+        UserFormComponent,
+        LoaderComponent
        ],
-       imports: [HttpClientTestingModule,
-                 RouterTestingModule,
-                 MatInputModule,
-                 MatSelectModule,
-                 ReactiveFormsModule,
+       imports: [
+         HttpClientTestingModule,
+         RouterTestingModule,
+         MatInputModule,
+         MatSelectModule,
+         MatFormFieldModule,
+         ReactiveFormsModule,
+         MatProgressSpinnerModule
          ],
     })
     .compileComponents();
@@ -54,7 +59,7 @@ describe('UserFormComponent', () => {
     fixture.detectChanges();
 
     expect(console.log).toHaveBeenCalled();
-});
+  });
 
   it('form invalid when empty', () => {
   expect(component.userSign.valid).toBeFalsy();
@@ -98,4 +103,5 @@ describe('UserFormComponent', () => {
   role.setValue('USER');
   expect(component.userSign.valid).toBeTruthy();
 });
+
 });

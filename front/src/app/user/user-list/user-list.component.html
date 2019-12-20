@@ -1,23 +1,13 @@
-<ng-template #noData>
-  <p class="text text-warning">
-    Aucun utilisateur enregistré
-  </p>
-</ng-template>
-
-<ng-template #loading>
-  chargement...
-</ng-template>
+<ng-template #loading><app-loader></app-loader></ng-template>
 
 <section *ngIf="(users) as users; else loading">
   <table mat-table [dataSource]="users" class="mat-elevation-z8" *ngIf="users.length; else noData">
 
-    <!-- Username Column -->
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef> Pseudonyme </th>
       <td mat-cell [routerLink]="[ user.id ]" *matCellDef="let user"> {{user.username}} </td>
     </ng-container>
 
-    <!-- City Column -->
     <ng-container matColumnDef="city">
       <th mat-header-cell *matHeaderCellDef> Ville </th>
       <td mat-cell [routerLink]="[ user.id ]" *matCellDef="let user"> {{user.city}} </td>

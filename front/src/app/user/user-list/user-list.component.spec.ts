@@ -2,7 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UserListComponent } from './user-list.component';
 import { HttpClientTestingModule} from '@angular/common/http/testing';
-import {MatTableModule} from '@angular/material';
+import {MatProgressSpinnerModule, MatTableModule} from '@angular/material';
+import {LoaderComponent} from '../../shared/loader/loader.component';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -11,12 +12,14 @@ describe('UserListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        UserListComponent
+        UserListComponent,
+        LoaderComponent
       ],
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
-        MatTableModule
+        MatTableModule,
+        MatProgressSpinnerModule
       ]
     })
     .compileComponents();

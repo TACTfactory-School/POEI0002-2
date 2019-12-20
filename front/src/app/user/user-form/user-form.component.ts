@@ -18,22 +18,22 @@ export class UserFormComponent implements OnInit {
     role: ['User', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private service: UserService) { }
+constructor(private fb: FormBuilder, private service: UserService) { }
 
-  onSubmit(): void {
-    const user: User = this.userSign.value;
-    this.service
-        .create(user)
-        .subscribe();
-    console.log('submitted');
-  }
+onSubmit(): void {
+  const user: User = this.userSign.value;
+  this.service
+  .create(user)
+  .subscribe();
+  console.log('submitted');
+}
 
-  get username(): AbstractControl { return this.userSign.get('username'); }
-  get password(): AbstractControl { return this.userSign.get('password'); }
-  get city(): AbstractControl { return this.userSign.get('city'); }
-  get enable(): AbstractControl { return this.userSign.get('enable'); }
-  get role(): AbstractControl { return this.userSign.get('role'); }
+get username(): AbstractControl { return this.userSign.get('username'); }
+get password(): AbstractControl { return this.userSign.get('password'); }
+get city(): AbstractControl { return this.userSign.get('city'); }
+get enable(): AbstractControl { return this.userSign.get('enable'); }
+get role(): AbstractControl { return this.userSign.get('role'); }
 
-  ngOnInit() {
-  }
+ngOnInit() {
+}
 }

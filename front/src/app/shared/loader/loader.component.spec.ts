@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core
 import { LoaderComponent } from './loader.component';
 import { EventEmitter } from 'events';
 import { Observable } from 'rxjs';
+import {MatProgressSpinnerModule} from '@angular/material';
 
 function expectAnimationDuration(
     comp: {animationDuration: number, animationFinished: Observable<void>},
@@ -32,7 +33,8 @@ describe('LoaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoaderComponent ]
+      declarations: [ LoaderComponent ],
+      imports: [MatProgressSpinnerModule]
     })
     .compileComponents();
   }));

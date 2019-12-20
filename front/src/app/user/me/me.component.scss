@@ -1,31 +1,35 @@
-$body-bg: #c1bdba;
-$form-bg: #13232f;
-$white: #ffffff;
+  $body-bg: #c1bdba;
+  $form-bg: #13232f;
+  $white: #ffffff;
 
-$main: #336699;
-$main-light: lighten($main,5%);
-$main-dark: darken($main,5%);
+  $main: #336699;
+  $main-light: lighten($main,5%);
+  $main-dark: darken($main,5%);
 
-$gray-light: #a0b3b0;
-$gray: #ddd;
+  $gray-light: #a0b3b0;
+  $gray: #ddd;
 
-$thin: 300;
-$normal: 400;
-$bold: 600;
-$br: 4px;
+  $thin: 300;
+  $normal: 400;
+  $bold: 600;
+  $br: 4px;
+  h1{
+    text-align: center;
+  }
 
+  img{
+    align-items: center;
+  }
+  button{
+    align-content: center;
+    float:left;
+    cursor: pointer;
+    outline:none;
+    background:$main;
+    color:$white;
+    border:solid 2px black;
+    padding:15px 10px;
+    margin-right: 5px;
+    font-size:1.5em;
 
-button{
-  align-content: center;
-  float:left;
-  cursor: pointer;
-  outline:none;
-  background:$main;
-  color:$white;
-  border:solid 2px black;
-  padding:15px 10px;
-  margin-right: 5px;
-  font-size:1.5em;
-  text-transform:uppercase;
-
-}
+  }

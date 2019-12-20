@@ -1,33 +1,38 @@
-<ng-container>
-  <article *ngIf="(user$ | async) as user; else loading">
-    <h1> {{ user.username }}</h1>
-    <p> Prénom : {{ user.name }}</p>
-    <p> Sexe : {{ user.sex }}</p>
-    <img src="../../../assets/img/{{user.picture}}" alt="avatar">
-    <p> Situation : {{ user.marital_status }}</p>
-    <p> Age : {{ user.birthDate|datetoage}}</p>
-    <p> Ville : {{ user.city }}</p>
-    <p> Description : {{ user.description }}</p>
-    <p> Inscrit le  : {{ user.created_at }}</p>
-    <p> Dernière connexion : {{ user.last_connection_date }}</p>
-    <p> Activités favorites : </p>
-    <p> Fiabilité : </p>
-    <p> Profession: {{ user.profession }} </p>
-    <p> Langues parlés : </p>
-    <p> Loisirs : </p>
-    <p> Liste d'amis : </p>
-    <p> Evenement futur : </p>
-    <p> Profession : {{ user.profession }}</p>
-  </article>
+  <ng-template #loading><app-loader></app-loader></ng-template>
+  <ng-container *ngIf="loaded; else loading">
+    <article>
 
-  <h2>Liste des événements auxquels je participe</h2>
+      <div class="field-wrap">
+        <input type="text" formControlName="title" placeholder="Titre"/>
+      </div>
+      <h1> {{ user.username }}</h1>
+      <p> Prénom : {{ user.name }}</p>
+      <p> Sexe : {{ user.sex }}</p>
+      <img src="assets/img/default_user" alt="avatar">
+      <p> Situation : {{ user.marital_status }}</p>
+      <p> Age : {{ user.birthDate|datetoage}}</p>
+      <p> Ville : {{ user.city }}</p>
+      <p> Description : {{ user.description }}</p>
+      <p> Inscrit le  : {{ user.created_at }}</p>
+      <p> Dernière connexion : {{ user.last_connection_date }}</p>
+      <p> Activités favorites : </p>
+      <p> Fiabilité : </p>
+      <p> Profession: {{ user.profession }} </p>
+      <p> Langues parlés : </p>
+      <p> Loisirs : </p>
+      <p> Liste d'amis : </p>
+      <p> Evenement futur : </p>
+      <p> Profession : {{ user.profession }}</p>
+    </article>
 
-  <article *ngIf="(listEvents$ | async) as events; else loading">
-    <div *ngFor="let e of events">
+    <h2>Liste des événements auxquels je participe</h2>
+
+    <article>
+      <div *ngFor="let e of listEvents">
         <p>{{ e.title }}</p>
-    </div>
-  </article>
+      </div>
+    </article>
 
-  <button [routerLink]="['../..']">Retour</button>
-  <button [routerLink]="['edit']">Editer</button>
-</ng-container>
+    <button [routerLink]="['../..']">Retour</button>
+    <button [routerLink]="['edit']">Editer</button>
+  </ng-container>

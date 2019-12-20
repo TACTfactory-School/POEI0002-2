@@ -21,8 +21,8 @@ export class UserFormLoginComponent implements OnInit {
   onSubmit() {
     const {username, password} = this.userLogin.value;
     this.service
-        .login(username, password)
-        .subscribe(() => this.loginSuccess());
+    .login(username, password)
+    .subscribe(() => this.loginSuccess());
   }
 
   get username(): AbstractControl { return this.userLogin.get('username'); }
