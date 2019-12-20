@@ -6,8 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class Onvageeker1ApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    void contextLoads() {
+    }
 }
