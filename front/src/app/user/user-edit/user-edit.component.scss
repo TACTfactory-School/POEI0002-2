@@ -90,8 +90,8 @@ label {
   pointer-events: none;
   font-size:22px;
   .req {
-  	margin:2px;
-  	color:$main;
+    margin:2px;
+    color:$main;
   }
 }
 
@@ -105,7 +105,7 @@ label.active {
 }
 
 label.highlight {
-	color:$white;
+  color:$white;
 }
 
 input, textarea {
@@ -122,8 +122,8 @@ input, textarea {
   border-radius:0;
   transition:border-color .25s ease, box-shadow .25s ease;
   &:focus {
-		outline:0;
-		border-color:$main;
+    outline:0;
+    border-color:$main;
   }
 }
 

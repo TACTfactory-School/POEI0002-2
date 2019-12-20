@@ -14,4 +14,4 @@ export interface User {
   profession: string;
   sex: string;
   username: string;
-  }
+}

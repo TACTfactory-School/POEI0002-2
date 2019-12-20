@@ -38,12 +38,12 @@ export class UserListComponent implements OnInit {
       error => {
         console.log(error.error.message);
       }
-    );
-  }
+      );
+    }
 
-  setPage(i: number, event: MouseEvent) {
-    event.preventDefault();
-    this.page = i;
-    this.getPage();
+    setPage(i: number, event: MouseEvent) {
+      event.preventDefault();
+      this.page = i;
+      this.getPage();
+    }
   }
-}

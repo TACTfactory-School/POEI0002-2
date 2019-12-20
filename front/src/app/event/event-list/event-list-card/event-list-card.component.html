@@ -1,3 +1,5 @@
+<ng-template #loading><app-loader></app-loader></ng-template>
+
 <a [routerLink]='["../tab-event"]'>Mode tableau</a>
 <ul>
   <li *ngFor="let item of [].constructor(totalPages); let i = index">
@@ -6,38 +8,34 @@
 </ul>
 <section *ngFor="let e of events " class="main">
   <mat-card class="card-event">
-    <img mat-card-image src="assets/img/ohshit.jpg" alt="Oh shit">
+    <img mat-card-image src="assets/img/back.jpg" alt="event picture">
 
     <mat-card-content>
       <mat-card-title [routerLink]="[e.id]">{{ e.title }}</mat-card-title>
 
       <p> {{ e.description }} </p>
 
-        <p> Participants : </p>
+      <p> Participants : </p>
+      <!-- <article *ngIf="(listeParticipants$ | async) as participants; else loading">
+        <div *ngFor="let p of participants">
+          <p>{{ p.username }}</p>
+        </div>
+      </article> -->
 
-        <article *ngIf="(listeParticipants$ | async) as participants; else loading">
-            <div *ngFor="let p of participants">
-                <p>{{ p.username }}</p>
-            </div>
-        </article>
+      <p > Organisateurs : </p>
 
-        <p > Organisateurs : </p>
+      <!-- <article *ngIf="(listeOrganisators$ | async) as organisateurs; else loading">
+        <div *ngFor="let o of organisateurs">
+          <p>{{ o.username }}</p>
+        </div>
 
-        <article *ngIf="(listeOrganisators$ | async) as organisateurs; else loading">
-          <div *ngFor="let o of organisateurs">
-              <p>{{ o.username }}</p>
-          </div>
-
-      </article>
+      </article> -->
       <mat-card-actions>
         <button [routerLink]="[e.id]" mat-button>Lire plus</button>
         <!-- <button mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)">Rejoindre</button> -->
-        <p style=text-align:right >{{ e.nbPlaceRest }} / {{ e.nbPlace }}</p>
+        <p style=text-align:right >{{ e.nbPlace }} / {{ e.nbPlace }}</p>
 
       </mat-card-actions>
-
-
-
 
     </mat-card-content>
   </mat-card>

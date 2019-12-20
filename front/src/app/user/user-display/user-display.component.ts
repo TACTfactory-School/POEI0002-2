@@ -19,12 +19,12 @@ export class UserDisplayComponent implements OnInit {
 
   ngOnInit() {
     this.route
-        .params
-        .subscribe(params => {
-          if (params.id) {
-            this.user$ = this.service.getOne(params.id);
-            this.listEvents$ = this.service.getAllEvents(params.id);
-          }
-        });
+    .params
+    .subscribe(params => {
+      if (params.id) {
+        this.user$ = this.service.getOne(params.id);
+        this.listEvents$ = this.service.getAllEvents(params.id);
+      }
+    });
   }
 }

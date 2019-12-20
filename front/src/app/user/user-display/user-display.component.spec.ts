@@ -13,7 +13,7 @@ describe('UserDisplayComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         UserDisplayComponent
-       ],
+      ],
       imports: [
         RouterTestingModule,
         HttpClientTestingModule

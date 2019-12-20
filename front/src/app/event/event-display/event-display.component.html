@@ -1,3 +1,4 @@
+<ng-template #loading><app-loader></app-loader></ng-template>
 <ng-container>
   <article *ngIf="(event$ | async) as event; else loading">
         <h1>{{ event.title }}</h1>
@@ -6,6 +7,13 @@
         <p>{{ event.dueAt | date: 'short'}}</p>
         <p>{{ event.author.username }}</p>
         <p>{{ event.author.birthDate }}</p>
+        <p>{{event.adresse}}</p>
+        <p>{{event.city}}</p>
+        <p>{{event.Cp}}</p>
+        <p>{{event.createdAt}}</p>
+        <p>{{event.nbPlace}}</p>
+        <p>{{event.photo}}</p>
+
 
 
         <h2> Liste des participants</h2>
@@ -27,7 +35,7 @@
     <button [routerLink]="['../..']">Retour</button>
     <ng-container *ngIf="user|async">
       <button (click)="onJoin(event.id)">Rejoindre</button>
-      <button (click)="onDisjoin(event.id)">Déjoindre</button>
+      <button (click)="onDisjoin(event.id)">Quitter </button>
       <button (click)="onOrganisator(event.id)">Devenir organisateur</button>
       <button [routerLink]="['../..']" (click)="delete(event.id)"> Supprimer </button>
       <button [routerLink]="['edit']" >Editer</button>

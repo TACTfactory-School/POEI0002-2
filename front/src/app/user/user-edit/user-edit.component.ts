@@ -13,24 +13,24 @@ import { AuthApiService } from '../../auth/auth-api.service';
 export class UserEditComponent implements OnInit {
 
   userEdit = this.fb.group({username: ['',  Validators.required],
-                            city: ['',  Validators.required],
-                            id: ['',  Validators.required],
-                            profession: [''],
-                            description: [''],
-                            birthDate: [''],
-                            enable: ['true', Validators.required],
-                            mail: [''],
-                            password: ['', Validators.required]
-  });
+  city: ['',  Validators.required],
+  id: ['',  Validators.required],
+  profession: [''],
+  description: [''],
+  birthDate: [''],
+  enable: ['true', Validators.required],
+  mail: [''],
+  password: ['', Validators.required]
+});
 
-  constructor(private fb: FormBuilder, private service: UserService, private readonly route: ActivatedRoute,
-              private apiservice: AuthApiService) { }
+constructor(private fb: FormBuilder, private service: UserService, private readonly route: ActivatedRoute,
+  private apiservice: AuthApiService) { }
 
   onSubmit(): void {
     const user: User = this.userEdit.value;
     this.service
-      .update(user)
-      .subscribe();
+    .update(user)
+    .subscribe();
     console.log('submitted');
   }
 
@@ -46,8 +46,8 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.url
-      .subscribe(() => {
-          this.apiservice.me().subscribe( u => this.userEdit.patchValue(u));
-      });
+    .subscribe(() => {
+      this.apiservice.me().subscribe( u => this.userEdit.patchValue(u));
+    });
   }
 }

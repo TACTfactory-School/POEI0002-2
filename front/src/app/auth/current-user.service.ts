@@ -14,21 +14,21 @@ export class CurrentUserService {
   observable: Observable<User> = this.subject;
 
   constructor(
-      private readonly authApi: AuthApiService,
-      readonly tokenstorage: TokenStorageService) {
-    tokenstorage
-        .observable
-        .subscribe(token => this.updateUser(token));
-  }
+    private readonly authApi: AuthApiService,
+    readonly tokenstorage: TokenStorageService) {
+      tokenstorage
+      .observable
+      .subscribe(token => this.updateUser(token));
+    }
 
-  private updateUser(token: string) {
-    if (token) {
+    private updateUser(token: string) {
+      if (token) {
 
-      of(null)
+        of(null)
         .pipe(delay(100))
         .subscribe(() => this.authApi.me().subscribe(user => this.subject.next(user)));
-    } else {
-      this.subject.next(null);
+      } else {
+        this.subject.next(null);
+      }
     }
   }
-}

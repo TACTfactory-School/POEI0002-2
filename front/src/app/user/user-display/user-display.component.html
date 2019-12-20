@@ -25,7 +25,7 @@
 
   <article *ngIf="(listEvents$ | async) as events; else loading">
     <div *ngFor="let e of events">
-        <p>{{ e.title }}</p>
+      <p>{{ e.title }}</p>
     </div>
   </article>
 

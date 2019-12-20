@@ -27,20 +27,20 @@ export class MeComponent implements OnInit {
     this.loaded = false;
 
     this.route.url
-        .subscribe(params => {
-          forkJoin(this.meService.me(), this.service.getAllMeEvents())
-              .subscribe((results: any) => {
-                this.user = results[0].me;
-                this.listEvents = results[1].events;
-                this.loaded = true;
-              });
-          // ).pipe(
-          //   map((results: any) => {
-          //     this.user = results[0].me;
-          //     this.listEvents = results[1].events;
-          //   }),
-          //   tap(() => this.loaded = true)
-          // );
-        });
+    .subscribe(params => {
+      forkJoin(this.meService.me(), this.service.getAllMeEvents())
+      .subscribe((results: any) => {
+        this.user = results[0].me;
+        this.listEvents = results[1].events;
+        this.loaded = true;
+      });
+      // ).pipe(
+      //   map((results: any) => {
+      //     this.user = results[0].me;
+      //     this.listEvents = results[1].events;
+      //   }),
+      //   tap(() => this.loaded = true)
+      // );
+    });
   }
 }
