@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import com.example.demo.entities.Event;
+import com.example.demo.entities.User;
 import com.example.demo.entities.UserEventOrganisator;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -8,4 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Cedrick Pennec.
  */
 public interface UserEventOrganisatorRepository extends JpaRepository<UserEventOrganisator, Long> {
+  UserEventOrganisator getByUserOrganisatorAndEventOrganisator(User user, Event event);
 }
