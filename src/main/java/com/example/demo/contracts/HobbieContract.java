@@ -32,7 +32,7 @@ public final class HobbieContract {
    */
   public static final String COL_LABEL = "label";
   /**
-   * Length
+   * Length.
    */
   public static final int LENGTH = 255;
 

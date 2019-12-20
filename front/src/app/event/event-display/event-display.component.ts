@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../event.service';
 import { User } from '../../user/user';
+import {CurrentUserService} from '../../auth/current-user.service';
 
 @Component({
   selector: 'app-event-display',
@@ -15,9 +16,10 @@ export class EventDisplayComponent implements OnInit {
   event$: Observable<Event>;
   listeParticipants$: Observable<User[]>;
   listeOrganisators$: Observable<User[]>;
+  user: Observable<User>;
 
-  constructor(private readonly route: ActivatedRoute, private readonly service: EventService) { }
-
+  constructor(private readonly route: ActivatedRoute, private readonly service: EventService,
+              private readonly currentUser: CurrentUserService) { }
   ngOnInit() {
     this.route
         .params
@@ -26,6 +28,7 @@ export class EventDisplayComponent implements OnInit {
             this.event$ = this.service.getOne(params.id);
             this.listeParticipants$ = this.service.getAllParticipants(params.id);
             this.listeOrganisators$ = this.service.getAllOrganisators(params.id);
+            this.user = this.currentUser.observable;
           }
         });
   }
@@ -35,5 +38,11 @@ export class EventDisplayComponent implements OnInit {
 
   onJoin(id: number) {
     this.service.addUser(id).subscribe();
+  }
+  onDisjoin(id: number) {
+    this.service.disjoin(id).subscribe();
+  }
+  onOrganisator(id: number) {
+    this.service.addOrganisator(id).subscribe();
   }
 }
