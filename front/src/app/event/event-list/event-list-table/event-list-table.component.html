@@ -1,5 +1,10 @@
 <ng-template #loading><app-loader></app-loader></ng-template>
-<button [routerLink]='["../event"]'>Mode Carte</button>
+<mat-button-toggle [routerLink]='["../event"]' value="italic">Mode Liste</mat-button-toggle>
+<!-- TODO ajouter le paginateur fonctionnel : jonathan ask us to add a material paginator -->
+    <!-- <mat-paginator  [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator> -->
 <ul>
   <li *ngFor="let item of [].constructor(totalPages); let i = index">
     <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
