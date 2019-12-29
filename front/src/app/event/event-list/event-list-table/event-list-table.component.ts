@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Event } from '../../event';
 import {EventService} from '../../event.service';
 import {Observable} from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-event-list-table',
@@ -17,13 +18,16 @@ private pageNumber: number;
 private numberOfElements: number;
 private page = 0;
 
-constructor(private api: EventService) { }
+constructor(private api: EventService, private router: Router) { }
 displayedColumns: string[] = ['title', 'author', 'createdAt', 'dueAt' , 'city', 'nb_place'];
 
 ngOnInit() {
   this.getPage();
 }
 
+display(id: number) {
+  this.router.navigate(['/event', id]);
+}
 
 getPage() {
 
