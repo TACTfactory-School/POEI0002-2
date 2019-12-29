@@ -1,15 +1,12 @@
 @import 'vars';
 
-  h1{
+  h1 {
     text-align: center;
   }
 
-  img{
-    border-radius: 45px;
-    -webkit-border-radius: 45px;
-    -moz-border-radius: 45px;
-    -ms-border-radius: 45px;
-    -o-border-radius: 45px;
+  img {
+    display: flex;
+border-radius: 30px;
 }
   button{
     align-content: center;
@@ -23,8 +20,37 @@
     margin-right: 5px;
     font-size:1.5em;
   }
-  .display{
-    background-color: white;
-    display: table;
-    border-radius: 10px;
-  }
+
+h1{
+  text-align: center;
+}
+
+img{
+display: flex;
+border-radius: 30px;
+}
+
+button{
+  align-content: center;
+  float:left;
+  cursor: pointer;
+  outline:none;
+  background:$main;
+  color:$white;
+  border:solid 2px black;
+  padding:15px 10px;
+  margin-right: 5px;
+  font-size:1.5em;
+
+
+}
+.display{
+  margin-left: 3px;
+  margin-top: 3px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  background-color: white;
+  display: table;
+  border-radius: 10px;
+}

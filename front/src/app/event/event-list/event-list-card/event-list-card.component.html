@@ -1,9 +1,15 @@
 <ng-template #loading><app-loader></app-loader></ng-template>
-
-<a [routerLink]='["../tab-event"]'>Mode tableau</a>
+<mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+  <mat-button-toggle [routerLink]='["../tab-event"]' value="bold">Mode Tableau</mat-button-toggle>
+</mat-button-toggle-group>
 <ul>
-  <li *ngFor="let item of [].constructor(totalPages); let i = index">
-    <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
+  <li *ngFor="let item of [].constructor(totalPages); let i = index"> 
+     <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
+    <!-- TODO ajouter le paginateur fonctionnel : jonathan ask us to add a material paginator -->
+    <!-- <mat-paginator  [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator> -->
   </li>
 </ul>
 <section *ngFor="let e of events " class="main">

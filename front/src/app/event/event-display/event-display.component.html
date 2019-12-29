@@ -1,5 +1,7 @@
 <ng-template #loading><app-loader></app-loader></ng-template>
 <ng-container>
+  <div class="display">
+ 
   <article *ngIf="(event$ | async) as event; else loading">
         <h1>{{ event.title }}</h1>
         <h2>{{ event.author }}</h2>
@@ -43,5 +45,6 @@
 
     <!-- mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)" -->
   </article>
-
+   
+</div>
 </ng-container>
