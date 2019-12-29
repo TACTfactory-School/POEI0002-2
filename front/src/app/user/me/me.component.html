@@ -1,14 +1,12 @@
-  <ng-template #loading><app-loader></app-loader></ng-template>
+<ng-template #loading><app-loader></app-loader></ng-template>
   <ng-container *ngIf="loaded; else loading">
-    <article>
-
-      <div class="field-wrap">
-        <input type="text" formControlName="title" placeholder="Titre"/>
-      </div>
+    <div class="display">
+      <article>
       <h1> {{ user.username }}</h1>
       <p> Prénom : {{ user.name }}</p>
       <p> Sexe : {{ user.sex }}</p>
-      <img src="assets/img/default_user" alt="avatar">
+      <p>Pseudo : {{user.username}}</p>
+      <img src="assets/img/default_user.png" width="50px" alt="avatar">
       <p> Situation : {{ user.marital_status }}</p>
       <p> Age : {{ user.birthDate|datetoage}}</p>
       <p> Ville : {{ user.city }}</p>
@@ -23,16 +21,18 @@
       <p> Liste d'amis : </p>
       <p> Evenement futur : </p>
       <p> Profession : {{ user.profession }}</p>
+
     </article>
 
     <h2>Liste des événements auxquels je participe</h2>
 
     <article>
       <div *ngFor="let e of listEvents">
-        <p>{{ e.title }}</p>
+        <p>titre des events{{ e.title }}</p>
       </div>
     </article>
-
     <button [routerLink]="['../..']">Retour</button>
     <button [routerLink]="['edit']">Editer</button>
+  </div>
+
   </ng-container>
