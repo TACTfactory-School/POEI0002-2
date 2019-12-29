@@ -24,5 +24,5 @@ export class MeComponent implements OnInit {
           this.user$ = this.meservice.me();
           this.listEvents$ = this.service.getAllMeEvents();
         });
+      }
   }
-}

@@ -2,19 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { User } from '../user';
 import { UserService } from '../user.service';
-import {MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions} from '@angular/material/tooltip';
-export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
-  showDelay: 1000,
-  hideDelay: 1000,
-  touchendHideDelay: 1000,
-};
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss'],
-  providers: [
-    {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults}
-  ],
 })
 export class UserFormComponent implements OnInit {
 
@@ -25,7 +18,7 @@ export class UserFormComponent implements OnInit {
   role: ['User', Validators.required]
 });
 
-constructor(private fb: FormBuilder, private service: UserService) { }
+constructor(private fb: FormBuilder, private service: UserService, private router: Router) { }
 
 onSubmit(): void {
   const user: User = this.userSign.value;
@@ -33,6 +26,7 @@ onSubmit(): void {
   .create(user)
   .subscribe();
   console.log('submitted');
+  this.router.navigate(['/login']);
 }
 
 get username(): AbstractControl { return this.userSign.get('username'); }
@@ -43,4 +37,5 @@ get role(): AbstractControl { return this.userSign.get('role'); }
 
 ngOnInit() {
 }
+
 }
