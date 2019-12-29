@@ -233,7 +233,7 @@ public class EventDto {
    *
    * @param nbPlaceRest Integer.
    */
-  public void setNbPlaceRest(Integer nbPlaceRest) {
+  public void setNbPlaceRest(final Integer nbPlaceRest) {
     this.nbPlaceRest = nbPlaceRest;
   }
 
