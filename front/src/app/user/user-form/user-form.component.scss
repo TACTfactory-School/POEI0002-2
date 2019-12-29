@@ -1,19 +1,4 @@
-
-$body-bg: #c1bdba;
-$form-bg: #13232f;
-$white: #ffffff;
-
-$main: #336699;
-$main-light: lighten($main,5%);
-$main-dark: darken($main,5%);
-
-$gray-light: #a0b3b0;
-$gray: #ddd;
-
-$thin: 300;
-$normal: 400;
-$bold: 600;
-$br: 4px;
+@import 'vars';
 
 * {
   box-sizing: border-box;
@@ -105,7 +90,7 @@ label.highlight {
   color:$white;
 }
 
-input, textarea {
+input, textarea, button {
   font-size:22px;
   display:block;
   width:100%;
@@ -149,31 +134,12 @@ textarea {
     }
   }
 }
-
-.button {
-  border:0;
-  outline:none;
-  border-radius:0;
-  padding:15px 0;
-  font-size:2rem;
-  font-weight:$bold;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  background:$main;
-  color:$white;
-  transition:all.5s ease;
-  -webkit-appearance: none;
-  &:hover, &:focus {
-    background:$main-dark;
-  }
-}
-
-.button-block {
-  display:block;
-  width:100%;
-}
-
 .forgot {
   margin-top:-20px;
   text-align:right;
+}
+.display{
+  background-color: white;
+  display: table;
+  border-radius: 10px;
 }

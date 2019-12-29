@@ -1,25 +1,16 @@
-  $body-bg: #c1bdba;
-  $form-bg: #13232f;
-  $white: #ffffff;
+@import 'vars';
 
-  $main: #336699;
-  $main-light: lighten($main,5%);
-  $main-dark: darken($main,5%);
-
-  $gray-light: #a0b3b0;
-  $gray: #ddd;
-
-  $thin: 300;
-  $normal: 400;
-  $bold: 600;
-  $br: 4px;
   h1{
     text-align: center;
   }
 
   img{
-    align-items: center;
-  }
+    border-radius: 45px;
+    -webkit-border-radius: 45px;
+    -moz-border-radius: 45px;
+    -ms-border-radius: 45px;
+    -o-border-radius: 45px;
+}
   button{
     align-content: center;
     float:left;
@@ -31,5 +22,9 @@
     padding:15px 10px;
     margin-right: 5px;
     font-size:1.5em;
-
+  }
+  .display{
+    background-color: white;
+    display: table;
+    border-radius: 10px;
   }
