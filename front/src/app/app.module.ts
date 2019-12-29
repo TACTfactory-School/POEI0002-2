@@ -45,6 +45,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     httpInterceptors,
   ],
   bootstrap: [AppComponent],
-  
+
 })
 export class AppModule { }
