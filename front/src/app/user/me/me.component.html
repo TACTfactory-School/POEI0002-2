@@ -1,6 +1,7 @@
 <ng-template #loading><app-loader></app-loader></ng-template>
   <ng-container *ngIf="loaded; else loading">
     <div class="display">
+
       <article>
       <h1> {{ user.username }}</h1>
       <p> Prénom : {{ user.name }}</p>
@@ -25,7 +26,7 @@
     </article>
 
     <h2>Liste des événements auxquels je participe</h2>
-
+    </div>
     <article>
       <div *ngFor="let e of listEvents">
         <p>titre des events{{ e.title }}</p>

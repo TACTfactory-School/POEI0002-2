@@ -1,5 +1,6 @@
 <ng-template #loading><app-loader></app-loader></ng-template>
 <ng-container>
+  <div class="display">
   <article *ngIf="(user$ | async) as user; else loading">
     <h1> {{ user.username }}</h1>
     <p> Prénom : {{ user.name }}</p>
@@ -28,7 +29,7 @@
       <p>{{ e.title }}</p>
     </div>
   </article>
-
+</div>
   <a [routerLink]="['..']">Retour</a>
 </ng-container>
 

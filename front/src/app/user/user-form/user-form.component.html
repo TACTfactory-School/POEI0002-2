@@ -12,23 +12,23 @@
       <div class="top-row">
         <div class="field-wrap">
           <input type="text" formControlName="username" placeholder="Pseudonyme *"/>
-          <!-- <div [hidden]="username.valid || username.pristine"
+          <div [hidden]="username.valid || username.pristine"
             class="alert">Pseudonyme requis
-          </div> -->
+          </div> 
         </div>
 
         <div class="field-wrap">
           <input type="text" formControlName="password" placeholder="Mot de passe *"/>
-          <!-- <div [hidden]="password.valid || password.pristine"
+           <div [hidden]="password.valid || password.pristine"
             class="alert">Mot de passe requis
-          </div> -->
+          </div> 
         </div>
 
         <div class="field-wrap">
           <input type="text" formControlName="city" placeholder="Ville *"/>
-          <!-- <div [hidden]="city.valid || city.pristine"
+           <div [hidden]="city.valid || city.pristine"
             class="alert"> Ville requise
-          </div> -->
+          </div> 
         </div>
         <!-- <mat-form-field>
           <mat-label>Ville</mat-label>
@@ -42,7 +42,12 @@
           <input type="hidden" formControlName="role" value="User"/>
 
         </div>
-        <input type="submit" value="Valider" [disabled]="!userSign.valid"/>
+
+        <button mat-raised-button type="submit" value="Valider" [disabled]="!userSign.valid"
+        matTooltip="Compte cree avec succès!"
+        aria-label="button with pop-up"> 
+        Valider
+        </button>
       </form>
     </div>
 
