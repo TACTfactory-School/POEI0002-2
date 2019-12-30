@@ -1,3 +1,5 @@
+@import '../../../sass/_vars.scss';
+
 img {
   max-width: 15%;
   display: block;
@@ -7,4 +9,17 @@ img {
   background-color: white;
   display: table;
   border-radius: 10px;
+}
+button{
+  margin-top: 5px;
+  align-content: center;
+  float:left;
+  cursor: pointer;
+  outline:none;
+  background:$main;
+  color:$white;
+  border:solid 2px black;
+  padding:15px 10px;
+  margin-right: 5px;
+  font-size:1.5em;
 }
