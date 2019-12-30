@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../event.service';
 import { User } from '../../user/user';
 import {CurrentUserService} from '../../auth/current-user.service';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event-display',
@@ -39,11 +40,14 @@ export class EventDisplayComponent implements OnInit {
 
   onJoin(id: number) {
     this.service.addUser(id).subscribe();
+    this.ngOnInit();
   }
   onDisjoin(id: number) {
     this.service.disjoin(id).subscribe();
+    this.ngOnInit();
   }
   onOrganisator(id: number) {
     this.service.addOrganisator(id).subscribe();
+    this.ngOnInit();
   }
 }
