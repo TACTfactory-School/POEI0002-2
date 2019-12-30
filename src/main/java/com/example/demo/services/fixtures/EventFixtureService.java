@@ -7,6 +7,8 @@ import com.example.demo.repository.UserRepository;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDateTime;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -43,8 +45,11 @@ public class EventFixtureService implements Fixture {
   public void load() {
 
     Faker faker = new Faker();
+    Random rand = new Random();
 
     for (int i = 0; i < this.nbFakeEvent; i++) {
+
+      String photo = Integer.toString(rand.nextInt(6)) + ".jpg";
       Event event = new Event();
       Long authorId = Long.valueOf(faker.random().nextInt(1, userRepository.findAll().size()));
       User user = userRepository.getOne(authorId);
@@ -54,6 +59,7 @@ public class EventFixtureService implements Fixture {
       event.setTitle(faker.space().constellation());
       event.setDueAt(LocalDateTime.now());
       event.setNbPlace(5);
+      event.setPhoto(photo);
 
       this.repository.save(event);
     }

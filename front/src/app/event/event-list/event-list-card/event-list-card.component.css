@@ -7,39 +7,38 @@
   margin: 1em;
 }
 
-
 .mat-card {
-  height:auto;
+  height: auto;
   background-color: white;
 }
 
 .mat-card-action {
   padding: 0;
   margin: 0;
-
 }
+
 button {
   width: 100px;
   margin-left: 80px;
-  padding:10px 15px;
-  cursor:pointer;
+  padding: 10px 15px;
+  cursor: pointer;
   border-radius: 10px;
   color: white;
   background-color: #336699;
 }
-p {
 
+p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 250px;
-
 }
 
 .event-mat-card {
   padding: 0;
   margin: 0;
 }
+
 .mat-card-image {
   padding: 0;
   margin: -16px -16px 0 -16px;
@@ -67,4 +66,3 @@ ul {
   padding: 0;
   overflow: hidden;
 }
-
