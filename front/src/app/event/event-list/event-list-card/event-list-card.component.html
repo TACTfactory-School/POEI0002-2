@@ -3,7 +3,7 @@
   <mat-button-toggle [routerLink]='["../tab-event"]' value="bold">Mode Tableau</mat-button-toggle>
 </mat-button-toggle-group>
 <ul>
-  <li *ngFor="let item of [].constructor(totalPages); let i = index"> 
+  <li *ngFor="let item of [].constructor(totalPages); let i = index">
      <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
     <!-- TODO ajouter le paginateur fonctionnel : jonathan ask us to add a material paginator -->
     <!-- <mat-paginator  [length]="100"
@@ -14,7 +14,7 @@
 </ul>
 <section *ngFor="let e of events " class="main">
   <mat-card class="card-event">
-    <img mat-card-image src="assets/img/back.jpg" alt="event picture">
+    <img mat-card-image src="assets/img/{{e.photo}}" alt="event picture">
 
     <mat-card-content>
       <mat-card-title [routerLink]="[e.id]">{{ e.title }}</mat-card-title>
