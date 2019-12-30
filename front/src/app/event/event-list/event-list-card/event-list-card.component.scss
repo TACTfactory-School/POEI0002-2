@@ -1,23 +1,22 @@
 .card-event {
   max-width: 300px;
   min-width: 300px;
-  max-height: 400px;
-  min-height: 400px;
+  max-height: 320px;
+  min-height: 320px;
   float: left;
   margin: 1em;
-}
-
-
-.mat-card {
-  height:auto;
-  background-color: white;
 }
 
 .mat-card-action {
   padding: 0;
   margin: 0;
+}
+.mat-card-title{
+  white-space: nowrap; /* Don't forget this one */
+text-overflow: ellipsis;
 
 }
+
 button {
   width: 100px;
   margin-left: 80px;
@@ -28,7 +27,6 @@ button {
   background-color: #336699;
 }
 p {
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -41,6 +39,8 @@ p {
   margin: 0;
 }
 .mat-card-image {
+  width: 300px;
+  height: 150px;
   padding: 0;
   margin: -16px -16px 0 -16px;
 }
