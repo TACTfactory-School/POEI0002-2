@@ -26,12 +26,13 @@
     </article>
 
     <h2>Liste des événements auxquels je participe</h2>
-    </div>
     <article *ngIf="(listEvents$ | async) as events; else loading">
       <div *ngFor="let e of events">
           <p>{{ e.title }}</p>
       </div>
+
     </article>
+  </div>
     <button [routerLink]="['../..']">Retour</button>
     <button [routerLink]="['edit']">Editer</button>
 
