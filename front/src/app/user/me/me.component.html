@@ -4,18 +4,17 @@
 
       <article *ngIf="(user$ | async) as user; else loading">
       <h1> {{ user.username }}</h1>
-      <p> Prénom : {{ user.name }}</p>
+      <div ng-if="user.name != null"> Prénom : {{ user.name }}</div>
       <p> Sexe : {{ user.sex }}</p>
       <p>Pseudo : {{user.username}}</p>
       <img src="assets/img/default_user.png" width="50px" alt="avatar">
       <p> Situation : {{ user.marital_status }}</p>
-      <p> Age : {{ user.birthDate|datetoage}}</p>
+      <p> Age : {{ user.birthDate|datetoage}} ans</p>
       <p> Ville : {{ user.city }}</p>
-      <p> Description : {{ user.description }}</p>
+      <p> Description : {{ user.description }}</p> 
       <p> Inscrit le  : {{ user.created_at }}</p>
       <p> Dernière connexion : {{ user.last_connection_date }}</p>
       <p> Activités favorites : </p>
-      <p> Fiabilité : </p>
       <p> Profession: {{ user.profession }} </p>
       <p> Langues parlés : </p>
       <p> Loisirs : </p>
