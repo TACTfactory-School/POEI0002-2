@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { EventDisplayComponent } from './event-display.component';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
+import {LoaderComponent} from '../../shared/loader/loader.component';
+import {MatProgressSpinnerModule} from '@angular/material';
 
 describe('EventDisplayComponent', () => {
   let component: EventDisplayComponent;
@@ -8,7 +11,10 @@ describe('EventDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventDisplayComponent ]
+      imports: [RouterTestingModule,
+                HttpClientTestingModule,
+                MatProgressSpinnerModule],
+      declarations: [ EventDisplayComponent, LoaderComponent ]
     })
     .compileComponents();
   }));

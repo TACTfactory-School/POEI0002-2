@@ -11,12 +11,13 @@ import { Router } from '@angular/router';
 })
 export class UserFormComponent implements OnInit {
 
-  userSign = this.fb.group({username: ['',  Validators.required],
-  password: ['', Validators.required],
-  city: ['', Validators.required],
-  enable: ['true', Validators.required],
-  role: ['User', Validators.required]
-});
+  userSign = this.fb.group({
+    username: ['',  Validators.required],
+    password: ['', Validators.required],
+    city: ['', Validators.required],
+    enable: ['true', Validators.required],
+    role: ['User', Validators.required]
+  });
 
 constructor(private fb: FormBuilder, private service: UserService, private router: Router) { }
 
