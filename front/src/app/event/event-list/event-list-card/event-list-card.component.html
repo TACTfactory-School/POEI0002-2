@@ -39,7 +39,7 @@
       <mat-card-actions>
         <button [routerLink]="[e.id]" mat-button>Lire plus</button>
         <!-- <button mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)">Rejoindre</button> -->
-        <p style=text-align:right >{{ e.nbFree }} / {{ e.nbPlace }}</p>
+        <p style=text-align:right >{{ e.nbPlace - e.nbFree }} / {{ e.nbPlace }}</p>
 
       </mat-card-actions>
 
