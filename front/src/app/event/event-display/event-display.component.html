@@ -1,9 +1,10 @@
 <ng-template #loading><app-loader></app-loader></ng-template>
 <ng-container>
   <div class="display">
- 
+
   <article *ngIf="(event$ | async) as event; else loading">
         <h1>{{ event.title }}</h1>
+        <img src = "/assets/img/{{event.photo}}" alt="picture">
         <h2>{{ event.author }}</h2>
         <p>{{ event.description }}</p>
         <p>{{ event.dueAt | date: 'short'}}</p>
@@ -13,8 +14,7 @@
         <p>{{event.city}}</p>
         <p>{{event.Cp}}</p>
         <p>{{event.createdAt}}</p>
-        <p>{{event.nbPlace}}</p>
-        <p>{{event.photo}}</p>
+        <p>{{event.nbPlace - (listeParticipants$| async)?.length}} places restantes</p>
 
 
 
@@ -45,6 +45,6 @@
 
     <!-- mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)" -->
   </article>
-   
+
 </div>
 </ng-container>

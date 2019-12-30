@@ -17,6 +17,7 @@ export class EventDisplayComponent implements OnInit {
   listeParticipants$: Observable<User[]>;
   listeOrganisators$: Observable<User[]>;
   user: Observable<User>;
+  freeplace: number;
 
   constructor(private readonly route: ActivatedRoute, private readonly service: EventService,
               private readonly currentUser: CurrentUserService) { }

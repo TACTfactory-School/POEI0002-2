@@ -56,9 +56,9 @@ public class EventFixtureService implements Fixture {
       event.setAuthor(user);
       event.setCity(faker.address().city());
       event.setDescription(faker.harryPotter().quote());
-      event.setTitle(faker.space().constellation());
+      event.setTitle(faker.esports().game());
       event.setDueAt(LocalDateTime.now());
-      event.setNbPlace(5);
+      event.setNbPlace(rand.nextInt(20)+2);
       event.setPhoto(photo);
 
       this.repository.save(event);
