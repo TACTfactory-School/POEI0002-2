@@ -45,6 +45,10 @@ public static final String COL_ID = "id";
   /**
    * Column name.
    */
+  public static final String COL_NB_FREE = "nb_free";
+  /**
+   * Column name.
+   */
   public static final String COL_PHOTO = "photo";
   /**
    * Column name.

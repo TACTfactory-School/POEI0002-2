@@ -168,6 +168,7 @@ public class EventController {
     User user = this.userService.getByUserName(username);
     event.setAuthor(user);
     event = this.mapperDto.dtoToEvent(event, eventDto);
+    event.setNbFree(event.getNbPlace());
     return this.service.create(event);
   }
 
@@ -200,18 +201,19 @@ public class EventController {
     User user = this.userService.getByUserName(username);
     Event event = this.service.getOne(id);
 
-    UserEventParticipant usereventpart = new UserEventParticipant();
-    usereventpart.setUserParticipant(user);
-    usereventpart.setEventParticipant(event);
+    if(event.getNbFree() > 0) {
+        UserEventParticipant usereventpart = new UserEventParticipant();
+        usereventpart.setUserParticipant(user);
+        usereventpart.setEventParticipant(event);
 
-    this.userEventParticipantService.save(usereventpart);
+        this.userEventParticipantService.save(usereventpart);
 
-    user.addAsParticipant(usereventpart);
-    this.userService.update(user);
+        user.addAsParticipant(usereventpart);
+        this.userService.update(user);
 
-    event.addParticipant(usereventpart);
-    this.service.update(event);
-
+        event.addParticipant(usereventpart);
+        this.service.update(event);
+    }
   }
 
   @DeleteMapping("disjoin/{id}")
@@ -223,6 +225,8 @@ public class EventController {
     UserEventParticipant userEventParticipant = this.userEventParticipantService
             .getOne(user, event);
     this.userEventParticipantService.delete(userEventParticipant);
+    event.removeParticipant(userEventParticipant);
+    this.service.update(event);
   }
 
 

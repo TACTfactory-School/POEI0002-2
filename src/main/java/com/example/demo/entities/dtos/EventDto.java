@@ -33,6 +33,10 @@ public class EventDto {
    */
   private Integer nbPlace;
   /**
+   * Amount of free places of the EventDTO.
+   */
+  private Integer nbFree;
+  /**
    * Number of places available at an EventDTO.
    */
   private Integer nbPlaceRest;
@@ -254,4 +258,22 @@ public class EventDto {
   public void setCity(final String city) {
     this.city = city;
   }
+
+/**
+ * Retrieves the amount of free places of the EventDTO.
+ *
+ * @return nbFree amount of free places.
+ */
+public Integer getNbFree() {
+    return nbFree;
+}
+
+/**
+ * Set the amount of free places of the EventDTO.
+ *
+ * @param nbFree amount of free places.
+ */
+public void setNbFree(Integer nbFree) {
+    this.nbFree = nbFree;
+}
 }

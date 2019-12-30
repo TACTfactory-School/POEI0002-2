@@ -65,6 +65,7 @@ public class Mapper {
       result.setDescription(event.getDescription());
       result.setDueAt(event.getDueAt());
       result.setNbPlace(event.getNbPlace());
+      result.setNbFree(event.getNbFree());
       result.setAdresse(event.getAdresse());
       result.setPhoto(event.getPhoto());
       result.setCp(event.getCp());
@@ -87,6 +88,7 @@ public Event dtoToEvent(final Event event, final EventDto eventDto) {
     event.setDescription(eventDto.getDescription());
     event.setDueAt(eventDto.getDueAt());
     event.setNbPlace(eventDto.getNbPlace());
+    event.setNbFree(eventDto.getNbFree());
     event.setAdresse(eventDto.getAdresse());
     event.setPhoto(eventDto.getPhoto());
     event.setCp(eventDto.getCp());
