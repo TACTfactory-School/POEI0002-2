@@ -7,7 +7,7 @@ export interface Event {
   title: string;
   description: string;
   createdAt: string;
-  dueAt: string;
+  dueAt: Date;
   author: User;
   city: string;
   photo: string;
