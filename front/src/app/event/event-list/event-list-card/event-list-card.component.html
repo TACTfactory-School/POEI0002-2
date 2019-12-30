@@ -14,7 +14,7 @@
 </ul>
 <section *ngFor="let e of events " class="main">
   <mat-card class="card-event">
-    <img mat-card-image src="assets/img/{{e.photo}}" alt="event picture">
+    <img mat-card-image src="assets/img/{{e.photo}}"  alt="event picture">
 
     <mat-card-content>
       <mat-card-title [routerLink]="[e.id]">{{ e.title }}</mat-card-title>
