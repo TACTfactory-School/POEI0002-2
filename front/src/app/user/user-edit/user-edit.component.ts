@@ -20,11 +20,12 @@ export class UserEditComponent implements OnInit {
   birthDate: [''],
   enable: ['true', Validators.required],
   mail: [''],
-  password: ['', Validators.required]
+  sex: [''],
+  marital_status: ['']
 });
 
 constructor(private fb: FormBuilder, private service: UserService, private readonly route: ActivatedRoute,
-  private apiservice: AuthApiService) { }
+            private apiservice: AuthApiService) { }
 
   onSubmit(): void {
     const user: User = this.userEdit.value;
@@ -42,7 +43,8 @@ constructor(private fb: FormBuilder, private service: UserService, private reado
   get birthdate(): AbstractControl { return this.userEdit.get('birthDate'); }
   get enable(): AbstractControl { return this.userEdit.get('enable'); }
   get mail(): AbstractControl { return this.userEdit.get('mail'); }
-  get password(): AbstractControl { return this.userEdit.get('password'); }
+  get sex(): AbstractControl { return this.userEdit.get('sex'); }
+  get marital_status(): AbstractControl { return this.userEdit.get('marital_status'); }
 
   ngOnInit() {
     this.route.url
