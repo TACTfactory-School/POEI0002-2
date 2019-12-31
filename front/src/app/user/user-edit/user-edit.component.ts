@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { AuthApiService } from '../../auth/auth-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-edit',
@@ -26,7 +27,7 @@ export class UserEditComponent implements OnInit {
 });
 
 constructor(private fb: FormBuilder, private service: UserService, private readonly route: ActivatedRoute,
-            private apiservice: AuthApiService) { }
+            private apiservice: AuthApiService, private router: Router) { }
 
   onSubmit(): void {
     const user: User = this.userEdit.value;
@@ -34,6 +35,7 @@ constructor(private fb: FormBuilder, private service: UserService, private reado
     .update(user)
     .subscribe();
     console.log('submitted');
+    this.router.navigate(['/user/me']);
   }
 
   get name(): AbstractControl { return this.userEdit.get('name'); }
