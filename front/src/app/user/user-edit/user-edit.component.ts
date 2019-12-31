@@ -5,6 +5,7 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 import { AuthApiService } from '../../auth/auth-api.service';
 import { Router } from '@angular/router';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-edit',
@@ -26,6 +27,10 @@ export class UserEditComponent implements OnInit {
   marital_status: ['']
 });
 
+sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
 constructor(private fb: FormBuilder, private service: UserService, private readonly route: ActivatedRoute,
             private apiservice: AuthApiService, private router: Router) { }
 
@@ -35,7 +40,9 @@ constructor(private fb: FormBuilder, private service: UserService, private reado
     .update(user)
     .subscribe();
     console.log('submitted');
-    this.router.navigate(['/user/me']);
+    this.sleep(100).then(() =>{
+      this.router.navigate(['/user/me']);
+    });
   }
 
   get name(): AbstractControl { return this.userEdit.get('name'); }
