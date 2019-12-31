@@ -1,4 +1,4 @@
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserDisplayComponent } from './user-display.component';
 import { RouterModule } from '@angular/router';

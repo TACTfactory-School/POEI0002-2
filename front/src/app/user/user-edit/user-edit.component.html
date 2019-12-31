@@ -1,49 +1,51 @@
-<ng-template #loading><app-loader></app-loader></ng-template>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
 <div class="form">
   <h1>Edition du profil.</h1>
   <form [formGroup]="userEdit" (ngSubmit)="onSubmit()">
 
     <div class="field-wrap">
-      <input type="hidden" formControlName="username" placeholder="Pseudo"/>
+      <input type="hidden" formControlName="username" placeholder="Pseudo" />
     </div>
 
-    <input type="hidden" formControlName="id"/>
+    <input type="hidden" formControlName="id" />
 
     <div class="field-wrap">
-      <input type="text" formControlName="name" placeholder="Prenom"/>
-    </div>
-
-    <div class="field-wrap">
-      <input type="text" formControlName="city" placeholder="Ville"/>
+      <input type="text" formControlName="name" placeholder="Prenom" />
     </div>
 
     <div class="field-wrap">
-      <input type="text" formControlName="profession" placeholder = "Metier"/>
+      <input type="text" formControlName="city" placeholder="Ville" />
     </div>
 
     <div class="field-wrap">
-      <input type="text" formControlName="description" placeholder = "Description"/>
+      <input type="text" formControlName="profession" placeholder="Metier" />
     </div>
 
     <div class="field-wrap">
-      <input type="datetime-local" formControlName="birthDate" placeholder="Date de naissance"/>
+      <input type="text" formControlName="description" placeholder="Description" />
     </div>
 
     <div class="field-wrap">
-      <input type="text" formControlName="mail" placeholder="E-Mail"/>
+      <input type="datetime-local" formControlName="birthDate" placeholder="Date de naissance" />
     </div>
 
     <div class="field-wrap">
-      <input type="text" formControlName="marital_status" placeholder="Situation"/>
+      <input type="text" formControlName="mail" placeholder="E-Mail" />
     </div>
 
     <div class="field-wrap">
-      <input type="text" formControlName="sex" placeholder="Genre"/>
+      <input type="text" formControlName="marital_status" placeholder="Situation" />
     </div>
 
-    <input type="hidden" formControlName="enable"/>
+    <div class="field-wrap">
+      <input type="text" formControlName="sex" placeholder="Genre" />
+    </div>
 
-    <input type="submit" value="Valider"/>
+    <input type="hidden" formControlName="enable" />
+
+    <input type="submit" value="Valider" />
 
   </form>
 </div>

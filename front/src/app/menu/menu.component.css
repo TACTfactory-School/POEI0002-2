@@ -19,7 +19,7 @@ menu ul li {
   border-bottom: 1px solid #2a2a2a;
 }
 
-menu > ul > li > a {
+menu>ul>li>a {
   border-left: 4px solid #222;
 }
 
@@ -49,7 +49,8 @@ menu ul a i[class*='fa-caret'] {
   float: right;
 }
 
-menu ul a:hover, #menu ul a.active {
+menu ul a:hover,
+#menu ul a.active {
   background-color: #336699;
   border-left-color: #1a7ab1;
   color: #1a7ab1;

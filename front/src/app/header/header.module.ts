@@ -4,7 +4,7 @@ import { HeaderCoComponent } from './header-co/header-co.component';
 import { UserFormModule } from '../user/user-form/user-form.module';
 import { RouterModule } from '@angular/router';
 import { LogguedGuard } from '../auth/loggued.guard';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [HeaderCoComponent],
@@ -15,6 +15,6 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatBadgeModule
   ],
   providers: [LogguedGuard],
-  exports : [HeaderCoComponent]
+  exports: [HeaderCoComponent]
 })
 export class HeaderModule { }

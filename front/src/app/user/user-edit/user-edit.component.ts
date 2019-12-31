@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { AuthApiService } from '../../auth/auth-api.service';
@@ -14,33 +14,34 @@ import { delay } from 'rxjs/operators';
 })
 export class UserEditComponent implements OnInit {
 
-  userEdit = this.fb.group({username: ['',  Validators.required],
-  city: ['',  Validators.required],
-  id: ['',  Validators.required],
-  profession: [''],
-  description: [''],
-  birthDate: [''],
-  enable: ['true', Validators.required],
-  mail: [''],
-  sex: [''],
-  name: [''],
-  marital_status: ['']
-});
+  userEdit = this.fb.group({
+    username: ['', Validators.required],
+    city: ['', Validators.required],
+    id: ['', Validators.required],
+    profession: [''],
+    description: [''],
+    birthDate: [''],
+    enable: ['true', Validators.required],
+    mail: [''],
+    sex: [''],
+    name: [''],
+    marital_status: ['']
+  });
 
-sleep = (milliseconds) => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
-}
+  sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
 
-constructor(private fb: FormBuilder, private service: UserService, private readonly route: ActivatedRoute,
-            private apiservice: AuthApiService, private router: Router) { }
+  constructor(private fb: FormBuilder, private service: UserService, private readonly route: ActivatedRoute,
+    private apiservice: AuthApiService, private router: Router) { }
 
   onSubmit(): void {
     const user: User = this.userEdit.value;
     this.service
-    .update(user)
-    .subscribe();
+      .update(user)
+      .subscribe();
     console.log('submitted');
-    this.sleep(100).then(() =>{
+    this.sleep(100).then(() => {
       this.router.navigate(['/user/me']);
     });
   }
@@ -59,8 +60,8 @@ constructor(private fb: FormBuilder, private service: UserService, private reado
 
   ngOnInit() {
     this.route.url
-    .subscribe(() => {
-      this.apiservice.me().subscribe( u => this.userEdit.patchValue(u));
-    });
+      .subscribe(() => {
+        this.apiservice.me().subscribe(u => this.userEdit.patchValue(u));
+      });
   }
 }

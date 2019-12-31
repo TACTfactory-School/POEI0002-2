@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../user';
+import { User } from '../user';
 import { Event } from '../../event/event';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -20,9 +20,9 @@ export class MeComponent implements OnInit {
 
   ngOnInit() {
     this.route.url
-        .subscribe(params => {
-          this.user$ = this.meservice.me();
-          this.listEvents$ = this.service.getAllMeEvents();
-        });
-      }
+      .subscribe(params => {
+        this.user$ = this.meservice.me();
+        this.listEvents$ = this.service.getAllMeEvents();
+      });
   }
+}

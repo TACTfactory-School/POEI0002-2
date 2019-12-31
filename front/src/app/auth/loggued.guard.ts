@@ -14,7 +14,7 @@ export class LogguedGuard implements CanActivate {
   }
 
   canActivate(_: ActivatedRouteSnapshot, __: RouterStateSnapshot)
-      : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    : Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     console.log('loggued : ' + this.loggued);
     return this.loggued;
   }

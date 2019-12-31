@@ -1,4 +1,6 @@
-<ng-template #loading><app-loader></app-loader></ng-template>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
 
 <section *ngIf="(users) as users; else loading">
   <table mat-table [dataSource]="users" class="mat-elevation-z8" *ngIf="users.length; else noData">
@@ -16,11 +18,11 @@
     <!-- Picture Column -->
     <ng-container matColumnDef="picture">
       <th mat-header-cell *matHeaderCellDef> Avatar </th>
-      <td mat-cell  *matCellDef="let user"> <img src="assets/img/{{user.picture}}" style="width:85px"></td>
+      <td mat-cell *matCellDef="let user"> <img src="assets/img/{{user.picture}}" style="width:85px"></td>
     </ng-container>
 
     <ng-container matColumnDef="profession">
-      <th mat-header-cell *matHeaderCellDef > Profession </th>
+      <th mat-header-cell *matHeaderCellDef> Profession </th>
       <td mat-cell [routerLink]="[ user.id ]" *matCellDef="let user"> {{ user.profession }}</td>
     </ng-container>
 

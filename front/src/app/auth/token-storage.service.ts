@@ -13,7 +13,7 @@ export class TokenStorageService {
   constructor() {
     this.subject.next(this.get());
 
-    this.subject.subscribe(token => console.log('TOKEN s', {token}));
+    this.subject.subscribe(token => console.log('TOKEN s', { token }));
   }
 
   save(token: string) {

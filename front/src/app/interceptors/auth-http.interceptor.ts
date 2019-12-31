@@ -10,14 +10,13 @@ export class AuthHttpInterceptor implements HttpInterceptor {
 
   constructor(readonly tokenStorage: TokenStorageService) {
     this.tokenStorage.observable.
-    pipe(tap(token => console.log('Interceptor got new token', {token}))).
-    subscribe(token => this.token = token ? 'Bearer ' + token : null);
+      pipe(tap(token => console.log('Interceptor got new token', { token }))).
+      subscribe(token => this.token = token ? 'Bearer ' + token : null);
   }
 
-  intercept(req: HttpRequest<any> , next: HttpHandler): Observable<HttpEvent<any>> {
-    // console.log('update req', { token: this.token});
-    // console.log(this.token);
-    console.log('INTERCEPT', {req, token: this.token});
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    console.log('INTERCEPT', { req, token: this.token });
     return next.handle(this.token ? this.buildRequest(req) : req);
   }
 

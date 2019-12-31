@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EventListCardComponent } from './event-list-card.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {MatCardModule, MatProgressSpinnerModule} from '@angular/material';
-import {LoaderComponent} from '../../../shared/loader/loader.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatCardModule, MatProgressSpinnerModule } from '@angular/material';
+import { LoaderComponent } from '../../../shared/loader/loader.component';
 
 describe('EventListComponent', () => {
   let component: EventListCardComponent;
@@ -20,7 +20,7 @@ describe('EventListComponent', () => {
         EventListCardComponent,
         LoaderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

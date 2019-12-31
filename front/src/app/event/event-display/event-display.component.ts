@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Event} from '../event';
+import { Event } from '../event';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../event.service';
 import { User } from '../../user/user';
-import {CurrentUserService} from '../../auth/current-user.service';
-import { delay } from 'rxjs/operators';
+import { CurrentUserService } from '../../auth/current-user.service';
 
 @Component({
   selector: 'app-event-display',
@@ -24,15 +23,15 @@ export class EventDisplayComponent implements OnInit {
               private readonly currentUser: CurrentUserService) { }
   ngOnInit() {
     this.route
-        .params
-        .subscribe(params => {
-          if (params.id) {
-            this.event$ = this.service.getOne(params.id);
-            this.listeParticipants$ = this.service.getAllParticipants(params.id);
-            this.listeOrganisators$ = this.service.getAllOrganisators(params.id);
-            this.user = this.currentUser.observable;
-          }
-        });
+      .params
+      .subscribe(params => {
+        if (params.id) {
+          this.event$ = this.service.getOne(params.id);
+          this.listeParticipants$ = this.service.getAllParticipants(params.id);
+          this.listeOrganisators$ = this.service.getAllOrganisators(params.id);
+          this.user = this.currentUser.observable;
+        }
+      });
   }
   delete(id: number) {
     this.service.delete(id).subscribe();

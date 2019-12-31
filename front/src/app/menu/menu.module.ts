@@ -13,6 +13,6 @@ import { LogguedGuard } from '../auth/loggued.guard';
     CommonModule
   ],
   providers: [LogguedGuard],
-  exports : [MenuComponent]
+  exports: [MenuComponent]
 })
 export class MenuModule { }

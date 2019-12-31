@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   user: Observable<User>;
-  
+
 
   constructor(private readonly currentUser: CurrentUserService, private router: Router) { }
 

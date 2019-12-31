@@ -1,10 +1,10 @@
 <a [routerLink]="['home']">
-  <img src="assets/img/logo.png"width="80" alt="logo">
+  <img src="assets/img/logo.png" width="80" alt="logo">
 </a>
 <button *ngIf="!(user|async)" [routerLink]="['login']"> Connexion </button>
 <button *ngIf="!(user|async)" [routerLink]="['sign-up']"> Inscription</button>
 <button *ngIf="(user|async)" [routerLink]="[ 'login' ]">Logout </button>
 
-  <!-- <a *ngIf="user|async" [routerLink]="['notification']"
+<!-- <a *ngIf="user|async" [routerLink]="['notification']"
   matBadge="4" matBadgeColor="warn" >   </a>
-  --> <img src= "assets/img/default_user.png" width="80"  >
+  --> <img src="assets/img/default_user.png" width="80">

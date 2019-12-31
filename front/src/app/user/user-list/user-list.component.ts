@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {User} from '../user';
+import { User } from '../user';
 import { UserService } from '../user.service';
-import {Event} from '../../event/event';
+import { Event } from '../../event/event';
 
 @Component({
   selector: 'app-user-list',
@@ -30,20 +30,20 @@ export class UserListComponent implements OnInit {
     this.service.getAll(this.page).subscribe(
       data => {
         this.users = data[`content`];
-        this.totalElements    = data[`totalElements`];
-        this.totalPages       = data[`totalPages`];
-        this.pageNumber       = data[`pageNumber`];
+        this.totalElements = data[`totalElements`];
+        this.totalPages = data[`totalPages`];
+        this.pageNumber = data[`pageNumber`];
         this.numberOfElements = data[`numberOfElements`];
       },
       error => {
         console.log(error.error.message);
       }
-      );
-    }
-
-    setPage(i: number, event: MouseEvent) {
-      event.preventDefault();
-      this.page = i;
-      this.getPage();
-    }
+    );
   }
+
+  setPage(i: number, event: MouseEvent) {
+    event.preventDefault();
+    this.page = i;
+    this.getPage();
+  }
+}

@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventFormComponent } from './event-form.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouterTestingModule} from '@angular/router/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('EventFormComponent', () => {
   let component: EventFormComponent;
@@ -11,13 +11,13 @@ describe('EventFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventFormComponent ],
+      declarations: [EventFormComponent],
       imports: [ReactiveFormsModule,
-                FormsModule,
-                RouterTestingModule,
-                HttpClientTestingModule]
+        FormsModule,
+        RouterTestingModule,
+        HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

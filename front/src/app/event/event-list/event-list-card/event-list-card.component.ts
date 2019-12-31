@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../event';
-import {EventService} from '../../event.service';
-import {Observable} from 'rxjs';
+import { EventService } from '../../event.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-event-list-card',
@@ -27,9 +27,9 @@ export class EventListCardComponent implements OnInit {
     this.service.getAll(this.page).subscribe(
       data => {
         this.events = data[`content`];
-        this.totalElements    = data[`totalElements`];
-        this.totalPages       = data[`totalPages`];
-        this.pageNumber       = data[`pageNumber`];
+        this.totalElements = data[`totalElements`];
+        this.totalPages = data[`totalPages`];
+        this.pageNumber = data[`pageNumber`];
         this.numberOfElements = data[`numberOfElements`];
       },
       error => {
