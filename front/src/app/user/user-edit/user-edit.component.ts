@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { AuthApiService } from '../../auth/auth-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-edit',
@@ -21,11 +22,12 @@ export class UserEditComponent implements OnInit {
   enable: ['true', Validators.required],
   mail: [''],
   sex: [''],
+  name: [''],
   marital_status: ['']
 });
 
 constructor(private fb: FormBuilder, private service: UserService, private readonly route: ActivatedRoute,
-            private apiservice: AuthApiService) { }
+            private apiservice: AuthApiService, private router: Router) { }
 
   onSubmit(): void {
     const user: User = this.userEdit.value;
@@ -33,8 +35,10 @@ constructor(private fb: FormBuilder, private service: UserService, private reado
     .update(user)
     .subscribe();
     console.log('submitted');
+    this.router.navigate(['/user/me']);
   }
 
+  get name(): AbstractControl { return this.userEdit.get('name'); }
   get username(): AbstractControl { return this.userEdit.get('username'); }
   get city(): AbstractControl { return this.userEdit.get('city'); }
   get id(): AbstractControl { return this.userEdit.get('id'); }
