@@ -21,6 +21,7 @@ export class UserEditComponent implements OnInit {
   enable: ['true', Validators.required],
   mail: [''],
   sex: [''],
+  name: [''],
   marital_status: ['']
 });
 
@@ -35,6 +36,7 @@ constructor(private fb: FormBuilder, private service: UserService, private reado
     console.log('submitted');
   }
 
+  get name(): AbstractControl { return this.userEdit.get('name'); }
   get username(): AbstractControl { return this.userEdit.get('username'); }
   get city(): AbstractControl { return this.userEdit.get('city'); }
   get id(): AbstractControl { return this.userEdit.get('id'); }
