@@ -37,23 +37,23 @@ ul {
 }
 
 
-button{
+button {
   align-content: center;
   cursor: pointer;
-  outline:none;
-  border:solid 2px black;
-  padding:15px 10px;
+  outline: none;
+  border: solid 2px black;
+  padding: 15px 10px;
   margin-right: 5px;
-  font-size:1.5em;
-  font-weight:$bold;
-  letter-spacing:.1em;
-  background:$main;
-  color:$white;
-  transition:all.5s ease;
+  font-size: 1.5em;
+  font-weight: $bold;
+  letter-spacing: .1em;
+  background: $main;
+  color: $white;
+  transition: all.5s ease;
   -webkit-appearance: none;
 
 
-.button-block {
-  width:100%;
-}
+  .button-block {
+    width: 100%;
+  }
 }

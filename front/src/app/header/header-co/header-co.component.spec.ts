@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderCoComponent } from './header-co.component';
-import {RouterTestingModule} from '@angular/router/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HeaderCoComponent', () => {
   let component: HeaderCoComponent;
@@ -10,11 +10,11 @@ describe('HeaderCoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderCoComponent ],
+      declarations: [HeaderCoComponent],
       imports: [RouterTestingModule,
-                HttpClientTestingModule]
+        HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

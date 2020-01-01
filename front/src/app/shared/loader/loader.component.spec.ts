@@ -3,27 +3,27 @@ import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core
 import { LoaderComponent } from './loader.component';
 import { EventEmitter } from 'events';
 import { Observable } from 'rxjs';
-import {MatProgressSpinnerModule} from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 function expectAnimationDuration(
-    comp: {animationDuration: number, animationFinished: Observable<void>},
-    fixture: ComponentFixture<LoaderComponent>,
-    duration: number|null,
-    expectedValue: boolean) {
+  comp: { animationDuration: number, animationFinished: Observable<void> },
+  fixture: ComponentFixture<LoaderComponent>,
+  duration: number | null,
+  expectedValue: boolean) {
   comp.animationDuration = duration;
   fixture.detectChanges();
   let received = false;
 
   comp
-      .animationFinished
-      .subscribe(() => received = true);
+    .animationFinished
+    .subscribe(() => received = true);
 
   tick(duration || 0 + 100);
   fixture.detectChanges();
 
   fixture
-      .whenStable()
-      .then(() => expect(received).toBe(expectedValue));
+    .whenStable()
+    .then(() => expect(received).toBe(expectedValue));
 }
 
 
@@ -33,10 +33,10 @@ describe('LoaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoaderComponent ],
+      declarations: [LoaderComponent],
       imports: [MatProgressSpinnerModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -50,7 +50,7 @@ describe('LoaderComponent', () => {
   it('should have default message', () => expect(component.text).toEqual('Chargement...'));
 
   it('should accept other message', () => {
-    (component as {text: string}).text = 'Custom message!';
+    (component as { text: string }).text = 'Custom message!';
     fixture.detectChanges();
     expect(component.text).toEqual('Custom message!');
   });
@@ -61,5 +61,5 @@ describe('LoaderComponent', () => {
 
   it('should not crash if given animation duration is falsy', fakeAsync(() => {
     expectAnimationDuration(component as any, fixture, null, false);
-  }))
+  }));
 });

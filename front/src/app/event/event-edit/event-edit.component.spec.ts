@@ -7,22 +7,22 @@ import {
 import {
   EventEditComponent
 } from './event-edit.component';
-import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouterTestingModule} from '@angular/router/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('EventEditComponent', () => {
   let component: EventEditComponent;
-  let fixture: ComponentFixture < EventEditComponent > ;
+  let fixture: ComponentFixture<EventEditComponent>;
 
-  beforeEach(async (() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [EventEditComponent],
-        imports: [ReactiveFormsModule,
-                  FormsModule,
-                  RouterTestingModule,
-                  HttpClientTestingModule],
-      })
+      declarations: [EventEditComponent],
+      imports: [ReactiveFormsModule,
+        FormsModule,
+        RouterTestingModule,
+        HttpClientTestingModule],
+    })
       .compileComponents();
   }));
 

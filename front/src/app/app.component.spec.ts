@@ -2,8 +2,8 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule} from '@angular/common/http/testing';
-import {HeaderModule} from './header/header.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HeaderModule } from './header/header.module';
 
 
 describe('AppComponent', () => {

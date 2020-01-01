@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators, AbstractControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, AbstractControl, FormGroup } from '@angular/forms';
 import { User } from '../../user';
 import { AuthApiService } from '../../../auth/auth-api.service';
 import { Router } from '@angular/router';
@@ -12,17 +12,17 @@ import { Router } from '@angular/router';
 export class UserFormLoginComponent implements OnInit {
 
   userLogin = this.fb.group({
-    username: ['',  Validators.required],
+    username: ['', Validators.required],
     password: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private service: AuthApiService, private readonly router: Router) {}
+  constructor(private fb: FormBuilder, private service: AuthApiService, private readonly router: Router) { }
 
   onSubmit() {
-    const {username, password} = this.userLogin.value;
+    const { username, password } = this.userLogin.value;
     this.service
-    .login(username, password)
-    .subscribe(() => this.loginSuccess());
+      .login(username, password)
+      .subscribe(() => this.loginSuccess());
   }
 
   get username(): AbstractControl { return this.userLogin.get('username'); }

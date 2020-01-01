@@ -1,49 +1,50 @@
-<ng-template #loading><app-loader></app-loader></ng-template>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
 <ng-container>
   <div class="display">
 
-  <article *ngIf="(event$ | async) as event; else loading">
-        <h1>{{ event.title }}</h1>
-        <img src = "/assets/img/{{event.photo}}" alt="picture">
-        <h2>{{ event.author }}</h2>
-        <p>{{ event.description }}</p>
-        <p>{{ event.dueAt | date: 'short'}}</p>
-        <p>{{ event.author.username }}</p>
-        <p>{{ event.author.birthDate }}</p>
-        <p>{{event.adresse}}</p>
-        <p>{{event.city}}</p>
-        <p>{{event.Cp}}</p>
-        <p>{{event.createdAt}}</p>
-        <p>{{event.nbFree}} places restantes</p>
+    <article *ngIf="(event$ | async) as event; else loading">
+      <h1>{{ event.title }}</h1>
+      <img src="/assets/img/{{event.photo}}" alt="picture">
+      <p>Auteur de l'évenement : {{ event.author }}</p>
+      <p>Description : {{ event.description }}</p>
+      <p>Date et heure de l'évenement : {{ event.dueAt | date: 'short'}}</p>
+      <p>{{ event.author.username }}</p>
+      <p>{{ event.author.birthDate }}</p>
+      <!-- <p>{{event.adresse}}</p> -->
+      <p>Lieux : {{event.city}}</p>
+      <!-- <p>Code Postal : {{event.Cp}}</p> -->
+      <!-- <p>Date création de l'évenement :{{event.createdAt}}</p> -->
+      <p>Seulement {{event.nbFree}} places restantes ! </p>
 
 
 
-        <h2> Liste des participants</h2>
+      <h2> Liste des participants</h2>
 
-        <article *ngIf="(listeParticipants$ | async) as participants; else loading">
-            <div *ngFor="let p of participants">
-                <p>{{ p.username }}</p>
-            </div>
-        </article>
+      <article *ngIf="(listeParticipants$ | async) as participants; else loading">
+        <div *ngFor="let p of participants">
+          <p>{{ p.username }}</p>
+        </div>
+      </article>
 
-        <h2> Liste des organisateurs</h2>
+      <h2> Liste des organisateurs</h2>
 
-        <article *ngIf="(listeOrganisators$ | async) as organisateurs; else loading">
-            <div *ngFor="let o of organisateurs">
-                <p>{{ o.username }}</p>
-            </div>
-        </article>
+      <article *ngIf="(listeOrganisators$ | async) as organisateurs; else loading">
+        <div *ngFor="let o of organisateurs">
+          <p>{{ o.username }}</p>
+        </div>
+      </article>
 
-    <button [routerLink]="['../..']">Retour</button>
-    <ng-container *ngIf="user|async">
-      <button (click)="onJoin(event.id)">Rejoindre</button>
-      <button (click)="onDisjoin(event.id)">Quitter </button>
-      <button (click)="onOrganisator(event.id)">Devenir organisateur</button>
-      <button [routerLink]="['../..']" (click)="delete(event.id)"> Supprimer </button>
-      <button [routerLink]="['edit']" >Editer</button>
-    </ng-container>
+      <button [routerLink]="['../..']">Retour</button>
+      <ng-container *ngIf="user|async">
+        <button (click)="onJoin(event.id)">Rejoindre</button>
+        <button (click)="onDisjoin(event.id)">Quitter </button>
+        <button (click)="onOrganisator(event.id)">Devenir organisateur</button>
+        <button [routerLink]="['../..']" (click)="delete(event.id)"> Supprimer </button>
+        <button [routerLink]="['edit']">Editer</button>
+      </ng-container>
 
-  </article>
-
-</div>
+    </article>
+  </div>
 </ng-container>

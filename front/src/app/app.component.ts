@@ -12,18 +12,18 @@ export class AppComponent implements OnInit, OnDestroy {
   loggued: boolean;
   private subscriptions: Subscription[] = [];
 
-  constructor(private readonly currentUser: CurrentUserService) {}
+  constructor(private readonly currentUser: CurrentUserService) { }
 
   ngOnInit() {
     this.subscriptions
-    .push(this.currentUser
-      .observable
-      .subscribe(user => this.loggued = !!user));
-    }
-
-
-    ngOnDestroy() {
-      this.subscriptions.forEach(s => s.unsubscribe());
-    }
+      .push(this.currentUser
+        .observable
+        .subscribe(user => this.loggued = !!user));
   }
+
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+}
 

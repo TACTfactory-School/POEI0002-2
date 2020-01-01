@@ -1,7 +1,9 @@
-<ng-template #loading><app-loader></app-loader></ng-template>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
 <div class="form">
   <ul class="tab-group">
-    <li class="tab active"><a  [routerLink]="['../sign-up']">Inscription</a></li>
+    <li class="tab active"><a [routerLink]="['../sign-up']">Inscription</a></li>
     <li class="tab"><a [routerLink]="['../login']">Connexion</a></li>
   </ul>
 
@@ -11,43 +13,38 @@
     <form [formGroup]="userSign" (ngSubmit)="onSubmit()">
       <div class="top-row">
         <div class="field-wrap">
-          <input type="text" formControlName="username" placeholder="Pseudonyme *"/>
-          <div [hidden]="username.valid || username.pristine"
-            class="alert">Pseudonyme requis
-          </div> 
+          <input type="text" formControlName="username" placeholder="Pseudonyme *" />
+          <div [hidden]="username.valid || username.pristine" class="alert">Pseudonyme requis
+          </div>
         </div>
 
 
         <div class="field-wrap">
-          <input type="text" formControlName="password" placeholder="Mot de passe *"/>
-           <div [hidden]="password.valid || password.pristine"
-            class="alert">Mot de passe requis
-          </div> 
+          <input type="text" formControlName="password" placeholder="Mot de passe *" />
+          <div [hidden]="password.valid || password.pristine" class="alert">Mot de passe requis
+          </div>
         </div>
 
         <div class="field-wrap">
-          <input type="text" formControlName="city" placeholder="Ville *"/>
-           <div [hidden]="city.valid || city.pristine"
-            class="alert"> Ville requise
-          </div> 
+          <input type="text" formControlName="city" placeholder="Ville *" />
+          <div [hidden]="city.valid || city.pristine" class="alert"> Ville requise
+          </div>
         </div>
         <!-- <mat-form-field>
           <mat-label>Ville</mat-label>
           <mat-select> -->
-            <!-- <mat-option>None</mat-option>
+        <!-- <mat-option>None</mat-option>
               <mat-option *ngFor="let c of city" >{{c.city}}</mat-option>
             </mat-select>
           </mat-form-field> -->
 
-          <input type="hidden" formControlName="enable" value="true"/>
-          <input type="hidden" formControlName="role" value="User"/>
+        <input type="hidden" formControlName="enable" value="true" />
+        <input type="hidden" formControlName="role" value="User" />
 
-        </div>
+      </div>
 
-        <button type="submit" value="Valider" [disabled]="!userSign.valid" >
+      <button type="submit" value="Valider" [disabled]="!userSign.valid">
         Valider
-        </button>
-      </form>
-    </div>
-
-
+      </button>
+    </form>
+  </div>

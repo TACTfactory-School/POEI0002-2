@@ -19,7 +19,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { httpInterceptors } from './interceptors';
 import { HeaderModule } from './header/header.module';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatCardModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'fr-FR'},
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
     httpInterceptors,
   ],
   bootstrap: [AppComponent],

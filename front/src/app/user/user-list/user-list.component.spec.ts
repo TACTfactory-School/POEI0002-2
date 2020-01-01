@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UserListComponent } from './user-list.component';
-import { HttpClientTestingModule} from '@angular/common/http/testing';
-import {MatProgressSpinnerModule, MatTableModule} from '@angular/material';
-import {LoaderComponent} from '../../shared/loader/loader.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatProgressSpinnerModule, MatTableModule } from '@angular/material';
+import { LoaderComponent } from '../../shared/loader/loader.component';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -22,7 +22,7 @@ describe('UserListComponent', () => {
         MatProgressSpinnerModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

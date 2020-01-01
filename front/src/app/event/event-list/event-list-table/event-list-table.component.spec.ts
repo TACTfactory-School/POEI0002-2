@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EventListTableComponent } from './event-list-table.component';
-import {RouterTestingModule} from '@angular/router/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {MatCardModule, MatProgressSpinnerModule} from '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatCardModule, MatProgressSpinnerModule } from '@angular/material';
 import { MatTableModule } from '@angular/material';
-import {PipesModule} from '../../../pipes/pipes.module';
-import {LoaderComponent} from '../../../shared/loader/loader.component';
+import { PipesModule } from '../../../pipes/pipes.module';
+import { LoaderComponent } from '../../../shared/loader/loader.component';
 
 describe('EventListComponent', () => {
   let component: EventListTableComponent;
@@ -24,7 +24,7 @@ describe('EventListComponent', () => {
         EventListTableComponent,
         LoaderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

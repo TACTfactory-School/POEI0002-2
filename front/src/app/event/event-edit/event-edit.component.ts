@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
-import {EventService} from '../event.service';
-import {Event} from '../event';
-import {ActivatedRoute} from '@angular/router';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { EventService } from '../event.service';
+import { Event } from '../event';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event-edit',
@@ -11,9 +13,10 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class EventEditComponent implements OnInit {
 
-  eventSign = this.fb.group({title: ['',  Validators.required],
-    description: ['',  Validators.required],
-    id: ['',  Validators.required],
+  eventSign = this.fb.group({
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    id: ['', Validators.required],
     city: ['', Validators.required],
     nbPlace: ['', Validators.required],
     dueAt: ['', Validators.required],
@@ -23,7 +26,10 @@ export class EventEditComponent implements OnInit {
     Cp: ['']
   });
 
-  constructor(private fb: FormBuilder, private service: EventService, private readonly route: ActivatedRoute, ) { }
+  sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+  constructor(private fb: FormBuilder, private service: EventService, private readonly route: ActivatedRoute, private router: Router) { }
 
   onSubmit(): void {
     const event: Event = this.eventSign.value;
@@ -31,6 +37,9 @@ export class EventEditComponent implements OnInit {
       .update(event)
       .subscribe();
     console.log('submitted');
+    this.sleep(100).then(() => {
+      this.router.navigate(['/event']);
+    });
   }
 
   get title(): AbstractControl { return this.eventSign.get('title'); }
@@ -50,8 +59,8 @@ export class EventEditComponent implements OnInit {
       .subscribe(params => {
         if (params.id) {
           this.service
-              .getOne(params.id)
-              .subscribe(e => this.eventSign.patchValue(e));
+            .getOne(params.id)
+            .subscribe(e => this.eventSign.patchValue(e));
 
         }
       });

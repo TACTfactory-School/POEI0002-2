@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Event } from '../event';
 import { EventService } from '../event.service';
 import { CurrentUserService } from '../../auth/current-user.service';
@@ -13,13 +13,14 @@ import { Router } from '@angular/router';
 
 export class EventFormComponent implements OnInit {
 
-  eventSign = this.fb.group({title: ['',  Validators.required],
-                            description: ['',  Validators.required],
-                            city: ['', Validators.required],
-                            nbPlace: ['', Validators.required],
-                            dueAt: ['', Validators.required],
-                            enable: ['true', Validators.required]
-                          });
+  eventSign = this.fb.group({
+    title: ['', Validators.required],
+    description: ['', Validators.required],
+    city: ['', Validators.required],
+    nbPlace: ['', Validators.required],
+    dueAt: ['', Validators.required],
+    enable: ['true', Validators.required]
+  });
 
   constructor(private fb: FormBuilder, private service: EventService, private readonly currentUser: CurrentUserService,
               private readonly router: Router) { }
@@ -27,8 +28,8 @@ export class EventFormComponent implements OnInit {
   onSubmit(): void {
     const event: Event = this.eventSign.value;
     this.service
-        .create(event)
-        .subscribe(() => this.eventCreateSuccess(event.id));
+      .create(event)
+      .subscribe(() => this.eventCreateSuccess(event.id));
     console.log('submitted');
   }
 

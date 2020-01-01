@@ -4,9 +4,9 @@ import { UserDisplayComponent } from './user-display.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import {PipesModule} from '../../pipes/pipes.module';
-import {LoaderComponent} from '../../shared/loader/loader.component';
-import {MatProgressSpinnerModule} from '@angular/material';
+import { PipesModule } from '../../pipes/pipes.module';
+import { LoaderComponent } from '../../shared/loader/loader.component';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 describe('UserDisplayComponent', () => {
   let component: UserDisplayComponent;
@@ -25,7 +25,7 @@ describe('UserDisplayComponent', () => {
         MatProgressSpinnerModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

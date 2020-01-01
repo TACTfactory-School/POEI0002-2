@@ -1,50 +1,28 @@
 @import 'vars';
 
-  h1 {
-    text-align: center;
-  }
-
-  img {
-    display: flex;
-border-radius: 30px;
-}
-  button{
-    align-content: center;
-    float:left;
-    cursor: pointer;
-    outline:none;
-    background:$main;
-    color:$white;
-    border:solid 2px black;
-    padding:15px 10px;
-    margin-right: 5px;
-    font-size:1.5em;
-  }
-
-h1{
+h1 {
   text-align: center;
 }
 
-img{
-display: flex;
-border-radius: 30px;
+img {
+  display: flex;
+  border-radius: 30px;
 }
 
-button{
+button {
   align-content: center;
-  float:left;
+  float: left;
   cursor: pointer;
-  outline:none;
-  background:$main;
-  color:$white;
-  border:solid 2px black;
-  padding:15px 10px;
+  outline: none;
+  background: $main;
+  color: $white;
+  border: solid 2px black;
+  padding: 15px 10px;
   margin-right: 5px;
-  font-size:1.5em;
-
-
+  font-size: 1.5em;
 }
-.display{
+
+.display {
   margin-left: 3px;
   margin-top: 3px;
   padding-top: 10px;

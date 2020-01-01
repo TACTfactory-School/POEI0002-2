@@ -1,7 +1,9 @@
 <menu *ngIf="router.url != '/login' && router.url != '/sign-up'">
   <nav class="left show">
     <ul>
-      <li><h2>Menu</h2></li>
+      <li>
+        <h2>Menu</h2>
+      </li>
       <!-- <li><a [routerLink]="['home']">Accueil</a></li> -->
       <li><a [routerLink]="['event']">Liste événements</a></li>
       <li><a [routerLink]="['user']">Liste membres</a></li>
@@ -11,4 +13,4 @@
       </ng-container>
     </ul>
   </nav>
-</menu >
+</menu>

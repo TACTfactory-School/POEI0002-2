@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../user';
+import { User } from '../user';
 import { Event } from '../../event/event';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -19,12 +19,12 @@ export class UserDisplayComponent implements OnInit {
 
   ngOnInit() {
     this.route
-    .params
-    .subscribe(params => {
-      if (params.id) {
-        this.user$ = this.service.getOne(params.id);
-        this.listEvents$ = this.service.getAllEvents(params.id);
-      }
-    });
+      .params
+      .subscribe(params => {
+        if (params.id) {
+          this.user$ = this.service.getOne(params.id);
+          this.listEvents$ = this.service.getAllEvents(params.id);
+        }
+      });
   }
 }

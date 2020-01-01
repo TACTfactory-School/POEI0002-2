@@ -10,38 +10,46 @@ import { EventDisplayComponent } from './event/event-display/event-display.compo
 import { PagenotfoundComponent } from './error/pagenotfound/pagenotfound.component';
 import { EventFormComponent } from './event/event-form/event-form.component';
 import { EventListTableComponent } from './event/event-list/event-list-table/event-list-table.component';
-import {EventEditComponent} from './event/event-edit/event-edit.component';
+import { EventEditComponent } from './event/event-edit/event-edit.component';
 import { MeComponent } from './user/me/me.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 
 const routes: Routes = [
-  {path: 'home', redirectTo: 'event'},
-  {path: '', redirectTo: 'event', pathMatch: 'full'},
-  {path: 'login', component: UserFormLoginComponent, pathMatch: 'full'},
-  { path: 'sign-up', component: UserFormComponent, pathMatch: 'full'},
-  { path: 'tab-event', component: EventListTableComponent, pathMatch: 'full'},
-  {path: 'user',
-  children: [
-    { path: '',    component: UserListComponent, pathMatch: 'full'},
-    { path: 'me',
+  { path: 'home', redirectTo: 'event' },
+  { path: '', redirectTo: 'event', pathMatch: 'full' },
+  { path: 'login', component: UserFormLoginComponent, pathMatch: 'full' },
+  { path: 'sign-up', component: UserFormComponent, pathMatch: 'full' },
+  { path: 'tab-event', component: EventListTableComponent, pathMatch: 'full' },
+  {
+    path: 'user',
     children: [
-      {path: '', component: MeComponent, pathMatch: 'full'},
-      {path: 'edit', component: UserEditComponent, pathMatch: 'full'},
-    ]},
-    { path: ':id', component: UserDisplayComponent},
-  ]},
-  {path: 'event',
-  children: [
-    {path: '', component: EventListCardComponent},
-    {path: 'create', component: EventFormComponent, /* canActivate: [ LogguedGuard ]*/},
-    {path: ':id',
+      { path: '', component: UserListComponent, pathMatch: 'full' },
+      {
+        path: 'me',
+        children: [
+          { path: '', component: MeComponent, pathMatch: 'full' },
+          { path: 'edit', component: UserEditComponent, pathMatch: 'full' },
+        ]
+      },
+      { path: ':id', component: UserDisplayComponent },
+    ]
+  },
+  {
+    path: 'event',
     children: [
-      {path: '', component: EventDisplayComponent},
-      {path: 'edit', component: EventEditComponent}
-    ]}
-  ]},
-  {path: '**', component: PagenotfoundComponent}
+      { path: '', component: EventListCardComponent },
+      { path: 'create', component: EventFormComponent, /* canActivate: [ LogguedGuard ]*/ },
+      {
+        path: ':id',
+        children: [
+          { path: '', component: EventDisplayComponent },
+          { path: 'edit', component: EventEditComponent }
+        ]
+      }
+    ]
+  },
+  { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({
