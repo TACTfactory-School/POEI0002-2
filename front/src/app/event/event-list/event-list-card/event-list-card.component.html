@@ -1,19 +1,15 @@
 <ng-template #loading>
   <app-loader></app-loader>
 </ng-template>
-<mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+<div class="group">
   <mat-button-toggle [routerLink]='["../tab-event"]' value="bold">Mode Tableau</mat-button-toggle>
-</mat-button-toggle-group>
 <ul>
   <li *ngFor="let item of [].constructor(totalPages); let i = index">
     <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
-    <!-- TODO ajouter le paginateur fonctionnel : jonathan ask us to add a material paginator -->
-    <!-- <mat-paginator  [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]">
-</mat-paginator> -->
+
   </li>
 </ul>
+</div>
 <section *ngFor="let e of events " class="main">
   <mat-card class="card-event">
     <img mat-card-image src="assets/img/{{e.photo}}" alt="event picture">
@@ -39,7 +35,8 @@
 
       </article> -->
       <mat-card-actions>
-        <button [routerLink]="[e.id]" mat-button>Lire plus</button>
+        <mat-button-toggle [routerLink]="[e.id]" value="bold">Lire plus</mat-button-toggle>
+
         <!-- <button mat-button [routerLink]="[e.id]" (click)="onJoin(e.id)">Rejoindre</button> -->
         <p style=text-align:right>{{ e.nbPlace - e.nbFree }} / {{ e.nbPlace }}</p>
 

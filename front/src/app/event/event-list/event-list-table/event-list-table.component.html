@@ -1,6 +1,7 @@
 <ng-template #loading>
   <app-loader></app-loader>
 </ng-template>
+<div class="group">
 <mat-button-toggle [routerLink]='["../event"]' value="italic">Mode Liste</mat-button-toggle>
 <!-- TODO ajouter le paginateur fonctionnel : jonathan ask us to add a material paginator -->
 <!-- <mat-paginator  [length]="100"
@@ -12,8 +13,9 @@
     <a href="" (click)="setPage(i,$event)"> {{i+1}} </a>
   </li>
 </ul>
-<table mat-table [dataSource]="events">
+</div>
 
+<table mat-table [dataSource]="events">
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef> Titre </th>
     <td (click)="display(e.id)" mat-cell *matCellDef="let e"> {{e.title}} </td>
