@@ -14,7 +14,7 @@
       <p> Age : {{ user.birthDate|datetoage}} ans</p>
       <p> Ville : {{ user.city }}</p>
       <p> Description : {{ user.description }}</p>
-      <p> Inscrit le : {{ user.created_at }}</p>
+      <p> Inscrit le : {{ user.created_at  | date: 'short'}}</p>
       <p> Dernière connexion : {{ user.last_connection_date }}</p>
       <p> Profession: {{ user.profession }} </p>
       <p> Langues parlés : {{user.Langues}}</p>
