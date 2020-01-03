@@ -59,7 +59,6 @@ public class EventFixtureService implements Fixture {
       event.setTitle(faker.esports().game());
       event.setDueAt(LocalDateTime.now());
       event.setNbPlace(rand.nextInt(20)+2);
-      event.setNbFree(event.getNbPlace());
       event.setPhoto(photo);
 
       this.repository.save(event);

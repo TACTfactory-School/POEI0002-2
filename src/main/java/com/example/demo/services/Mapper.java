@@ -88,7 +88,6 @@ public Event dtoToEvent(final Event event, final EventDto eventDto) {
     event.setDescription(eventDto.getDescription());
     event.setDueAt(eventDto.getDueAt());
     event.setNbPlace(eventDto.getNbPlace());
-    event.setNbFree(eventDto.getNbFree());
     event.setAdresse(eventDto.getAdresse());
     event.setPhoto(eventDto.getPhoto());
     event.setCp(eventDto.getCp());

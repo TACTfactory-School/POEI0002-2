@@ -168,7 +168,6 @@ public class EventController {
     User user = this.userService.getByUserName(username);
     event.setAuthor(user);
     event = this.mapperDto.dtoToEvent(event, eventDto);
-    event.setNbFree(event.getNbPlace());
     return this.service.create(event);
   }
 

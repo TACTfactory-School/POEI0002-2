@@ -70,12 +70,6 @@ public class Event extends EntityBase {
   private Integer nbPlace;
 
   /**
-   * Number of free places.
-   */
-    @Column(nullable = false, name = EventContract.COL_NB_FREE)
-    private Integer nbFree;
-
-  /**
  * Photo of the event.
  */
   @Column(length = EventContract.STRING_LENGTH, nullable = true, name = EventContract.COL_PHOTO)
@@ -314,7 +308,6 @@ public class Event extends EntityBase {
  */
   public void addParticipant(final UserEventParticipant usereventparticipant) {
     this.participants.add(usereventparticipant);
-    this.nbFree --;
   }
   /**
    * Remove a participant to the Event.
@@ -322,22 +315,13 @@ public class Event extends EntityBase {
  */
   public void removeParticipant(final UserEventParticipant usereventparticipant) {
     this.participants.remove(usereventparticipant);
-    this.nbFree ++;
   }
 /**
  * Retrieves the amount of free places of the event.
  * @return nbFree amount of free places.
  */
 public Integer getNbFree() {
-    return nbFree;
-}
-
-/**
- * Set the amount of free places of the event.
- * @param nbFree amount of free places.
- */
-public void setNbFree(Integer nbFree) {
-    this.nbFree = nbFree;
+    return this.nbPlace - this.participants.size();
 }
 
 }
