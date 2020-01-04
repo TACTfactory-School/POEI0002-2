@@ -18,8 +18,6 @@
       <!-- <p>Date création de l'évenement :{{event.createdAt}}</p> -->
       <p>Seulement {{event.nbFree}} places restantes ! </p>
 
-
-
       <h2> Liste des participants</h2>
 
       <article *ngIf="(listeParticipants$ | async) as participants; else loading">

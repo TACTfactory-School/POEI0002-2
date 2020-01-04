@@ -46,7 +46,6 @@ export class AuthApiService {
   }
 
   logout() {
-    console.log('logout');
     this.token.clear();
     return this.http.post<void>(`${URL}/logout`, {})
       .pipe(tap(() => this.token.clear()));
