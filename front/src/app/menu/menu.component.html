@@ -4,9 +4,8 @@
       <li>
         <h2>Menu</h2>
       </li>
-      <!-- <li><a [routerLink]="['home']">Accueil</a></li> -->
-      <li><a [routerLink]="['event']">Liste événements</a></li>
-      <li><a [routerLink]="['user']">Liste membres</a></li>
+      <li><a [routerLink]="['event']">Événements</a></li>
+      <li><a [routerLink]="['user']">Membres</a></li>
       <ng-container *ngIf="user|async">
         <li><a [routerLink]="['event/create']">Creer un événement</a></li>
         <li><a [routerLink]="['user/me']">Mon profil</a></li>

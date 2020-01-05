@@ -7,12 +7,18 @@ section {
   padding-bottom: 10px;
   padding-right: 10px;
   padding-top: 10px;
-  padding-left: 10px;
+  table {
+    width: 88%;
+    border-radius: 15px;
+    position: absolute;
+    overflow: hidden;
+    margin-left: 15px;
+    margin-bottom: 5px;
+  }
 }
 
-table {
-  width: 100%;
-}
+
+
 
 li {
   display: inline-block;
@@ -36,7 +42,6 @@ ul {
   margin-left: 45%;
 }
 
-
 button {
   align-content: center;
   cursor: pointer;
@@ -51,7 +56,6 @@ button {
   color: $white;
   transition: all.5s ease;
   -webkit-appearance: none;
-
 
   .button-block {
     width: 100%;

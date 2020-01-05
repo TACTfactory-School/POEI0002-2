@@ -1,28 +1,51 @@
 table {
-  width: 100%;
+  width: 88%;
+  border-radius: 15px;
   position: absolute;
   overflow: hidden;
+  margin-left: 15px;
+  margin-right: 150px;
+  margin-bottom: 5px;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
+.group {
+  background-color: white;
+  margin-left: 15px;
+  margin-top: 2px;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 
-li {
-  float: left;
-}
+  .mat-button-toggle {
+    cursor: pointer;
+    border-radius: 10px;
+    color: white;
+    background-color: #336699;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    margin-left: 2px;
+  }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 4px 6px;
-  text-decoration: none;
-}
+  li {
+    float: left;
+  }
 
-li a:hover {
-  background-color: #111;
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 4px 6px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #336699;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
 }
