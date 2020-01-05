@@ -29,6 +29,11 @@ public class EventDto {
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
   private LocalDateTime dueAt;
   /**
+   * Created time of the EventDTO.
+   */
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
+  private LocalDateTime createdAt;
+  /**
    * Maximum number of participants of the EventDTO.
    */
   private Integer nbPlace;
@@ -107,6 +112,22 @@ public class EventDto {
   }
 
   /**
+   * Retrieves the creation date of the EventDTO.
+ * @return createdAt LocalDateTime
+ */
+public LocalDateTime getCreatedAt() {
+    return createdAt;
+}
+
+/**
+ * Set the creation date of the EventDTO.
+ * @param createdAt LocalDateTime.
+ */
+public void setCreatedAt(LocalDateTime createdAt) {
+    this.createdAt = createdAt;
+}
+
+/**
    * Set the postal code of the EventDTO.
    *
    * @param cp Integer.

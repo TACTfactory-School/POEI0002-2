@@ -59,6 +59,7 @@ public class Mapper {
       result = new EventDto();
 
       result.setId(event.getId());
+      result.setCreatedAt(event.getCreatedAt());
       result.setAuthor(event.getAuthor().getUsername());
       result.setTitle(event.getTitle());
       result.setCity(event.getCity());

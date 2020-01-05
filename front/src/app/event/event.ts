@@ -6,7 +6,7 @@ export interface Event {
   id: number;
   title: string;
   description: string;
-  createdAt: string;
+  createdAt: Date;
   dueAt: Date;
   author: User;
   city: string;
