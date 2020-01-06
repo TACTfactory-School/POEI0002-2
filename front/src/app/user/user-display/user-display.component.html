@@ -21,7 +21,6 @@
       <p> Loisirs : </p>
       <p> Liste d'amis : </p>
       <p> Evenement futur : </p>
-      <p> Profession : {{ user.profession }}</p>
     </article>
 
     <h2>Liste des événements auxquels je participe</h2>
@@ -31,7 +30,7 @@
         <p>{{ e.title }}</p>
       </div>
     </article>
-    <button [routerLink]="['../..']">Retour</button>
+    <button [routerLink]="['..']">Retour</button>
   </div>
 
 </ng-container>
